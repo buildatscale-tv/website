@@ -4,7 +4,8 @@
       "Bash(npm install:*)",
       "WebFetch(domain:github.com)",
       "WebFetch(domain:docs.astro.build)",
-      "Bash(npm uninstall:*)"
+      "Bash(npm uninstall:*)",
+      "Bash(npm run build:*)"
     ],
     "deny": [],
     "ask": []
