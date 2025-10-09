@@ -1,0 +1,43 @@
+---
+import Logo from './Logo.astro';
+---
+
+<header class="bg-white border-b border-gray-200 sticky top-0 z-50">
+	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+		<div class="flex items-center justify-between h-16">
+			<!-- Logo -->
+			<div class="flex items-center space-x-3">
+				<Logo />
+				<div class="font-bold text-xl text-gray-900">
+					Build<span class="text-blue-600">AtScale</span>
+				</div>
+			</div>
+
+			<!-- Navigation -->
+			<nav class="hidden md:flex items-center space-x-8">
+				<a href="#videos" class="text-gray-600 hover:text-blue-600 transition-colors font-medium">
+					Videos
+				</a>
+				<a href="#about" class="text-gray-600 hover:text-blue-600 transition-colors font-medium">
+					About
+				</a>
+				<a href="#topics" class="text-gray-600 hover:text-blue-600 transition-colors font-medium">
+					Topics
+				</a>
+			</nav>
+
+			<!-- Subscribe Button -->
+			<a
+				href="https://youtube.com/@buildatscale?sub_confirmation=1"
+				target="_blank"
+				rel="noopener noreferrer"
+				class="bg-red-600 hover:bg-red-700 text-white px-6 py-2 rounded-lg font-medium transition-colors flex items-center space-x-2"
+			>
+				<svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+					<path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+				</svg>
+				<span>Subscribe</span>
+			</a>
+		</div>
+	</div>
+</header>

@@ -11,11 +11,15 @@
 		"cf-typegen": "wrangler types"
 	},
 	"dependencies": {
+		"@ascorbic/youtube-loader": "^0.0.2",
 		"@astrojs/cloudflare": "^12.6.9",
-		"astro": "^5.14.1"
+		"astro": "^5.14.1",
+		"resend": "^6.1.2"
 	},
 	"devDependencies": {
+		"@astrojs/tailwind": "^6.0.2",
 		"@types/node": "^24.7.0",
+		"tailwindcss": "^3.4.18",
 		"wrangler": "^4.42.1"
 	}
 }
