@@ -1,0 +1,18 @@
+---
+export interface Props {
+  topColor: string;
+  bottomColor: string;
+}
+
+const { topColor, bottomColor } = Astro.props;
+---
+
+<svg
+  class="w-full h-auto block -mb-1"
+  viewBox="0 0 1440 120"
+  preserveAspectRatio="none"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <rect class={topColor} width="1440" height="120"/>
+  <path class={bottomColor} d="M0,60 C240,20 480,100 720,60 C960,20 1200,100 1440,60 L1440,120 L0,120 Z"/>
+</svg>

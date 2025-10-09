@@ -4,9 +4,9 @@ import { getCollection } from 'astro:content';
 // Get all videos and sort by date
 const allVideos = await getCollection('videos');
 const sortedVideos = allVideos.sort((a, b) => {
-	const dateA = new Date(a.data.publishedAt);
-	const dateB = new Date(b.data.publishedAt);
-	return dateB.getTime() - dateA.getTime();
+  const dateA = new Date(a.data.publishedAt);
+  const dateB = new Date(b.data.publishedAt);
+  return dateB.getTime() - dateA.getTime();
 });
 
 // Get the latest video
@@ -17,148 +17,142 @@ const hasVideos = latestVideoData !== undefined;
 
 // Helper function to format duration from ISO 8601
 const formatDuration = (duration: string) => {
-	const match = duration.match(/PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?/);
-	if (!match) return '';
+  const match = duration.match(/PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?/);
+  if (!match) return '';
 
-	const hours = parseInt(match[1] || '0');
-	const minutes = parseInt(match[2] || '0');
-	const seconds = parseInt(match[3] || '0');
+  const hours = parseInt(match[1] || '0');
+  const minutes = parseInt(match[2] || '0');
+  const seconds = parseInt(match[3] || '0');
 
-	if (hours > 0) {
-		return `${hours}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-	}
-	return `${minutes}:${seconds.toString().padStart(2, '0')}`;
+  if (hours > 0) {
+    return `${hours}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+  }
+  return `${minutes}:${seconds.toString().padStart(2, '0')}`;
 };
 
 // Format view count
 const formatViews = (count: number) => {
-	if (count < 1000) return `${count} views`;
-	if (count < 1000000) return `${(count / 1000).toFixed(1)}K views`;
-	return `${(count / 1000000).toFixed(1)}M views`;
+  if (count < 1000) return `${count} views`;
+  if (count < 1000000) return `${(count / 1000).toFixed(1)}K views`;
+  return `${(count / 1000000).toFixed(1)}M views`;
 };
 
 // Format time ago
 const getTimeAgo = (date: string) => {
-	const now = new Date();
-	const published = new Date(date);
-	const diffMs = now.getTime() - published.getTime();
-	const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+  const now = new Date();
+  const published = new Date(date);
+  const diffMs = now.getTime() - published.getTime();
+  const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
 
-	if (diffDays === 0) return "Today";
-	if (diffDays === 1) return "Yesterday";
-	if (diffDays < 7) return `${diffDays} days ago`;
-	if (diffDays < 30) return `${Math.floor(diffDays / 7)} weeks ago`;
-	if (diffDays < 365) return `${Math.floor(diffDays / 30)} months ago`;
-	return `${Math.floor(diffDays / 365)} years ago`;
+  if (diffDays === 0) return "Today";
+  if (diffDays === 1) return "Yesterday";
+  if (diffDays < 7) return `${diffDays} days ago`;
+  if (diffDays < 30) return `${Math.floor(diffDays / 7)} weeks ago`;
+  if (diffDays < 365) return `${Math.floor(diffDays / 30)} months ago`;
+  return `${Math.floor(diffDays / 365)} years ago`;
 };
 
 const latestVideo = hasVideos ? {
-	videoId: latestVideoData.id,
-	title: latestVideoData.data.title,
-	duration: latestVideoData.data.duration ? formatDuration(latestVideoData.data.duration) : '',
-	views: latestVideoData.data.viewCount ? formatViews(parseInt(latestVideoData.data.viewCount)) : '0 views',
-	timeAgo: getTimeAgo(latestVideoData.data.publishedAt),
-	thumbnail: latestVideoData.data.thumbnails?.maxres?.url || latestVideoData.data.thumbnails?.standard?.url || latestVideoData.data.thumbnails?.high?.url || latestVideoData.data.thumbnails?.medium?.url || ''
+  videoId: latestVideoData.id,
+  title: latestVideoData.data.title,
+  duration: latestVideoData.data.duration ? formatDuration(latestVideoData.data.duration) : '',
+  views: latestVideoData.data.viewCount ? formatViews(parseInt(latestVideoData.data.viewCount)) : '0 views',
+  timeAgo: getTimeAgo(latestVideoData.data.publishedAt),
+  thumbnail: latestVideoData.data.thumbnails?.maxres?.url || latestVideoData.data.thumbnails?.standard?.url || latestVideoData.data.thumbnails?.high?.url || latestVideoData.data.thumbnails?.medium?.url || ''
 } : null;
 ---
 
-<section class="bg-gradient-to-b from-blue-50 to-white py-20">
-	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-		<div class="text-center mb-16">
-			<h1 class="text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
-				Learning in Public
-			</h1>
-			<p class="text-xl lg:text-2xl text-gray-600 mb-4 max-w-4xl mx-auto">
-				AI • Web • Ops
-			</p>
-			<p class="text-lg text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed">
-				Sharing what I'm building, breaking, and learning. From LLM experiments and web dev deep dives
-				to DevOps automation and shipping fast.
-			</p>
-			<div class="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-4">
-				<a
-					href="https://youtube.com/@buildatscale"
-					target="_blank"
-					rel="noopener noreferrer"
-					class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg font-medium transition-colors flex items-center space-x-2"
-				>
-					<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-						<path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-					</svg>
-					<span>Watch on YouTube</span>
-					<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
-					</svg>
-				</a>
-				<a
-					href="#videos"
-					class="border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white px-8 py-3 rounded-lg font-medium transition-colors flex items-center space-x-2"
-				>
-					<span>Browse Videos</span>
-					<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-					</svg>
-				</a>
-			</div>
-		</div>
+<section class="bg-gradient-to-b from-blue-50 to-white dark:from-slate-700 dark:to-slate-800 py-20 transition-colors">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16">
+      <h1 class="text-5xl lg:text-6xl font-bold text-gray-900 dark:text-gray-100 mb-6">
+        Learning in Public
+      </h1>
+      <p class="text-xl lg:text-2xl text-gray-600 dark:text-gray-300 mb-4 max-w-4xl mx-auto">
+        AI • Web • Ops
+      </p>
+      <p class="text-lg text-gray-600 dark:text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed">
+        Sharing what I'm building, breaking, and learning. From LLM experiments and web dev deep dives
+        to DevOps automation and shipping fast.
+      </p>
+      <div class="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-4">
+        <a
+          href="https://youtube.com/@buildatscale"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 text-white px-8 py-3 rounded-lg font-medium transition-colors flex items-center space-x-2"
+        >
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+          </svg>
+          <span>Watch on YouTube</span>
+        </a>
+        <a
+          href="#videos"
+          class="border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white px-8 py-3 rounded-lg font-medium transition-colors"
+        >
+          Browse Videos
+        </a>
+      </div>
+    </div>
 
-		<!-- Featured Latest Video -->
-		{hasVideos && latestVideo ? (
-			<div class="max-w-4xl mx-auto">
-				<div class="text-center mb-6">
-					<span class="inline-block bg-red-100 text-red-700 px-3 py-1 rounded-full text-sm font-medium mb-2">
-						Latest Video
-					</span>
-					<h2 class="text-2xl lg:text-3xl font-bold text-gray-900">
-						{latestVideo.title}
-					</h2>
-				</div>
+    <!-- Featured Latest Video -->
+    {hasVideos && latestVideo ? (
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-6">
+          <span class="inline-block bg-red-100 dark:bg-red-700/30 text-red-700 dark:text-red-300 px-3 py-1 rounded-full text-sm font-medium mb-2">
+            Latest Video
+          </span>
+          <h2 class="text-2xl lg:text-3xl font-bold text-gray-900 dark:text-gray-100">
+            {latestVideo.title}
+          </h2>
+        </div>
 
-				<button
-					type="button"
-					onclick={`openVideoModal('${latestVideo.videoId}', '${latestVideo.title.replace(/'/g, "\\'")}')`}
-					class="relative group cursor-pointer block w-full"
-				>
-					<div class="relative aspect-video bg-gray-900 rounded-xl overflow-hidden shadow-2xl">
-						<img
-							src={latestVideo.thumbnail}
-							alt={latestVideo.title}
-							class="w-full h-full object-cover"
-							loading="eager"
-						/>
-						<div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 flex items-center justify-center transition-all duration-300">
-							<div class="w-20 h-20 bg-red-600 rounded-full flex items-center justify-center transform group-hover:scale-110 transition-transform duration-300">
-								<svg class="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
-									<path d="M8 5v14l11-7z"/>
-								</svg>
-							</div>
-						</div>
-						<div class="absolute bottom-4 right-4 bg-black bg-opacity-80 text-white px-3 py-1 rounded-lg flex items-center">
-							<svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-								<circle cx="12" cy="12" r="10"></circle>
-								<polyline points="12,6 12,12 16,14"></polyline>
-							</svg>
-							{latestVideo.duration}
-						</div>
-					</div>
+        <button
+          type="button"
+          onclick={`openVideoModal('${latestVideo.videoId}', '${latestVideo.title.replace(/'/g, "\\'")}')`}
+          class="relative group cursor-pointer block w-full"
+        >
+          <div class="relative aspect-video bg-gray-200 dark:bg-gray-700 rounded-xl overflow-hidden shadow-2xl">
+            <img
+              src={latestVideo.thumbnail}
+              alt={latestVideo.title}
+              class="w-full h-full object-cover"
+              loading="eager"
+            />
+            <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 flex items-center justify-center transition-all duration-300">
+              <div class="w-20 h-20 bg-red-600 rounded-full flex items-center justify-center transform group-hover:scale-110 transition-transform duration-300">
+                <svg class="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M8 5v14l11-7z"/>
+                </svg>
+              </div>
+            </div>
+            <div class="absolute bottom-4 right-4 bg-black bg-opacity-80 text-white px-3 py-1 rounded-lg flex items-center">
+              <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12,6 12,12 16,14"></polyline>
+              </svg>
+              {latestVideo.duration}
+            </div>
+          </div>
 
-					<div class="flex items-center justify-center mt-6 text-gray-600 space-x-6">
-						<div class="flex items-center">
-							<svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
-							</svg>
-							{latestVideo.views}
-						</div>
-						<span>•</span>
-						<span>{latestVideo.timeAgo}</span>
-					</div>
-				</button>
-			</div>
-		) : (
-			<div class="max-w-4xl mx-auto text-center">
-				<p class="text-gray-600">Loading latest video...</p>
-			</div>
-		)}
-	</div>
+          <div class="flex items-center justify-center mt-6 text-gray-600 dark:text-gray-300 space-x-6">
+            <div class="flex items-center">
+              <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+              </svg>
+              {latestVideo.views}
+            </div>
+            <span>•</span>
+            <span>{latestVideo.timeAgo}</span>
+          </div>
+        </button>
+      </div>
+    ) : (
+      <div class="max-w-4xl mx-auto text-center">
+        <p class="text-gray-600 dark:text-gray-300">Loading latest video...</p>
+      </div>
+    )}
+  </div>
 </section>

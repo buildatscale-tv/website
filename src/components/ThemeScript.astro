@@ -1,0 +1,34 @@
+---
+// This script runs before the page renders to prevent flash of unstyled content
+---
+
+<script is:inline>
+  // This runs immediately, before the page renders
+  (function() {
+    function getStoredTheme() {
+      if (typeof localStorage !== 'undefined') {
+        const stored = localStorage.getItem('theme');
+        if (stored === 'light' || stored === 'dark' || stored === 'system') {
+          return stored;
+        }
+      }
+      return 'system';
+    }
+
+    function getEffectiveTheme(theme) {
+      if (theme === 'system') {
+        return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      }
+      return theme;
+    }
+
+    const theme = getStoredTheme();
+    const effectiveTheme = getEffectiveTheme(theme);
+
+    if (effectiveTheme === 'dark') {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  })();
+</script>

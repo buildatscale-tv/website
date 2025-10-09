@@ -1,27 +1,27 @@
 ---
 export interface Props {
-	videoId: string;
-	title?: string;
-	autoplay?: boolean;
+  videoId: string;
+  title?: string;
+  autoplay?: boolean;
 }
 
 const { videoId, title = "YouTube Video", autoplay = false } = Astro.props;
 
 // YouTube embed parameters
 const embedParams = new URLSearchParams({
-	autoplay: autoplay ? "1" : "0",
-	modestbranding: "1",
-	rel: "0"
+  autoplay: autoplay ? "1" : "0",
+  modestbranding: "1",
+  rel: "0"
 });
 ---
 
 <div class="relative w-full aspect-video bg-black rounded-lg overflow-hidden">
-	<iframe
-		src={`https://www.youtube.com/embed/${videoId}?${embedParams.toString()}`}
-		title={title}
-		frameborder="0"
-		allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-		allowfullscreen
-		class="absolute inset-0 w-full h-full"
-	></iframe>
+  <iframe
+    src={`https://www.youtube.com/embed/${videoId}?${embedParams.toString()}`}
+    title={title}
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen
+    class="absolute inset-0 w-full h-full"
+  ></iframe>
 </div>

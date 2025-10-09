@@ -4,92 +4,92 @@
 ---
 
 <dialog id="video-modal" class="backdrop:bg-black backdrop:bg-opacity-75 bg-transparent p-0 max-w-6xl w-full rounded-lg">
-	<div class="bg-white rounded-lg overflow-hidden shadow-2xl">
-		<div class="flex items-center justify-between p-4 bg-gray-900 text-white">
-			<h3 id="video-modal-title" class="text-lg font-semibold"></h3>
-			<button
-				id="close-video-modal"
-				class="text-white hover:text-gray-300 transition-colors"
-				aria-label="Close video"
-			>
-				<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-				</svg>
-			</button>
-		</div>
-		<div id="video-modal-content" class="aspect-video bg-black">
-			<!-- Video iframe will be injected here -->
-		</div>
-	</div>
+  <div class="bg-white dark:bg-slate-700 rounded-lg overflow-hidden shadow-2xl border border-transparent dark:border-slate-600">
+    <div class="flex items-center justify-between p-4 bg-gray-100 dark:bg-slate-600 text-gray-900 dark:text-white border-b border-gray-200 dark:border-slate-500">
+      <h3 id="video-modal-title" class="text-lg font-semibold text-gray-900 dark:text-white"></h3>
+      <button
+        id="close-video-modal"
+        class="text-gray-900 dark:text-white hover:text-gray-600 dark:hover:text-gray-300 transition-colors"
+        aria-label="Close video"
+      >
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </button>
+    </div>
+    <div id="video-modal-content" class="aspect-video bg-black">
+      <!-- Video iframe will be injected here -->
+    </div>
+  </div>
 </dialog>
 
 <script>
-	const modal = document.getElementById('video-modal') as HTMLDialogElement;
-	const modalTitle = document.getElementById('video-modal-title');
-	const modalContent = document.getElementById('video-modal-content');
-	const closeButton = document.getElementById('close-video-modal');
+  const modal = document.getElementById('video-modal') as HTMLDialogElement;
+  const modalTitle = document.getElementById('video-modal-title');
+  const modalContent = document.getElementById('video-modal-content');
+  const closeButton = document.getElementById('close-video-modal');
 
-	// Function to open video modal
-	function openVideoModal(videoId: string, title: string) {
-		if (!modal || !modalTitle || !modalContent) return;
+  // Function to open video modal
+  function openVideoModal(videoId: string, title: string) {
+    if (!modal || !modalTitle || !modalContent) return;
 
-		// Set title
-		modalTitle.textContent = title;
+    // Set title
+    modalTitle.textContent = title;
 
-		// Create and inject iframe
-		const iframe = document.createElement('iframe');
-		iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&modestbranding=1&rel=0`;
-		iframe.title = title;
-		iframe.setAttribute('frameborder', '0');
-		iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
-		iframe.setAttribute('allowfullscreen', '');
-		iframe.className = 'w-full h-full';
+    // Create and inject iframe
+    const iframe = document.createElement('iframe');
+    iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&modestbranding=1&rel=0`;
+    iframe.title = title;
+    iframe.setAttribute('frameborder', '0');
+    iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
+    iframe.setAttribute('allowfullscreen', '');
+    iframe.className = 'w-full h-full';
 
-		modalContent.innerHTML = '';
-		modalContent.appendChild(iframe);
+    modalContent.innerHTML = '';
+    modalContent.appendChild(iframe);
 
-		// Show modal
-		modal.showModal();
-	}
+    // Show modal
+    modal.showModal();
+  }
 
-	// Function to close video modal
-	function closeVideoModal() {
-		if (!modal || !modalContent) return;
+  // Function to close video modal
+  function closeVideoModal() {
+    if (!modal || !modalContent) return;
 
-		// Stop video by clearing content
-		modalContent.innerHTML = '';
+    // Stop video by clearing content
+    modalContent.innerHTML = '';
 
-		// Close modal
-		modal.close();
-	}
+    // Close modal
+    modal.close();
+  }
 
-	// Attach close handler
-	closeButton?.addEventListener('click', closeVideoModal);
+  // Attach close handler
+  closeButton?.addEventListener('click', closeVideoModal);
 
-	// Close on escape key
-	modal?.addEventListener('close', () => {
-		if (modalContent) modalContent.innerHTML = '';
-	});
+  // Close on escape key
+  modal?.addEventListener('close', () => {
+    if (modalContent) modalContent.innerHTML = '';
+  });
 
-	// Close when clicking outside the modal
-	modal?.addEventListener('click', (e) => {
-		const dialogDimensions = modal.getBoundingClientRect();
-		if (
-			e.clientX < dialogDimensions.left ||
-			e.clientX > dialogDimensions.right ||
-			e.clientY < dialogDimensions.top ||
-			e.clientY > dialogDimensions.bottom
-		) {
-			closeVideoModal();
-		}
-	});
+  // Close when clicking outside the modal
+  modal?.addEventListener('click', (e) => {
+    const dialogDimensions = modal.getBoundingClientRect();
+    if (
+      e.clientX < dialogDimensions.left ||
+      e.clientX > dialogDimensions.right ||
+      e.clientY < dialogDimensions.top ||
+      e.clientY > dialogDimensions.bottom
+    ) {
+      closeVideoModal();
+    }
+  });
 
-	// Expose function globally for video cards to use
-	(window as any).openVideoModal = openVideoModal;
+  // Expose function globally for video cards to use
+  (window as any).openVideoModal = openVideoModal;
 </script>
 
 <style>
-	dialog::backdrop {
-		background: rgba(0, 0, 0, 0.75);
-	}
+  dialog::backdrop {
+    background: rgba(0, 0, 0, 0.75);
+  }
 </style>

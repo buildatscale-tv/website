@@ -1,0 +1,48 @@
+---
+export interface Props {
+  lightSrc: string;
+  darkSrc: string;
+  alt?: string;
+  class?: string;
+}
+
+const { lightSrc, darkSrc, alt = "", class: className = "" } = Astro.props;
+---
+
+<img src={lightSrc} alt={alt} class={`w-full h-auto block theme-aware-img ${className}`} data-light-src={lightSrc} data-dark-src={darkSrc} />
+
+<script>
+  // Update images when theme changes via the toggle
+  function updateThemeAwareImages() {
+    const isDark = document.documentElement.classList.contains('dark');
+    const images = document.querySelectorAll('.theme-aware-img');
+
+    images.forEach((img) => {
+      if (img instanceof HTMLImageElement) {
+        const lightSrc = img.getAttribute('data-light-src');
+        const darkSrc = img.getAttribute('data-dark-src');
+
+        if (lightSrc && darkSrc) {
+          img.src = isDark ? darkSrc : lightSrc;
+        }
+      }
+    });
+  }
+
+  // Update on initial load
+  updateThemeAwareImages();
+
+  // Watch for theme changes
+  const observer = new MutationObserver((mutations) => {
+    mutations.forEach((mutation) => {
+      if (mutation.attributeName === 'class') {
+        updateThemeAwareImages();
+      }
+    });
+  });
+
+  observer.observe(document.documentElement, {
+    attributes: true,
+    attributeFilter: ['class']
+  });
+</script>
