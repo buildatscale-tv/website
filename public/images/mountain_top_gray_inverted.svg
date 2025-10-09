@@ -1,0 +1,10 @@
+<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 120" width="1440" height="120" preserveAspectRatio="none">
+	<style>
+		.s0 { fill: #f9fafb }
+		.s1 { fill: #eff6ff }
+	</style>
+	<rect class="s0" width="1440" height="120"/>
+	<g transform="scale(-1, 1) translate(-1440, 0)">
+		<path class="s1" d="m142.5 14l-143.5 28-1.25 78h720.75 720.75l1.25-120-87.5 34-119.5-34-282.5 40-188-40-199 45-88.5-15.5-160 15.5z"/>
+	</g>
+</svg>

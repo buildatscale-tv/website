@@ -1,0 +1,8 @@
+<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 120" width="1440" height="120" preserveAspectRatio="none">
+	<style>
+		.wave-bg { fill: #eff6ff }
+		.wave-dark { fill: #111827 }
+	</style>
+	<rect class="wave-bg" width="1440" height="120"/>
+	<path class="wave-dark" d="M0,60 C240,20 480,100 720,60 C960,20 1200,100 1440,60 L1440,120 L0,120 Z"/>
+</svg>
