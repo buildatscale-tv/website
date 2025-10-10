@@ -6,16 +6,36 @@ import { getCollection } from 'astro:content';
 // Get all videos from YouTube loader
 const allVideos = await getCollection('videos');
 
-// Sort by published date (newest first) and take the latest 6
-const videos = allVideos
+// Sort by published date (newest first), excluding the first video
+const sortedVideos = allVideos
+  .slice(1) // Skip the first video
   .sort((a, b) => {
     const dateA = new Date(a.data.publishedAt);
     const dateB = new Date(b.data.publishedAt);
     return dateB.getTime() - dateA.getTime();
-  })
-  .slice(1, 7);
+  });
 
-const hasVideos = videos.length > 0;
+// Find the most popular video (by view count)
+const mostPopularVideo = sortedVideos.reduce((max, video) => {
+  const maxViews = parseInt(max?.data?.viewCount || '0');
+  const currentViews = parseInt(video.data.viewCount || '0');
+  return currentViews > maxViews ? video : max;
+}, sortedVideos[0]);
+
+// Initially show 6 videos
+const initialVideos = sortedVideos.slice(0, 6);
+const hasVideos = initialVideos.length > 0;
+const totalVideos = sortedVideos.length;
+
+// Serialize video data for client-side use
+const videosData = sortedVideos.map(video => ({
+  id: video.id,
+  title: video.data.title,
+  thumbnail: video.data.thumbnails?.maxres?.url || video.data.thumbnails?.standard?.url || video.data.thumbnails?.high?.url || video.data.thumbnails?.medium?.url || '',
+  duration: video.data.duration,
+  viewCount: video.data.viewCount,
+  publishedAt: video.data.publishedAt
+}));
 
 // Helper function to format duration from ISO 8601
 const formatDuration = (duration: string) => {
@@ -50,36 +70,213 @@ const formatDuration = (duration: string) => {
     </div>
 
     {hasVideos ? (
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {videos.map((video) => (
-          <VideoCard
-            videoId={video.id}
-            title={video.data.title}
-            thumbnail={video.data.thumbnails?.maxres?.url || video.data.thumbnails?.standard?.url || video.data.thumbnails?.high?.url || video.data.thumbnails?.medium?.url || ''}
-            duration={video.data.duration ? formatDuration(video.data.duration) : undefined}
-            viewCount={video.data.viewCount ? parseInt(video.data.viewCount) : undefined}
-            publishedAt={video.data.publishedAt}
-          />
+      <div id="video-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {initialVideos.map((video) => (
+          <div class="relative">
+            {video.id === mostPopularVideo?.id && (
+              <div class="absolute top-3 right-3 z-20 bg-gradient-to-r from-sky-400 to-blue-500 text-white text-xs font-bold px-3 py-1.5 rounded-md shadow-lg transform rotate-3">
+                ⭐ Most Viewed
+              </div>
+            )}
+            <VideoCard
+              videoId={video.id}
+              title={video.data.title}
+              thumbnail={video.data.thumbnails?.maxres?.url || video.data.thumbnails?.standard?.url || video.data.thumbnails?.high?.url || video.data.thumbnails?.medium?.url || ''}
+              duration={video.data.duration ? formatDuration(video.data.duration) : undefined}
+              viewCount={video.data.viewCount ? parseInt(video.data.viewCount) : undefined}
+              publishedAt={video.data.publishedAt}
+            />
+          </div>
         ))}
       </div>
     ) : (
       <div class="text-center py-12">
-        <p class="text-gray-600">Loading videos...</p>
+        <p class="text-gray-600 dark:text-gray-400">Loading videos...</p>
       </div>
     )}
 
     <div class="text-center mt-12">
-      <a
-        href="https://youtube.com/@buildatscale"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="inline-flex items-center space-x-2 bg-gray-100 hover:bg-gray-200 text-gray-900 px-6 py-3 rounded-lg font-medium transition-colors"
+      <button
+        id="load-more-btn"
+        data-videos={JSON.stringify(videosData)}
+        data-most-popular={mostPopularVideo?.id}
+        data-total={totalVideos}
+        class="inline-flex items-center space-x-2 bg-gray-100 hover:bg-gray-200 dark:bg-slate-600 dark:hover:bg-slate-500 text-gray-900 dark:text-gray-100 px-6 py-3 rounded-lg font-medium transition-colors"
       >
-        <span>View All Videos</span>
-        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <span id="btn-text">View More Videos</span>
+        <svg id="btn-icon-more" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+        </svg>
+        <svg id="btn-icon-external" class="w-4 h-4 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
         </svg>
-      </a>
+      </button>
     </div>
   </div>
 </section>
+
+<script>
+  // Get data from button attributes
+  const loadMoreBtn = document.getElementById('load-more-btn');
+
+  if (loadMoreBtn) {
+    const allVideos = JSON.parse(loadMoreBtn.getAttribute('data-videos') || '[]');
+    const mostPopularId = loadMoreBtn.getAttribute('data-most-popular');
+    const totalVideos = parseInt(loadMoreBtn.getAttribute('data-total') || '0');
+
+    let currentIndex = 6;
+    const videosPerPage = 6;
+
+    const videoGrid = document.getElementById('video-grid');
+    const btnText = document.getElementById('btn-text');
+    const btnIconMore = document.getElementById('btn-icon-more');
+    const btnIconExternal = document.getElementById('btn-icon-external');
+
+    // Helper function to format duration from ISO 8601
+    const formatDuration = (duration) => {
+      const match = duration.match(/PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?/);
+      if (!match) return '';
+
+      const hours = parseInt(match[1] || '0');
+      const minutes = parseInt(match[2] || '0');
+      const seconds = parseInt(match[3] || '0');
+
+      if (hours > 0) {
+        return `${hours}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+      }
+      return `${minutes}:${seconds.toString().padStart(2, '0')}`;
+    };
+
+    // Helper function to format view count
+    const formatViews = (count) => {
+      if (!count) return "0 views";
+      const num = parseInt(count);
+      if (num < 1000) return `${num} views`;
+      if (num < 1000000) return `${(num / 1000).toFixed(1)}K views`;
+      return `${(num / 1000000).toFixed(1)}M views`;
+    };
+
+    // Helper function to format time ago
+    const getTimeAgo = (date) => {
+      const now = new Date();
+      const published = new Date(date);
+      const diffMs = now.getTime() - published.getTime();
+      const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+
+      if (diffDays === 0) return "Today";
+      if (diffDays === 1) return "Yesterday";
+      if (diffDays < 7) return `${diffDays} days ago`;
+      if (diffDays < 30) return `${Math.floor(diffDays / 7)} weeks ago`;
+      if (diffDays < 365) return `${Math.floor(diffDays / 30)} months ago`;
+      return `${Math.floor(diffDays / 365)} years ago`;
+    };
+
+    // Function to create video card HTML
+    const createVideoCard = (video) => {
+      const duration = video.duration ? formatDuration(video.duration) : null;
+      const views = formatViews(video.viewCount);
+      const timeAgo = getTimeAgo(video.publishedAt);
+      const escapedTitle = video.title.replace(/'/g, "\\'").replace(/"/g, '&quot;');
+      const isMostPopular = video.id === mostPopularId;
+
+      return `
+        <div class="relative">
+          ${isMostPopular ? `
+          <div class="absolute top-3 right-3 z-20 bg-gradient-to-r from-sky-400 to-blue-500 text-white text-xs font-bold px-3 py-1.5 rounded-md shadow-lg transform rotate-3">
+            ⭐ Most Viewed
+          </div>
+          ` : ''}
+          <button
+            type="button"
+            onclick="openVideoModal('${video.id}', '${escapedTitle}')"
+            class="bg-white dark:bg-slate-600/50 backdrop-blur-sm border border-gray-200 dark:border-slate-500 rounded-lg overflow-hidden hover:shadow-lg dark:hover:shadow-slate-700/30 transition-all duration-300 group cursor-pointer block w-full text-left"
+          >
+            <div class="relative aspect-video bg-gray-100 dark:bg-gray-800">
+              <img
+                src="${video.thumbnail}"
+                alt="${video.title}"
+                class="w-full h-full object-cover"
+                loading="lazy"
+              />
+              <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 flex items-center justify-center transition-all duration-300 opacity-0 group-hover:opacity-100">
+                <svg class="w-12 h-12 text-white" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M8 5v14l11-7z"/>
+                </svg>
+              </div>
+              ${duration ? `
+              <div class="absolute bottom-2 right-2 bg-black bg-opacity-80 text-white text-xs px-2 py-1 rounded flex items-center">
+                <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <polyline points="12,6 12,12 16,14"></polyline>
+                </svg>
+                ${duration}
+              </div>` : ''}
+            </div>
+            <div class="p-4">
+              <h3 class="font-semibold text-gray-900 dark:text-gray-100 mb-2 line-clamp-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors text-sm h-10">
+                ${video.title}
+              </h3>
+              <div class="flex items-center text-xs text-gray-500 dark:text-gray-400 space-x-2">
+                <div class="flex items-center">
+                  <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                  </svg>
+                  ${views}
+                </div>
+                <span>•</span>
+                <span>${timeAgo}</span>
+              </div>
+            </div>
+          </button>
+        </div>
+      `;
+    };
+
+    // Load more videos function
+    const loadMoreVideos = () => {
+      const nextVideos = allVideos.slice(currentIndex, currentIndex + videosPerPage);
+
+      nextVideos.forEach(video => {
+        const videoCard = createVideoCard(video);
+        videoGrid.insertAdjacentHTML('beforeend', videoCard);
+      });
+
+      currentIndex += videosPerPage;
+
+      // Check if all videos are loaded
+      if (currentIndex >= totalVideos) {
+        btnText.textContent = 'View All Videos';
+        btnIconMore.classList.add('hidden');
+        btnIconExternal.classList.remove('hidden');
+
+        // Change button to link behavior
+        loadMoreBtn.onclick = () => {
+          window.open('https://youtube.com/@BuildAtScale/videos', '_blank', 'noopener');
+        };
+      }
+    };
+
+    // Initial button click handler
+    if (currentIndex < totalVideos) {
+      loadMoreBtn.onclick = loadMoreVideos;
+    } else {
+      // All videos already shown, make it external link
+      btnText.textContent = 'View All Videos';
+      btnIconMore.classList.add('hidden');
+      btnIconExternal.classList.remove('hidden');
+      loadMoreBtn.onclick = () => {
+        window.open('https://youtube.com/@buildatscale', '_blank', 'noopener');
+      };
+    }
+  }
+</script>
+
+<style>
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+</style>
