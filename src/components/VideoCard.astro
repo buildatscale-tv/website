@@ -1,4 +1,6 @@
 ---
+import { formatViews, getTimeAgo } from '../utils/youtube';
+
 export interface Props {
   videoId: string;
   title: string;
@@ -9,29 +11,6 @@ export interface Props {
 }
 
 const { videoId, title, thumbnail, duration, viewCount, publishedAt } = Astro.props;
-
-// Format view count
-const formatViews = (count?: number) => {
-  if (!count) return "0 views";
-  if (count < 1000) return `${count} views`;
-  if (count < 1000000) return `${(count / 1000).toFixed(1)}K views`;
-  return `${(count / 1000000).toFixed(1)}M views`;
-};
-
-// Format time ago
-const getTimeAgo = (date: string) => {
-  const now = new Date();
-  const published = new Date(date);
-  const diffMs = now.getTime() - published.getTime();
-  const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
-
-  if (diffDays === 0) return "Today";
-  if (diffDays === 1) return "Yesterday";
-  if (diffDays < 7) return `${diffDays} days ago`;
-  if (diffDays < 30) return `${Math.floor(diffDays / 7)} weeks ago`;
-  if (diffDays < 365) return `${Math.floor(diffDays / 30)} months ago`;
-  return `${Math.floor(diffDays / 365)} years ago`;
-};
 
 const views = formatViews(viewCount);
 const timeAgo = getTimeAgo(publishedAt);

@@ -2,18 +2,22 @@
 import VideoCard from './VideoCard.astro';
 import WaveTransition from './WaveTransition.astro';
 import { getCollection } from 'astro:content';
+import { isShort, formatDuration } from '../utils/youtube';
 
 // Get all videos from YouTube loader
 const allVideos = await getCollection('videos');
 
-// Sort by published date (newest first), excluding the first video
-const sortedVideos = allVideos
-  .slice(1) // Skip the first video
+// Filter shorts and sort by published date (newest first)
+const allNonShortVideos = allVideos
+  .filter(video => !isShort(video.data.duration))
   .sort((a, b) => {
     const dateA = new Date(a.data.publishedAt);
     const dateB = new Date(b.data.publishedAt);
     return dateB.getTime() - dateA.getTime();
   });
+
+// Skip the first video (shown in Hero) for the "More Videos" section
+const sortedVideos = allNonShortVideos.slice(1);
 
 // Find the most popular video (by view count)
 const mostPopularVideo = sortedVideos.reduce((max, video) => {
@@ -36,21 +40,6 @@ const videosData = sortedVideos.map(video => ({
   viewCount: video.data.viewCount,
   publishedAt: video.data.publishedAt
 }));
-
-// Helper function to format duration from ISO 8601
-const formatDuration = (duration: string) => {
-  const match = duration.match(/PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?/);
-  if (!match) return '';
-
-  const hours = parseInt(match[1] || '0');
-  const minutes = parseInt(match[2] || '0');
-  const seconds = parseInt(match[3] || '0');
-
-  if (hours > 0) {
-    return `${hours}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-  }
-  return `${minutes}:${seconds.toString().padStart(2, '0')}`;
-};
 ---
 
 <WaveTransition
