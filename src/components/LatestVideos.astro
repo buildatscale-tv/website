@@ -38,6 +38,7 @@ const videosData = sortedVideos.map(video => ({
   thumbnail: video.data.thumbnails?.maxres?.url || video.data.thumbnails?.standard?.url || video.data.thumbnails?.high?.url || video.data.thumbnails?.medium?.url || '',
   duration: video.data.duration,
   viewCount: video.data.viewCount,
+  likeCount: video.data.likeCount,
   publishedAt: video.data.publishedAt
 }));
 ---
@@ -73,6 +74,7 @@ const videosData = sortedVideos.map(video => ({
               thumbnail={video.data.thumbnails?.maxres?.url || video.data.thumbnails?.standard?.url || video.data.thumbnails?.high?.url || video.data.thumbnails?.medium?.url || ''}
               duration={video.data.duration ? formatDuration(video.data.duration) : undefined}
               viewCount={video.data.viewCount ? parseInt(video.data.viewCount) : undefined}
+              likeCount={video.data.likeCount ? parseInt(video.data.likeCount) : undefined}
               publishedAt={video.data.publishedAt}
             />
           </div>
@@ -145,6 +147,16 @@ const videosData = sortedVideos.map(video => ({
       return `${(num / 1000000).toFixed(1)}M views`;
     };
 
+    // Helper function to format like count
+    const formatLikes = (count) => {
+      if (!count) return "0 likes";
+      const num = parseInt(count);
+      const suffix = num === 1 ? " like" : " likes";
+      if (num < 1000) return `${num}${suffix}`;
+      if (num < 1000000) return `${(num / 1000).toFixed(1)}K${suffix}`;
+      return `${(num / 1000000).toFixed(1)}M${suffix}`;
+    };
+
     // Helper function to format time ago
     const getTimeAgo = (date) => {
       const now = new Date();
@@ -164,6 +176,7 @@ const videosData = sortedVideos.map(video => ({
     const createVideoCard = (video) => {
       const duration = video.duration ? formatDuration(video.duration) : null;
       const views = formatViews(video.viewCount);
+      const likes = formatLikes(video.likeCount);
       const timeAgo = getTimeAgo(video.publishedAt);
       const escapedTitle = video.title.replace(/'/g, "\\'").replace(/"/g, '&quot;');
       const isMostPopular = video.id === mostPopularId;
@@ -212,6 +225,13 @@ const videosData = sortedVideos.map(video => ({
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
                   </svg>
                   ${views}
+                </div>
+                <span>•</span>
+                <div class="flex items-center">
+                  <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5"></path>
+                  </svg>
+                  ${likes}
                 </div>
                 <span>•</span>
                 <span>${timeAgo}</span>

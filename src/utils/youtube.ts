@@ -57,6 +57,20 @@ export function formatViews(count?: number | string): string {
 }
 
 /**
+ * Format like count to human-readable format (e.g., "1.2K likes")
+ * @param count - Like count number
+ * @returns Formatted like count string
+ */
+export function formatLikes(count?: number | string): string {
+  if (!count) return '0 likes';
+  const num = typeof count === 'string' ? parseInt(count) : count;
+  const suffix = num === 1 ? ' like' : ' likes';
+  if (num < 1000) return `${num}${suffix}`;
+  if (num < 1000000) return `${(num / 1000).toFixed(1)}K${suffix}`;
+  return `${(num / 1000000).toFixed(1)}M${suffix}`;
+}
+
+/**
  * Format date to relative time string (e.g., "2 days ago")
  * @param date - Date string or Date object
  * @returns Relative time string
