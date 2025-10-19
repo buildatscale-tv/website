@@ -15,17 +15,7 @@ export default defineConfig({
     platformProxy: {
       enabled: true
     },
-
     imageService: "cloudflare"
   }),
   site: 'https://buildatscale.tv',
-  vite: {
-    define: {
-      // Make environment variables available at build time
-      // In production, these should be set via CI/CD environment variables
-      'import.meta.env.YOUTUBE_API_KEY': JSON.stringify(
-        env.YOUTUBE_API_KEY || process.env.YOUTUBE_API_KEY
-      )
-    }
-  }
 });
