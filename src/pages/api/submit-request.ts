@@ -32,7 +32,7 @@ export const POST: APIRoute = async ({ request, locals }) => {
     }
 
     // Initialize Resend
-    const resend = new Resend(resendApiKey);
+    const resend = new Resend(`${resendApiKey}`);
 
     // Send email
     const { data, error } = await resend.emails.send({

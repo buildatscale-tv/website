@@ -39,7 +39,7 @@ export const POST: APIRoute = async ({ request, locals }) => {
     }
 
     // Initialize Resend
-    const resend = new Resend(resendApiKey);
+    const resend = new Resend(`${resendApiKey}`);
 
     // Parse interests
     const interests = interestsRaw ? JSON.parse(interestsRaw) : [];
@@ -48,7 +48,7 @@ export const POST: APIRoute = async ({ request, locals }) => {
     const { data, error } = await resend.contacts.create({
       email: email,
       unsubscribed: false,
-      audienceId: audienceId,
+      audienceId: `${audienceId}`,
     });
 
     if (error) {
