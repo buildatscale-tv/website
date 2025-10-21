@@ -4,10 +4,10 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
-    "build": "tsc && astro build",
-    "preview": "tsc && astro build && wrangler dev",
+    "build": "astro build",
+    "preview": "astro build && wrangler dev",
     "astro": "astro",
-    "deploy": "tsc && astro build && wrangler deploy",
+    "deploy": "astro build && wrangler deploy",
     "cf-typegen": "wrangler types"
   },
   "dependencies": {
