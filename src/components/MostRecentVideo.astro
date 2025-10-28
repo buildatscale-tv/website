@@ -29,7 +29,7 @@ const latestVideo = hasVideos ? {
 } : null;
 ---
 
-<section class="py-16 px-4 sm:px-6 lg:px-8 bg-white dark:bg-slate-800 transition-colors">
+<section class="pt-10 pb-16 px-4 sm:px-6 lg:px-8 bg-white dark:bg-slate-800 transition-colors">
   <div class="max-w-7xl mx-auto">
     {hasVideos && latestVideo ? (
       <div class="max-w-4xl mx-auto">
@@ -47,7 +47,7 @@ const latestVideo = hasVideos ? {
           onclick={`openVideoModal('${latestVideo.videoId}', '${latestVideo.title.replace(/'/g, "\\'")}')`}
           class="relative group cursor-pointer block w-full"
         >
-          <div class="relative aspect-video bg-gray-200 dark:bg-gray-700 rounded-xl overflow-hidden shadow-2xl">
+          <div class="relative aspect-video bg-gray-200 dark:bg-gray-700 rounded-lg overflow-hidden shadow-2xl">
             <img
               src={latestVideo.thumbnail}
               alt={latestVideo.title}
