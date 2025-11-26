@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import { isShort, formatDuration, formatViews, formatLikes, getTimeAgo } from '../utils/youtube';
+import WaveTransition from './WaveTransition.astro';
 
 // Get all videos and sort by date, excluding shorts
 const allVideos = await getCollection('videos');
@@ -29,7 +30,12 @@ const latestVideo = hasVideos ? {
 } : null;
 ---
 
-<section class="pt-10 pb-16 px-4 sm:px-6 lg:px-8 bg-white dark:bg-slate-800 transition-colors">
+<WaveTransition
+  topColor="fill-white dark:fill-slate-800"
+  bottomColor="fill-gray-50 dark:fill-slate-700"
+/>
+
+<section id="latest" class="pt-10 pb-16 px-4 sm:px-6 lg:px-8 bg-gray-50 dark:bg-slate-700 transition-colors">
   <div class="max-w-7xl mx-auto">
     {hasVideos && latestVideo ? (
       <div class="max-w-4xl mx-auto">

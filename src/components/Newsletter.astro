@@ -1,6 +1,4 @@
 ---
-import WaveTransition from './WaveTransition.astro';
-
 const interests = [
   'AI Orchestration',
   'Claude Code',
@@ -11,12 +9,22 @@ const interests = [
 ];
 ---
 
-<WaveTransition
-  topColor="fill-blue-50 dark:fill-slate-800"
-  bottomColor="fill-gray-50 dark:fill-slate-700"
-/>
+<!-- Subtle divider between forms -->
+<div class="bg-blue-50 dark:bg-slate-800">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center gap-4 py-8">
+      <div class="flex-1 h-px bg-gradient-to-r from-transparent via-blue-200 dark:via-slate-600 to-transparent"></div>
+      <div class="flex gap-1.5">
+        <div class="w-1.5 h-1.5 rounded-full bg-blue-300 dark:bg-slate-500"></div>
+        <div class="w-1.5 h-1.5 rounded-full bg-blue-400 dark:bg-slate-400"></div>
+        <div class="w-1.5 h-1.5 rounded-full bg-blue-300 dark:bg-slate-500"></div>
+      </div>
+      <div class="flex-1 h-px bg-gradient-to-r from-transparent via-blue-200 dark:via-slate-600 to-transparent"></div>
+    </div>
+  </div>
+</div>
 
-<section class="py-12 pb-24 bg-gray-50 dark:bg-slate-700 text-gray-900 dark:text-white border-t border-gray-200 dark:border-slate-600">
+<section class="py-12 pb-24 bg-blue-50 dark:bg-slate-800 text-gray-900 dark:text-white">
   <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="text-center mb-12">
       <h2 class="text-3xl lg:text-4xl font-bold mb-4">
@@ -28,7 +36,7 @@ const interests = [
       </p>
     </div>
 
-    <div class="bg-white dark:bg-slate-600 rounded-lg p-8 shadow-lg dark:shadow-slate-600/50 border border-gray-200 dark:border-slate-500">
+    <div class="bg-white dark:bg-slate-700/50 backdrop-blur-sm rounded-lg p-8 shadow-lg dark:shadow-slate-700/50 border border-gray-200 dark:border-slate-600">
       <form id="newsletter-form" class="space-y-6">
         <div>
           <label for="signup-email" class="block text-sm font-medium text-gray-700 dark:text-gray-400 mb-2">
@@ -110,12 +118,12 @@ const interests = [
       if (interest) {
         if (selectedInterests.has(interest)) {
           selectedInterests.delete(interest);
-          btn.classList.remove('bg-blue-600', 'text-white', 'border-blue-600');
-          btn.classList.add('bg-gray-100', 'dark:bg-slate-600', 'text-gray-700', 'dark:text-gray-300', 'border-gray-300', 'dark:border-slate-500');
+          btn.classList.remove('bg-blue-600', 'hover:bg-blue-700', 'text-white', 'border-blue-600');
+          btn.classList.add('bg-gray-100', 'dark:bg-slate-600', 'text-gray-700', 'dark:text-gray-300', 'hover:bg-gray-200', 'dark:hover:bg-slate-500', 'border-gray-300', 'dark:border-slate-500');
         } else {
           selectedInterests.add(interest);
-          btn.classList.remove('bg-gray-100', 'dark:bg-slate-600', 'text-gray-700', 'dark:text-gray-300', 'border-gray-300', 'dark:border-slate-500');
-          btn.classList.add('bg-blue-600', 'text-white', 'border-blue-600');
+          btn.classList.remove('bg-gray-100', 'dark:bg-slate-600', 'text-gray-700', 'dark:text-gray-300', 'hover:bg-gray-200', 'dark:hover:bg-slate-500', 'border-gray-300', 'dark:border-slate-500');
+          btn.classList.add('bg-blue-600', 'hover:bg-blue-700', 'text-white', 'border-blue-600');
         }
       }
     });
@@ -172,8 +180,8 @@ const interests = [
       // Reset interest buttons
       selectedInterests.clear();
       interestBtns.forEach(btn => {
-        btn.classList.remove('bg-blue-600', 'text-white', 'border-blue-600');
-        btn.classList.add('bg-gray-100', 'dark:bg-slate-600', 'text-gray-700', 'dark:text-gray-300', 'border-gray-300', 'dark:border-slate-500');
+        btn.classList.remove('bg-blue-600', 'hover:bg-blue-700', 'text-white', 'border-blue-600');
+        btn.classList.add('bg-gray-100', 'dark:bg-slate-600', 'text-gray-700', 'dark:text-gray-300', 'hover:bg-gray-200', 'dark:hover:bg-slate-500', 'border-gray-300', 'dark:border-slate-500');
       });
 
       // Hide success message after 3 seconds
