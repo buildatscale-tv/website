@@ -29,7 +29,8 @@ A website for sharing videos about AI tools, web development, DevOps, and databa
 │   ├── components/    # Astro components
 │   ├── content/       # Content collections (videos)
 │   ├── layouts/       # Page layouts
-│   └── pages/         # Routes (index.astro)
+│   ├── pages/         # Routes (index.astro)
+│   └── utils/         # Utility functions (YouTube API)
 ├── astro.config.mjs   # Astro configuration
 ├── tailwind.config.mjs
 └── package.json
@@ -39,7 +40,7 @@ A website for sharing videos about AI tools, web development, DevOps, and databa
 
 ### Prerequisites
 
-- Node.js (v18 or higher)
+- Node.js v22 (see `.nvmrc` for exact version)
 - YouTube API key (for fetching video data)
 - Resend API key (for newsletter functionality)
 
@@ -51,14 +52,20 @@ npm install
 
 ### Environment Variables
 
-Create a `.dev.vars` file in the root directory (for local development):
+Copy the example environment file and add your API keys:
 
-```
-YOUTUBE_API_KEY=your_youtube_api_key
-RESEND_API_KEY=your_resend_api_key
+```sh
+cp .env.example .dev.vars
 ```
 
-For production deployment, set these as environment variables in your Cloudflare Pages project.
+Required environment variables:
+
+| Variable | Description |
+| :------- | :---------- |
+| `YOUTUBE_API_KEY` | YouTube Data API v3 key ([Get one here](https://console.cloud.google.com/apis/credentials)) |
+| `RESEND_API_KEY` | Resend API key for newsletter functionality |
+
+For production deployment, set these as secrets in your Cloudflare Pages project.
 
 ## Development
 
