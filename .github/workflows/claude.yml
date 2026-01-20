@@ -78,6 +78,9 @@ jobs:
             - Single line only
             - NO co-author attributions
 
+          # Enable progress tracking
+          track_progress: true
+
           # Claude CLI arguments
           claude_args: |
             --model "claude-opus-4-5"
