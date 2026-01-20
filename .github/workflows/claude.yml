@@ -1,22 +1,27 @@
 name: Claude Code
 
 on:
+  issues:
+    types: [labeled]
   issue_comment:
     types: [created]
   pull_request_review_comment:
     types: [created]
-  issues:
-    types: [opened, assigned]
   pull_request_review:
     types: [submitted]
 
 jobs:
   claude:
-    if: |
-      (github.event_name == 'issue_comment' && contains(github.event.comment.body, '@claude')) ||
-      (github.event_name == 'pull_request_review_comment' && contains(github.event.comment.body, '@claude')) ||
-      (github.event_name == 'pull_request_review' && contains(github.event.review.body, '@claude')) ||
-      (github.event_name == 'issues' && (contains(github.event.issue.body, '@claude') || contains(github.event.issue.title, '@claude')))
+    if: >-
+      (github.event_name == 'issues' && github.event.label.name == 'claude' && 
+       contains(fromJson('["mlr"]'), github.event.sender.login)) ||
+      (github.event_name == 'issue_comment' && contains(github.event.comment.body, '@claude') && 
+       contains(fromJson('["OWNER", "MEMBER", "COLLABORATOR"]'), github.event.comment.author_association)) ||
+      (github.event_name == 'pull_request_review' && contains(github.event.review.body, '@claude') && 
+       contains(fromJson('["OWNER", "MEMBER", "COLLABORATOR"]'), github.event.review.author_association)) ||
+      (github.event_name == 'pull_request_review_comment' && contains(github.event.comment.body, '@claude') && 
+       contains(fromJson('["OWNER", "MEMBER", "COLLABORATOR"]'), github.event.comment.author_association))
+
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -39,12 +44,42 @@ jobs:
           # This is an optional setting that allows Claude to read CI results on PRs
           additional_permissions: |
             actions: read
+          # Custom prompt with strict formatting rules
+          prompt: |
+            **IMPORTANT - WHEN WORKING ON ISSUES:**
+            After you finish implementing the code changes and committing them, create a pull request:
+            ```
+            gh pr create --title "Your descriptive title" --body "## Summary
+            Your summary of what was implemented.
+             
+            Closes #${{ github.event.issue.number }}"
+            ```
+            Always include a summary of changes AND "Closes #${{ github.event.issue.number }}" in the body.
+             
+            **COMMIT RULES:**
+            - Do NOT add "Co-authored-by" lines to commits
+            - Do NOT add "Generated with Claude Code" or similar attributions
+            - Keep commits clean and professional
+          
+            **WHEN WORKING ON PR FEEDBACK:**
+            Make the requested changes and commit. The PR will automatically update - do NOT create a new PR.
+           
+            **WHEN FIXING CI FAILURES:**
+            Fix the issues, commit the fix. The CI will automatically re-run.
+           
+            **OUTPUT RULES:**
+          
+            ## Commit Message Requirements (max 72 chars)
+            - Imperative mood: "Add" not "Added"
+            - Action verbs: Add, Update, Fix, Remove, Refactor, Implement
+            - No articles (a, an, the)
+            - No punctuation at end
+            - No prefixes like "feat:", "fix:"
+            - Single line only
+            - NO co-author attributions
 
-          # Optional: Give a custom prompt to Claude. If this is not specified, Claude will perform the instructions specified in the comment that tagged it.
-          # prompt: 'Update the pull request description to include a summary of changes.'
-
-          # Optional: Add claude_args to customize behavior and configuration
-          # See https://github.com/anthropics/claude-code-action/blob/main/docs/usage.md
-          # or https://code.claude.com/docs/en/cli-reference for available options
-          # claude_args: '--allowed-tools Bash(gh pr:*)'
-
+          # Claude CLI arguments
+          claude_args: |
+            --model "claude-opus-4-5"
+            --max-turns 25
+            --allowedTools "Bash(git:*),Bash(gh issue:*),Bash(gh pr:*),Bash(gh repo:*),Bash(npm:*),Edit,Write,Read,Glob,Grep,LS,WebSearch,WebFetch"
