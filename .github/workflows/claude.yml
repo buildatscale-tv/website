@@ -87,3 +87,25 @@ jobs:
             --model "claude-opus-4-5"
             --max-turns 100
             --allowedTools "Bash(git:*),Bash(gh issue:*),Bash(gh pr:*),Bash(gh repo:*),Bash(npm:*),Bash(npx:*),Edit,Write,Read,Glob,Grep,LS,WebSearch,WebFetch"
+
+      # Clean up the comment - remove the malformed "Create PR" link and trailing artifacts
+      - name: Clean up Claude comment
+        if: github.event_name == 'issues'
+        env:
+          GH_TOKEN: ${{ secrets.GH_PAT }}
+        run: |
+          # Get the latest comment from Claude on this issue
+          COMMENT_ID=$(gh api repos/${{ github.repository }}/issues/${{ github.event.issue.number }}/comments --jq '.[-1].id')
+
+          if [ -n "$COMMENT_ID" ]; then
+            # Get current comment body
+            BODY=$(gh api repos/${{ github.repository }}/issues/comments/$COMMENT_ID --jq '.body')
+
+            # Remove the "Create PR" link and any trailing pipe/whitespace
+            CLEANED=$(echo "$BODY" | sed 's/ • \[Create PR ➔\]([^)]*)//g' | sed 's/[[:space:]]*|[[:space:]]*$//')
+
+            # Update the comment
+            gh api repos/${{ github.repository }}/issues/comments/$COMMENT_ID \
+              -X PATCH \
+              -f body="$CLEANED"
+          fi
