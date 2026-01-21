@@ -4,6 +4,14 @@ import WaveTransition from './WaveTransition.astro';
 import { getCollection } from 'astro:content';
 import { isShort, formatDuration } from '../utils/youtube';
 
+// Define filter categories with their keywords for matching video titles
+const filterCategories = [
+  { id: 'all', label: 'All', keywords: [] },
+  { id: 'claude-code', label: 'Claude Code', keywords: ['claude code', 'claude-code', 'anthropic'] },
+  { id: 'cloudflare', label: 'Cloudflare', keywords: ['cloudflare', 'workers', 'pages', 'wrangler', 'd1', 'r2', 'kv'] },
+  { id: 'ai-tools', label: 'AI Tools', keywords: ['ai', 'gpt', 'llm', 'copilot', 'cursor', 'openai', 'gemini', 'machine learning'] },
+];
+
 // Get all videos from YouTube loader
 const allVideos = await getCollection('videos');
 
@@ -31,7 +39,7 @@ const initialVideos = sortedVideos.slice(0, 6);
 const hasVideos = initialVideos.length > 0;
 const totalVideos = sortedVideos.length;
 
-// Serialize video data for client-side use
+// Serialize video data for client-side use (include title for filtering)
 const videosData = sortedVideos.map(video => ({
   id: video.id,
   title: video.data.title,
@@ -52,6 +60,29 @@ const videosData = sortedVideos.map(video => ({
       <p class="text-lg text-gray-600 dark:text-gray-300">
         Explore more content on AI orchestration and development workflows
       </p>
+    </div>
+
+    <!-- Filter Buttons -->
+    <div class="flex flex-wrap justify-center gap-2 mb-8" id="filter-buttons" data-categories={JSON.stringify(filterCategories)}>
+      {filterCategories.map((category, index) => (
+        <button
+          type="button"
+          data-filter={category.id}
+          data-keywords={JSON.stringify(category.keywords)}
+          class={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
+            index === 0
+              ? 'bg-blue-600 text-white shadow-md'
+              : 'bg-white dark:bg-slate-600 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-slate-500 border border-gray-200 dark:border-slate-500'
+          }`}
+        >
+          {category.label}
+        </button>
+      ))}
+    </div>
+
+    <!-- No Results Message (hidden by default) -->
+    <div id="no-results" class="hidden text-center py-12">
+      <p class="text-gray-600 dark:text-gray-400">No videos found for this filter. Try a different category.</p>
     </div>
 
     {hasVideos ? (
@@ -109,19 +140,24 @@ const videosData = sortedVideos.map(video => ({
 <script>
   // Get data from button attributes
   const loadMoreBtn = document.getElementById('load-more-btn');
+  const filterButtonsContainer = document.getElementById('filter-buttons');
 
   if (loadMoreBtn) {
     const allVideos = JSON.parse(loadMoreBtn.getAttribute('data-videos') || '[]');
     const mostPopularId = loadMoreBtn.getAttribute('data-most-popular');
     const totalVideos = parseInt(loadMoreBtn.getAttribute('data-total') || '0');
+    const categories = JSON.parse(filterButtonsContainer?.getAttribute('data-categories') || '[]');
 
     let currentIndex = 6;
     const videosPerPage = 6;
+    let currentFilter = 'all';
+    let filteredVideos = [...allVideos];
 
     const videoGrid = document.getElementById('video-grid');
     const btnText = document.getElementById('btn-text');
     const btnIconMore = document.getElementById('btn-icon-more');
     const btnIconExternal = document.getElementById('btn-icon-external');
+    const noResultsMessage = document.getElementById('no-results');
 
     // Helper function to format duration from ISO 8601
     const formatDuration = (duration) => {
@@ -179,6 +215,17 @@ const videosData = sortedVideos.map(video => ({
       return years === 1 ? "1 year ago" : `${years} years ago`;
     };
 
+    // Function to check if video matches filter
+    const videoMatchesFilter = (video, filterId) => {
+      if (filterId === 'all') return true;
+
+      const category = categories.find(c => c.id === filterId);
+      if (!category || !category.keywords || category.keywords.length === 0) return true;
+
+      const titleLower = video.title.toLowerCase();
+      return category.keywords.some(keyword => titleLower.includes(keyword.toLowerCase()));
+    };
+
     // Function to create video card HTML
     const createVideoCard = (video) => {
       const duration = video.duration ? formatDuration(video.duration) : null;
@@ -189,7 +236,7 @@ const videosData = sortedVideos.map(video => ({
       const isMostPopular = video.id === mostPopularId;
 
       return `
-        <div class="relative">
+        <div class="relative video-card" data-video-id="${video.id}">
           ${isMostPopular ? `
           <div class="absolute top-3 right-3 z-20 bg-gradient-to-r from-sky-400 to-blue-500 text-white text-xs font-bold px-3 py-1.5 rounded-md shadow-lg transform rotate-3">
             ⭐ Most Viewed
@@ -251,9 +298,60 @@ const videosData = sortedVideos.map(video => ({
       `;
     };
 
+    // Function to render videos based on current filter
+    const renderFilteredVideos = () => {
+      // Filter videos based on current filter
+      filteredVideos = allVideos.filter(video => videoMatchesFilter(video, currentFilter));
+
+      // Clear the grid
+      videoGrid.innerHTML = '';
+
+      // Reset index
+      currentIndex = 0;
+
+      // Show no results message if needed
+      if (filteredVideos.length === 0) {
+        noResultsMessage?.classList.remove('hidden');
+        videoGrid.classList.add('hidden');
+        loadMoreBtn.classList.add('hidden');
+        return;
+      }
+
+      noResultsMessage?.classList.add('hidden');
+      videoGrid.classList.remove('hidden');
+      loadMoreBtn.classList.remove('hidden');
+
+      // Show first batch of filtered videos
+      const initialBatch = filteredVideos.slice(0, videosPerPage);
+      initialBatch.forEach(video => {
+        const videoCard = createVideoCard(video);
+        videoGrid.insertAdjacentHTML('beforeend', videoCard);
+      });
+
+      currentIndex = videosPerPage;
+      updateLoadMoreButton();
+    };
+
+    // Function to update load more button state
+    const updateLoadMoreButton = () => {
+      if (currentIndex >= filteredVideos.length) {
+        btnText.textContent = 'View All Videos';
+        btnIconMore.classList.add('hidden');
+        btnIconExternal.classList.remove('hidden');
+        loadMoreBtn.onclick = () => {
+          window.open('https://youtube.com/@BuildAtScale/videos', '_blank', 'noopener');
+        };
+      } else {
+        btnText.textContent = 'View More Videos';
+        btnIconMore.classList.remove('hidden');
+        btnIconExternal.classList.add('hidden');
+        loadMoreBtn.onclick = loadMoreVideos;
+      }
+    };
+
     // Load more videos function
     const loadMoreVideos = () => {
-      const nextVideos = allVideos.slice(currentIndex, currentIndex + videosPerPage);
+      const nextVideos = filteredVideos.slice(currentIndex, currentIndex + videosPerPage);
 
       nextVideos.forEach(video => {
         const videoCard = createVideoCard(video);
@@ -261,19 +359,28 @@ const videosData = sortedVideos.map(video => ({
       });
 
       currentIndex += videosPerPage;
-
-      // Check if all videos are loaded
-      if (currentIndex >= totalVideos) {
-        btnText.textContent = 'View All Videos';
-        btnIconMore.classList.add('hidden');
-        btnIconExternal.classList.remove('hidden');
-
-        // Change button to link behavior
-        loadMoreBtn.onclick = () => {
-          window.open('https://youtube.com/@BuildAtScale/videos', '_blank', 'noopener');
-        };
-      }
+      updateLoadMoreButton();
     };
+
+    // Set up filter button click handlers
+    const filterButtons = filterButtonsContainer?.querySelectorAll('button[data-filter]');
+    filterButtons?.forEach(button => {
+      button.addEventListener('click', () => {
+        const filterId = button.getAttribute('data-filter');
+        if (filterId === currentFilter) return;
+
+        // Update active state
+        filterButtons.forEach(btn => {
+          btn.classList.remove('bg-blue-600', 'text-white', 'shadow-md');
+          btn.classList.add('bg-white', 'dark:bg-slate-600', 'text-gray-700', 'dark:text-gray-200', 'hover:bg-gray-100', 'dark:hover:bg-slate-500', 'border', 'border-gray-200', 'dark:border-slate-500');
+        });
+        button.classList.remove('bg-white', 'dark:bg-slate-600', 'text-gray-700', 'dark:text-gray-200', 'hover:bg-gray-100', 'dark:hover:bg-slate-500', 'border', 'border-gray-200', 'dark:border-slate-500');
+        button.classList.add('bg-blue-600', 'text-white', 'shadow-md');
+
+        currentFilter = filterId;
+        renderFilteredVideos();
+      });
+    });
 
     // Initial button click handler
     if (currentIndex < totalVideos) {
