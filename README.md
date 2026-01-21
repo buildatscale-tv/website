@@ -1,6 +1,9 @@
 # BuildAtScale.tv
 
-A website for sharing videos about AI tools, web development, DevOps, and database systems. Built with Astro and deployed on Cloudflare Pages.
+[![Astro](https://img.shields.io/badge/Built%20with-Astro-BC52EE.svg?logo=astro)](https://astro.build)
+[![Cloudflare Pages](https://img.shields.io/badge/Deployed%20on-Cloudflare%20Pages-F38020.svg?logo=cloudflare)](https://pages.cloudflare.com)
+
+A website for sharing videos about AI tools, web development, DevOps, and database systems. Built with [Astro](https://astro.build) and deployed on [Cloudflare Pages](https://pages.cloudflare.com).
 
 ## Features
 
@@ -51,14 +54,20 @@ npm install
 
 ### Environment Variables
 
-Create a `.dev.vars` file in the root directory (for local development):
+Copy the example environment file and fill in your API keys:
 
-```
-YOUTUBE_API_KEY=your_youtube_api_key
-RESEND_API_KEY=your_resend_api_key
+```sh
+cp .env.example .dev.vars
 ```
 
-For production deployment, set these as environment variables in your Cloudflare Pages project.
+Required variables:
+
+| Variable | Description | How to Get |
+| :------- | :---------- | :--------- |
+| `YOUTUBE_API_KEY` | YouTube Data API v3 key | [Google Cloud Console](https://console.cloud.google.com/apis/credentials) |
+| `RESEND_API_KEY` | Resend email service key | [Resend Dashboard](https://resend.com/api-keys) |
+
+For production deployment, set these as environment variables in your Cloudflare Pages project settings.
 
 ## Development
 
@@ -108,3 +117,7 @@ https://buildatscale.tv
 ## About
 
 BuildAtScale is a platform for learning in public - sharing real experiments, failures, and discoveries in AI-assisted development, web development, DevOps, and modern software engineering.
+
+## License
+
+This project is proprietary. All rights reserved.
