@@ -27,8 +27,8 @@ const allPlaylistVideoIds = new Set(
 
 const playlistFilters = [
   { id: 'all', label: 'All', videoIds: [] as string[] },
-  { id: 'other', label: 'Other', videoIds: [] as string[] },
   ...playlistItems,
+  { id: 'other', label: 'Other', videoIds: [] as string[] },
 ];
 
 // Filter shorts and sort by published date (newest first)
