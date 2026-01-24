@@ -11,16 +11,24 @@ const allVideos = await getCollection('videos');
 const allPlaylists = await getCollection('playlists');
 
 // Create playlist filter categories (with "All" as first option)
+const playlistItems = allPlaylists
+  .filter(playlist => playlist.data.itemCount > 0) // Only show playlists with videos
+  .sort((a, b) => b.data.itemCount - a.data.itemCount) // Sort by video count
+  .map(playlist => ({
+    id: playlist.id,
+    label: playlist.data.title,
+    videoIds: playlist.data.videoIds || [],
+  }));
+
+// Collect all video IDs that are in any playlist
+const allPlaylistVideoIds = new Set(
+  playlistItems.flatMap(playlist => playlist.videoIds)
+);
+
 const playlistFilters = [
   { id: 'all', label: 'All', videoIds: [] as string[] },
-  ...allPlaylists
-    .filter(playlist => playlist.data.itemCount > 0) // Only show playlists with videos
-    .sort((a, b) => b.data.itemCount - a.data.itemCount) // Sort by video count
-    .map(playlist => ({
-      id: playlist.id,
-      label: playlist.data.title,
-      videoIds: playlist.data.videoIds || [],
-    })),
+  { id: 'other', label: 'Other', videoIds: [] as string[] },
+  ...playlistItems,
 ];
 
 // Filter shorts and sort by published date (newest first)
@@ -71,7 +79,7 @@ const videosData = sortedVideos.map(video => ({
     </div>
 
     <!-- Playlist Filter Buttons -->
-    <div class="flex flex-wrap justify-center gap-2 mb-8" id="filter-buttons" data-playlists={JSON.stringify(playlistFilters)}>
+    <div class="flex flex-wrap justify-center gap-2 mb-8" id="filter-buttons" data-playlists={JSON.stringify(playlistFilters)} data-all-playlist-video-ids={JSON.stringify([...allPlaylistVideoIds])}>
       {playlistFilters.map((playlist, index) => (
         <button
           type="button"
@@ -155,6 +163,7 @@ const videosData = sortedVideos.map(video => ({
     const mostPopularId = loadMoreBtn.getAttribute('data-most-popular');
     const totalVideos = parseInt(loadMoreBtn.getAttribute('data-total') || '0');
     const playlists = JSON.parse(filterButtonsContainer?.getAttribute('data-playlists') || '[]');
+    const allPlaylistVideoIds = new Set(JSON.parse(filterButtonsContainer?.getAttribute('data-all-playlist-video-ids') || '[]'));
 
     let currentIndex = 6;
     const videosPerPage = 6;
@@ -226,6 +235,11 @@ const videosData = sortedVideos.map(video => ({
     // Function to check if video matches filter (by playlist membership)
     const videoMatchesFilter = (video, filterId) => {
       if (filterId === 'all') return true;
+
+      // "Other" shows videos not in any playlist
+      if (filterId === 'other') {
+        return !allPlaylistVideoIds.has(video.id);
+      }
 
       const playlist = playlists.find(p => p.id === filterId);
       if (!playlist || !playlist.videoIds || playlist.videoIds.length === 0) return false;
