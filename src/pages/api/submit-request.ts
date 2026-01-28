@@ -36,9 +36,10 @@ export const POST: APIRoute = async ({ request, locals }) => {
 
     // Send email
     const { data, error } = await resend.emails.send({
-      from: 'BuildAtScale <onboarding@resend.dev>',
-      to: 'accounts@buildatscale.tv',
-      subject: `New ${type || 'Request'} from ${name}`,
+      from: 'BuildAtScale <noreply@buildatscale.tv>',
+      to: 'hello@buildatscale.tv',
+      replyTo: email,
+      subject: `New message from ${name}`,
       html: `
         <h2>New Request from BuildAtScale Website</h2>
         <p><strong>Name:</strong> ${name}</p>
