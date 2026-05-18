@@ -1,3 +1,5 @@
+<!-- Hello future contributor — welcome to buildatscale.tv! -->
+
 # BuildAtScale.tv
 
 A website for sharing videos about AI tools, web development, DevOps, and database systems. Built with Astro and deployed on Cloudflare Pages.
