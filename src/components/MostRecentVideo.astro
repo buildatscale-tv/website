@@ -31,16 +31,16 @@ const latestVideo = hasVideos ? {
 ---
 
 <WaveTransition
-  topColor="fill-white dark:fill-slate-800"
-  bottomColor="fill-gray-50 dark:fill-slate-700"
+  topColor="fill-white dark:fill-slate-900"
+  bottomColor="fill-gray-50 dark:fill-slate-900"
 />
 
-<section id="latest" class="pt-10 pb-16 px-4 sm:px-6 lg:px-8 bg-gray-50 dark:bg-slate-700 transition-colors">
+<section id="latest" class="pt-10 pb-16 px-4 sm:px-6 lg:px-8 bg-gray-50 dark:bg-slate-900 transition-colors">
   <div class="max-w-7xl mx-auto">
     {hasVideos && latestVideo ? (
       <div class="max-w-4xl mx-auto">
         <div class="text-center mb-6">
-          <span class="inline-block bg-green-100 dark:bg-green-700/30 text-green-700 dark:text-green-300 px-3 py-1 rounded-full text-sm font-medium mb-4">
+          <span class="inline-block bg-green-100 dark:bg-green-900/40 text-green-700 dark:text-green-300 px-3 py-1 rounded-full text-sm font-medium mb-4 border border-green-200 dark:border-green-800/50">
             Latest Video
           </span>
           <h2 class="text-2xl lg:text-3xl font-bold text-gray-900 dark:text-gray-100">
@@ -53,7 +53,7 @@ const latestVideo = hasVideos ? {
           onclick={`openVideoModal('${latestVideo.videoId}', '${latestVideo.title.replace(/'/g, "\\'")}')`}
           class="relative group cursor-pointer block w-full"
         >
-          <div class="relative aspect-video bg-gray-200 dark:bg-gray-700 rounded-lg overflow-hidden shadow-2xl">
+          <div class="relative aspect-video bg-gray-200 dark:bg-slate-800 rounded-lg overflow-hidden shadow-2xl dark:shadow-black/50">
             <img
               src={latestVideo.thumbnail}
               alt={latestVideo.title}
