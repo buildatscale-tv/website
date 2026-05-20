@@ -67,13 +67,17 @@ const videosData = sortedVideos.map(video => ({
 }));
 ---
 
-<section id="videos" class="py-16 bg-gray-50 dark:bg-slate-700 transition-colors">
+<section id="videos" class="py-16 bg-gray-50 dark:bg-slate-950 transition-colors relative">
+  <div class="absolute inset-0 dark:block hidden pointer-events-none">
+    <div class="absolute top-0 right-0 w-72 h-72 bg-indigo-500/5 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-0 left-0 w-80 h-80 bg-blue-500/5 rounded-full blur-3xl"></div>
+  </div>
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="text-center mb-12">
-      <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 dark:text-gray-100 mb-4">
+      <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 dark:text-slate-100 mb-4">
         More Videos
       </h2>
-      <p class="text-lg text-gray-600 dark:text-gray-300">
+      <p class="text-lg text-gray-600 dark:text-slate-400">
         Explore more content on AI orchestration and development workflows
       </p>
     </div>
@@ -87,8 +91,8 @@ const videosData = sortedVideos.map(video => ({
           data-video-ids={JSON.stringify(playlist.videoIds)}
           class={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
             index === 0
-              ? 'bg-blue-600 text-white shadow-md'
-              : 'bg-white dark:bg-slate-600 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-slate-500 border border-gray-200 dark:border-slate-500'
+              ? 'bg-blue-600 text-white shadow-md dark:shadow-blue-900/30'
+              : 'bg-white dark:bg-slate-900/60 text-gray-700 dark:text-slate-300 hover:bg-gray-100 dark:hover:bg-slate-800/80 border border-gray-200 dark:border-slate-700/50 dark:backdrop-blur-sm'
           }`}
         >
           {playlist.label}
@@ -98,7 +102,7 @@ const videosData = sortedVideos.map(video => ({
 
     <!-- No Results Message (hidden by default) -->
     <div id="no-results" class="hidden text-center py-12">
-      <p class="text-gray-600 dark:text-gray-400">No videos found for this filter. Try a different category.</p>
+      <p class="text-gray-600 dark:text-slate-400">No videos found for this filter. Try a different category.</p>
     </div>
 
     {hasVideos ? (
@@ -124,7 +128,7 @@ const videosData = sortedVideos.map(video => ({
       </div>
     ) : (
       <div class="text-center py-12">
-        <p class="text-gray-600 dark:text-gray-400">Loading videos...</p>
+        <p class="text-gray-600 dark:text-slate-400">Loading videos...</p>
       </div>
     )}
 
@@ -134,7 +138,7 @@ const videosData = sortedVideos.map(video => ({
         data-videos={JSON.stringify(videosData)}
         data-most-popular={mostPopularVideo?.id}
         data-total={totalVideos}
-        class="inline-flex items-center space-x-2 bg-gray-100 hover:bg-gray-200 dark:bg-slate-600 dark:hover:bg-slate-500 text-gray-900 dark:text-gray-100 px-6 py-3 rounded-lg font-medium transition-colors"
+        class="inline-flex items-center space-x-2 bg-gray-100 hover:bg-gray-200 dark:bg-slate-800/70 dark:hover:bg-slate-700/80 text-gray-900 dark:text-slate-100 px-6 py-3 rounded-lg font-medium transition-colors dark:border dark:border-slate-700/50 dark:backdrop-blur-sm"
       >
         <span id="btn-text">View More Videos</span>
         <svg id="btn-icon-more" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -149,8 +153,8 @@ const videosData = sortedVideos.map(video => ({
 </section>
 
 <WaveTransition
-  topColor="fill-gray-50 dark:fill-slate-700"
-  bottomColor="fill-blue-50 dark:fill-slate-800"
+  topColor="fill-gray-50 dark:fill-slate-950"
+  bottomColor="fill-blue-50 dark:fill-slate-900"
 />
 
 <script>
@@ -266,9 +270,9 @@ const videosData = sortedVideos.map(video => ({
           <button
             type="button"
             onclick="openVideoModal('${video.id}', '${escapedTitle}')"
-            class="bg-white dark:bg-slate-600/50 backdrop-blur-sm border border-gray-200 dark:border-slate-500 rounded-lg overflow-hidden hover:shadow-lg dark:hover:shadow-slate-700/30 transition-all duration-300 group cursor-pointer block w-full text-left"
+            class="bg-white dark:bg-slate-900/60 backdrop-blur-sm border border-gray-200 dark:border-slate-700/50 rounded-lg overflow-hidden hover:shadow-lg dark:hover:shadow-slate-950/50 transition-all duration-300 group cursor-pointer block w-full text-left dark:hover:ring-1 dark:hover:ring-slate-600/50"
           >
-            <div class="relative aspect-video bg-gray-100 dark:bg-gray-800">
+            <div class="relative aspect-video bg-gray-100 dark:bg-slate-800/80">
               <img
                 src="${video.thumbnail}"
                 alt="${video.title}"
@@ -292,10 +296,10 @@ const videosData = sortedVideos.map(video => ({
               </div>` : ''}
             </div>
             <div class="p-4">
-              <h3 class="font-semibold text-gray-900 dark:text-gray-100 mb-2 line-clamp-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors text-sm h-10">
+              <h3 class="font-semibold text-gray-900 dark:text-slate-100 mb-2 line-clamp-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors text-sm h-10">
                 ${video.title}
               </h3>
-              <div class="flex items-center text-xs text-gray-500 dark:text-gray-400 space-x-2">
+              <div class="flex items-center text-xs text-gray-500 dark:text-slate-400 space-x-2">
                 <div class="flex items-center">
                   <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
@@ -392,11 +396,11 @@ const videosData = sortedVideos.map(video => ({
 
         // Update active state
         filterButtons.forEach(btn => {
-          btn.classList.remove('bg-blue-600', 'text-white', 'shadow-md');
-          btn.classList.add('bg-white', 'dark:bg-slate-600', 'text-gray-700', 'dark:text-gray-200', 'hover:bg-gray-100', 'dark:hover:bg-slate-500', 'border', 'border-gray-200', 'dark:border-slate-500');
+          btn.classList.remove('bg-blue-600', 'text-white', 'shadow-md', 'dark:shadow-blue-900/30');
+          btn.classList.add('bg-white', 'dark:bg-slate-900/60', 'text-gray-700', 'dark:text-slate-300', 'hover:bg-gray-100', 'dark:hover:bg-slate-800/80', 'border', 'border-gray-200', 'dark:border-slate-700/50');
         });
-        button.classList.remove('bg-white', 'dark:bg-slate-600', 'text-gray-700', 'dark:text-gray-200', 'hover:bg-gray-100', 'dark:hover:bg-slate-500', 'border', 'border-gray-200', 'dark:border-slate-500');
-        button.classList.add('bg-blue-600', 'text-white', 'shadow-md');
+        button.classList.remove('bg-white', 'dark:bg-slate-900/60', 'text-gray-700', 'dark:text-slate-300', 'hover:bg-gray-100', 'dark:hover:bg-slate-800/80', 'border', 'border-gray-200', 'dark:border-slate-700/50');
+        button.classList.add('bg-blue-600', 'text-white', 'shadow-md', 'dark:shadow-blue-900/30');
 
         currentFilter = filterId;
         renderFilteredVideos();

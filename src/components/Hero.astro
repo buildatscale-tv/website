@@ -1,16 +1,21 @@
 ---
 ---
 
-<section class="bg-gradient-to-b from-blue-50 to-white dark:from-slate-700 dark:to-slate-800 pt-20 pb-10 transition-colors">
+<section class="bg-gradient-to-b from-blue-50 to-white dark:from-slate-900 dark:via-slate-900 dark:to-slate-950 pt-20 pb-10 transition-colors relative overflow-hidden">
+  <!-- Subtle aurora-like background glow for dark mode -->
+  <div class="absolute inset-0 dark:block hidden pointer-events-none">
+    <div class="absolute top-0 left-1/4 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-0 right-1/4 w-80 h-80 bg-indigo-600/10 rounded-full blur-3xl"></div>
+  </div>
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="text-center mb-16">
-      <h1 class="text-5xl lg:text-6xl font-bold text-gray-900 dark:text-gray-100 mb-6">
+      <h1 class="text-5xl lg:text-6xl font-bold text-gray-900 dark:text-slate-100 mb-6">
         Learning in Public
       </h1>
-      <p class="text-xl lg:text-2xl text-gray-600 dark:text-gray-300 mb-4 max-w-4xl mx-auto">
+      <p class="text-xl lg:text-2xl text-gray-600 dark:text-slate-300 mb-4 max-w-4xl mx-auto">
         AI • Web • Ops
       </p>
-      <p class="text-lg text-gray-600 dark:text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed">
+      <p class="text-lg text-gray-600 dark:text-slate-400 mb-8 max-w-3xl mx-auto leading-relaxed">
         Sharing what I'm building, breaking, and learning. From LLM experiments and web dev deep dives
         to DevOps automation and shipping fast.
       </p>
@@ -19,7 +24,7 @@
           href="https://youtube.com/@buildatscale"
           target="_blank"
           rel="noopener"
-          class="bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 text-white px-8 py-3 rounded-lg font-medium transition-colors flex items-center space-x-2"
+          class="bg-blue-600 hover:bg-blue-700 dark:bg-blue-600 dark:hover:bg-blue-500 text-white px-8 py-3 rounded-lg font-medium transition-colors flex items-center space-x-2 dark:shadow-lg dark:shadow-blue-900/30"
         >
           <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
             <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
@@ -28,7 +33,7 @@
         </a>
         <a
           href="#latest"
-          class="border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white px-8 py-3 rounded-lg font-medium transition-colors"
+          class="border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white dark:border-blue-400 dark:text-blue-400 dark:hover:bg-blue-500 dark:hover:text-white dark:hover:border-blue-500 px-8 py-3 rounded-lg font-medium transition-colors"
         >
           Browse Videos
         </a>
