@@ -79,13 +79,6 @@ const interests = [
               <span id="newsletter-submit-text">Subscribe</span>
               <div class="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin hidden" id="newsletter-spinner"></div>
             </button>
-
-            <div id="newsletter-success" class="text-green-600 dark:text-green-400 font-medium flex items-center space-x-2 hidden">
-              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-              </svg>
-              <span id="newsletter-success-text">Successfully subscribed!</span>
-            </div>
           </div>
 
           <div id="newsletter-error" class="text-red-600 dark:text-red-400 font-medium text-sm hidden"></div>
@@ -103,10 +96,7 @@ const interests = [
   const form = document.getElementById('newsletter-form');
   const submitBtn = document.getElementById('newsletter-submit');
   const submitText = document.getElementById('newsletter-submit-text');
-  const arrow = document.getElementById('newsletter-arrow');
   const spinner = document.getElementById('newsletter-spinner');
-  const successMsg = document.getElementById('newsletter-success');
-  const successText = document.getElementById('newsletter-success-text');
   const errorMsg = document.getElementById('newsletter-error');
   const interestBtns = document.querySelectorAll('.interest-btn');
   const selectedInterests = new Set<string>();
@@ -136,9 +126,7 @@ const interests = [
     // Show loading state
     submitBtn?.setAttribute('disabled', 'true');
     submitText!.textContent = 'Subscribing...';
-    arrow?.classList.add('hidden');
     spinner?.classList.remove('hidden');
-    successMsg?.classList.add('hidden');
     errorMsg?.classList.add('hidden');
 
     try {
@@ -160,39 +148,12 @@ const interests = [
         throw new Error(result.error || 'Failed to subscribe');
       }
 
-      // Show success state
-      submitBtn?.removeAttribute('disabled');
-      submitText!.textContent = 'Subscribe';
-      arrow?.classList.remove('hidden');
-      spinner?.classList.add('hidden');
-      successMsg?.classList.remove('hidden');
-
-      // Update success message if it's a duplicate
-      if (result.message) {
-        successText!.textContent = result.message;
-      } else {
-        successText!.textContent = 'Successfully subscribed!';
-      }
-
-      // Reset form
-      (e.target as HTMLFormElement).reset();
-
-      // Reset interest buttons
-      selectedInterests.clear();
-      interestBtns.forEach(btn => {
-        btn.classList.remove('bg-blue-600', 'hover:bg-blue-700', 'text-white', 'border-blue-600');
-        btn.classList.add('bg-gray-100', 'dark:bg-slate-600', 'text-gray-700', 'dark:text-gray-300', 'hover:bg-gray-200', 'dark:hover:bg-slate-500', 'border-gray-300', 'dark:border-slate-500');
-      });
-
-      // Hide success message after 3 seconds
-      setTimeout(() => {
-        successMsg?.classList.add('hidden');
-      }, 3000);
+      // Redirect to thank you page on success
+      window.location.href = '/newsletter/thank-you';
     } catch (error) {
       // Show error state
       submitBtn?.removeAttribute('disabled');
       submitText!.textContent = 'Subscribe';
-      arrow?.classList.remove('hidden');
       spinner?.classList.add('hidden');
 
       if (errorMsg) {
