@@ -1,0 +1,174 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import WaveTransition from '../../components/WaveTransition.astro';
+
+interface BlogPost {
+  slug: string;
+  title: string;
+  excerpt: string;
+  date: string;
+  readTime: string;
+  tags: string[];
+}
+
+const blogPosts: BlogPost[] = [
+  {
+    slug: 'kimik26-vs-claude-code',
+    title: 'OpenCode Go — Can Kimi K2.6 Replace Claude Code?',
+    excerpt: 'I put Kimi K2.6 through the same real-world coding tasks I usually throw at Claude Code. Here is what held up, what broke, and where each model shines.',
+    date: '2026-05-13',
+    readTime: '8 min read',
+    tags: ['AI Tools', 'Claude Code', 'Kimi'],
+  },
+  {
+    slug: 'claude-opus-47-vs-46',
+    title: 'Claude Opus 4.7 vs 4.6 — I Built the Same Website Twice',
+    excerpt: 'A side-by-side build-off using the latest Opus release. I compare output quality, speed, token usage, and how well each version follows complex multi-file instructions.',
+    date: '2026-04-15',
+    readTime: '6 min read',
+    tags: ['Claude Code', 'Web Development', 'AI Tools'],
+  },
+  {
+    slug: 'ai-images-claude-code',
+    title: 'Generate AI Images in Claude Code (Nano Banana 2)',
+    excerpt: 'How I wired image generation directly into Claude Code workflows using Nano Banana 2. No context switching, no external tabs—just describe and iterate inside the chat.',
+    date: '2026-03-22',
+    readTime: '5 min read',
+    tags: ['AI Design', 'Claude Code', 'Automation'],
+  },
+  {
+    slug: 'pencil-app-ai-design',
+    title: 'I Finally Found an AI Design Tool I Like (Pencil App)',
+    excerpt: 'After testing dozens of AI design tools, Pencil App is the first one that feels like a real design partner rather than a slot machine for layouts.',
+    date: '2026-02-18',
+    readTime: '10 min read',
+    tags: ['AI Design', 'Tools', 'Workflow'],
+  },
+  {
+    slug: 'claude-agent-teams',
+    title: 'Claude Code Agent Teams — First Look at Opus 4.6',
+    excerpt: 'Opus 4.6 introduces multi-agent teams inside Claude Code. I stress-tested delegation, conflict resolution, and whether it actually ships faster than solo mode.',
+    date: '2026-02-05',
+    readTime: '7 min read',
+    tags: ['Claude Code', 'AI Tools', 'Agent Skills'],
+  },
+  {
+    slug: 'clcode-promo-director',
+    title: 'Claude Code is Now a Promo Director (Remotion + ElevenLabs)',
+    excerpt: 'I taught Claude Code to script, voice, and render promotional videos by combining Remotion for motion graphics and ElevenLabs for narration.',
+    date: '2026-01-28',
+    readTime: '6 min read',
+    tags: ['Remotion', 'ElevenLabs', 'Claude Code'],
+  },
+  {
+    slug: 'clcode-motion-designer',
+    title: 'Claude Code Just Became a Motion Designer (Remotion Agent Skills)',
+    excerpt: 'Using new Remotion Agent Skills, Claude Code can now generate animated compositions, tweak easing curves, and export production-ready video clips.',
+    date: '2026-01-14',
+    readTime: '5 min read',
+    tags: ['Remotion', 'Claude Code', 'Agent Skills'],
+  },
+];
+
+function formatDate(dateString: string): string {
+  const date = new Date(dateString);
+  return date.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  });
+}
+---
+
+<Layout title="Blog — BuildAtScale" description="Articles on AI orchestration, web development, and DevOps workflows.">
+  <Header />
+
+  <main>
+    <!-- Hero -->
+    <section class="bg-gradient-to-b from-blue-50 to-white dark:from-slate-700 dark:to-slate-800 pt-20 pb-10 transition-colors">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <h1 class="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-gray-100 mb-4">
+            Blog
+          </h1>
+          <p class="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto leading-relaxed">
+            Deep dives, experiments, and field notes on building with AI, shipping web apps, and automating infrastructure.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <WaveTransition
+      topColor="fill-white dark:fill-slate-800"
+      bottomColor="fill-gray-50 dark:fill-slate-700"
+    />
+
+    <!-- Post Grid -->
+    <section class="py-16 bg-gray-50 dark:bg-slate-700 transition-colors">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {blogPosts.map((post) => (
+            <a
+              href={`/blog/${post.slug}`}
+              class="group flex flex-col bg-white dark:bg-slate-600/50 backdrop-blur-sm border border-gray-200 dark:border-slate-500 rounded-xl overflow-hidden hover:shadow-lg dark:hover:shadow-slate-700/30 transition-all duration-300"
+            >
+              <div class="p-6 flex flex-col flex-grow">
+                <div class="flex flex-wrap gap-2 mb-3">
+                  {post.tags.map((tag) => (
+                    <span class="text-xs font-medium bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 px-2.5 py-1 rounded-full">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+                <h2 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-3 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors line-clamp-2">
+                  {post.title}
+                </h2>
+                <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed mb-4 flex-grow line-clamp-3">
+                  {post.excerpt}
+                </p>
+                <div class="flex items-center text-xs text-gray-500 dark:text-gray-400 space-x-3 pt-4 border-t border-gray-100 dark:border-slate-500/50">
+                  <span class="flex items-center">
+                    <svg class="w-3.5 h-3.5 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                    </svg>
+                    {formatDate(post.date)}
+                  </span>
+                  <span class="flex items-center">
+                    <svg class="w-3.5 h-3.5 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+                    </svg>
+                    {post.readTime}
+                  </span>
+                </div>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <WaveTransition
+      topColor="fill-gray-50 dark:fill-slate-700"
+      bottomColor="fill-white dark:fill-slate-900"
+    />
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+</style>
