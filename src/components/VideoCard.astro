@@ -21,10 +21,10 @@ const timeAgo = getTimeAgo(publishedAt);
 <button
   type="button"
   onclick={`openVideoModal('${videoId}', '${title.replace(/'/g, "\\'")}')`}
-  class="bg-white dark:bg-slate-600/50 backdrop-blur-sm border border-gray-200 dark:border-slate-500 rounded-lg overflow-hidden hover:shadow-lg dark:hover:shadow-slate-700/30 transition-all duration-300 group cursor-pointer block w-full text-left"
+  class="bg-white dark:bg-slate-800/60 backdrop-blur-sm border border-gray-200 dark:border-slate-700/50 rounded-lg overflow-hidden hover:shadow-lg dark:hover:shadow-blue-900/10 transition-all duration-300 group cursor-pointer block w-full text-left"
 >
   <!-- Video Thumbnail -->
-  <div class="relative aspect-video bg-gray-100 dark:bg-gray-800">
+  <div class="relative aspect-video bg-gray-100 dark:bg-slate-900">
     <img
       src={thumbnail}
       alt={title}
