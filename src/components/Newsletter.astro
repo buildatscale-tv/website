@@ -160,34 +160,8 @@ const interests = [
         throw new Error(result.error || 'Failed to subscribe');
       }
 
-      // Show success state
-      submitBtn?.removeAttribute('disabled');
-      submitText!.textContent = 'Subscribe';
-      arrow?.classList.remove('hidden');
-      spinner?.classList.add('hidden');
-      successMsg?.classList.remove('hidden');
-
-      // Update success message if it's a duplicate
-      if (result.message) {
-        successText!.textContent = result.message;
-      } else {
-        successText!.textContent = 'Successfully subscribed!';
-      }
-
-      // Reset form
-      (e.target as HTMLFormElement).reset();
-
-      // Reset interest buttons
-      selectedInterests.clear();
-      interestBtns.forEach(btn => {
-        btn.classList.remove('bg-blue-600', 'hover:bg-blue-700', 'text-white', 'border-blue-600');
-        btn.classList.add('bg-gray-100', 'dark:bg-slate-600', 'text-gray-700', 'dark:text-gray-300', 'hover:bg-gray-200', 'dark:hover:bg-slate-500', 'border-gray-300', 'dark:border-slate-500');
-      });
-
-      // Hide success message after 3 seconds
-      setTimeout(() => {
-        successMsg?.classList.add('hidden');
-      }, 3000);
+      // Redirect to thank you page on success
+      window.location.href = '/newsletter-thank-you';
     } catch (error) {
       // Show error state
       submitBtn?.removeAttribute('disabled');
