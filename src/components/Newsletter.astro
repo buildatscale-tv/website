@@ -10,50 +10,50 @@ const interests = [
 ---
 
 <!-- Subtle divider between forms -->
-<div class="bg-blue-50 dark:bg-slate-800">
+<div class="bg-blue-50 dark:bg-slate-950">
   <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex items-center gap-4 py-8">
-      <div class="flex-1 h-px bg-gradient-to-r from-transparent via-blue-200 dark:via-slate-600 to-transparent"></div>
+      <div class="flex-1 h-px bg-gradient-to-r from-transparent via-blue-200 dark:via-slate-700 to-transparent"></div>
       <div class="flex gap-1.5">
-        <div class="w-1.5 h-1.5 rounded-full bg-blue-300 dark:bg-slate-500"></div>
-        <div class="w-1.5 h-1.5 rounded-full bg-blue-400 dark:bg-slate-400"></div>
-        <div class="w-1.5 h-1.5 rounded-full bg-blue-300 dark:bg-slate-500"></div>
+        <div class="w-1.5 h-1.5 rounded-full bg-blue-300 dark:bg-slate-600"></div>
+        <div class="w-1.5 h-1.5 rounded-full bg-blue-400 dark:bg-slate-500"></div>
+        <div class="w-1.5 h-1.5 rounded-full bg-blue-300 dark:bg-slate-600"></div>
       </div>
-      <div class="flex-1 h-px bg-gradient-to-r from-transparent via-blue-200 dark:via-slate-600 to-transparent"></div>
+      <div class="flex-1 h-px bg-gradient-to-r from-transparent via-blue-200 dark:via-slate-700 to-transparent"></div>
     </div>
   </div>
 </div>
 
-<section class="py-12 pb-24 bg-blue-50 dark:bg-slate-800 text-gray-900 dark:text-white">
+<section class="py-12 pb-24 bg-blue-50 dark:bg-slate-950 text-gray-900 dark:text-white">
   <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="text-center mb-12">
-      <h2 class="text-3xl lg:text-4xl font-bold mb-4">
+      <h2 class="text-3xl lg:text-4xl font-bold mb-4 dark:text-white">
         Stay Updated
       </h2>
-      <p class="text-lg text-gray-600 dark:text-gray-300">
+      <p class="text-lg text-gray-600 dark:text-slate-400">
         Get notified when I publish new content about AI orchestration, development workflows,
         and the latest experiments. No spam, just valuable insights.
       </p>
     </div>
 
-    <div class="bg-white dark:bg-slate-700/50 backdrop-blur-sm rounded-lg p-8 shadow-lg dark:shadow-slate-700/50 border border-gray-200 dark:border-slate-600">
+    <div class="bg-white dark:bg-slate-900/60 backdrop-blur-sm rounded-xl p-8 shadow-lg dark:shadow-slate-950/50 border border-gray-100 dark:border-slate-700/50 dark:ring-1 dark:ring-white/5">
       <form id="newsletter-form" class="space-y-6">
         <div>
-          <label for="signup-email" class="block text-sm font-medium text-gray-700 dark:text-gray-400 mb-2">
+          <label for="signup-email" class="block text-sm font-medium text-gray-700 dark:text-slate-300 mb-2">
             Email Address
           </label>
           <input
             type="email"
             id="signup-email"
             name="email"
-            class="w-full px-4 py-3 bg-white dark:bg-slate-600/80 border border-gray-300 dark:border-slate-500 rounded-lg text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            class="w-full px-4 py-3 bg-white dark:bg-slate-800/60 border border-gray-300 dark:border-slate-700 rounded-lg text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-slate-500 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
             placeholder="your@email.com"
             required
           />
         </div>
 
         <div>
-          <label class="block text-sm font-medium text-gray-700 dark:text-gray-400 mb-3">
+          <label class="block text-sm font-medium text-gray-700 dark:text-slate-300 mb-3">
             What interests you most? (Optional)
           </label>
           <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
@@ -61,7 +61,7 @@ const interests = [
               <button
                 type="button"
                 data-interest={interest}
-                class="interest-btn px-3 py-2 rounded-lg text-sm font-medium transition-colors bg-gray-100 dark:bg-slate-600 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-slate-500 border border-gray-300 dark:border-slate-500 break-words text-center min-h-[2.5rem] flex items-center justify-center"
+                class="interest-btn px-3 py-2 rounded-lg text-sm font-medium transition-all bg-gray-100 dark:bg-slate-800 text-gray-700 dark:text-slate-300 hover:bg-gray-200 dark:hover:bg-slate-700 border border-gray-300 dark:border-slate-700 break-words text-center min-h-[2.5rem] flex items-center justify-center"
               >
                 {interest}
               </button>
@@ -74,7 +74,7 @@ const interests = [
             <button
               type="submit"
               id="newsletter-submit"
-              class="bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400 text-white px-8 py-3 rounded-lg font-medium transition-colors flex items-center space-x-2"
+              class="bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400 dark:disabled:bg-blue-900/50 text-white px-8 py-3 rounded-lg font-medium transition-all flex items-center space-x-2 shadow-lg shadow-blue-500/25 dark:shadow-blue-500/20"
             >
               <span id="newsletter-submit-text">Subscribe</span>
               <div class="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin hidden" id="newsletter-spinner"></div>
@@ -90,7 +90,7 @@ const interests = [
 
           <div id="newsletter-error" class="text-red-600 dark:text-red-400 font-medium text-sm hidden"></div>
 
-          <p class="text-xs text-gray-500 dark:text-gray-400">
+          <p class="text-xs text-gray-500 dark:text-slate-500">
             No spam, ever. Unsubscribe at any time. I respect your privacy and will only send valuable content updates.
           </p>
         </div>
@@ -119,10 +119,10 @@ const interests = [
         if (selectedInterests.has(interest)) {
           selectedInterests.delete(interest);
           btn.classList.remove('bg-blue-600', 'hover:bg-blue-700', 'text-white', 'border-blue-600');
-          btn.classList.add('bg-gray-100', 'dark:bg-slate-600', 'text-gray-700', 'dark:text-gray-300', 'hover:bg-gray-200', 'dark:hover:bg-slate-500', 'border-gray-300', 'dark:border-slate-500');
+          btn.classList.add('bg-gray-100', 'dark:bg-slate-800', 'text-gray-700', 'dark:text-slate-300', 'hover:bg-gray-200', 'dark:hover:bg-slate-700', 'border-gray-300', 'dark:border-slate-700');
         } else {
           selectedInterests.add(interest);
-          btn.classList.remove('bg-gray-100', 'dark:bg-slate-600', 'text-gray-700', 'dark:text-gray-300', 'hover:bg-gray-200', 'dark:hover:bg-slate-500', 'border-gray-300', 'dark:border-slate-500');
+          btn.classList.remove('bg-gray-100', 'dark:bg-slate-800', 'text-gray-700', 'dark:text-slate-300', 'hover:bg-gray-200', 'dark:hover:bg-slate-700', 'border-gray-300', 'dark:border-slate-700');
           btn.classList.add('bg-blue-600', 'hover:bg-blue-700', 'text-white', 'border-blue-600');
         }
       }
@@ -181,7 +181,7 @@ const interests = [
       selectedInterests.clear();
       interestBtns.forEach(btn => {
         btn.classList.remove('bg-blue-600', 'hover:bg-blue-700', 'text-white', 'border-blue-600');
-        btn.classList.add('bg-gray-100', 'dark:bg-slate-600', 'text-gray-700', 'dark:text-gray-300', 'hover:bg-gray-200', 'dark:hover:bg-slate-500', 'border-gray-300', 'dark:border-slate-500');
+        btn.classList.add('bg-gray-100', 'dark:bg-slate-800', 'text-gray-700', 'dark:text-slate-300', 'hover:bg-gray-200', 'dark:hover:bg-slate-700', 'border-gray-300', 'dark:border-slate-700');
       });
 
       // Hide success message after 3 seconds
