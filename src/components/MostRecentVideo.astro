@@ -31,19 +31,22 @@ const latestVideo = hasVideos ? {
 ---
 
 <WaveTransition
-  topColor="fill-white dark:fill-slate-800"
-  bottomColor="fill-gray-50 dark:fill-slate-700"
+  topColor="fill-white dark:fill-slate-950"
+  bottomColor="fill-gray-50 dark:fill-slate-900"
 />
 
-<section id="latest" class="pt-10 pb-16 px-4 sm:px-6 lg:px-8 bg-gray-50 dark:bg-slate-700 transition-colors">
+<section id="latest" class="pt-10 pb-16 px-4 sm:px-6 lg:px-8 bg-gray-50 dark:bg-slate-900 transition-colors relative">
+  <div class="absolute inset-0 dark:block hidden pointer-events-none">
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-blue-500/5 rounded-full blur-3xl"></div>
+  </div>
   <div class="max-w-7xl mx-auto">
     {hasVideos && latestVideo ? (
       <div class="max-w-4xl mx-auto">
         <div class="text-center mb-6">
-          <span class="inline-block bg-green-100 dark:bg-green-700/30 text-green-700 dark:text-green-300 px-3 py-1 rounded-full text-sm font-medium mb-4">
+          <span class="inline-block bg-green-100 dark:bg-green-500/15 text-green-700 dark:text-green-300 px-3 py-1 rounded-full text-sm font-medium mb-4 border border-green-200 dark:border-green-500/20">
             Latest Video
           </span>
-          <h2 class="text-2xl lg:text-3xl font-bold text-gray-900 dark:text-gray-100">
+          <h2 class="text-2xl lg:text-3xl font-bold text-gray-900 dark:text-slate-100">
             {latestVideo.title}
           </h2>
         </div>
@@ -53,7 +56,7 @@ const latestVideo = hasVideos ? {
           onclick={`openVideoModal('${latestVideo.videoId}', '${latestVideo.title.replace(/'/g, "\\'")}')`}
           class="relative group cursor-pointer block w-full"
         >
-          <div class="relative aspect-video bg-gray-200 dark:bg-gray-700 rounded-lg overflow-hidden shadow-2xl">
+          <div class="relative aspect-video bg-gray-200 dark:bg-slate-800 rounded-lg overflow-hidden shadow-2xl dark:shadow-slate-950/60 ring-1 dark:ring-slate-700/50">
             <img
               src={latestVideo.thumbnail}
               alt={latestVideo.title}
@@ -72,7 +75,7 @@ const latestVideo = hasVideos ? {
             </div>
           </div>
 
-          <div class="flex items-center justify-center mt-6 text-gray-600 dark:text-gray-300 space-x-6 flex-nowrap">
+          <div class="flex items-center justify-center mt-6 text-gray-600 dark:text-slate-300 space-x-6 flex-nowrap">
             <div class="flex items-center whitespace-nowrap">
               <svg class="w-4 h-4 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
@@ -94,7 +97,7 @@ const latestVideo = hasVideos ? {
       </div>
     ) : (
       <div class="max-w-4xl mx-auto text-center">
-        <p class="text-gray-600 dark:text-gray-300">Loading most recent video...</p>
+        <p class="text-gray-600 dark:text-slate-400">Loading most recent video...</p>
       </div>
     )}
   </div>
