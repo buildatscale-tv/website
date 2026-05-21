@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Devbox Variant 10</title>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      body {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+        animation: bgShift 12s ease infinite alternate;
+      }
+      @keyframes bgShift {
+        0% { background-position: 0% 50%; }
+        100% { background-position: 100% 50%; }
+      }
+      .card {
+        text-align: center;
+        padding: 3rem 4rem;
+        border-radius: 2rem;
+        background: rgba(255, 255, 255, 0.08);
+        backdrop-filter: blur(16px);
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        animation: float 4s ease-in-out infinite;
+      }
+      @keyframes float {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-16px); }
+      }
+      h1 {
+        font-size: 4rem;
+        font-weight: 800;
+        background: linear-gradient(90deg, #f9d423, #ff4e50, #f9d423);
+        background-size: 200% auto;
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: shimmer 3s linear infinite;
+      }
+      @keyframes shimmer {
+        0% { background-position: 0% center; }
+        100% { background-position: 200% center; }
+      }
+      .subtitle {
+        margin-top: 1rem;
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 1.25rem;
+        letter-spacing: 0.05em;
+      }
+      .badge {
+        display: inline-block;
+        margin-top: 1.5rem;
+        padding: 0.4rem 1.25rem;
+        border-radius: 999px;
+        background: linear-gradient(90deg, #ff4e50, #f9d423);
+        color: #0f0c29;
+        font-weight: 700;
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <h1>Devbox Variant 10</h1>
+      <p class="subtitle">Colorful · Dynamic · Live</p>
+      <span class="badge">✦ 10 of 10 ✦</span>
+    </div>
+  </body>
+</html>
