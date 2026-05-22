@@ -2,28 +2,37 @@
 // Theme toggle component with 3 states: light, dark, system
 ---
 
-<div class="flex items-center space-x-2">
+<div class="flex items-center gap-2">
   <button
     id="theme-toggle"
     type="button"
-    class="p-2 rounded-lg bg-gray-100 dark:bg-slate-800 hover:bg-gray-200 dark:hover:bg-slate-700 transition-colors border border-transparent dark:border-slate-700"
+    class="p-3 border-2 border-brutal-black dark:border-brutal-white hover:border-brutal-accent dark:hover:border-brutal-accent transition-colors"
     aria-label="Toggle theme"
   >
-    <svg id="theme-icon-light" class="w-5 h-5 text-gray-800 dark:text-gray-200 hidden" fill="currentColor" viewBox="0 0 20 20">
-      <path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd"/>
+    <svg id="theme-icon-light" class="w-5 h-5 hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="5"/>
+      <line x1="12" y1="1" x2="12" y2="3"/>
+      <line x1="12" y1="21" x2="12" y2="23"/>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+      <line x1="1" y1="12" x2="3" y2="12"/>
+      <line x1="21" y1="12" x2="23" y2="12"/>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
     </svg>
-    <svg id="theme-icon-dark" class="w-5 h-5 text-gray-800 dark:text-gray-200 hidden" fill="currentColor" viewBox="0 0 20 20">
-      <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"/>
+    <svg id="theme-icon-dark" class="w-5 h-5 hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
     </svg>
-    <svg id="theme-icon-system" class="w-5 h-5 text-gray-800 dark:text-gray-200 hidden" fill="currentColor" viewBox="0 0 20 20">
-      <path fill-rule="evenodd" d="M3 5a2 2 0 012-2h10a2 2 0 012 2v8a2 2 0 01-2 2h-2.22l.123.489.804.804A1 1 0 0113 18H7a1 1 0 01-.707-1.707l.804-.804L7.22 15H5a2 2 0 01-2-2V5zm5.771 7H5V5h10v7H8.771z" clip-rule="evenodd"/>
+    <svg id="theme-icon-system" class="w-5 h-5 hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="2" y="3" width="20" height="14" rx="0" ry="0"/>
+      <line x1="8" y1="21" x2="16" y2="21"/>
+      <line x1="12" y1="17" x2="12" y2="21"/>
     </svg>
   </button>
 </div>
 
 <script is:inline>
   (function() {
-    // Get stored theme or default to 'system'
     function getStoredTheme() {
       if (typeof localStorage !== 'undefined') {
         const stored = localStorage.getItem('theme');
@@ -34,7 +43,6 @@
       return 'system';
     }
 
-    // Get the effective theme (resolving 'system' to actual preference)
     function getEffectiveTheme(theme) {
       if (theme === 'system') {
         return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
@@ -42,11 +50,8 @@
       return theme;
     }
 
-    // Apply theme to document
     function applyTheme(theme) {
       const effectiveTheme = getEffectiveTheme(theme);
-
-      // Apply dark mode class
       const html = document.documentElement;
       if (effectiveTheme === 'dark') {
         html.classList.add('dark');
@@ -54,7 +59,6 @@
         html.classList.remove('dark');
       }
 
-      // Update icons
       const lightIcon = document.getElementById('theme-icon-light');
       const darkIcon = document.getElementById('theme-icon-dark');
       const systemIcon = document.getElementById('theme-icon-system');
@@ -74,7 +78,6 @@
       }
     }
 
-    // Cycle through themes: light → dark → system → light
     function cycleTheme() {
       const currentTheme = getStoredTheme();
       let nextTheme;
@@ -91,7 +94,6 @@
       applyTheme(nextTheme);
     }
 
-    // Wait for DOM to be ready
     if (document.readyState === 'loading') {
       document.addEventListener('DOMContentLoaded', initTheme);
     } else {
@@ -99,17 +101,14 @@
     }
 
     function initTheme() {
-      // Initialize theme on load
       const initialTheme = getStoredTheme();
       applyTheme(initialTheme);
 
-      // Add click handler
       const themeToggle = document.getElementById('theme-toggle');
       if (themeToggle) {
         themeToggle.addEventListener('click', cycleTheme);
       }
 
-      // Listen for system theme changes when in 'system' mode
       window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function() {
         const currentTheme = getStoredTheme();
         if (currentTheme === 'system') {

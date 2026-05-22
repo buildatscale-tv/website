@@ -3,13 +3,13 @@
 // It uses a dialog element with client-side JavaScript for interactivity
 ---
 
-<dialog id="video-modal" class="backdrop:bg-black backdrop:bg-opacity-75 bg-transparent p-0 max-w-6xl w-full rounded-lg">
-  <div class="bg-white dark:bg-slate-700 rounded-lg overflow-hidden shadow-2xl border border-transparent dark:border-slate-600">
-    <div class="flex items-center justify-between p-4 bg-gray-100 dark:bg-slate-600 text-gray-900 dark:text-white border-b border-gray-200 dark:border-slate-500">
-      <h3 id="video-modal-title" class="text-lg font-semibold text-gray-900 dark:text-white"></h3>
+<dialog id="video-modal" class="backdrop:bg-black backdrop:bg-opacity-90 bg-transparent p-0 max-w-6xl w-full">
+  <div class="bg-brutal-white dark:bg-brutal-black overflow-hidden border-2 border-brutal-black dark:border-brutal-white">
+    <div class="flex items-center justify-between p-4 bg-brutal-black dark:bg-brutal-white text-brutal-white dark:text-brutal-black border-b-2 border-brutal-black dark:border-brutal-white">
+      <h3 id="video-modal-title" class="text-sm font-bold uppercase tracking-widest"></h3>
       <button
         id="close-video-modal"
-        class="text-gray-900 dark:text-white hover:text-gray-600 dark:hover:text-gray-300 transition-colors"
+        class="hover:text-brutal-accent dark:hover:text-brutal-accent transition-colors"
         aria-label="Close video"
       >
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -29,14 +29,11 @@
   const modalContent = document.getElementById('video-modal-content');
   const closeButton = document.getElementById('close-video-modal');
 
-  // Function to open video modal
   function openVideoModal(videoId: string, title: string) {
     if (!modal || !modalTitle || !modalContent) return;
 
-    // Set title
     modalTitle.textContent = title;
 
-    // Create and inject iframe
     const iframe = document.createElement('iframe');
     iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&modestbranding=1&rel=0`;
     iframe.title = title;
@@ -48,30 +45,21 @@
     modalContent.innerHTML = '';
     modalContent.appendChild(iframe);
 
-    // Show modal
     modal.showModal();
   }
 
-  // Function to close video modal
   function closeVideoModal() {
     if (!modal || !modalContent) return;
-
-    // Stop video by clearing content
     modalContent.innerHTML = '';
-
-    // Close modal
     modal.close();
   }
 
-  // Attach close handler
   closeButton?.addEventListener('click', closeVideoModal);
 
-  // Close on escape key
   modal?.addEventListener('close', () => {
     if (modalContent) modalContent.innerHTML = '';
   });
 
-  // Close when clicking outside the modal
   modal?.addEventListener('click', (e) => {
     const dialogDimensions = modal.getBoundingClientRect();
     if (
@@ -84,12 +72,11 @@
     }
   });
 
-  // Expose function globally for video cards to use
   (window as any).openVideoModal = openVideoModal;
 </script>
 
 <style>
   dialog::backdrop {
-    background: rgba(0, 0, 0, 0.75);
+    background: rgba(0, 0, 0, 0.9);
   }
 </style>

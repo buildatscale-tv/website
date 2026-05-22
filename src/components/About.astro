@@ -2,42 +2,44 @@
 const topics = [
   {
     label: "AI Tools & APIs",
-    icon: `<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>`
+    icon: `<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>`
   },
   {
     label: "Web Development",
-    icon: `<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>`
+    icon: `<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>`
   },
   {
     label: "DevOps & Infrastructure",
-    icon: `<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path></svg>`
+    icon: `<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path></svg>`
   },
   {
     label: "Database Systems",
-    icon: `<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M3 5v14a9 3 0 0 0 18 0V5"></path><path d="M3 12a9 3 0 0 0 18 0"></path></svg>`
+    icon: `<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M3 5v14a9 3 0 0 0 18 0V5"></path><path d="M3 12a9 3 0 0 0 18 0"></path></svg>`
   }
 ];
 ---
 
-<section id="about" class="py-16 bg-blue-50 dark:bg-slate-800 transition-colors">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-      <div class="flex flex-col sm:flex-row gap-6 items-center sm:items-start">
-        <!-- Avatar -->
-        <div class="flex-shrink-0 w-[120px] h-[120px] rounded-full border-4 border-white dark:border-slate-700 shadow-lg overflow-hidden bg-[#1e3049]">
-          <img
-            src="/images/avatar-small.png"
-            alt="Ronnie - BuildAtScale"
-            class="w-full h-full object-cover scale-110 translate-x-[2px] translate-y-[8px]"
-          />
-        </div>
+<section id="about" class="py-24 px-6 lg:px-8 border-t-2 border-brutal-black dark:border-brutal-white">
+  <div class="max-w-7xl mx-auto">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-16">
+      <div class="lg:col-span-7">
+        <p class="text-xs font-bold uppercase tracking-[0.2em] text-brutal-accent mb-6">About</p>
+        <h2 class="font-display text-5xl md:text-6xl font-bold tracking-tight mb-12">
+          BuildAtScale
+        </h2>
 
-        <!-- Text content -->
-        <div>
-          <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 dark:text-gray-100 mb-6 text-center sm:text-left">
-            About BuildAtScale
-          </h2>
-          <div class="space-y-4 text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
+        <div class="flex flex-col sm:flex-row gap-8 items-start mb-12">
+          <!-- Avatar -->
+          <div class="flex-shrink-0 w-[140px] h-[140px] border-2 border-brutal-black dark:border-brutal-white overflow-hidden bg-brutal-gray-dark">
+            <img
+              src="/images/avatar-small.png"
+              alt="Ronnie - BuildAtScale"
+              class="w-full h-full object-cover scale-110 translate-x-[2px] translate-y-[8px]"
+            />
+          </div>
+
+          <!-- Text content -->
+          <div class="space-y-5 text-lg leading-relaxed text-brutal-black/80 dark:text-brutal-white/80">
             <p>
               Lately I'm exploring how to stop writing every line of code myself and start directing
               AI agents to handle development, research, and deployment.
@@ -56,26 +58,26 @@ const topics = [
         </div>
       </div>
 
-      <div id="topics">
-        <h3 class="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-6">
+      <div id="topics" class="lg:col-span-5">
+        <h3 class="text-xs font-bold uppercase tracking-[0.2em] text-brutal-accent mb-6">
           What You'll Find Here
         </h3>
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div class="space-y-4 mb-12">
           {topics.map((topic) => (
-            <div class="bg-white dark:bg-slate-700/50 backdrop-blur-sm border border-gray-200 dark:border-slate-600 rounded-lg p-4 hover:shadow-md dark:hover:shadow-slate-700/30 transition-shadow">
-              <div class="flex items-center space-x-3">
-                <div class="text-blue-600 dark:text-blue-400" set:html={topic.icon} />
-                <span class="font-medium text-gray-900 dark:text-gray-100">{topic.label}</span>
+            <div class="border-2 border-brutal-black dark:border-brutal-white p-5 hover:border-brutal-accent dark:hover:border-brutal-accent transition-colors">
+              <div class="flex items-center gap-4">
+                <div class="text-brutal-accent" set:html={topic.icon} />
+                <span class="font-bold uppercase tracking-widest text-sm">{topic.label}</span>
               </div>
             </div>
           ))}
         </div>
 
-        <div class="mt-8 p-6 bg-white dark:bg-slate-700/50 backdrop-blur-sm border border-blue-200 dark:border-slate-600 rounded-lg">
-          <h4 class="font-semibold text-gray-900 dark:text-gray-100 mb-2">
+        <div class="border-2 border-brutal-black dark:border-brutal-white p-6">
+          <h4 class="font-bold uppercase tracking-widest text-sm mb-3">
             Learning by Doing
           </h4>
-          <p class="text-gray-600 dark:text-gray-300">
+          <p class="text-brutal-black/70 dark:text-brutal-white/70 leading-relaxed">
             Not being afraid to show the messy parts. Real experiments, real failures,
             and real discoveries in the world of AI-assisted development.
           </p>
@@ -84,18 +86,3 @@ const topics = [
     </div>
   </div>
 </section>
-
-<!-- Subtle divider after about -->
-<div class="bg-blue-50 dark:bg-slate-800">
-  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex items-center gap-4 py-8">
-      <div class="flex-1 h-px bg-gradient-to-r from-transparent via-blue-200 dark:via-slate-600 to-transparent"></div>
-      <div class="flex gap-1.5">
-        <div class="w-1.5 h-1.5 rounded-full bg-blue-300 dark:bg-slate-500"></div>
-        <div class="w-1.5 h-1.5 rounded-full bg-blue-400 dark:bg-slate-400"></div>
-        <div class="w-1.5 h-1.5 rounded-full bg-blue-300 dark:bg-slate-500"></div>
-      </div>
-      <div class="flex-1 h-px bg-gradient-to-r from-transparent via-blue-200 dark:via-slate-600 to-transparent"></div>
-    </div>
-  </div>
-</div>
