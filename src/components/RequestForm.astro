@@ -8,55 +8,55 @@ const requestTypes = [
 ];
 ---
 
-<section class="py-8 pb-12 bg-blue-50 dark:bg-slate-800">
+<section class="py-8 pb-12 bg-blue-50 dark:bg-slate-900">
   <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="text-center mb-12">
-      <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 dark:text-gray-100 mb-4">
+      <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 dark:text-slate-100 mb-4">
         Have an Idea or Request?
       </h2>
-      <p class="text-lg text-gray-600 dark:text-gray-300">
+      <p class="text-lg text-gray-600 dark:text-slate-300">
         Suggest a topic, share a problem you're facing, or request a video.
         I'm always looking for real-world challenges to explore.
       </p>
     </div>
 
-    <div class="bg-white dark:bg-slate-700/50 backdrop-blur-sm rounded-lg shadow-lg dark:shadow-slate-700/50 p-8 border border-transparent dark:border-slate-600">
+    <div class="bg-white dark:bg-slate-800/40 backdrop-blur-sm rounded-lg shadow-lg dark:shadow-slate-900/30 p-8 border border-transparent dark:border-slate-700/50">
       <form id="request-form" class="space-y-6">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
-            <label for="name" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+            <label for="name" class="block text-sm font-medium text-gray-700 dark:text-slate-300 mb-2">
               Name
             </label>
             <input
               type="text"
               id="name"
               name="name"
-              class="w-full px-4 py-2 border border-gray-300 dark:border-slate-600 bg-white dark:bg-slate-700/50 text-gray-900 dark:text-gray-100 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              class="w-full px-4 py-2 border border-gray-300 dark:border-slate-700/50 bg-white dark:bg-slate-800/60 text-gray-900 dark:text-slate-100 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent focus:dark:ring-blue-400"
               required
             />
           </div>
           <div>
-            <label for="request-email" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+            <label for="request-email" class="block text-sm font-medium text-gray-700 dark:text-slate-300 mb-2">
               Email
             </label>
             <input
               type="email"
               id="request-email"
               name="email"
-              class="w-full px-4 py-2 border border-gray-300 dark:border-slate-600 bg-white dark:bg-slate-700/50 text-gray-900 dark:text-gray-100 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              class="w-full px-4 py-2 border border-gray-300 dark:border-slate-700/50 bg-white dark:bg-slate-800/60 text-gray-900 dark:text-slate-100 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent focus:dark:ring-blue-400"
               required
             />
           </div>
         </div>
 
         <div>
-          <label for="type" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+          <label for="type" class="block text-sm font-medium text-gray-700 dark:text-slate-300 mb-2">
             Request Type
           </label>
           <select
             id="type"
             name="type"
-            class="w-full px-4 py-2 border border-gray-300 dark:border-slate-600 bg-white dark:bg-slate-700/50 text-gray-900 dark:text-gray-100 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent [&>option]:bg-white [&>option]:dark:bg-slate-800 [&>option]:text-gray-900 [&>option]:dark:text-gray-100"
+            class="w-full px-4 py-2 border border-gray-300 dark:border-slate-700/50 bg-white dark:bg-slate-800/60 text-gray-900 dark:text-slate-100 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent focus:dark:ring-blue-400 [&>option]:bg-white [&>option]:dark:bg-slate-900 [&>option]:text-gray-900 [&>option]:dark:text-slate-100"
           >
             {requestTypes.map((type) => (
               <option value={type}>{type}</option>
@@ -65,14 +65,14 @@ const requestTypes = [
         </div>
 
         <div>
-          <label for="message" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+          <label for="message" class="block text-sm font-medium text-gray-700 dark:text-slate-300 mb-2">
             Details
           </label>
           <textarea
             id="message"
             name="message"
             rows="4"
-            class="w-full px-4 py-2 border border-gray-300 dark:border-slate-600 bg-white dark:bg-slate-700/50 text-gray-900 dark:text-gray-100 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent placeholder-gray-400 dark:placeholder-gray-500"
+            class="w-full px-4 py-2 border border-gray-300 dark:border-slate-700/50 bg-white dark:bg-slate-800/60 text-gray-900 dark:text-slate-100 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent focus:dark:ring-blue-400 placeholder-gray-400 dark:placeholder-slate-500"
             placeholder="Describe your idea, problem, or request in detail..."
             required
           ></textarea>
@@ -83,7 +83,7 @@ const requestTypes = [
             <button
               type="submit"
               id="request-submit"
-              class="bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400 text-white px-8 py-3 rounded-lg font-medium transition-colors flex items-center space-x-2"
+              class="bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400 dark:disabled:bg-blue-500/50 text-white px-8 py-3 rounded-lg font-medium transition-all duration-300 flex items-center space-x-2 shadow-lg dark:shadow-glow-blue hover:shadow-xl"
             >
               <span id="request-submit-text">Submit Request</span>
               <div class="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin hidden" id="request-spinner"></div>
