@@ -1,11 +1,20 @@
 ---
 ---
 
-<svg class="w-8 h-8 text-blue-600 dark:text-blue-400" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-label="BuildAtScale Logo">
-  <circle cx="6" cy="6" r="2"/>
-  <circle cx="18" cy="6" r="2"/>
-  <circle cx="6" cy="18" r="2"/>
-  <circle cx="18" cy="18" r="2"/>
-  <circle cx="12" cy="12" r="3"/>
-  <path d="M8 8l8 8M16 8l-8 8M10 12h4M12 10v4"/>
+<svg class="w-8 h-8" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="BuildAtScale Logo">
+  <!-- Gradient definition -->
+  <defs>
+    <linearGradient id="logo-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3b82f6;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#06b6d4;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#8b5cf6;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Main circle -->
+  <circle cx="16" cy="16" r="12" stroke="url(#logo-gradient)" stroke-width="2" fill="none" />
+  
+  <!-- Inner pattern -->
+  <path d="M10 16L16 10L22 16L16 22Z" stroke="url(#logo-gradient)" stroke-width="1.5" fill="none" />
+  <circle cx="16" cy="16" r="3" fill="url(#logo-gradient)" />
 </svg>
