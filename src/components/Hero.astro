@@ -1,37 +1,66 @@
 ---
 ---
 
-<section class="bg-gradient-to-b from-blue-50 to-white dark:from-slate-700 dark:to-slate-800 pt-20 pb-10 transition-colors">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<section class="relative pt-24 pb-16 overflow-hidden">
+  <!-- Ambient background effects -->
+  <div class="absolute inset-0 bg-gradient-to-b from-space-800 via-space-900 to-space-900" aria-hidden="true"></div>
+  <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-radial from-neon-cyan/10 via-transparent to-transparent rounded-full blur-3xl pointer-events-none" aria-hidden="true"></div>
+  <div class="absolute top-1/3 right-1/4 w-[400px] h-[400px] bg-gradient-radial from-neon-purple/10 via-transparent to-transparent rounded-full blur-3xl pointer-events-none" aria-hidden="true"></div>
+
+  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="text-center mb-16">
-      <h1 class="text-5xl lg:text-6xl font-bold text-gray-900 dark:text-gray-100 mb-6">
-        Learning in Public
+      <!-- Tech badge -->
+      <div class="inline-flex items-center space-x-2 mb-8">
+        <span class="tag-badge">v2.0.26</span>
+        <span class="w-1.5 h-1.5 rounded-full bg-neon-cyan animate-pulse"></span>
+        <span class="text-gray-400 text-sm font-mono tracking-wider">SYSTEM ONLINE</span>
+      </div>
+
+      <h1 class="text-5xl lg:text-7xl font-bold text-gray-100 mb-6 tracking-tight">
+        Learning in <span class="gradient-text">Public</span>
       </h1>
-      <p class="text-xl lg:text-2xl text-gray-600 dark:text-gray-300 mb-4 max-w-4xl mx-auto">
-        AI • Web • Ops
+      <p class="text-xl lg:text-2xl text-gray-400 mb-4 max-w-4xl mx-auto font-mono">
+        &lt;AI /&gt; • &lt;Web /&gt; • &lt;Ops /&gt;
       </p>
-      <p class="text-lg text-gray-600 dark:text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed">
+      <p class="text-lg text-gray-500 mb-10 max-w-3xl mx-auto leading-relaxed">
         Sharing what I'm building, breaking, and learning. From LLM experiments and web dev deep dives
         to DevOps automation and shipping fast.
       </p>
+
       <div class="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-4">
         <a
           href="https://youtube.com/@buildatscale"
           target="_blank"
           rel="noopener"
-          class="bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 text-white px-8 py-3 rounded-lg font-medium transition-colors flex items-center space-x-2"
+          class="btn-primary px-8 py-3 rounded-lg font-medium flex items-center space-x-2"
         >
-          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+          <svg class="w-5 h-5 relative z-10" fill="currentColor" viewBox="0 0 24 24">
             <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
           </svg>
-          <span>Watch on YouTube</span>
+          <span class="relative z-10">Watch on YouTube</span>
         </a>
         <a
           href="#latest"
-          class="border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white px-8 py-3 rounded-lg font-medium transition-colors"
+          class="btn-secondary px-8 py-3 rounded-lg font-medium"
         >
           Browse Videos
         </a>
+      </div>
+    </div>
+
+    <!-- Decorative tech elements -->
+    <div class="flex justify-center gap-8 opacity-40">
+      <div class="flex items-center space-x-2 text-gray-500 font-mono text-xs">
+        <div class="w-2 h-2 rounded-full bg-neon-cyan"></div>
+        <span>AI_ORCHESTRATION</span>
+      </div>
+      <div class="flex items-center space-x-2 text-gray-500 font-mono text-xs">
+        <div class="w-2 h-2 rounded-full bg-neon-purple"></div>
+        <span>DEV_AUTOMATION</span>
+      </div>
+      <div class="flex items-center space-x-2 text-gray-500 font-mono text-xs">
+        <div class="w-2 h-2 rounded-full bg-neon-pink"></div>
+        <span>SHIP_FAST</span>
       </div>
     </div>
   </div>

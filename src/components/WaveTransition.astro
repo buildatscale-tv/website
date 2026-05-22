@@ -1,10 +1,10 @@
 ---
 export interface Props {
-  topColor: string;
-  bottomColor: string;
+  topColor?: string;
+  bottomColor?: string;
 }
 
-const { topColor, bottomColor } = Astro.props;
+const { topColor = 'fill-space-900', bottomColor = 'fill-space-800' } = Astro.props;
 ---
 
 <svg

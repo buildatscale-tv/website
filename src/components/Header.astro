@@ -3,26 +3,26 @@ import Logo from './Logo.astro';
 import ThemeToggle from './ThemeToggle.astro';
 ---
 
-<header class="bg-white/95 dark:bg-slate-800/95 backdrop-blur-sm border-b border-gray-200 dark:border-slate-800 sticky top-0 z-50 transition-colors">
+<header class="sticky top-0 z-50 glass-panel border-b border-white/5">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex items-center justify-between h-16">
       <!-- Logo -->
-      <div class="flex items-center space-x-2">
+      <a href="/" class="flex items-center space-x-3 group">
         <Logo />
-        <div class="font-bold text-xl text-gray-900 dark:text-gray-100">
-          Build<span class="text-blue-600 dark:text-blue-400">AtScale</span>
+        <div class="font-bold text-xl tracking-tight">
+          <span class="text-gray-100">Build</span><span class="gradient-text">AtScale</span>
         </div>
-      </div>
+      </a>
 
       <!-- Navigation -->
-      <nav class="hidden md:flex items-center space-x-8">
-        <a href="#latest" class="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors font-medium">
+      <nav class="hidden md:flex items-center space-x-1">
+        <a href="#latest" class="px-4 py-2 rounded-lg text-gray-300 hover:text-neon-cyan hover:bg-white/5 transition-all font-medium text-sm tracking-wide">
           Videos
         </a>
-        <a href="#about" class="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors font-medium">
+        <a href="#about" class="px-4 py-2 rounded-lg text-gray-300 hover:text-neon-cyan hover:bg-white/5 transition-all font-medium text-sm tracking-wide">
           About
         </a>
-        <a href="#topics" class="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors font-medium">
+        <a href="#topics" class="px-4 py-2 rounded-lg text-gray-300 hover:text-neon-cyan hover:bg-white/5 transition-all font-medium text-sm tracking-wide">
           Topics
         </a>
       </nav>
@@ -34,14 +34,17 @@ import ThemeToggle from './ThemeToggle.astro';
           href="https://youtube.com/@buildatscale?sub_confirmation=1"
           target="_blank"
           rel="noopener"
-          class="bg-red-600 hover:bg-red-700 text-white px-6 py-2 rounded-lg font-medium transition-colors flex items-center space-x-2"
+          class="btn-primary px-5 py-2 rounded-lg font-medium text-sm flex items-center space-x-2"
         >
-          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+          <svg class="w-4 h-4 relative z-10" fill="currentColor" viewBox="0 0 24 24">
             <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
           </svg>
-          <span>Subscribe</span>
+          <span class="relative z-10">Subscribe</span>
         </a>
       </div>
     </div>
   </div>
+
+  <!-- Bottom glow line -->
+  <div class="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-neon-cyan/30 to-transparent"></div>
 </header>
