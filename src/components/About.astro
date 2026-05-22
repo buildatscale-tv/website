@@ -19,12 +19,12 @@ const topics = [
 ];
 ---
 
-<section id="about" class="py-16 bg-blue-50 dark:bg-slate-800 transition-colors">
+<section id="about" class="py-24 bg-parchment/50 dark:bg-dark-parchment/30 transition-colors duration-500">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-      <div class="flex flex-col sm:flex-row gap-6 items-center sm:items-start">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+      <div class="flex flex-col sm:flex-row gap-8 items-center sm:items-start">
         <!-- Avatar -->
-        <div class="flex-shrink-0 w-[120px] h-[120px] rounded-full border-4 border-white dark:border-slate-700 shadow-lg overflow-hidden bg-[#1e3049]">
+        <div class="flex-shrink-0 w-[140px] h-[140px] rounded-full border-[3px] border-warm-white dark:border-warm-gray-dark shadow-xl overflow-hidden bg-[#1e3049]">
           <img
             src="/images/avatar-small.png"
             alt="Ronnie - BuildAtScale"
@@ -34,10 +34,13 @@ const topics = [
 
         <!-- Text content -->
         <div>
-          <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 dark:text-gray-100 mb-6 text-center sm:text-left">
+          <p class="text-terracotta dark:text-terracotta-light font-medium text-sm tracking-widest-xl uppercase mb-4">
+            The Editor
+          </p>
+          <h2 class="font-serif text-4xl lg:text-5xl font-medium text-charcoal dark:text-warm-white mb-8 text-center sm:text-left leading-tight">
             About BuildAtScale
           </h2>
-          <div class="space-y-4 text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
+          <div class="space-y-5 text-warm-gray-dark dark:text-warm-gray-light leading-[1.8] text-base">
             <p>
               Lately I'm exploring how to stop writing every line of code myself and start directing
               AI agents to handle development, research, and deployment.
@@ -57,25 +60,28 @@ const topics = [
       </div>
 
       <div id="topics">
-        <h3 class="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-6">
+        <p class="text-forest dark:text-forest-light font-medium text-sm tracking-widest-xl uppercase mb-4">
+          Coverage
+        </p>
+        <h3 class="font-serif text-3xl lg:text-4xl font-medium text-charcoal dark:text-warm-white mb-8 leading-tight">
           What You'll Find Here
         </h3>
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
           {topics.map((topic) => (
-            <div class="bg-white dark:bg-slate-700/50 backdrop-blur-sm border border-gray-200 dark:border-slate-600 rounded-lg p-4 hover:shadow-md dark:hover:shadow-slate-700/30 transition-shadow">
-              <div class="flex items-center space-x-3">
-                <div class="text-blue-600 dark:text-blue-400" set:html={topic.icon} />
-                <span class="font-medium text-gray-900 dark:text-gray-100">{topic.label}</span>
+            <div class="group bg-warm-white dark:bg-dark-parchment/60 backdrop-blur-sm border border-parchment dark:border-warm-gray-dark/30 rounded-sm p-5 hover:shadow-lg hover:shadow-terracotta/5 dark:hover:shadow-terracotta/10 transition-all duration-300 cursor-default">
+              <div class="flex items-center space-x-4">
+                <div class="text-terracotta dark:text-terracotta-light transition-transform duration-300 group-hover:scale-110" set:html={topic.icon} />
+                <span class="font-medium text-charcoal dark:text-warm-white text-sm tracking-wide">{topic.label}</span>
               </div>
             </div>
           ))}
         </div>
 
-        <div class="mt-8 p-6 bg-white dark:bg-slate-700/50 backdrop-blur-sm border border-blue-200 dark:border-slate-600 rounded-lg">
-          <h4 class="font-semibold text-gray-900 dark:text-gray-100 mb-2">
+        <div class="mt-8 p-8 bg-warm-white dark:bg-dark-parchment/60 backdrop-blur-sm border-l-4 border-terracotta dark:border-terracotta-light rounded-sm">
+          <h4 class="font-serif font-medium text-xl text-charcoal dark:text-warm-white mb-3">
             Learning by Doing
           </h4>
-          <p class="text-gray-600 dark:text-gray-300">
+          <p class="text-warm-gray-dark dark:text-warm-gray-light leading-relaxed">
             Not being afraid to show the messy parts. Real experiments, real failures,
             and real discoveries in the world of AI-assisted development.
           </p>
@@ -86,16 +92,16 @@ const topics = [
 </section>
 
 <!-- Subtle divider after about -->
-<div class="bg-blue-50 dark:bg-slate-800">
+<div class="bg-parchment/50 dark:bg-dark-parchment/30">
   <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex items-center gap-4 py-8">
-      <div class="flex-1 h-px bg-gradient-to-r from-transparent via-blue-200 dark:via-slate-600 to-transparent"></div>
-      <div class="flex gap-1.5">
-        <div class="w-1.5 h-1.5 rounded-full bg-blue-300 dark:bg-slate-500"></div>
-        <div class="w-1.5 h-1.5 rounded-full bg-blue-400 dark:bg-slate-400"></div>
-        <div class="w-1.5 h-1.5 rounded-full bg-blue-300 dark:bg-slate-500"></div>
+    <div class="flex items-center gap-6 py-12">
+      <div class="flex-1 h-px bg-gradient-to-r from-transparent via-terracotta/20 to-transparent"></div>
+      <div class="flex gap-2">
+        <div class="w-2 h-2 rounded-full bg-terracotta/40 dark:bg-terracotta-light/40"></div>
+        <div class="w-2 h-2 rounded-full bg-gold/60 dark:bg-gold-light/60"></div>
+        <div class="w-2 h-2 rounded-full bg-forest/40 dark:bg-forest-light/40"></div>
       </div>
-      <div class="flex-1 h-px bg-gradient-to-r from-transparent via-blue-200 dark:via-slate-600 to-transparent"></div>
+      <div class="flex-1 h-px bg-gradient-to-r from-transparent via-terracotta/20 to-transparent"></div>
     </div>
   </div>
 </div>
