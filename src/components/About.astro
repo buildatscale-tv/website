@@ -2,100 +2,120 @@
 const topics = [
   {
     label: "AI Tools & APIs",
-    icon: `<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>`
+    icon: `<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>`,
+    color: "neon-cyan"
   },
   {
     label: "Web Development",
-    icon: `<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>`
+    icon: `<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>`,
+    color: "neon-purple"
   },
   {
     label: "DevOps & Infrastructure",
-    icon: `<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path></svg>`
+    icon: `<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path></svg>`,
+    color: "neon-pink"
   },
   {
     label: "Database Systems",
-    icon: `<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M3 5v14a9 3 0 0 0 18 0V5"></path><path d="M3 12a9 3 0 0 0 18 0"></path></svg>`
+    icon: `<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M3 5v14a9 3 0 0 0 18 0V5"></path><path d="M3 12a9 3 0 0 0 18 0"></path></svg>`,
+    color: "neon-green"
   }
 ];
 ---
 
-<section id="about" class="py-16 bg-blue-50 dark:bg-slate-800 transition-colors">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-      <div class="flex flex-col sm:flex-row gap-6 items-center sm:items-start">
-        <!-- Avatar -->
-        <div class="flex-shrink-0 w-[120px] h-[120px] rounded-full border-4 border-white dark:border-slate-700 shadow-lg overflow-hidden bg-[#1e3049]">
-          <img
-            src="/images/avatar-small.png"
-            alt="Ronnie - BuildAtScale"
-            class="w-full h-full object-cover scale-110 translate-x-[2px] translate-y-[8px]"
-          />
+<section id="about" class="relative py-20 px-4 sm:px-6 lg:px-8 section-transition">
+  <!-- Background glow -->
+  <div class="absolute inset-0 bg-gradient-radial from-neon-green/5 via-transparent to-transparent opacity-50"></div>
+
+  <div class="relative z-10 max-w-7xl mx-auto">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+      <!-- Left: Bio -->
+      <div class="reveal">
+        <!-- Section badge -->
+        <div class="inline-flex items-center gap-2 mb-6">
+          <span class="pill-badge" style="border-color: rgba(57, 255, 20, 0.3); color: #39ff14; background: rgba(57, 255, 20, 0.1);">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+            </svg>
+            About the Creator
+          </span>
         </div>
 
-        <!-- Text content -->
-        <div>
-          <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 dark:text-gray-100 mb-6 text-center sm:text-left">
-            About BuildAtScale
-          </h2>
-          <div class="space-y-4 text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
-            <p>
-              Lately I'm exploring how to stop writing every line of code myself and start directing
-              AI agents to handle development, research, and deployment.
-            </p>
-            <p>
-              Follow along if you're interested in building with AI tools, web development from front
-              to back, DevOps and infrastructure workflows, and the awkward transition from coding
-              to orchestrating AI systems.
-            </p>
-            <p>
-              Hi, my name is Ronnie. I've been building web and software systems for about two decades.
-              If there's one thing I've learned it's that the learning never stops. Join me in exploring
-              the next wave and beyond.
-            </p>
+        <div class="flex flex-col sm:flex-row gap-8 items-start">
+          <!-- Avatar with glow -->
+          <div class="relative flex-shrink-0">
+            <div class="absolute -inset-2 bg-gradient-to-r from-neon-cyan via-neon-purple to-neon-pink rounded-full blur-lg opacity-40 animate-pulse"></div>
+            <div class="relative w-[140px] h-[140px] rounded-full border-2 border-white/10 overflow-hidden bg-surface-lighter">
+              <img
+                src="/images/avatar-small.png"
+                alt="Ronnie - BuildAtScale"
+                class="w-full h-full object-cover scale-110 translate-x-[2px] translate-y-[8px]"
+              />
+            </div>
+          </div>
+
+          <!-- Text content -->
+          <div class="flex-1">
+            <h2 class="text-3xl sm:text-4xl font-bold text-white mb-6">
+              About <span class="gradient-text">BuildAtScale</span>
+            </h2>
+            <div class="space-y-4 text-gray-400 leading-relaxed">
+              <p>
+                Lately I'm exploring how to stop writing every line of code myself and start directing
+                AI agents to handle development, research, and deployment.
+              </p>
+              <p>
+                Follow along if you're interested in building with AI tools, web development from front
+                to back, DevOps and infrastructure workflows, and the awkward transition from coding
+                to orchestrating AI systems.
+              </p>
+              <p class="text-white font-medium">
+                Hi, my name is Ronnie. I've been building web and software systems for about two decades.
+                If there's one thing I've learned it's that the learning never stops.
+              </p>
+            </div>
           </div>
         </div>
       </div>
 
-      <div id="topics">
-        <h3 class="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-6">
-          What You'll Find Here
+      <!-- Right: Topics -->
+      <div id="topics" class="reveal" style="animation-delay: 0.2s">
+        <h3 class="text-2xl font-bold text-white mb-8">
+          What You'll <span class="text-neon-cyan">Find</span> Here
         </h3>
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          {topics.map((topic) => (
-            <div class="bg-white dark:bg-slate-700/50 backdrop-blur-sm border border-gray-200 dark:border-slate-600 rounded-lg p-4 hover:shadow-md dark:hover:shadow-slate-700/30 transition-shadow">
-              <div class="flex items-center space-x-3">
-                <div class="text-blue-600 dark:text-blue-400" set:html={topic.icon} />
-                <span class="font-medium text-gray-900 dark:text-gray-100">{topic.label}</span>
+        
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+          {topics.map((topic, index) => (
+            <div class="group glass-card rounded-xl p-5 card-hover cursor-default">
+              <div class="flex items-center gap-4">
+                <div class={`w-12 h-12 rounded-xl bg-${topic.color}/10 border border-${topic.color}/20 flex items-center justify-center text-${topic.color} group-hover:scale-110 transition-transform duration-300`}>
+                  <span set:html={topic.icon} />
+                </div>
+                <span class="font-semibold text-white group-hover:text-neon-cyan transition-colors">{topic.label}</span>
               </div>
             </div>
           ))}
         </div>
 
-        <div class="mt-8 p-6 bg-white dark:bg-slate-700/50 backdrop-blur-sm border border-blue-200 dark:border-slate-600 rounded-lg">
-          <h4 class="font-semibold text-gray-900 dark:text-gray-100 mb-2">
-            Learning by Doing
-          </h4>
-          <p class="text-gray-600 dark:text-gray-300">
-            Not being afraid to show the messy parts. Real experiments, real failures,
-            and real discoveries in the world of AI-assisted development.
-          </p>
+        <!-- Learning by doing callout -->
+        <div class="relative glass-card rounded-xl p-6 border border-neon-cyan/20 overflow-hidden">
+          <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-neon-cyan via-neon-purple to-neon-pink"></div>
+          <div class="flex items-start gap-4">
+            <div class="w-10 h-10 rounded-lg bg-neon-cyan/10 flex items-center justify-center flex-shrink-0">
+              <svg class="w-5 h-5 text-neon-cyan" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+              </svg>
+            </div>
+            <div>
+              <h4 class="font-semibold text-white mb-2">Learning by Doing</h4>
+              <p class="text-gray-400 text-sm leading-relaxed">
+                Not being afraid to show the messy parts. Real experiments, real failures,
+                and real discoveries in the world of AI-assisted development.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </section>
-
-<!-- Subtle divider after about -->
-<div class="bg-blue-50 dark:bg-slate-800">
-  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex items-center gap-4 py-8">
-      <div class="flex-1 h-px bg-gradient-to-r from-transparent via-blue-200 dark:via-slate-600 to-transparent"></div>
-      <div class="flex gap-1.5">
-        <div class="w-1.5 h-1.5 rounded-full bg-blue-300 dark:bg-slate-500"></div>
-        <div class="w-1.5 h-1.5 rounded-full bg-blue-400 dark:bg-slate-400"></div>
-        <div class="w-1.5 h-1.5 rounded-full bg-blue-300 dark:bg-slate-500"></div>
-      </div>
-      <div class="flex-1 h-px bg-gradient-to-r from-transparent via-blue-200 dark:via-slate-600 to-transparent"></div>
-    </div>
-  </div>
-</div>

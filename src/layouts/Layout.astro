@@ -1,5 +1,6 @@
 ---
 import ThemeScript from '../components/ThemeScript.astro';
+import '../styles/global.css';
 
 export interface Props {
   title: string;
@@ -10,7 +11,7 @@ const { title, description = "Learning in Public — AI • Web • Ops" } = Ast
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" class="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="description" content={description} />
@@ -20,7 +21,10 @@ const { title, description = "Learning in Public — AI • Web • Ops" } = Ast
     <title>{title}</title>
     <ThemeScript />
   </head>
-  <body class="min-h-screen bg-white dark:bg-slate-800 text-gray-900 dark:text-gray-100 transition-colors">
-    <slot />
+  <body class="min-h-screen bg-surface text-gray-100 noise-overlay">
+    <div class="fixed inset-0 bg-grid pointer-events-none z-0"></div>
+    <div class="relative z-10">
+      <slot />
+    </div>
   </body>
 </html>

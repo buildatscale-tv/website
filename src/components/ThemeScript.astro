@@ -1,9 +1,7 @@
 ---
-// This script runs before the page renders to prevent flash of unstyled content
 ---
 
 <script is:inline>
-  // This runs immediately, before the page renders
   (function() {
     function getStoredTheme() {
       if (typeof localStorage !== 'undefined') {
@@ -12,7 +10,7 @@
           return stored;
         }
       }
-      return 'system';
+      return 'dark';
     }
 
     function getEffectiveTheme(theme) {
