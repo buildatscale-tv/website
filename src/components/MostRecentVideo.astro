@@ -1,7 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
 import { isShort, formatDuration, formatViews, formatLikes, getTimeAgo } from '../utils/youtube';
-import WaveTransition from './WaveTransition.astro';
 
 // Get all videos and sort by date, excluding shorts
 const allVideos = await getCollection('videos');
@@ -30,20 +29,15 @@ const latestVideo = hasVideos ? {
 } : null;
 ---
 
-<WaveTransition
-  topColor="fill-white dark:fill-slate-800"
-  bottomColor="fill-gray-50 dark:fill-slate-700"
-/>
-
-<section id="latest" class="pt-10 pb-16 px-4 sm:px-6 lg:px-8 bg-gray-50 dark:bg-slate-700 transition-colors">
+<section id="latest" class="py-24 px-6 lg:px-8 bg-brutal-gray dark:bg-brutal-gray-dark">
   <div class="max-w-7xl mx-auto">
     {hasVideos && latestVideo ? (
-      <div class="max-w-4xl mx-auto">
-        <div class="text-center mb-6">
-          <span class="inline-block bg-green-100 dark:bg-green-700/30 text-green-700 dark:text-green-300 px-3 py-1 rounded-full text-sm font-medium mb-4">
+      <div class="max-w-5xl mx-auto">
+        <div class="mb-12">
+          <span class="inline-block bg-brutal-accent text-brutal-white px-4 py-2 text-xs font-bold uppercase tracking-widest mb-6">
             Latest Video
           </span>
-          <h2 class="text-2xl lg:text-3xl font-bold text-gray-900 dark:text-gray-100">
+          <h2 class="font-display text-4xl md:text-5xl font-bold tracking-tight">
             {latestVideo.title}
           </h2>
         </div>
@@ -53,48 +47,48 @@ const latestVideo = hasVideos ? {
           onclick={`openVideoModal('${latestVideo.videoId}', '${latestVideo.title.replace(/'/g, "\\'")}')`}
           class="relative group cursor-pointer block w-full"
         >
-          <div class="relative aspect-video bg-gray-200 dark:bg-gray-700 rounded-lg overflow-hidden shadow-2xl">
+          <div class="relative aspect-video bg-brutal-black overflow-hidden border-2 border-brutal-black dark:border-brutal-white">
             <img
               src={latestVideo.thumbnail}
               alt={latestVideo.title}
-              class="w-full h-full object-cover"
+              class="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity"
               loading="eager"
             />
-            <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 flex items-center justify-center transition-all duration-300">
-              <div class="w-20 h-20 bg-red-600 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transform group-hover:scale-110 transition-all duration-300">
-                <svg class="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+            <div class="absolute inset-0 flex items-center justify-center">
+              <div class="w-24 h-24 bg-brutal-accent flex items-center justify-center group-hover:scale-110 transition-transform">
+                <svg class="w-10 h-10 text-brutal-white ml-1" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M8 5v14l11-7z"/>
                 </svg>
               </div>
             </div>
-            <div class="absolute bottom-3 right-3 bg-black bg-opacity-80 text-white px-2 py-0.5 rounded">
+            <div class="absolute bottom-4 right-4 bg-brutal-black text-brutal-white px-3 py-1 text-sm font-bold">
               {latestVideo.duration}
             </div>
           </div>
 
-          <div class="flex items-center justify-center mt-6 text-gray-600 dark:text-gray-300 space-x-6 flex-nowrap">
-            <div class="flex items-center whitespace-nowrap">
-              <svg class="w-4 h-4 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div class="flex items-center mt-8 text-sm font-semibold uppercase tracking-widest gap-6 text-brutal-black/70 dark:text-brutal-white/70">
+            <div class="flex items-center gap-2">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
               </svg>
               {latestVideo.views}
             </div>
-            <span class="flex-shrink-0">•</span>
-            <div class="flex items-center whitespace-nowrap">
-              <svg class="w-4 h-4 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <span class="text-brutal-accent">&bull;</span>
+            <div class="flex items-center gap-2">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5"></path>
               </svg>
               {latestVideo.likes}
             </div>
-            <span class="flex-shrink-0">•</span>
-            <span class="whitespace-nowrap">{latestVideo.timeAgo}</span>
+            <span class="text-brutal-accent">&bull;</span>
+            <span>{latestVideo.timeAgo}</span>
           </div>
         </button>
       </div>
     ) : (
       <div class="max-w-4xl mx-auto text-center">
-        <p class="text-gray-600 dark:text-gray-300">Loading most recent video...</p>
+        <p class="text-lg font-semibold uppercase tracking-widest">Loading most recent video...</p>
       </div>
     )}
   </div>

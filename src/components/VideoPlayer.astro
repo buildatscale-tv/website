@@ -7,7 +7,6 @@ export interface Props {
 
 const { videoId, title = "YouTube Video", autoplay = false } = Astro.props;
 
-// YouTube embed parameters
 const embedParams = new URLSearchParams({
   autoplay: autoplay ? "1" : "0",
   modestbranding: "1",
@@ -15,7 +14,7 @@ const embedParams = new URLSearchParams({
 });
 ---
 
-<div class="relative w-full aspect-video bg-black rounded-lg overflow-hidden">
+<div class="relative w-full aspect-video bg-black border-2 border-brutal-black dark:border-brutal-white overflow-hidden">
   <iframe
     src={`https://www.youtube.com/embed/${videoId}?${embedParams.toString()}`}
     title={title}

@@ -9,51 +9,37 @@ const interests = [
 ];
 ---
 
-<!-- Subtle divider between forms -->
-<div class="bg-blue-50 dark:bg-slate-800">
-  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex items-center gap-4 py-8">
-      <div class="flex-1 h-px bg-gradient-to-r from-transparent via-blue-200 dark:via-slate-600 to-transparent"></div>
-      <div class="flex gap-1.5">
-        <div class="w-1.5 h-1.5 rounded-full bg-blue-300 dark:bg-slate-500"></div>
-        <div class="w-1.5 h-1.5 rounded-full bg-blue-400 dark:bg-slate-400"></div>
-        <div class="w-1.5 h-1.5 rounded-full bg-blue-300 dark:bg-slate-500"></div>
-      </div>
-      <div class="flex-1 h-px bg-gradient-to-r from-transparent via-blue-200 dark:via-slate-600 to-transparent"></div>
-    </div>
-  </div>
-</div>
-
-<section class="py-12 pb-24 bg-blue-50 dark:bg-slate-800 text-gray-900 dark:text-white">
-  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="text-center mb-12">
-      <h2 class="text-3xl lg:text-4xl font-bold mb-4">
+<section class="py-24 px-6 lg:px-8 border-t-2 border-brutal-black dark:border-brutal-white">
+  <div class="max-w-4xl mx-auto">
+    <div class="mb-16">
+      <p class="text-xs font-bold uppercase tracking-[0.2em] text-brutal-accent mb-6">Newsletter</p>
+      <h2 class="font-display text-5xl md:text-6xl font-bold tracking-tight mb-6">
         Stay Updated
       </h2>
-      <p class="text-lg text-gray-600 dark:text-gray-300">
+      <p class="text-lg max-w-xl text-brutal-black/70 dark:text-brutal-white/70">
         Get notified when I publish new content about AI orchestration, development workflows,
         and the latest experiments. No spam, just valuable insights.
       </p>
     </div>
 
-    <div class="bg-white dark:bg-slate-700/50 backdrop-blur-sm rounded-lg p-8 shadow-lg dark:shadow-slate-700/50 border border-gray-200 dark:border-slate-600">
-      <form id="newsletter-form" class="space-y-6">
+    <div class="border-2 border-brutal-black dark:border-brutal-white p-8 md:p-12 bg-brutal-white dark:bg-brutal-black">
+      <form id="newsletter-form" class="space-y-8">
         <div>
-          <label for="signup-email" class="block text-sm font-medium text-gray-700 dark:text-gray-400 mb-2">
+          <label for="signup-email" class="block text-xs font-bold uppercase tracking-widest mb-3">
             Email Address
           </label>
           <input
             type="email"
             id="signup-email"
             name="email"
-            class="w-full px-4 py-3 bg-white dark:bg-slate-600/80 border border-gray-300 dark:border-slate-500 rounded-lg text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            class="w-full px-4 py-3 border-2 border-brutal-black dark:border-brutal-white bg-transparent text-brutal-black dark:text-brutal-white focus:border-brutal-accent dark:focus:border-brutal-accent outline-none transition-colors placeholder:text-brutal-black/40 dark:placeholder:text-brutal-white/40"
             placeholder="your@email.com"
             required
           />
         </div>
 
         <div>
-          <label class="block text-sm font-medium text-gray-700 dark:text-gray-400 mb-3">
+          <label class="block text-xs font-bold uppercase tracking-widest mb-4">
             What interests you most? (Optional)
           </label>
           <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
@@ -61,7 +47,7 @@ const interests = [
               <button
                 type="button"
                 data-interest={interest}
-                class="interest-btn px-3 py-2 rounded-lg text-sm font-medium transition-colors bg-gray-100 dark:bg-slate-600 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-slate-500 border border-gray-300 dark:border-slate-500 break-words text-center min-h-[2.5rem] flex items-center justify-center"
+                class="interest-btn px-4 py-3 text-xs font-bold uppercase tracking-widest border-2 border-brutal-black dark:border-brutal-white text-brutal-black dark:text-brutal-white hover:bg-brutal-black hover:text-brutal-white dark:hover:bg-brutal-white dark:hover:text-brutal-black transition-colors break-words text-center min-h-[3rem] flex items-center justify-center"
               >
                 {interest}
               </button>
@@ -70,17 +56,17 @@ const interests = [
         </div>
 
         <div class="flex flex-col space-y-4">
-          <div class="flex items-center justify-between">
+          <div class="flex items-center justify-between flex-wrap gap-4">
             <button
               type="submit"
               id="newsletter-submit"
-              class="bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400 text-white px-8 py-3 rounded-lg font-medium transition-colors flex items-center space-x-2"
+              class="bg-brutal-black dark:bg-brutal-white text-brutal-white dark:text-brutal-black px-8 py-4 text-sm font-bold uppercase tracking-widest hover:bg-brutal-accent hover:text-brutal-white dark:hover:bg-brutal-accent dark:hover:text-brutal-white transition-colors flex items-center gap-3"
             >
               <span id="newsletter-submit-text">Subscribe</span>
-              <div class="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin hidden" id="newsletter-spinner"></div>
+              <div class="w-4 h-4 border-2 border-brutal-white dark:border-brutal-black border-t-transparent rounded-full animate-spin hidden" id="newsletter-spinner"></div>
             </button>
 
-            <div id="newsletter-success" class="text-green-600 dark:text-green-400 font-medium flex items-center space-x-2 hidden">
+            <div id="newsletter-success" class="text-brutal-accent font-bold flex items-center gap-2 hidden">
               <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                 <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
               </svg>
@@ -88,9 +74,9 @@ const interests = [
             </div>
           </div>
 
-          <div id="newsletter-error" class="text-red-600 dark:text-red-400 font-medium text-sm hidden"></div>
+          <div id="newsletter-error" class="text-brutal-accent font-bold text-sm hidden"></div>
 
-          <p class="text-xs text-gray-500 dark:text-gray-400">
+          <p class="text-xs text-brutal-black/50 dark:text-brutal-white/50 uppercase tracking-widest">
             No spam, ever. Unsubscribe at any time. I respect your privacy and will only send valuable content updates.
           </p>
         </div>
@@ -103,7 +89,6 @@ const interests = [
   const form = document.getElementById('newsletter-form');
   const submitBtn = document.getElementById('newsletter-submit');
   const submitText = document.getElementById('newsletter-submit-text');
-  const arrow = document.getElementById('newsletter-arrow');
   const spinner = document.getElementById('newsletter-spinner');
   const successMsg = document.getElementById('newsletter-success');
   const successText = document.getElementById('newsletter-success-text');
@@ -111,44 +96,36 @@ const interests = [
   const interestBtns = document.querySelectorAll('.interest-btn');
   const selectedInterests = new Set<string>();
 
-  // Handle interest selection
   interestBtns.forEach(btn => {
     btn.addEventListener('click', () => {
       const interest = btn.getAttribute('data-interest');
       if (interest) {
         if (selectedInterests.has(interest)) {
           selectedInterests.delete(interest);
-          btn.classList.remove('bg-blue-600', 'hover:bg-blue-700', 'text-white', 'border-blue-600');
-          btn.classList.add('bg-gray-100', 'dark:bg-slate-600', 'text-gray-700', 'dark:text-gray-300', 'hover:bg-gray-200', 'dark:hover:bg-slate-500', 'border-gray-300', 'dark:border-slate-500');
+          btn.classList.remove('bg-brutal-black', 'text-brutal-white', 'dark:bg-brutal-white', 'dark:text-brutal-black');
+          btn.classList.add('text-brutal-black', 'dark:text-brutal-white', 'hover:bg-brutal-black', 'hover:text-brutal-white', 'dark:hover:bg-brutal-white', 'dark:hover:text-brutal-black');
         } else {
           selectedInterests.add(interest);
-          btn.classList.remove('bg-gray-100', 'dark:bg-slate-600', 'text-gray-700', 'dark:text-gray-300', 'hover:bg-gray-200', 'dark:hover:bg-slate-500', 'border-gray-300', 'dark:border-slate-500');
-          btn.classList.add('bg-blue-600', 'hover:bg-blue-700', 'text-white', 'border-blue-600');
+          btn.classList.remove('text-brutal-black', 'dark:text-brutal-white', 'hover:bg-brutal-black', 'hover:text-brutal-white', 'dark:hover:bg-brutal-white', 'dark:hover:text-brutal-black');
+          btn.classList.add('bg-brutal-black', 'text-brutal-white', 'dark:bg-brutal-white', 'dark:text-brutal-black');
         }
       }
     });
   });
 
-  // Handle form submission
   form?.addEventListener('submit', async (e) => {
     e.preventDefault();
 
-    // Show loading state
     submitBtn?.setAttribute('disabled', 'true');
     submitText!.textContent = 'Subscribing...';
-    arrow?.classList.add('hidden');
     spinner?.classList.remove('hidden');
     successMsg?.classList.add('hidden');
     errorMsg?.classList.add('hidden');
 
     try {
-      // Prepare form data
       const formData = new FormData(e.target as HTMLFormElement);
-
-      // Add interests as JSON array
       formData.append('interests', JSON.stringify(Array.from(selectedInterests)));
 
-      // Submit to API endpoint
       const response = await fetch('/api/newsletter-signup', {
         method: 'POST',
         body: formData,
@@ -160,39 +137,31 @@ const interests = [
         throw new Error(result.error || 'Failed to subscribe');
       }
 
-      // Show success state
       submitBtn?.removeAttribute('disabled');
       submitText!.textContent = 'Subscribe';
-      arrow?.classList.remove('hidden');
       spinner?.classList.add('hidden');
       successMsg?.classList.remove('hidden');
 
-      // Update success message if it's a duplicate
       if (result.message) {
         successText!.textContent = result.message;
       } else {
         successText!.textContent = 'Successfully subscribed!';
       }
 
-      // Reset form
       (e.target as HTMLFormElement).reset();
 
-      // Reset interest buttons
       selectedInterests.clear();
       interestBtns.forEach(btn => {
-        btn.classList.remove('bg-blue-600', 'hover:bg-blue-700', 'text-white', 'border-blue-600');
-        btn.classList.add('bg-gray-100', 'dark:bg-slate-600', 'text-gray-700', 'dark:text-gray-300', 'hover:bg-gray-200', 'dark:hover:bg-slate-500', 'border-gray-300', 'dark:border-slate-500');
+        btn.classList.remove('bg-brutal-black', 'text-brutal-white', 'dark:bg-brutal-white', 'dark:text-brutal-black');
+        btn.classList.add('text-brutal-black', 'dark:text-brutal-white', 'hover:bg-brutal-black', 'hover:text-brutal-white', 'dark:hover:bg-brutal-white', 'dark:hover:text-brutal-black');
       });
 
-      // Hide success message after 3 seconds
       setTimeout(() => {
         successMsg?.classList.add('hidden');
       }, 3000);
     } catch (error) {
-      // Show error state
       submitBtn?.removeAttribute('disabled');
       submitText!.textContent = 'Subscribe';
-      arrow?.classList.remove('hidden');
       spinner?.classList.add('hidden');
 
       if (errorMsg) {
@@ -200,7 +169,6 @@ const interests = [
         errorMsg.classList.remove('hidden');
       }
 
-      // Hide error message after 5 seconds
       setTimeout(() => {
         errorMsg?.classList.add('hidden');
       }, 5000);

@@ -18,9 +18,12 @@ const { title, description = "Learning in Public — AI • Web • Ops" } = Ast
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
     <ThemeScript />
   </head>
-  <body class="min-h-screen bg-white dark:bg-slate-800 text-gray-900 dark:text-gray-100 transition-colors">
+  <body class="min-h-screen bg-brutal-white dark:bg-brutal-black text-brutal-black dark:text-brutal-white font-body antialiased">
     <slot />
   </body>
 </html>

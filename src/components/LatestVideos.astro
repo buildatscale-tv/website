@@ -1,6 +1,5 @@
 ---
 import VideoCard from './VideoCard.astro';
-import WaveTransition from './WaveTransition.astro';
 import { getCollection } from 'astro:content';
 import { isShort, formatDuration } from '../utils/youtube';
 
@@ -12,8 +11,8 @@ const allPlaylists = await getCollection('playlists');
 
 // Create playlist filter categories (with "All" as first option)
 const playlistItems = allPlaylists
-  .filter(playlist => playlist.data.itemCount > 0) // Only show playlists with videos
-  .sort((a, b) => b.data.itemCount - a.data.itemCount) // Sort by video count
+  .filter(playlist => playlist.data.itemCount > 0)
+  .sort((a, b) => b.data.itemCount - a.data.itemCount)
   .map(playlist => ({
     id: playlist.id,
     label: playlist.data.title,
@@ -55,7 +54,7 @@ const initialVideos = sortedVideos.slice(0, 6);
 const hasVideos = initialVideos.length > 0;
 const totalVideos = sortedVideos.length;
 
-// Serialize video data for client-side use (include title for filtering)
+// Serialize video data for client-side use
 const videosData = sortedVideos.map(video => ({
   id: video.id,
   title: video.data.title,
@@ -67,28 +66,28 @@ const videosData = sortedVideos.map(video => ({
 }));
 ---
 
-<section id="videos" class="py-16 bg-gray-50 dark:bg-slate-700 transition-colors">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="text-center mb-12">
-      <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 dark:text-gray-100 mb-4">
+<section id="videos" class="py-24 px-6 lg:px-8 bg-brutal-white dark:bg-brutal-black">
+  <div class="max-w-7xl mx-auto">
+    <div class="mb-16">
+      <h2 class="font-display text-5xl md:text-6xl font-bold tracking-tight mb-6">
         More Videos
       </h2>
-      <p class="text-lg text-gray-600 dark:text-gray-300">
+      <p class="text-lg max-w-xl text-brutal-black/70 dark:text-brutal-white/70">
         Explore more content on AI orchestration and development workflows
       </p>
     </div>
 
     <!-- Playlist Filter Buttons -->
-    <div class="flex flex-wrap justify-center gap-2 mb-8" id="filter-buttons" data-playlists={JSON.stringify(playlistFilters)} data-all-playlist-video-ids={JSON.stringify([...allPlaylistVideoIds])}>
+    <div class="flex flex-wrap gap-3 mb-12" id="filter-buttons" data-playlists={JSON.stringify(playlistFilters)} data-all-playlist-video-ids={JSON.stringify([...allPlaylistVideoIds])}>
       {playlistFilters.map((playlist, index) => (
         <button
           type="button"
           data-filter={playlist.id}
           data-video-ids={JSON.stringify(playlist.videoIds)}
-          class={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
+          class={`px-5 py-3 text-xs font-bold uppercase tracking-widest border-2 transition-colors ${
             index === 0
-              ? 'bg-blue-600 text-white shadow-md'
-              : 'bg-white dark:bg-slate-600 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-slate-500 border border-gray-200 dark:border-slate-500'
+              ? 'bg-brutal-black dark:bg-brutal-white text-brutal-white dark:text-brutal-black border-brutal-black dark:border-brutal-white'
+              : 'bg-transparent text-brutal-black dark:text-brutal-white border-brutal-black dark:border-brutal-white hover:bg-brutal-black hover:text-brutal-white dark:hover:bg-brutal-white dark:hover:text-brutal-black'
           }`}
         >
           {playlist.label}
@@ -97,8 +96,8 @@ const videosData = sortedVideos.map(video => ({
     </div>
 
     <!-- No Results Message (hidden by default) -->
-    <div id="no-results" class="hidden text-center py-12">
-      <p class="text-gray-600 dark:text-gray-400">No videos found for this filter. Try a different category.</p>
+    <div id="no-results" class="hidden py-16">
+      <p class="text-lg font-semibold uppercase tracking-widest text-center">No videos found for this filter. Try a different category.</p>
     </div>
 
     {hasVideos ? (
@@ -106,8 +105,8 @@ const videosData = sortedVideos.map(video => ({
         {initialVideos.map((video) => (
           <div class="relative">
             {video.id === mostPopularVideo?.id && (
-              <div class="absolute top-3 right-3 z-20 bg-gradient-to-r from-sky-400 to-blue-500 text-white text-xs font-bold px-3 py-1.5 rounded-md shadow-lg transform rotate-3">
-                ⭐ Most Viewed
+              <div class="absolute top-4 right-4 z-20 bg-brutal-accent text-brutal-white text-xs font-bold px-3 py-2 uppercase tracking-widest">
+                Most Viewed
               </div>
             )}
             <VideoCard
@@ -123,18 +122,18 @@ const videosData = sortedVideos.map(video => ({
         ))}
       </div>
     ) : (
-      <div class="text-center py-12">
-        <p class="text-gray-600 dark:text-gray-400">Loading videos...</p>
+      <div class="py-16">
+        <p class="text-lg font-semibold uppercase tracking-widest text-center">Loading videos...</p>
       </div>
     )}
 
-    <div class="text-center mt-12">
+    <div class="mt-16">
       <button
         id="load-more-btn"
         data-videos={JSON.stringify(videosData)}
         data-most-popular={mostPopularVideo?.id}
         data-total={totalVideos}
-        class="inline-flex items-center space-x-2 bg-gray-100 hover:bg-gray-200 dark:bg-slate-600 dark:hover:bg-slate-500 text-gray-900 dark:text-gray-100 px-6 py-3 rounded-lg font-medium transition-colors"
+        class="w-full md:w-auto inline-flex items-center gap-3 border-2 border-brutal-black dark:border-brutal-white px-8 py-5 text-sm font-bold uppercase tracking-widest hover:bg-brutal-black hover:text-brutal-white dark:hover:bg-brutal-white dark:hover:text-brutal-black transition-colors"
       >
         <span id="btn-text">View More Videos</span>
         <svg id="btn-icon-more" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -148,13 +147,7 @@ const videosData = sortedVideos.map(video => ({
   </div>
 </section>
 
-<WaveTransition
-  topColor="fill-gray-50 dark:fill-slate-700"
-  bottomColor="fill-blue-50 dark:fill-slate-800"
-/>
-
 <script>
-  // Get data from button attributes
   const loadMoreBtn = document.getElementById('load-more-btn');
   const filterButtonsContainer = document.getElementById('filter-buttons');
 
@@ -176,22 +169,18 @@ const videosData = sortedVideos.map(video => ({
     const btnIconExternal = document.getElementById('btn-icon-external');
     const noResultsMessage = document.getElementById('no-results');
 
-    // Helper function to format duration from ISO 8601
     const formatDuration = (duration) => {
       const match = duration.match(/PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?/);
       if (!match) return '';
-
       const hours = parseInt(match[1] || '0');
       const minutes = parseInt(match[2] || '0');
       const seconds = parseInt(match[3] || '0');
-
       if (hours > 0) {
         return `${hours}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
       }
       return `${minutes}:${seconds.toString().padStart(2, '0')}`;
     };
 
-    // Helper function to format view count
     const formatViews = (count) => {
       if (!count) return "0 views";
       const num = parseInt(count);
@@ -200,7 +189,6 @@ const videosData = sortedVideos.map(video => ({
       return `${(num / 1000000).toFixed(1)}M views`;
     };
 
-    // Helper function to format like count
     const formatLikes = (count) => {
       if (!count) return "0 likes";
       const num = parseInt(count);
@@ -210,13 +198,11 @@ const videosData = sortedVideos.map(video => ({
       return `${(num / 1000000).toFixed(1)}M${suffix}`;
     };
 
-    // Helper function to format time ago
     const getTimeAgo = (date) => {
       const now = new Date();
       const published = new Date(date);
       const diffMs = now.getTime() - published.getTime();
       const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
-
       if (diffDays === 0) return "Today";
       if (diffDays === 1) return "Yesterday";
       if (diffDays < 7) return `${diffDays} days ago`;
@@ -232,22 +218,16 @@ const videosData = sortedVideos.map(video => ({
       return years === 1 ? "1 year ago" : `${years} years ago`;
     };
 
-    // Function to check if video matches filter (by playlist membership)
     const videoMatchesFilter = (video, filterId) => {
       if (filterId === 'all') return true;
-
-      // "Other" shows videos not in any playlist
       if (filterId === 'other') {
         return !allPlaylistVideoIds.has(video.id);
       }
-
       const playlist = playlists.find(p => p.id === filterId);
       if (!playlist || !playlist.videoIds || playlist.videoIds.length === 0) return false;
-
       return playlist.videoIds.includes(video.id);
     };
 
-    // Function to create video card HTML
     const createVideoCard = (video) => {
       const duration = video.duration ? formatDuration(video.duration) : null;
       const views = formatViews(video.viewCount);
@@ -259,58 +239,54 @@ const videosData = sortedVideos.map(video => ({
       return `
         <div class="relative video-card" data-video-id="${video.id}">
           ${isMostPopular ? `
-          <div class="absolute top-3 right-3 z-20 bg-gradient-to-r from-sky-400 to-blue-500 text-white text-xs font-bold px-3 py-1.5 rounded-md shadow-lg transform rotate-3">
-            ⭐ Most Viewed
+          <div class="absolute top-4 right-4 z-20 bg-brutal-accent text-brutal-white text-xs font-bold px-3 py-2 uppercase tracking-widest">
+            Most Viewed
           </div>
           ` : ''}
           <button
             type="button"
             onclick="openVideoModal('${video.id}', '${escapedTitle}')"
-            class="bg-white dark:bg-slate-600/50 backdrop-blur-sm border border-gray-200 dark:border-slate-500 rounded-lg overflow-hidden hover:shadow-lg dark:hover:shadow-slate-700/30 transition-all duration-300 group cursor-pointer block w-full text-left"
+            class="group cursor-pointer block w-full text-left border-2 border-brutal-black dark:border-brutal-white hover:border-brutal-accent dark:hover:border-brutal-accent transition-colors"
           >
-            <div class="relative aspect-video bg-gray-100 dark:bg-gray-800">
+            <div class="relative aspect-video bg-brutal-black overflow-hidden">
               <img
                 src="${video.thumbnail}"
                 alt="${video.title}"
-                class="w-full h-full object-cover"
+                class="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity"
                 loading="lazy"
               />
-              <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 flex items-center justify-center transition-all duration-300">
-                <div class="w-12 h-12 bg-red-600 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transform group-hover:scale-110 transition-all duration-300">
-                  <svg class="w-5 h-5 text-white ml-0.5" fill="currentColor" viewBox="0 0 24 24">
+              <div class="absolute inset-0 flex items-center justify-center">
+                <div class="w-12 h-12 bg-brutal-accent flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                  <svg class="w-5 h-5 text-brutal-white ml-0.5" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M8 5v14l11-7z"/>
                   </svg>
                 </div>
               </div>
               ${duration ? `
-              <div class="absolute bottom-2 right-2 bg-black bg-opacity-80 text-white text-xs px-2 py-1 rounded flex items-center">
-                <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <circle cx="12" cy="12" r="10"></circle>
-                  <polyline points="12,6 12,12 16,14"></polyline>
-                </svg>
+              <div class="absolute bottom-2 right-2 bg-brutal-black text-brutal-white text-xs font-bold px-2 py-1">
                 ${duration}
               </div>` : ''}
             </div>
-            <div class="p-4">
-              <h3 class="font-semibold text-gray-900 dark:text-gray-100 mb-2 line-clamp-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors text-sm h-10">
+            <div class="p-5 bg-brutal-white dark:bg-brutal-black">
+              <h3 class="font-bold text-brutal-black dark:text-brutal-white mb-3 line-clamp-2 group-hover:text-brutal-accent transition-colors text-sm uppercase tracking-wide">
                 ${video.title}
               </h3>
-              <div class="flex items-center text-xs text-gray-500 dark:text-gray-400 space-x-2">
-                <div class="flex items-center">
-                  <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div class="flex items-center text-xs font-semibold uppercase tracking-widest text-brutal-black/60 dark:text-brutal-white/60 gap-3">
+                <div class="flex items-center gap-1">
+                  <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
                   </svg>
                   ${views}
                 </div>
-                <span>•</span>
-                <div class="flex items-center">
-                  <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <span class="text-brutal-accent">&bull;</span>
+                <div class="flex items-center gap-1">
+                  <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5"></path>
                   </svg>
                   ${likes}
                 </div>
-                <span>•</span>
+                <span class="text-brutal-accent">&bull;</span>
                 <span>${timeAgo}</span>
               </div>
             </div>
@@ -319,18 +295,11 @@ const videosData = sortedVideos.map(video => ({
       `;
     };
 
-    // Function to render videos based on current filter
     const renderFilteredVideos = () => {
-      // Filter videos based on current filter
       filteredVideos = allVideos.filter(video => videoMatchesFilter(video, currentFilter));
-
-      // Clear the grid
       videoGrid.innerHTML = '';
-
-      // Reset index
       currentIndex = 0;
 
-      // Show no results message if needed
       if (filteredVideos.length === 0) {
         noResultsMessage?.classList.remove('hidden');
         videoGrid.classList.add('hidden');
@@ -342,7 +311,6 @@ const videosData = sortedVideos.map(video => ({
       videoGrid.classList.remove('hidden');
       loadMoreBtn.classList.remove('hidden');
 
-      // Show first batch of filtered videos
       const initialBatch = filteredVideos.slice(0, videosPerPage);
       initialBatch.forEach(video => {
         const videoCard = createVideoCard(video);
@@ -353,7 +321,6 @@ const videosData = sortedVideos.map(video => ({
       updateLoadMoreButton();
     };
 
-    // Function to update load more button state
     const updateLoadMoreButton = () => {
       if (currentIndex >= filteredVideos.length) {
         btnText.textContent = 'View All Videos';
@@ -370,44 +337,37 @@ const videosData = sortedVideos.map(video => ({
       }
     };
 
-    // Load more videos function
     const loadMoreVideos = () => {
       const nextVideos = filteredVideos.slice(currentIndex, currentIndex + videosPerPage);
-
       nextVideos.forEach(video => {
         const videoCard = createVideoCard(video);
         videoGrid.insertAdjacentHTML('beforeend', videoCard);
       });
-
       currentIndex += videosPerPage;
       updateLoadMoreButton();
     };
 
-    // Set up filter button click handlers
     const filterButtons = filterButtonsContainer?.querySelectorAll('button[data-filter]');
     filterButtons?.forEach(button => {
       button.addEventListener('click', () => {
         const filterId = button.getAttribute('data-filter');
         if (filterId === currentFilter) return;
 
-        // Update active state
         filterButtons.forEach(btn => {
-          btn.classList.remove('bg-blue-600', 'text-white', 'shadow-md');
-          btn.classList.add('bg-white', 'dark:bg-slate-600', 'text-gray-700', 'dark:text-gray-200', 'hover:bg-gray-100', 'dark:hover:bg-slate-500', 'border', 'border-gray-200', 'dark:border-slate-500');
+          btn.classList.remove('bg-brutal-black', 'dark:bg-brutal-white', 'text-brutal-white', 'dark:text-brutal-black', 'border-brutal-black', 'dark:border-brutal-white');
+          btn.classList.add('bg-transparent', 'text-brutal-black', 'dark:text-brutal-white', 'border-brutal-black', 'dark:border-brutal-white', 'hover:bg-brutal-black', 'hover:text-brutal-white', 'dark:hover:bg-brutal-white', 'dark:hover:text-brutal-black');
         });
-        button.classList.remove('bg-white', 'dark:bg-slate-600', 'text-gray-700', 'dark:text-gray-200', 'hover:bg-gray-100', 'dark:hover:bg-slate-500', 'border', 'border-gray-200', 'dark:border-slate-500');
-        button.classList.add('bg-blue-600', 'text-white', 'shadow-md');
+        button.classList.remove('bg-transparent', 'text-brutal-black', 'dark:text-brutal-white', 'border-brutal-black', 'dark:border-brutal-white', 'hover:bg-brutal-black', 'hover:text-brutal-white', 'dark:hover:bg-brutal-white', 'dark:hover:text-brutal-black');
+        button.classList.add('bg-brutal-black', 'dark:bg-brutal-white', 'text-brutal-white', 'dark:text-brutal-black', 'border-brutal-black', 'dark:border-brutal-white');
 
         currentFilter = filterId;
         renderFilteredVideos();
       });
     });
 
-    // Initial button click handler
     if (currentIndex < totalVideos) {
       loadMoreBtn.onclick = loadMoreVideos;
     } else {
-      // All videos already shown, make it external link
       btnText.textContent = 'View All Videos';
       btnIconMore.classList.add('hidden');
       btnIconExternal.classList.remove('hidden');
