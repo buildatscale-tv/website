@@ -31,11 +31,15 @@ const latestVideo = hasVideos ? {
 ---
 
 <WaveTransition
-  topColor="fill-white dark:fill-slate-800"
-  bottomColor="fill-gray-50 dark:fill-slate-700"
+  topColor="fill-white dark:fill-slate-900"
+  bottomColor="fill-gray-50 dark:fill-slate-800"
 />
 
-<section id="latest" class="pt-10 pb-16 px-4 sm:px-6 lg:px-8 bg-gray-50 dark:bg-slate-700 transition-colors">
+<section id="latest" class="relative pt-10 pb-16 px-4 sm:px-6 lg:px-8 bg-gray-50 dark:bg-slate-800 transition-colors overflow-hidden">
+  <!-- Glow behind video -->
+  <div class="absolute inset-0 -z-10 pointer-events-none" aria-hidden="true">
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-gradient-radial from-blue-500/8 dark:from-blue-500/12 to-transparent"></div>
+  </div>
   <div class="max-w-7xl mx-auto">
     {hasVideos && latestVideo ? (
       <div class="max-w-4xl mx-auto">
@@ -53,7 +57,7 @@ const latestVideo = hasVideos ? {
           onclick={`openVideoModal('${latestVideo.videoId}', '${latestVideo.title.replace(/'/g, "\\'")}')`}
           class="relative group cursor-pointer block w-full"
         >
-          <div class="relative aspect-video bg-gray-200 dark:bg-gray-700 rounded-lg overflow-hidden shadow-2xl">
+          <div class="relative aspect-video bg-gray-200 dark:bg-gray-800 rounded-lg overflow-hidden shadow-2xl dark:shadow-slate-950/50 ring-1 ring-white/10">
             <img
               src={latestVideo.thumbnail}
               alt={latestVideo.title}
@@ -72,7 +76,7 @@ const latestVideo = hasVideos ? {
             </div>
           </div>
 
-          <div class="flex items-center justify-center mt-6 text-gray-600 dark:text-gray-300 space-x-6 flex-nowrap">
+          <div class="flex items-center justify-center mt-6 text-gray-600 dark:text-gray-300 space-x-6 flex-nowrap bg-white/40 dark:bg-white/5 backdrop-blur-glass rounded-full px-6 py-2 mx-auto w-fit border border-gray-200/50 dark:border-white/10">
             <div class="flex items-center whitespace-nowrap">
               <svg class="w-4 h-4 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>

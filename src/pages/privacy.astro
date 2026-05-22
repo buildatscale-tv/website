@@ -9,11 +9,15 @@ import Footer from '../components/Footer.astro';
   description="Privacy policy for BuildAtScale (buildatscale.tv), operated by Build Test Run LLC."
 >
   <Header />
-  <main class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+  <main class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16 relative">
+    <div class="absolute inset-0 -z-10 pointer-events-none overflow-hidden" aria-hidden="true">
+      <div class="absolute -top-20 -left-20 w-[300px] h-[300px] rounded-full bg-blue-500/5 dark:bg-blue-500/10 blur-[100px]"></div>
+      <div class="absolute -bottom-20 -right-20 w-[300px] h-[300px] rounded-full bg-indigo-500/5 dark:bg-indigo-500/8 blur-[100px]"></div>
+    </div>
     <h1 class="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-2">Privacy Policy</h1>
     <p class="text-sm text-gray-500 dark:text-gray-400 mb-10">BuildAtScale / Build Test Run LLC — Last updated: February 2026</p>
 
-    <div class="prose prose-gray dark:prose-invert max-w-none space-y-8">
+    <div class="prose prose-gray dark:prose-invert max-w-none space-y-8 [&_section]:bg-white/70 [&_section]:dark:bg-white/5 [&_section]:backdrop-blur-glass [&_section]:rounded-lg [&_section]:p-6 [&_section]:border [&_section]:border-gray-200/50 [&_section]:dark:border-white/10 [&_section]:shadow-glass [&_section]:dark:ring-1 [&_section]:dark:ring-white/5">
 
       <section>
         <h2 class="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-3">Overview</h2>
