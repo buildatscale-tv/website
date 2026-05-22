@@ -9,51 +9,43 @@ const interests = [
 ];
 ---
 
-<!-- Subtle divider between forms -->
-<div class="bg-blue-50 dark:bg-slate-800">
-  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex items-center gap-4 py-8">
-      <div class="flex-1 h-px bg-gradient-to-r from-transparent via-blue-200 dark:via-slate-600 to-transparent"></div>
-      <div class="flex gap-1.5">
-        <div class="w-1.5 h-1.5 rounded-full bg-blue-300 dark:bg-slate-500"></div>
-        <div class="w-1.5 h-1.5 rounded-full bg-blue-400 dark:bg-slate-400"></div>
-        <div class="w-1.5 h-1.5 rounded-full bg-blue-300 dark:bg-slate-500"></div>
-      </div>
-      <div class="flex-1 h-px bg-gradient-to-r from-transparent via-blue-200 dark:via-slate-600 to-transparent"></div>
-    </div>
-  </div>
-</div>
-
-<section class="py-12 pb-24 bg-blue-50 dark:bg-slate-800 text-gray-900 dark:text-white">
-  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="text-center mb-12">
-      <h2 class="text-3xl lg:text-4xl font-bold mb-4">
-        Stay Updated
+<section class="relative py-24 overflow-hidden">
+  <!-- Background -->
+  <div class="absolute inset-0 bg-surface-1"></div>
+  <div class="absolute inset-0 grid-pattern opacity-20"></div>
+  
+  <!-- Decorative gradient -->
+  <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-gradient-to-r from-accent-blue/5 via-accent-purple/5 to-accent-cyan/5 rounded-full blur-3xl"></div>
+  
+  <div class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16 reveal-on-scroll">
+      <h2 class="text-4xl lg:text-5xl font-bold text-white mb-4">
+        Stay <span class="gradient-text">Updated</span>
       </h2>
-      <p class="text-lg text-gray-600 dark:text-gray-300">
+      <p class="text-lg text-gray-400 max-w-2xl mx-auto">
         Get notified when I publish new content about AI orchestration, development workflows,
         and the latest experiments. No spam, just valuable insights.
       </p>
     </div>
 
-    <div class="bg-white dark:bg-slate-700/50 backdrop-blur-sm rounded-lg p-8 shadow-lg dark:shadow-slate-700/50 border border-gray-200 dark:border-slate-600">
+    <div class="reveal-on-scroll bg-surface-2 rounded-2xl p-8 border border-white/5">
       <form id="newsletter-form" class="space-y-6">
         <div>
-          <label for="signup-email" class="block text-sm font-medium text-gray-700 dark:text-gray-400 mb-2">
+          <label for="signup-email" class="block text-sm font-medium text-gray-400 mb-2">
             Email Address
           </label>
           <input
             type="email"
             id="signup-email"
             name="email"
-            class="w-full px-4 py-3 bg-white dark:bg-slate-600/80 border border-gray-300 dark:border-slate-500 rounded-lg text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            class="w-full px-4 py-3 bg-surface-3 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:ring-2 focus:ring-accent-blue/50 focus:border-accent-blue/50 transition-all"
             placeholder="your@email.com"
             required
           />
         </div>
 
         <div>
-          <label class="block text-sm font-medium text-gray-700 dark:text-gray-400 mb-3">
+          <label class="block text-sm font-medium text-gray-400 mb-3">
             What interests you most? (Optional)
           </label>
           <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
@@ -61,7 +53,7 @@ const interests = [
               <button
                 type="button"
                 data-interest={interest}
-                class="interest-btn px-3 py-2 rounded-lg text-sm font-medium transition-colors bg-gray-100 dark:bg-slate-600 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-slate-500 border border-gray-300 dark:border-slate-500 break-words text-center min-h-[2.5rem] flex items-center justify-center"
+                class="interest-btn px-4 py-2.5 rounded-xl text-sm font-medium transition-all duration-300 bg-surface-3 text-gray-400 hover:text-white hover:bg-white/10 border border-white/5 hover:border-white/10"
               >
                 {interest}
               </button>
@@ -74,13 +66,13 @@ const interests = [
             <button
               type="submit"
               id="newsletter-submit"
-              class="bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400 text-white px-8 py-3 rounded-lg font-medium transition-colors flex items-center space-x-2"
+              class="px-8 py-3 bg-gradient-to-r from-accent-blue to-accent-cyan text-white font-medium rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-accent-blue/25 flex items-center space-x-2"
             >
               <span id="newsletter-submit-text">Subscribe</span>
               <div class="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin hidden" id="newsletter-spinner"></div>
             </button>
 
-            <div id="newsletter-success" class="text-green-600 dark:text-green-400 font-medium flex items-center space-x-2 hidden">
+            <div id="newsletter-success" class="text-green-400 font-medium flex items-center space-x-2 hidden">
               <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                 <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
               </svg>
@@ -88,9 +80,9 @@ const interests = [
             </div>
           </div>
 
-          <div id="newsletter-error" class="text-red-600 dark:text-red-400 font-medium text-sm hidden"></div>
+          <div id="newsletter-error" class="text-red-400 font-medium text-sm hidden"></div>
 
-          <p class="text-xs text-gray-500 dark:text-gray-400">
+          <p class="text-xs text-gray-500">
             No spam, ever. Unsubscribe at any time. I respect your privacy and will only send valuable content updates.
           </p>
         </div>
@@ -103,7 +95,6 @@ const interests = [
   const form = document.getElementById('newsletter-form');
   const submitBtn = document.getElementById('newsletter-submit');
   const submitText = document.getElementById('newsletter-submit-text');
-  const arrow = document.getElementById('newsletter-arrow');
   const spinner = document.getElementById('newsletter-spinner');
   const successMsg = document.getElementById('newsletter-success');
   const successText = document.getElementById('newsletter-success-text');
@@ -118,12 +109,12 @@ const interests = [
       if (interest) {
         if (selectedInterests.has(interest)) {
           selectedInterests.delete(interest);
-          btn.classList.remove('bg-blue-600', 'hover:bg-blue-700', 'text-white', 'border-blue-600');
-          btn.classList.add('bg-gray-100', 'dark:bg-slate-600', 'text-gray-700', 'dark:text-gray-300', 'hover:bg-gray-200', 'dark:hover:bg-slate-500', 'border-gray-300', 'dark:border-slate-500');
+          btn.classList.remove('bg-accent-blue', 'text-white', 'border-accent-blue');
+          btn.classList.add('bg-surface-3', 'text-gray-400', 'border-white/5');
         } else {
           selectedInterests.add(interest);
-          btn.classList.remove('bg-gray-100', 'dark:bg-slate-600', 'text-gray-700', 'dark:text-gray-300', 'hover:bg-gray-200', 'dark:hover:bg-slate-500', 'border-gray-300', 'dark:border-slate-500');
-          btn.classList.add('bg-blue-600', 'hover:bg-blue-700', 'text-white', 'border-blue-600');
+          btn.classList.remove('bg-surface-3', 'text-gray-400', 'border-white/5');
+          btn.classList.add('bg-accent-blue', 'text-white', 'border-accent-blue');
         }
       }
     });
@@ -136,7 +127,6 @@ const interests = [
     // Show loading state
     submitBtn?.setAttribute('disabled', 'true');
     submitText!.textContent = 'Subscribing...';
-    arrow?.classList.add('hidden');
     spinner?.classList.remove('hidden');
     successMsg?.classList.add('hidden');
     errorMsg?.classList.add('hidden');
@@ -163,7 +153,6 @@ const interests = [
       // Show success state
       submitBtn?.removeAttribute('disabled');
       submitText!.textContent = 'Subscribe';
-      arrow?.classList.remove('hidden');
       spinner?.classList.add('hidden');
       successMsg?.classList.remove('hidden');
 
@@ -180,8 +169,8 @@ const interests = [
       // Reset interest buttons
       selectedInterests.clear();
       interestBtns.forEach(btn => {
-        btn.classList.remove('bg-blue-600', 'hover:bg-blue-700', 'text-white', 'border-blue-600');
-        btn.classList.add('bg-gray-100', 'dark:bg-slate-600', 'text-gray-700', 'dark:text-gray-300', 'hover:bg-gray-200', 'dark:hover:bg-slate-500', 'border-gray-300', 'dark:border-slate-500');
+        btn.classList.remove('bg-accent-blue', 'text-white', 'border-accent-blue');
+        btn.classList.add('bg-surface-3', 'text-gray-400', 'border-white/5');
       });
 
       // Hide success message after 3 seconds
@@ -192,7 +181,6 @@ const interests = [
       // Show error state
       submitBtn?.removeAttribute('disabled');
       submitText!.textContent = 'Subscribe';
-      arrow?.classList.remove('hidden');
       spinner?.classList.add('hidden');
 
       if (errorMsg) {

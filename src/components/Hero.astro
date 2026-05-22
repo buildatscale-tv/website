@@ -1,38 +1,72 @@
 ---
 ---
 
-<section class="bg-gradient-to-b from-blue-50 to-white dark:from-slate-700 dark:to-slate-800 pt-20 pb-10 transition-colors">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="text-center mb-16">
-      <h1 class="text-5xl lg:text-6xl font-bold text-gray-900 dark:text-gray-100 mb-6">
-        Learning in Public
-      </h1>
-      <p class="text-xl lg:text-2xl text-gray-600 dark:text-gray-300 mb-4 max-w-4xl mx-auto">
-        AI • Web • Ops
-      </p>
-      <p class="text-lg text-gray-600 dark:text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed">
-        Sharing what I'm building, breaking, and learning. From LLM experiments and web dev deep dives
-        to DevOps automation and shipping fast.
-      </p>
-      <div class="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-4">
-        <a
-          href="https://youtube.com/@buildatscale"
-          target="_blank"
-          rel="noopener"
-          class="bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 text-white px-8 py-3 rounded-lg font-medium transition-colors flex items-center space-x-2"
-        >
+<section class="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
+  <!-- Animated gradient background -->
+  <div class="absolute inset-0 gradient-animate"></div>
+  
+  <!-- Grid pattern overlay -->
+  <div class="absolute inset-0 grid-pattern opacity-50"></div>
+  
+  <!-- Floating orbs -->
+  <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-accent-blue/10 rounded-full blur-3xl animate-float"></div>
+  <div class="absolute bottom-1/4 right-1/4 w-80 h-80 bg-accent-purple/10 rounded-full blur-3xl animate-float" style="animation-delay: -3s;"></div>
+  <div class="absolute top-1/2 left-1/2 w-64 h-64 bg-accent-cyan/10 rounded-full blur-3xl animate-float" style="animation-delay: -1.5s;"></div>
+  
+  <!-- Content -->
+  <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <!-- Badge -->
+    <div class="inline-flex items-center px-4 py-2 rounded-full glass-light text-sm text-gray-300 mb-8 animate-fade-in">
+      <span class="w-2 h-2 bg-green-400 rounded-full mr-2 animate-pulse"></span>
+      YouTube Channel &middot; Developer Tooling
+    </div>
+    
+    <!-- Main heading -->
+    <h1 class="text-5xl sm:text-6xl lg:text-8xl font-bold tracking-tight mb-8 animate-slide-up">
+      <span class="text-white">Build at</span>
+      <br />
+      <span class="gradient-text">Scale</span>
+    </h1>
+    
+    <!-- Subtitle -->
+    <p class="text-xl sm:text-2xl text-gray-400 max-w-3xl mx-auto mb-4 animate-slide-up" style="animation-delay: 0.1s;">
+      AI &middot; Web &middot; Ops
+    </p>
+    
+    <p class="text-lg text-gray-500 max-w-2xl mx-auto mb-12 animate-slide-up" style="animation-delay: 0.2s;">
+      Exploring parallel coding agents, AI workflows, and modern developer tools. 
+      Real experiments, real code, real talk.
+    </p>
+    
+    <!-- CTA buttons -->
+    <div class="flex flex-col sm:flex-row items-center justify-center gap-4 animate-slide-up" style="animation-delay: 0.3s;">
+      <a
+        href="https://youtube.com/@buildatscale"
+        target="_blank"
+        rel="noopener"
+        class="group relative px-8 py-4 bg-gradient-to-r from-accent-blue to-accent-cyan text-white font-semibold rounded-xl overflow-hidden transition-all duration-300 hover:shadow-xl hover:shadow-accent-blue/25 hover:scale-105"
+      >
+        <span class="relative z-10 flex items-center space-x-3">
           <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
             <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
           </svg>
           <span>Watch on YouTube</span>
-        </a>
-        <a
-          href="#latest"
-          class="border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white px-8 py-3 rounded-lg font-medium transition-colors"
-        >
-          Browse Videos
-        </a>
-      </div>
+        </span>
+      </a>
+      
+      <a
+        href="#latest"
+        class="px-8 py-4 text-gray-300 hover:text-white font-semibold rounded-xl border border-white/10 hover:border-white/20 hover:bg-white/5 transition-all duration-300"
+      >
+        Browse Videos
+      </a>
+    </div>
+    
+    <!-- Scroll indicator -->
+    <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+      <svg class="w-6 h-6 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+      </svg>
     </div>
   </div>
 </section>

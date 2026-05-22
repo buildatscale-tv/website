@@ -1,6 +1,5 @@
 ---
 import VideoCard from './VideoCard.astro';
-import WaveTransition from './WaveTransition.astro';
 import { getCollection } from 'astro:content';
 import { isShort, formatDuration } from '../utils/youtube';
 
@@ -67,28 +66,33 @@ const videosData = sortedVideos.map(video => ({
 }));
 ---
 
-<section id="videos" class="py-16 bg-gray-50 dark:bg-slate-700 transition-colors">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="text-center mb-12">
-      <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 dark:text-gray-100 mb-4">
-        More Videos
+<section id="videos" class="relative py-24 overflow-hidden">
+  <!-- Background -->
+  <div class="absolute inset-0 bg-surface-0"></div>
+  <div class="absolute inset-0 grid-pattern opacity-20"></div>
+  
+  <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Section header -->
+    <div class="text-center mb-16">
+      <h2 class="text-4xl lg:text-5xl font-bold text-white mb-4">
+        More <span class="gradient-text">Videos</span>
       </h2>
-      <p class="text-lg text-gray-600 dark:text-gray-300">
-        Explore more content on AI orchestration and development workflows
+      <p class="text-lg text-gray-400 max-w-2xl mx-auto">
+        Explore content on AI orchestration, parallel coding agents, and modern development workflows
       </p>
     </div>
 
     <!-- Playlist Filter Buttons -->
-    <div class="flex flex-wrap justify-center gap-2 mb-8" id="filter-buttons" data-playlists={JSON.stringify(playlistFilters)} data-all-playlist-video-ids={JSON.stringify([...allPlaylistVideoIds])}>
+    <div class="flex flex-wrap justify-center gap-2 mb-12" id="filter-buttons" data-playlists={JSON.stringify(playlistFilters)} data-all-playlist-video-ids={JSON.stringify([...allPlaylistVideoIds])}>
       {playlistFilters.map((playlist, index) => (
         <button
           type="button"
           data-filter={playlist.id}
           data-video-ids={JSON.stringify(playlist.videoIds)}
-          class={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
+          class={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${
             index === 0
-              ? 'bg-blue-600 text-white shadow-md'
-              : 'bg-white dark:bg-slate-600 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-slate-500 border border-gray-200 dark:border-slate-500'
+              ? 'bg-gradient-to-r from-accent-blue to-accent-cyan text-white shadow-lg shadow-accent-blue/25'
+              : 'bg-white/5 text-gray-400 hover:text-white hover:bg-white/10 border border-white/5 hover:border-white/10'
           }`}
         >
           {playlist.label}
@@ -96,18 +100,18 @@ const videosData = sortedVideos.map(video => ({
       ))}
     </div>
 
-    <!-- No Results Message (hidden by default) -->
-    <div id="no-results" class="hidden text-center py-12">
-      <p class="text-gray-600 dark:text-gray-400">No videos found for this filter. Try a different category.</p>
+    <!-- No Results Message -->
+    <div id="no-results" class="hidden text-center py-16">
+      <p class="text-gray-400">No videos found for this filter. Try a different category.</p>
     </div>
 
     {hasVideos ? (
       <div id="video-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {initialVideos.map((video) => (
-          <div class="relative">
+          <div class="relative reveal-on-scroll">
             {video.id === mostPopularVideo?.id && (
-              <div class="absolute top-3 right-3 z-20 bg-gradient-to-r from-sky-400 to-blue-500 text-white text-xs font-bold px-3 py-1.5 rounded-md shadow-lg transform rotate-3">
-                ⭐ Most Viewed
+              <div class="absolute top-4 right-4 z-20 bg-gradient-to-r from-amber-500 to-orange-500 text-white text-xs font-bold px-3 py-1.5 rounded-lg shadow-lg">
+                Most Viewed
               </div>
             )}
             <VideoCard
@@ -123,35 +127,32 @@ const videosData = sortedVideos.map(video => ({
         ))}
       </div>
     ) : (
-      <div class="text-center py-12">
-        <p class="text-gray-600 dark:text-gray-400">Loading videos...</p>
+      <div class="text-center py-16">
+        <p class="text-gray-400">Loading videos...</p>
       </div>
     )}
 
-    <div class="text-center mt-12">
+    <div class="text-center mt-16">
       <button
         id="load-more-btn"
         data-videos={JSON.stringify(videosData)}
         data-most-popular={mostPopularVideo?.id}
         data-total={totalVideos}
-        class="inline-flex items-center space-x-2 bg-gray-100 hover:bg-gray-200 dark:bg-slate-600 dark:hover:bg-slate-500 text-gray-900 dark:text-gray-100 px-6 py-3 rounded-lg font-medium transition-colors"
+        class="group px-8 py-4 bg-white/5 hover:bg-white/10 text-gray-300 hover:text-white font-medium rounded-xl border border-white/10 hover:border-white/20 transition-all duration-300"
       >
-        <span id="btn-text">View More Videos</span>
-        <svg id="btn-icon-more" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-        </svg>
-        <svg id="btn-icon-external" class="w-4 h-4 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
-        </svg>
+        <span id="btn-text" class="flex items-center space-x-2">
+          <span>View More Videos</span>
+          <svg id="btn-icon-more" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+          </svg>
+          <svg id="btn-icon-external" class="w-4 h-4 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+          </svg>
+        </span>
       </button>
     </div>
   </div>
 </section>
-
-<WaveTransition
-  topColor="fill-gray-50 dark:fill-slate-700"
-  bottomColor="fill-blue-50 dark:fill-slate-800"
-/>
 
 <script>
   // Get data from button attributes
@@ -259,58 +260,55 @@ const videosData = sortedVideos.map(video => ({
       return `
         <div class="relative video-card" data-video-id="${video.id}">
           ${isMostPopular ? `
-          <div class="absolute top-3 right-3 z-20 bg-gradient-to-r from-sky-400 to-blue-500 text-white text-xs font-bold px-3 py-1.5 rounded-md shadow-lg transform rotate-3">
-            ⭐ Most Viewed
+          <div class="absolute top-4 right-4 z-20 bg-gradient-to-r from-amber-500 to-orange-500 text-white text-xs font-bold px-3 py-1.5 rounded-lg shadow-lg">
+            Most Viewed
           </div>
           ` : ''}
           <button
             type="button"
             onclick="openVideoModal('${video.id}', '${escapedTitle}')"
-            class="bg-white dark:bg-slate-600/50 backdrop-blur-sm border border-gray-200 dark:border-slate-500 rounded-lg overflow-hidden hover:shadow-lg dark:hover:shadow-slate-700/30 transition-all duration-300 group cursor-pointer block w-full text-left"
+            class="group bg-surface-2 rounded-xl overflow-hidden border border-white/5 hover:border-white/10 transition-all duration-300 hover:shadow-xl hover:shadow-black/20 cursor-pointer block w-full text-left"
           >
-            <div class="relative aspect-video bg-gray-100 dark:bg-gray-800">
+            <div class="relative aspect-video bg-surface-3">
               <img
                 src="${video.thumbnail}"
                 alt="${video.title}"
-                class="w-full h-full object-cover"
+                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 loading="lazy"
               />
-              <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 flex items-center justify-center transition-all duration-300">
-                <div class="w-12 h-12 bg-red-600 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transform group-hover:scale-110 transition-all duration-300">
-                  <svg class="w-5 h-5 text-white ml-0.5" fill="currentColor" viewBox="0 0 24 24">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
+              <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 flex items-center justify-center transition-all duration-500">
+                <div class="w-14 h-14 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transform scale-75 group-hover:scale-100 transition-all duration-500 border border-white/30">
+                  <svg class="w-6 h-6 text-white ml-0.5" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M8 5v14l11-7z"/>
                   </svg>
                 </div>
               </div>
               ${duration ? `
-              <div class="absolute bottom-2 right-2 bg-black bg-opacity-80 text-white text-xs px-2 py-1 rounded flex items-center">
-                <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <circle cx="12" cy="12" r="10"></circle>
-                  <polyline points="12,6 12,12 16,14"></polyline>
-                </svg>
+              <div class="absolute bottom-3 right-3 bg-black/80 backdrop-blur-sm text-white text-xs px-2.5 py-1 rounded-lg font-mono">
                 ${duration}
               </div>` : ''}
             </div>
-            <div class="p-4">
-              <h3 class="font-semibold text-gray-900 dark:text-gray-100 mb-2 line-clamp-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors text-sm h-10">
+            <div class="p-5">
+              <h3 class="font-semibold text-white mb-3 line-clamp-2 group-hover:text-accent-blue transition-colors text-sm leading-relaxed min-h-[2.5rem]">
                 ${video.title}
               </h3>
-              <div class="flex items-center text-xs text-gray-500 dark:text-gray-400 space-x-2">
+              <div class="flex items-center text-xs text-gray-500 space-x-3">
                 <div class="flex items-center">
-                  <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                  <svg class="w-3.5 h-3.5 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
                   </svg>
                   ${views}
                 </div>
-                <span>•</span>
+                <span class="text-gray-600">•</span>
                 <div class="flex items-center">
-                  <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5"></path>
+                  <svg class="w-3.5 h-3.5 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5"></path>
                   </svg>
                   ${likes}
                 </div>
-                <span>•</span>
+                <span class="text-gray-600">•</span>
                 <span>${timeAgo}</span>
               </div>
             </div>
@@ -356,16 +354,22 @@ const videosData = sortedVideos.map(video => ({
     // Function to update load more button state
     const updateLoadMoreButton = () => {
       if (currentIndex >= filteredVideos.length) {
-        btnText.textContent = 'View All Videos';
-        btnIconMore.classList.add('hidden');
-        btnIconExternal.classList.remove('hidden');
+        btnText.innerHTML = `
+          <span>View All on YouTube</span>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+          </svg>
+        `;
         loadMoreBtn.onclick = () => {
           window.open('https://youtube.com/@BuildAtScale/videos', '_blank', 'noopener');
         };
       } else {
-        btnText.textContent = 'View More Videos';
-        btnIconMore.classList.remove('hidden');
-        btnIconExternal.classList.add('hidden');
+        btnText.innerHTML = `
+          <span>View More Videos</span>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+          </svg>
+        `;
         loadMoreBtn.onclick = loadMoreVideos;
       }
     };
@@ -392,11 +396,11 @@ const videosData = sortedVideos.map(video => ({
 
         // Update active state
         filterButtons.forEach(btn => {
-          btn.classList.remove('bg-blue-600', 'text-white', 'shadow-md');
-          btn.classList.add('bg-white', 'dark:bg-slate-600', 'text-gray-700', 'dark:text-gray-200', 'hover:bg-gray-100', 'dark:hover:bg-slate-500', 'border', 'border-gray-200', 'dark:border-slate-500');
+          btn.classList.remove('bg-gradient-to-r', 'from-accent-blue', 'to-accent-cyan', 'text-white', 'shadow-lg', 'shadow-accent-blue/25');
+          btn.classList.add('bg-white/5', 'text-gray-400', 'hover:text-white', 'hover:bg-white/10', 'border', 'border-white/5', 'hover:border-white/10');
         });
-        button.classList.remove('bg-white', 'dark:bg-slate-600', 'text-gray-700', 'dark:text-gray-200', 'hover:bg-gray-100', 'dark:hover:bg-slate-500', 'border', 'border-gray-200', 'dark:border-slate-500');
-        button.classList.add('bg-blue-600', 'text-white', 'shadow-md');
+        button.classList.remove('bg-white/5', 'text-gray-400', 'hover:text-white', 'hover:bg-white/10', 'border', 'border-white/5', 'hover:border-white/10');
+        button.classList.add('bg-gradient-to-r', 'from-accent-blue', 'to-accent-cyan', 'text-white', 'shadow-lg', 'shadow-accent-blue/25');
 
         currentFilter = filterId;
         renderFilteredVideos();
@@ -408,9 +412,12 @@ const videosData = sortedVideos.map(video => ({
       loadMoreBtn.onclick = loadMoreVideos;
     } else {
       // All videos already shown, make it external link
-      btnText.textContent = 'View All Videos';
-      btnIconMore.classList.add('hidden');
-      btnIconExternal.classList.remove('hidden');
+      btnText.innerHTML = `
+        <span>View All on YouTube</span>
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+        </svg>
+      `;
       loadMoreBtn.onclick = () => {
         window.open('https://youtube.com/@buildatscale', '_blank', 'noopener');
       };
