@@ -10,50 +10,53 @@ const interests = [
 ---
 
 <!-- Subtle divider between forms -->
-<div class="bg-blue-50 dark:bg-slate-800">
+<div class="bg-parchment/50 dark:bg-dark-parchment/30">
   <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex items-center gap-4 py-8">
-      <div class="flex-1 h-px bg-gradient-to-r from-transparent via-blue-200 dark:via-slate-600 to-transparent"></div>
-      <div class="flex gap-1.5">
-        <div class="w-1.5 h-1.5 rounded-full bg-blue-300 dark:bg-slate-500"></div>
-        <div class="w-1.5 h-1.5 rounded-full bg-blue-400 dark:bg-slate-400"></div>
-        <div class="w-1.5 h-1.5 rounded-full bg-blue-300 dark:bg-slate-500"></div>
+    <div class="flex items-center gap-6 py-12">
+      <div class="flex-1 h-px bg-gradient-to-r from-transparent via-terracotta/20 to-transparent"></div>
+      <div class="flex gap-2">
+        <div class="w-2 h-2 rounded-full bg-terracotta/40 dark:bg-terracotta-light/40"></div>
+        <div class="w-2 h-2 rounded-full bg-gold/60 dark:bg-gold-light/60"></div>
+        <div class="w-2 h-2 rounded-full bg-forest/40 dark:bg-forest-light/40"></div>
       </div>
-      <div class="flex-1 h-px bg-gradient-to-r from-transparent via-blue-200 dark:via-slate-600 to-transparent"></div>
+      <div class="flex-1 h-px bg-gradient-to-r from-transparent via-terracotta/20 to-transparent"></div>
     </div>
   </div>
 </div>
 
-<section class="py-12 pb-24 bg-blue-50 dark:bg-slate-800 text-gray-900 dark:text-white">
+<section class="py-24 bg-parchment/50 dark:bg-dark-parchment/30 text-charcoal dark:text-warm-white transition-colors duration-500">
   <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="text-center mb-12">
-      <h2 class="text-3xl lg:text-4xl font-bold mb-4">
+    <div class="text-center mb-16">
+      <p class="text-terracotta dark:text-terracotta-light font-medium text-sm tracking-widest-xl uppercase mb-4">
+        Newsletter
+      </p>
+      <h2 class="font-serif text-4xl lg:text-5xl font-medium mb-6 leading-tight">
         Stay Updated
       </h2>
-      <p class="text-lg text-gray-600 dark:text-gray-300">
+      <p class="text-lg text-warm-gray-dark dark:text-warm-gray-light max-w-2xl mx-auto leading-relaxed">
         Get notified when I publish new content about AI orchestration, development workflows,
         and the latest experiments. No spam, just valuable insights.
       </p>
     </div>
 
-    <div class="bg-white dark:bg-slate-700/50 backdrop-blur-sm rounded-lg p-8 shadow-lg dark:shadow-slate-700/50 border border-gray-200 dark:border-slate-600">
-      <form id="newsletter-form" class="space-y-6">
+    <div class="bg-warm-white dark:bg-dark-parchment/60 backdrop-blur-sm rounded-sm p-10 shadow-xl shadow-charcoal/5 dark:shadow-black/20 border border-parchment dark:border-warm-gray-dark/30">
+      <form id="newsletter-form" class="space-y-8">
         <div>
-          <label for="signup-email" class="block text-sm font-medium text-gray-700 dark:text-gray-400 mb-2">
+          <label for="signup-email" class="block text-sm font-medium text-warm-gray-dark dark:text-warm-gray-light mb-3 tracking-wide uppercase">
             Email Address
           </label>
           <input
             type="email"
             id="signup-email"
             name="email"
-            class="w-full px-4 py-3 bg-white dark:bg-slate-600/80 border border-gray-300 dark:border-slate-500 rounded-lg text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            class="w-full px-5 py-4 bg-cream dark:bg-deep-charcoal border border-parchment dark:border-warm-gray-dark/50 rounded-sm text-charcoal dark:text-warm-white placeholder-warm-gray-light dark:placeholder-warm-gray-dark focus:ring-2 focus:ring-terracotta/50 focus:border-terracotta dark:focus:border-terracotta-light transition-all duration-300 outline-none"
             placeholder="your@email.com"
             required
           />
         </div>
 
         <div>
-          <label class="block text-sm font-medium text-gray-700 dark:text-gray-400 mb-3">
+          <label class="block text-sm font-medium text-warm-gray-dark dark:text-warm-gray-light mb-4 tracking-wide uppercase">
             What interests you most? (Optional)
           </label>
           <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
@@ -61,7 +64,7 @@ const interests = [
               <button
                 type="button"
                 data-interest={interest}
-                class="interest-btn px-3 py-2 rounded-lg text-sm font-medium transition-colors bg-gray-100 dark:bg-slate-600 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-slate-500 border border-gray-300 dark:border-slate-500 break-words text-center min-h-[2.5rem] flex items-center justify-center"
+                class="interest-btn px-4 py-3 rounded-sm text-sm font-medium transition-all duration-300 bg-cream dark:bg-deep-charcoal text-warm-gray-dark dark:text-warm-gray-light hover:bg-parchment dark:hover:bg-dark-parchment border border-parchment dark:border-warm-gray-dark/30 break-words text-center min-h-[2.5rem] flex items-center justify-center"
               >
                 {interest}
               </button>
@@ -69,18 +72,18 @@ const interests = [
           </div>
         </div>
 
-        <div class="flex flex-col space-y-4">
+        <div class="flex flex-col space-y-6">
           <div class="flex items-center justify-between">
             <button
               type="submit"
               id="newsletter-submit"
-              class="bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400 text-white px-8 py-3 rounded-lg font-medium transition-colors flex items-center space-x-2"
+              class="bg-terracotta hover:bg-terracotta-dark disabled:bg-terracotta/60 text-warm-white px-10 py-4 rounded-sm font-medium transition-all duration-300 flex items-center space-x-3 tracking-wide"
             >
               <span id="newsletter-submit-text">Subscribe</span>
-              <div class="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin hidden" id="newsletter-spinner"></div>
+              <div class="w-4 h-4 border-2 border-warm-white border-t-transparent rounded-full animate-spin hidden" id="newsletter-spinner"></div>
             </button>
 
-            <div id="newsletter-success" class="text-green-600 dark:text-green-400 font-medium flex items-center space-x-2 hidden">
+            <div id="newsletter-success" class="text-forest dark:text-forest-light font-medium flex items-center space-x-2 hidden">
               <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                 <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
               </svg>
@@ -88,9 +91,9 @@ const interests = [
             </div>
           </div>
 
-          <div id="newsletter-error" class="text-red-600 dark:text-red-400 font-medium text-sm hidden"></div>
+          <div id="newsletter-error" class="text-terracotta dark:text-terracotta-light font-medium text-sm hidden"></div>
 
-          <p class="text-xs text-gray-500 dark:text-gray-400">
+          <p class="text-xs text-warm-gray-light dark:text-warm-gray-dark tracking-wide">
             No spam, ever. Unsubscribe at any time. I respect your privacy and will only send valuable content updates.
           </p>
         </div>
@@ -118,12 +121,12 @@ const interests = [
       if (interest) {
         if (selectedInterests.has(interest)) {
           selectedInterests.delete(interest);
-          btn.classList.remove('bg-blue-600', 'hover:bg-blue-700', 'text-white', 'border-blue-600');
-          btn.classList.add('bg-gray-100', 'dark:bg-slate-600', 'text-gray-700', 'dark:text-gray-300', 'hover:bg-gray-200', 'dark:hover:bg-slate-500', 'border-gray-300', 'dark:border-slate-500');
+          btn.classList.remove('bg-terracotta', 'hover:bg-terracotta-dark', 'text-warm-white', 'border-terracotta');
+          btn.classList.add('bg-cream', 'dark:bg-deep-charcoal', 'text-warm-gray-dark', 'dark:text-warm-gray-light', 'hover:bg-parchment', 'dark:hover:bg-dark-parchment', 'border-parchment', 'dark:border-warm-gray-dark/30');
         } else {
           selectedInterests.add(interest);
-          btn.classList.remove('bg-gray-100', 'dark:bg-slate-600', 'text-gray-700', 'dark:text-gray-300', 'hover:bg-gray-200', 'dark:hover:bg-slate-500', 'border-gray-300', 'dark:border-slate-500');
-          btn.classList.add('bg-blue-600', 'hover:bg-blue-700', 'text-white', 'border-blue-600');
+          btn.classList.remove('bg-cream', 'dark:bg-deep-charcoal', 'text-warm-gray-dark', 'dark:text-warm-gray-light', 'hover:bg-parchment', 'dark:hover:bg-dark-parchment', 'border-parchment', 'dark:border-warm-gray-dark/30');
+          btn.classList.add('bg-terracotta', 'hover:bg-terracotta-dark', 'text-warm-white', 'border-terracotta');
         }
       }
     });
@@ -180,8 +183,8 @@ const interests = [
       // Reset interest buttons
       selectedInterests.clear();
       interestBtns.forEach(btn => {
-        btn.classList.remove('bg-blue-600', 'hover:bg-blue-700', 'text-white', 'border-blue-600');
-        btn.classList.add('bg-gray-100', 'dark:bg-slate-600', 'text-gray-700', 'dark:text-gray-300', 'hover:bg-gray-200', 'dark:hover:bg-slate-500', 'border-gray-300', 'dark:border-slate-500');
+        btn.classList.remove('bg-terracotta', 'hover:bg-terracotta-dark', 'text-warm-white', 'border-terracotta');
+        btn.classList.add('bg-cream', 'dark:bg-deep-charcoal', 'text-warm-gray-dark', 'dark:text-warm-gray-light', 'hover:bg-parchment', 'dark:hover:bg-dark-parchment', 'border-parchment', 'dark:border-warm-gray-dark/30');
       });
 
       // Hide success message after 3 seconds

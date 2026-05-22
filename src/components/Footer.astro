@@ -2,22 +2,22 @@
 import Logo from './Logo.astro';
 ---
 
-<footer class="bg-white dark:bg-slate-900 border-t border-gray-200 dark:border-slate-700 py-12 transition-colors">
+<footer class="bg-warm-white dark:bg-deep-charcoal border-t border-parchment dark:border-dark-parchment py-16 transition-colors duration-500">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex flex-col md:flex-row items-center justify-between">
-      <div class="flex items-center space-x-2 mb-4 md:mb-0">
+    <div class="flex flex-col md:flex-row items-center justify-between gap-8">
+      <div class="flex items-center space-x-3">
         <Logo />
-        <span class="font-bold text-xl text-gray-900 dark:text-gray-100">
-          Build<span class="text-blue-600 dark:text-blue-400">AtScale</span>
+        <span class="font-serif font-semibold text-2xl text-charcoal dark:text-warm-white tracking-tight">
+          Build<span class="text-terracotta dark:text-terracotta-light">AtScale</span>
         </span>
       </div>
 
-      <div class="flex items-center space-x-6">
+      <div class="flex items-center space-x-8">
         <a
           href="https://github.com/buildatscale-tv"
           target="_blank"
           rel="noopener"
-          class="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+          class="text-warm-gray dark:text-warm-gray-light hover:text-terracotta dark:hover:text-terracotta-light transition-colors duration-300"
           aria-label="GitHub"
         >
           <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -28,7 +28,7 @@ import Logo from './Logo.astro';
           href="https://x.com/BuildAtScale"
           target="_blank"
           rel="noopener"
-          class="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+          class="text-warm-gray dark:text-warm-gray-light hover:text-terracotta dark:hover:text-terracotta-light transition-colors duration-300"
           aria-label="X (Twitter)"
         >
           <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -39,18 +39,25 @@ import Logo from './Logo.astro';
           href="https://youtube.com/@buildatscale"
           target="_blank"
           rel="noopener"
-          class="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+          class="text-warm-gray dark:text-warm-gray-light hover:text-terracotta dark:hover:text-terracotta-light transition-colors duration-300"
           aria-label="YouTube"
         >
           <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
             <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
           </svg>
         </a>
-        <span class="text-gray-400 dark:text-gray-500">•</span>
-        <a href="/privacy" class="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors text-sm">Privacy Policy</a>
-        <span class="text-gray-400 dark:text-gray-500">•</span>
-        <span class="text-gray-600 dark:text-gray-300">buildatscale.tv</span>
+        <span class="text-parchment dark:text-warm-gray-dark">|</span>
+        <a href="/privacy" class="text-warm-gray dark:text-warm-gray-light hover:text-terracotta dark:hover:text-terracotta-light transition-colors duration-300 text-sm tracking-wide">Privacy Policy</a>
+        <span class="text-parchment dark:text-warm-gray-dark">|</span>
+        <span class="text-warm-gray dark:text-warm-gray-light text-sm tracking-wide">buildatscale.tv</span>
       </div>
+    </div>
+    
+    <!-- Bottom accent line -->
+    <div class="mt-12 pt-8 border-t border-parchment dark:border-dark-parchment flex justify-center">
+      <p class="text-warm-gray-light dark:text-warm-gray-dark text-xs tracking-widest uppercase">
+        Crafted with care — Learning in Public since 2024
+      </p>
     </div>
   </div>
 </footer>

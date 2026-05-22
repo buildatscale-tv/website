@@ -8,88 +8,91 @@ const requestTypes = [
 ];
 ---
 
-<section class="py-8 pb-12 bg-blue-50 dark:bg-slate-800">
+<section class="py-24 bg-parchment/50 dark:bg-dark-parchment/30 transition-colors duration-500">
   <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="text-center mb-12">
-      <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 dark:text-gray-100 mb-4">
+    <div class="text-center mb-16">
+      <p class="text-forest dark:text-forest-light font-medium text-sm tracking-widest-xl uppercase mb-4">
+        Correspondence
+      </p>
+      <h2 class="font-serif text-4xl lg:text-5xl font-medium text-charcoal dark:text-warm-white mb-6 leading-tight">
         Have an Idea or Request?
       </h2>
-      <p class="text-lg text-gray-600 dark:text-gray-300">
+      <p class="text-lg text-warm-gray-dark dark:text-warm-gray-light max-w-2xl mx-auto leading-relaxed">
         Suggest a topic, share a problem you're facing, or request a video.
         I'm always looking for real-world challenges to explore.
       </p>
     </div>
 
-    <div class="bg-white dark:bg-slate-700/50 backdrop-blur-sm rounded-lg shadow-lg dark:shadow-slate-700/50 p-8 border border-transparent dark:border-slate-600">
-      <form id="request-form" class="space-y-6">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div class="bg-warm-white dark:bg-dark-parchment/60 backdrop-blur-sm rounded-sm p-10 shadow-xl shadow-charcoal/5 dark:shadow-black/20 border border-parchment dark:border-warm-gray-dark/30">
+      <form id="request-form" class="space-y-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div>
-            <label for="name" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+            <label for="name" class="block text-sm font-medium text-warm-gray-dark dark:text-warm-gray-light mb-3 tracking-wide uppercase">
               Name
             </label>
             <input
               type="text"
               id="name"
               name="name"
-              class="w-full px-4 py-2 border border-gray-300 dark:border-slate-600 bg-white dark:bg-slate-700/50 text-gray-900 dark:text-gray-100 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              class="w-full px-5 py-4 bg-cream dark:bg-deep-charcoal border border-parchment dark:border-warm-gray-dark/50 rounded-sm text-charcoal dark:text-warm-white placeholder-warm-gray-light dark:placeholder-warm-gray-dark focus:ring-2 focus:ring-forest/50 focus:border-forest dark:focus:border-forest-light transition-all duration-300 outline-none"
               required
             />
           </div>
           <div>
-            <label for="request-email" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+            <label for="request-email" class="block text-sm font-medium text-warm-gray-dark dark:text-warm-gray-light mb-3 tracking-wide uppercase">
               Email
             </label>
             <input
               type="email"
               id="request-email"
               name="email"
-              class="w-full px-4 py-2 border border-gray-300 dark:border-slate-600 bg-white dark:bg-slate-700/50 text-gray-900 dark:text-gray-100 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              class="w-full px-5 py-4 bg-cream dark:bg-deep-charcoal border border-parchment dark:border-warm-gray-dark/50 rounded-sm text-charcoal dark:text-warm-white placeholder-warm-gray-light dark:placeholder-warm-gray-dark focus:ring-2 focus:ring-forest/50 focus:border-forest dark:focus:border-forest-light transition-all duration-300 outline-none"
               required
             />
           </div>
         </div>
 
         <div>
-          <label for="type" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+          <label for="type" class="block text-sm font-medium text-warm-gray-dark dark:text-warm-gray-light mb-3 tracking-wide uppercase">
             Request Type
           </label>
           <select
             id="type"
             name="type"
-            class="w-full px-4 py-2 border border-gray-300 dark:border-slate-600 bg-white dark:bg-slate-700/50 text-gray-900 dark:text-gray-100 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent [&>option]:bg-white [&>option]:dark:bg-slate-800 [&>option]:text-gray-900 [&>option]:dark:text-gray-100"
+            class="w-full px-5 py-4 bg-cream dark:bg-deep-charcoal border border-parchment dark:border-warm-gray-dark/50 rounded-sm text-charcoal dark:text-warm-white focus:ring-2 focus:ring-forest/50 focus:border-forest dark:focus:border-forest-light transition-all duration-300 outline-none appearance-none cursor-pointer"
           >
             {requestTypes.map((type) => (
-              <option value={type}>{type}</option>
+              <option value={type} class="bg-cream dark:bg-deep-charcoal text-charcoal dark:text-warm-white">{type}</option>
             ))}
           </select>
         </div>
 
         <div>
-          <label for="message" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+          <label for="message" class="block text-sm font-medium text-warm-gray-dark dark:text-warm-gray-light mb-3 tracking-wide uppercase">
             Details
           </label>
           <textarea
             id="message"
             name="message"
-            rows="4"
-            class="w-full px-4 py-2 border border-gray-300 dark:border-slate-600 bg-white dark:bg-slate-700/50 text-gray-900 dark:text-gray-100 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent placeholder-gray-400 dark:placeholder-gray-500"
+            rows="5"
+            class="w-full px-5 py-4 bg-cream dark:bg-deep-charcoal border border-parchment dark:border-warm-gray-dark/50 rounded-sm text-charcoal dark:text-warm-white focus:ring-2 focus:ring-forest/50 focus:border-forest dark:focus:border-forest-light transition-all duration-300 outline-none placeholder-warm-gray-light dark:placeholder-warm-gray-dark resize-y"
             placeholder="Describe your idea, problem, or request in detail..."
             required
           ></textarea>
         </div>
 
-        <div class="flex flex-col space-y-4">
+        <div class="flex flex-col space-y-6">
           <div class="flex items-center justify-between">
             <button
               type="submit"
               id="request-submit"
-              class="bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400 text-white px-8 py-3 rounded-lg font-medium transition-colors flex items-center space-x-2"
+              class="bg-forest hover:bg-forest-dark disabled:bg-forest/60 text-warm-white px-10 py-4 rounded-sm font-medium transition-all duration-300 flex items-center space-x-3 tracking-wide"
             >
               <span id="request-submit-text">Submit Request</span>
-              <div class="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin hidden" id="request-spinner"></div>
+              <div class="w-4 h-4 border-2 border-warm-white border-t-transparent rounded-full animate-spin hidden" id="request-spinner"></div>
             </button>
 
-            <div id="request-success" class="text-green-600 dark:text-green-400 font-medium flex items-center space-x-2 hidden">
+            <div id="request-success" class="text-forest dark:text-forest-light font-medium flex items-center space-x-2 hidden">
               <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                 <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
               </svg>
@@ -97,7 +100,7 @@ const requestTypes = [
             </div>
           </div>
 
-          <div id="request-error" class="text-red-600 dark:text-red-400 font-medium text-sm hidden"></div>
+          <div id="request-error" class="text-terracotta dark:text-terracotta-light font-medium text-sm hidden"></div>
         </div>
       </form>
     </div>

@@ -3,13 +3,13 @@
 // It uses a dialog element with client-side JavaScript for interactivity
 ---
 
-<dialog id="video-modal" class="backdrop:bg-black backdrop:bg-opacity-75 bg-transparent p-0 max-w-6xl w-full rounded-lg">
-  <div class="bg-white dark:bg-slate-700 rounded-lg overflow-hidden shadow-2xl border border-transparent dark:border-slate-600">
-    <div class="flex items-center justify-between p-4 bg-gray-100 dark:bg-slate-600 text-gray-900 dark:text-white border-b border-gray-200 dark:border-slate-500">
-      <h3 id="video-modal-title" class="text-lg font-semibold text-gray-900 dark:text-white"></h3>
+<dialog id="video-modal" class="backdrop:bg-charcoal/80 bg-transparent p-0 max-w-6xl w-full rounded-sm">
+  <div class="bg-warm-white dark:bg-dark-parchment rounded-sm overflow-hidden shadow-2xl border border-parchment dark:border-warm-gray-dark/30">
+    <div class="flex items-center justify-between p-5 bg-parchment/50 dark:bg-dark-parchment/80 text-charcoal dark:text-warm-white border-b border-parchment dark:border-warm-gray-dark/30">
+      <h3 id="video-modal-title" class="font-serif text-lg font-medium text-charcoal dark:text-warm-white"></h3>
       <button
         id="close-video-modal"
-        class="text-gray-900 dark:text-white hover:text-gray-600 dark:hover:text-gray-300 transition-colors"
+        class="text-warm-gray dark:text-warm-gray-light hover:text-terracotta dark:hover:text-terracotta-light transition-colors duration-300 p-1"
         aria-label="Close video"
       >
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -17,7 +17,7 @@
         </svg>
       </button>
     </div>
-    <div id="video-modal-content" class="aspect-video bg-black">
+    <div id="video-modal-content" class="aspect-video bg-deep-charcoal">
       <!-- Video iframe will be injected here -->
     </div>
   </div>
@@ -90,6 +90,6 @@
 
 <style>
   dialog::backdrop {
-    background: rgba(0, 0, 0, 0.75);
+    background: rgba(44, 40, 38, 0.8);
   }
 </style>
