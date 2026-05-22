@@ -35,15 +35,15 @@ const latestVideo = hasVideos ? {
   bottomColor="fill-gray-50 dark:fill-slate-700"
 />
 
-<section id="latest" class="pt-10 pb-16 px-4 sm:px-6 lg:px-8 bg-gray-50 dark:bg-slate-700 transition-colors">
+<section id="latest" class="pt-12 pb-20 px-4 sm:px-6 lg:px-8 bg-gray-50 dark:bg-slate-800 transition-colors duration-300">
   <div class="max-w-7xl mx-auto">
     {hasVideos && latestVideo ? (
       <div class="max-w-4xl mx-auto">
-        <div class="text-center mb-6">
-          <span class="inline-block bg-green-100 dark:bg-green-700/30 text-green-700 dark:text-green-300 px-3 py-1 rounded-full text-sm font-medium mb-4">
+        <div class="text-center mb-8">
+          <span class="inline-block bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 px-4 py-1.5 rounded-full text-sm font-medium mb-4 animate-fade-in">
             Latest Video
           </span>
-          <h2 class="text-2xl lg:text-3xl font-bold text-gray-900 dark:text-gray-100">
+          <h2 class="text-heading text-gray-900 dark:text-gray-100 animate-fade-in-up">
             {latestVideo.title}
           </h2>
         </div>
@@ -51,50 +51,53 @@ const latestVideo = hasVideos ? {
         <button
           type="button"
           onclick={`openVideoModal('${latestVideo.videoId}', '${latestVideo.title.replace(/'/g, "\\'")}')`}
-          class="relative group cursor-pointer block w-full"
+          class="relative group cursor-pointer block w-full focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-4 dark:focus:ring-offset-slate-800 rounded-xl"
         >
-          <div class="relative aspect-video bg-gray-200 dark:bg-gray-700 rounded-lg overflow-hidden shadow-2xl">
+          <div class="relative aspect-video bg-gray-200 dark:bg-slate-700 rounded-xl overflow-hidden shadow-2xl transition-shadow duration-300 group-hover:shadow-3xl">
             <img
               src={latestVideo.thumbnail}
               alt={latestVideo.title}
-              class="w-full h-full object-cover"
+              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
               loading="eager"
             />
-            <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 flex items-center justify-center transition-all duration-300">
-              <div class="w-20 h-20 bg-red-600 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transform group-hover:scale-110 transition-all duration-300">
+            <div class="absolute inset-0 bg-black/0 group-hover:bg-black/40 flex items-center justify-center transition-all duration-300">
+              <div class="w-20 h-20 bg-red-600 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transform group-hover:scale-110 transition-all duration-300 shadow-xl">
                 <svg class="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M8 5v14l11-7z"/>
                 </svg>
               </div>
             </div>
-            <div class="absolute bottom-3 right-3 bg-black bg-opacity-80 text-white px-2 py-0.5 rounded">
+            <div class="absolute bottom-3 right-3 bg-black/80 text-white px-2.5 py-1 rounded-lg backdrop-blur-sm text-sm">
               {latestVideo.duration}
             </div>
           </div>
 
-          <div class="flex items-center justify-center mt-6 text-gray-600 dark:text-gray-300 space-x-6 flex-nowrap">
-            <div class="flex items-center whitespace-nowrap">
-              <svg class="w-4 h-4 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div class="flex items-center justify-center mt-6 text-gray-600 dark:text-gray-300 space-x-8 flex-nowrap text-body-sm">
+            <div class="flex items-center whitespace-nowrap group/stat">
+              <svg class="w-4 h-4 mr-2 flex-shrink-0 transition-transform duration-200 group-hover/stat:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
               </svg>
               {latestVideo.views}
             </div>
-            <span class="flex-shrink-0">•</span>
-            <div class="flex items-center whitespace-nowrap">
-              <svg class="w-4 h-4 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <span class="flex-shrink-0 text-gray-400 dark:text-gray-500">•</span>
+            <div class="flex items-center whitespace-nowrap group/stat">
+              <svg class="w-4 h-4 mr-2 flex-shrink-0 transition-transform duration-200 group-hover/stat:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5"></path>
               </svg>
               {latestVideo.likes}
             </div>
-            <span class="flex-shrink-0">•</span>
+            <span class="flex-shrink-0 text-gray-400 dark:text-gray-500">•</span>
             <span class="whitespace-nowrap">{latestVideo.timeAgo}</span>
           </div>
         </button>
       </div>
     ) : (
       <div class="max-w-4xl mx-auto text-center">
-        <p class="text-gray-600 dark:text-gray-300">Loading most recent video...</p>
+        <div class="inline-flex items-center space-x-3 text-gray-600 dark:text-gray-300 animate-pulse-soft">
+          <div class="w-4 h-4 border-2 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
+          <span>Loading most recent video...</span>
+        </div>
       </div>
     )}
   </div>

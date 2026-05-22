@@ -8,19 +8,19 @@ const requestTypes = [
 ];
 ---
 
-<section class="py-8 pb-12 bg-blue-50 dark:bg-slate-800">
+<section class="py-8 pb-16 bg-blue-50 dark:bg-slate-800 transition-colors duration-300">
   <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="text-center mb-12">
-      <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 dark:text-gray-100 mb-4">
+      <h2 class="text-heading-lg text-gray-900 dark:text-gray-100 mb-4 animate-fade-in">
         Have an Idea or Request?
       </h2>
-      <p class="text-lg text-gray-600 dark:text-gray-300">
+      <p class="text-body-lg text-gray-600 dark:text-gray-300 animate-fade-in-up">
         Suggest a topic, share a problem you're facing, or request a video.
         I'm always looking for real-world challenges to explore.
       </p>
     </div>
 
-    <div class="bg-white dark:bg-slate-700/50 backdrop-blur-sm rounded-lg shadow-lg dark:shadow-slate-700/50 p-8 border border-transparent dark:border-slate-600">
+    <div class="bg-white dark:bg-slate-800/50 backdrop-blur-sm rounded-xl shadow-lg dark:shadow-slate-900/50 p-8 border border-gray-200 dark:border-slate-700 transition-colors duration-300">
       <form id="request-form" class="space-y-6">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
@@ -31,7 +31,7 @@ const requestTypes = [
               type="text"
               id="name"
               name="name"
-              class="w-full px-4 py-2 border border-gray-300 dark:border-slate-600 bg-white dark:bg-slate-700/50 text-gray-900 dark:text-gray-100 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              class="w-full px-4 py-2 border border-gray-300 dark:border-slate-600 bg-white dark:bg-slate-700/50 text-gray-900 dark:text-gray-100 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
               required
             />
           </div>
@@ -43,7 +43,7 @@ const requestTypes = [
               type="email"
               id="request-email"
               name="email"
-              class="w-full px-4 py-2 border border-gray-300 dark:border-slate-600 bg-white dark:bg-slate-700/50 text-gray-900 dark:text-gray-100 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              class="w-full px-4 py-2 border border-gray-300 dark:border-slate-600 bg-white dark:bg-slate-700/50 text-gray-900 dark:text-gray-100 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
               required
             />
           </div>
@@ -56,7 +56,7 @@ const requestTypes = [
           <select
             id="type"
             name="type"
-            class="w-full px-4 py-2 border border-gray-300 dark:border-slate-600 bg-white dark:bg-slate-700/50 text-gray-900 dark:text-gray-100 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent [&>option]:bg-white [&>option]:dark:bg-slate-800 [&>option]:text-gray-900 [&>option]:dark:text-gray-100"
+            class="w-full px-4 py-2 border border-gray-300 dark:border-slate-600 bg-white dark:bg-slate-700/50 text-gray-900 dark:text-gray-100 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 [&>option]:bg-white [&>option]:dark:bg-slate-800 [&>option]:text-gray-900 [&>option]:dark:text-gray-100"
           >
             {requestTypes.map((type) => (
               <option value={type}>{type}</option>
@@ -72,7 +72,7 @@ const requestTypes = [
             id="message"
             name="message"
             rows="4"
-            class="w-full px-4 py-2 border border-gray-300 dark:border-slate-600 bg-white dark:bg-slate-700/50 text-gray-900 dark:text-gray-100 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent placeholder-gray-400 dark:placeholder-gray-500"
+            class="w-full px-4 py-2 border border-gray-300 dark:border-slate-600 bg-white dark:bg-slate-700/50 text-gray-900 dark:text-gray-100 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 placeholder-gray-400 dark:placeholder-gray-500 resize-y"
             placeholder="Describe your idea, problem, or request in detail..."
             required
           ></textarea>
@@ -83,13 +83,13 @@ const requestTypes = [
             <button
               type="submit"
               id="request-submit"
-              class="bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400 text-white px-8 py-3 rounded-lg font-medium transition-colors flex items-center space-x-2"
+              class="bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400 text-white px-8 py-3 rounded-xl font-medium transition-all duration-200 flex items-center space-x-2 active:scale-[0.97] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-slate-900 shadow-sm hover:shadow-md"
             >
               <span id="request-submit-text">Submit Request</span>
               <div class="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin hidden" id="request-spinner"></div>
             </button>
 
-            <div id="request-success" class="text-green-600 dark:text-green-400 font-medium flex items-center space-x-2 hidden">
+            <div id="request-success" class="text-green-600 dark:text-green-400 font-medium flex items-center space-x-2 hidden animate-scale-in">
               <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                 <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
               </svg>
@@ -97,7 +97,7 @@ const requestTypes = [
             </div>
           </div>
 
-          <div id="request-error" class="text-red-600 dark:text-red-400 font-medium text-sm hidden"></div>
+          <div id="request-error" class="text-red-600 dark:text-red-400 font-medium text-sm hidden animate-slide-in"></div>
         </div>
       </form>
     </div>

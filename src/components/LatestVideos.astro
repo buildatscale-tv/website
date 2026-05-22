@@ -67,28 +67,28 @@ const videosData = sortedVideos.map(video => ({
 }));
 ---
 
-<section id="videos" class="py-16 bg-gray-50 dark:bg-slate-700 transition-colors">
+<section id="videos" class="py-20 bg-gray-50 dark:bg-slate-800 transition-colors duration-300">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="text-center mb-12">
-      <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 dark:text-gray-100 mb-4">
+      <h2 class="text-heading-lg text-gray-900 dark:text-gray-100 mb-4 animate-fade-in">
         More Videos
       </h2>
-      <p class="text-lg text-gray-600 dark:text-gray-300">
+      <p class="text-body-lg text-gray-600 dark:text-gray-300 animate-fade-in-up">
         Explore more content on AI orchestration and development workflows
       </p>
     </div>
 
     <!-- Playlist Filter Buttons -->
-    <div class="flex flex-wrap justify-center gap-2 mb-8" id="filter-buttons" data-playlists={JSON.stringify(playlistFilters)} data-all-playlist-video-ids={JSON.stringify([...allPlaylistVideoIds])}>
+    <div class="flex flex-wrap justify-center gap-2 mb-10" id="filter-buttons" data-playlists={JSON.stringify(playlistFilters)} data-all-playlist-video-ids={JSON.stringify([...allPlaylistVideoIds])}>
       {playlistFilters.map((playlist, index) => (
         <button
           type="button"
           data-filter={playlist.id}
           data-video-ids={JSON.stringify(playlist.videoIds)}
-          class={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
+          class={`px-5 py-2 rounded-full text-sm font-medium transition-all duration-200 active:scale-95 focus:outline-none focus:ring-2 focus:ring-blue-500 ${
             index === 0
-              ? 'bg-blue-600 text-white shadow-md'
-              : 'bg-white dark:bg-slate-600 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-slate-500 border border-gray-200 dark:border-slate-500'
+              ? 'bg-blue-600 text-white shadow-md hover:shadow-lg'
+              : 'bg-white dark:bg-slate-700 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-slate-600 border border-gray-200 dark:border-slate-600 hover:border-blue-300 dark:hover:border-blue-600'
           }`}
         >
           {playlist.label}
@@ -103,10 +103,10 @@ const videosData = sortedVideos.map(video => ({
 
     {hasVideos ? (
       <div id="video-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {initialVideos.map((video) => (
-          <div class="relative">
+        {initialVideos.map((video, i) => (
+          <div class="relative animate-fade-in-up" style={`animation-delay: ${i * 80}ms`}>
             {video.id === mostPopularVideo?.id && (
-              <div class="absolute top-3 right-3 z-20 bg-gradient-to-r from-sky-400 to-blue-500 text-white text-xs font-bold px-3 py-1.5 rounded-md shadow-lg transform rotate-3">
+              <div class="absolute -top-2 -right-2 z-20 bg-gradient-to-r from-sky-400 to-blue-500 text-white text-xs font-bold px-3 py-1.5 rounded-md shadow-lg transform rotate-3 animate-float">
                 ⭐ Most Viewed
               </div>
             )}
@@ -123,21 +123,24 @@ const videosData = sortedVideos.map(video => ({
         ))}
       </div>
     ) : (
-      <div class="text-center py-12">
-        <p class="text-gray-600 dark:text-gray-400">Loading videos...</p>
+      <div class="text-center py-16">
+        <div class="inline-flex items-center space-x-3 text-gray-600 dark:text-gray-400 animate-pulse-soft">
+          <div class="w-5 h-5 border-2 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
+          <span>Loading videos...</span>
+        </div>
       </div>
     )}
 
-    <div class="text-center mt-12">
+    <div class="text-center mt-12 animate-fade-in">
       <button
         id="load-more-btn"
         data-videos={JSON.stringify(videosData)}
         data-most-popular={mostPopularVideo?.id}
         data-total={totalVideos}
-        class="inline-flex items-center space-x-2 bg-gray-100 hover:bg-gray-200 dark:bg-slate-600 dark:hover:bg-slate-500 text-gray-900 dark:text-gray-100 px-6 py-3 rounded-lg font-medium transition-colors"
+        class="inline-flex items-center space-x-2 bg-gray-100 hover:bg-gray-200 dark:bg-slate-700 dark:hover:bg-slate-600 text-gray-900 dark:text-gray-100 px-6 py-3 rounded-xl font-medium transition-all duration-200 active:scale-[0.97] hover:shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-slate-800"
       >
         <span id="btn-text">View More Videos</span>
-        <svg id="btn-icon-more" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg id="btn-icon-more" class="w-4 h-4 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
         </svg>
         <svg id="btn-icon-external" class="w-4 h-4 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -257,33 +260,33 @@ const videosData = sortedVideos.map(video => ({
       const isMostPopular = video.id === mostPopularId;
 
       return `
-        <div class="relative video-card" data-video-id="${video.id}">
+        <div class="relative video-card animate-fade-in-up" data-video-id="${video.id}" style="animation-delay: 0ms">
           ${isMostPopular ? `
-          <div class="absolute top-3 right-3 z-20 bg-gradient-to-r from-sky-400 to-blue-500 text-white text-xs font-bold px-3 py-1.5 rounded-md shadow-lg transform rotate-3">
+          <div class="absolute -top-2 -right-2 z-20 bg-gradient-to-r from-sky-400 to-blue-500 text-white text-xs font-bold px-3 py-1.5 rounded-md shadow-lg transform rotate-3 animate-float">
             ⭐ Most Viewed
           </div>
           ` : ''}
           <button
             type="button"
             onclick="openVideoModal('${video.id}', '${escapedTitle}')"
-            class="bg-white dark:bg-slate-600/50 backdrop-blur-sm border border-gray-200 dark:border-slate-500 rounded-lg overflow-hidden hover:shadow-lg dark:hover:shadow-slate-700/30 transition-all duration-300 group cursor-pointer block w-full text-left"
+            class="bg-white dark:bg-slate-800/50 backdrop-blur-sm border border-gray-200 dark:border-slate-700 rounded-xl overflow-hidden hover:-translate-y-1 hover:shadow-xl dark:hover:shadow-slate-900/50 transition-all duration-300 group cursor-pointer block w-full text-left active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-slate-900"
           >
-            <div class="relative aspect-video bg-gray-100 dark:bg-gray-800">
+            <div class="relative aspect-video bg-gray-100 dark:bg-slate-800 overflow-hidden">
               <img
                 src="${video.thumbnail}"
                 alt="${video.title}"
-                class="w-full h-full object-cover"
+                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                 loading="lazy"
               />
-              <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 flex items-center justify-center transition-all duration-300">
-                <div class="w-12 h-12 bg-red-600 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transform group-hover:scale-110 transition-all duration-300">
+              <div class="absolute inset-0 bg-black/0 group-hover:bg-black/30 flex items-center justify-center transition-all duration-300">
+                <div class="w-12 h-12 bg-red-600 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transform group-hover:scale-110 transition-all duration-300 shadow-lg">
                   <svg class="w-5 h-5 text-white ml-0.5" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M8 5v14l11-7z"/>
                   </svg>
                 </div>
               </div>
               ${duration ? `
-              <div class="absolute bottom-2 right-2 bg-black bg-opacity-80 text-white text-xs px-2 py-1 rounded flex items-center">
+              <div class="absolute bottom-2 right-2 bg-black/80 text-white text-xs px-2 py-1 rounded backdrop-blur-sm flex items-center">
                 <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <circle cx="12" cy="12" r="10"></circle>
                   <polyline points="12,6 12,12 16,14"></polyline>
@@ -392,11 +395,11 @@ const videosData = sortedVideos.map(video => ({
 
         // Update active state
         filterButtons.forEach(btn => {
-          btn.classList.remove('bg-blue-600', 'text-white', 'shadow-md');
-          btn.classList.add('bg-white', 'dark:bg-slate-600', 'text-gray-700', 'dark:text-gray-200', 'hover:bg-gray-100', 'dark:hover:bg-slate-500', 'border', 'border-gray-200', 'dark:border-slate-500');
+          btn.classList.remove('bg-blue-600', 'text-white', 'shadow-md', 'hover:shadow-lg');
+          btn.classList.add('bg-white', 'dark:bg-slate-700', 'text-gray-700', 'dark:text-gray-200', 'hover:bg-gray-100', 'dark:hover:bg-slate-600', 'border', 'border-gray-200', 'dark:border-slate-600', 'hover:border-blue-300', 'dark:hover:border-blue-600');
         });
-        button.classList.remove('bg-white', 'dark:bg-slate-600', 'text-gray-700', 'dark:text-gray-200', 'hover:bg-gray-100', 'dark:hover:bg-slate-500', 'border', 'border-gray-200', 'dark:border-slate-500');
-        button.classList.add('bg-blue-600', 'text-white', 'shadow-md');
+        button.classList.remove('bg-white', 'dark:bg-slate-700', 'text-gray-700', 'dark:text-gray-200', 'hover:bg-gray-100', 'dark:hover:bg-slate-600', 'border', 'border-gray-200', 'dark:border-slate-600', 'hover:border-blue-300', 'dark:hover:border-blue-600');
+        button.classList.add('bg-blue-600', 'text-white', 'shadow-md', 'hover:shadow-lg');
 
         currentFilter = filterId;
         renderFilteredVideos();
