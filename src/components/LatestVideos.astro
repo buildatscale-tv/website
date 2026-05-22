@@ -67,7 +67,10 @@ const videosData = sortedVideos.map(video => ({
 }));
 ---
 
-<section id="videos" class="py-16 bg-gray-50 dark:bg-slate-700 transition-colors">
+<section id="videos" class="relative py-16 bg-gray-50 dark:bg-slate-800 transition-colors overflow-hidden">
+  <div class="absolute inset-0 -z-10 pointer-events-none" aria-hidden="true">
+    <div class="absolute top-0 left-1/3 w-[400px] h-[300px] bg-gradient-radial from-sky-500/8 dark:from-sky-500/10 to-transparent"></div>
+  </div>
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="text-center mb-12">
       <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 dark:text-gray-100 mb-4">
@@ -87,8 +90,8 @@ const videosData = sortedVideos.map(video => ({
           data-video-ids={JSON.stringify(playlist.videoIds)}
           class={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
             index === 0
-              ? 'bg-blue-600 text-white shadow-md'
-              : 'bg-white dark:bg-slate-600 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-slate-500 border border-gray-200 dark:border-slate-500'
+              ? 'bg-blue-600 text-white shadow-md shadow-blue-600/20'
+              : 'bg-white/70 dark:bg-white/5 backdrop-blur-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-white/10 border border-gray-200 dark:border-white/10'
           }`}
         >
           {playlist.label}
@@ -134,7 +137,7 @@ const videosData = sortedVideos.map(video => ({
         data-videos={JSON.stringify(videosData)}
         data-most-popular={mostPopularVideo?.id}
         data-total={totalVideos}
-        class="inline-flex items-center space-x-2 bg-gray-100 hover:bg-gray-200 dark:bg-slate-600 dark:hover:bg-slate-500 text-gray-900 dark:text-gray-100 px-6 py-3 rounded-lg font-medium transition-colors"
+        class="inline-flex items-center space-x-2 bg-white/70 dark:bg-white/5 backdrop-blur-sm hover:bg-gray-100 dark:hover:bg-white/10 text-gray-900 dark:text-gray-100 px-6 py-3 rounded-lg font-medium transition-colors border border-gray-200 dark:border-white/10 shadow-glass hover:shadow-float"
       >
         <span id="btn-text">View More Videos</span>
         <svg id="btn-icon-more" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -148,9 +151,9 @@ const videosData = sortedVideos.map(video => ({
   </div>
 </section>
 
-<WaveTransition
-  topColor="fill-gray-50 dark:fill-slate-700"
-  bottomColor="fill-blue-50 dark:fill-slate-800"
+    <WaveTransition
+  topColor="fill-gray-50 dark:fill-slate-800"
+  bottomColor="fill-blue-50 dark:fill-slate-900"
 />
 
 <script>
@@ -266,9 +269,9 @@ const videosData = sortedVideos.map(video => ({
           <button
             type="button"
             onclick="openVideoModal('${video.id}', '${escapedTitle}')"
-            class="bg-white dark:bg-slate-600/50 backdrop-blur-sm border border-gray-200 dark:border-slate-500 rounded-lg overflow-hidden hover:shadow-lg dark:hover:shadow-slate-700/30 transition-all duration-300 group cursor-pointer block w-full text-left"
+            class="bg-white/80 dark:bg-white/5 backdrop-blur-glass border border-gray-200 dark:border-white/10 rounded-lg overflow-hidden shadow-glass hover:shadow-float dark:shadow-slate-950/30 dark:hover:shadow-slate-950/50 hover:-translate-y-1 transition-all duration-300 group cursor-pointer block w-full text-left ring-1 ring-transparent dark:ring-white/5 dark:hover:ring-blue-500/20"
           >
-            <div class="relative aspect-video bg-gray-100 dark:bg-gray-800">
+            <div class="relative aspect-video bg-gray-100 dark:bg-gray-900">
               <img
                 src="${video.thumbnail}"
                 alt="${video.title}"
@@ -291,7 +294,7 @@ const videosData = sortedVideos.map(video => ({
                 ${duration}
               </div>` : ''}
             </div>
-            <div class="p-4">
+            <div class="p-4 bg-gradient-to-b from-transparent to-white/30 dark:to-white/[0.02]">
               <h3 class="font-semibold text-gray-900 dark:text-gray-100 mb-2 line-clamp-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors text-sm h-10">
                 ${video.title}
               </h3>
@@ -392,11 +395,11 @@ const videosData = sortedVideos.map(video => ({
 
         // Update active state
         filterButtons.forEach(btn => {
-          btn.classList.remove('bg-blue-600', 'text-white', 'shadow-md');
-          btn.classList.add('bg-white', 'dark:bg-slate-600', 'text-gray-700', 'dark:text-gray-200', 'hover:bg-gray-100', 'dark:hover:bg-slate-500', 'border', 'border-gray-200', 'dark:border-slate-500');
+          btn.classList.remove('bg-blue-600', 'text-white', 'shadow-md', 'shadow-blue-600/20');
+          btn.classList.add('bg-white/70', 'dark:bg-white/5', 'backdrop-blur-sm', 'text-gray-700', 'dark:text-gray-200', 'hover:bg-gray-100', 'dark:hover:bg-white/10', 'border', 'border-gray-200', 'dark:border-white/10');
         });
-        button.classList.remove('bg-white', 'dark:bg-slate-600', 'text-gray-700', 'dark:text-gray-200', 'hover:bg-gray-100', 'dark:hover:bg-slate-500', 'border', 'border-gray-200', 'dark:border-slate-500');
-        button.classList.add('bg-blue-600', 'text-white', 'shadow-md');
+        button.classList.remove('bg-white/70', 'dark:bg-white/5', 'backdrop-blur-sm', 'text-gray-700', 'dark:text-gray-200', 'hover:bg-gray-100', 'dark:hover:bg-white/10', 'border', 'border-gray-200', 'dark:border-white/10');
+        button.classList.add('bg-blue-600', 'text-white', 'shadow-md', 'shadow-blue-600/20');
 
         currentFilter = filterId;
         renderFilteredVideos();

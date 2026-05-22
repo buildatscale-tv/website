@@ -21,7 +21,7 @@ const timeAgo = getTimeAgo(publishedAt);
 <button
   type="button"
   onclick={`openVideoModal('${videoId}', '${title.replace(/'/g, "\\'")}')`}
-  class="bg-white dark:bg-slate-600/50 backdrop-blur-sm border border-gray-200 dark:border-slate-500 rounded-lg overflow-hidden hover:shadow-lg dark:hover:shadow-slate-700/30 transition-all duration-300 group cursor-pointer block w-full text-left"
+  class="bg-white/80 dark:bg-white/5 backdrop-blur-glass border border-gray-200 dark:border-white/10 rounded-lg overflow-hidden shadow-glass hover:shadow-float dark:shadow-slate-950/30 dark:hover:shadow-slate-950/50 hover:-translate-y-1 transition-all duration-300 group cursor-pointer block w-full text-left ring-1 ring-transparent dark:ring-white/5 dark:hover:ring-blue-500/20"
 >
   <!-- Video Thumbnail -->
   <div class="relative aspect-video bg-gray-100 dark:bg-gray-800">
@@ -46,7 +46,7 @@ const timeAgo = getTimeAgo(publishedAt);
   </div>
 
   <!-- Video Info -->
-  <div class="p-4">
+  <div class="p-4 bg-gradient-to-b from-transparent to-white/30 dark:to-white/[0.02]">
     <h3 class="font-semibold text-gray-900 dark:text-gray-100 mb-2 line-clamp-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors text-sm h-10">
       {title}
     </h3>
