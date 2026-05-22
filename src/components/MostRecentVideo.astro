@@ -1,7 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
 import { isShort, formatDuration, formatViews, formatLikes, getTimeAgo } from '../utils/youtube';
-import WaveTransition from './WaveTransition.astro';
 
 // Get all videos and sort by date, excluding shorts
 const allVideos = await getCollection('videos');
@@ -30,20 +29,13 @@ const latestVideo = hasVideos ? {
 } : null;
 ---
 
-<WaveTransition
-  topColor="fill-white dark:fill-slate-800"
-  bottomColor="fill-gray-50 dark:fill-slate-700"
-/>
-
-<section id="latest" class="pt-10 pb-16 px-4 sm:px-6 lg:px-8 bg-gray-50 dark:bg-slate-700 transition-colors">
+<section id="latest" class="py-16 px-4 sm:px-6 lg:px-8">
   <div class="max-w-7xl mx-auto">
     {hasVideos && latestVideo ? (
       <div class="max-w-4xl mx-auto">
-        <div class="text-center mb-6">
-          <span class="inline-block bg-green-100 dark:bg-green-700/30 text-green-700 dark:text-green-300 px-3 py-1 rounded-full text-sm font-medium mb-4">
-            Latest Video
-          </span>
-          <h2 class="text-2xl lg:text-3xl font-bold text-gray-900 dark:text-gray-100">
+        <div class="text-center mb-8">
+          <span class="tag-badge mb-4 inline-block">LATEST_TRANSMISSION</span>
+          <h2 class="text-2xl lg:text-3xl font-bold text-gray-100 mt-4">
             {latestVideo.title}
           </h2>
         </div>
@@ -53,48 +45,54 @@ const latestVideo = hasVideos ? {
           onclick={`openVideoModal('${latestVideo.videoId}', '${latestVideo.title.replace(/'/g, "\\'")}')`}
           class="relative group cursor-pointer block w-full"
         >
-          <div class="relative aspect-video bg-gray-200 dark:bg-gray-700 rounded-lg overflow-hidden shadow-2xl">
+          <div class="relative aspect-video rounded-xl overflow-hidden glass-panel neon-glow">
             <img
               src={latestVideo.thumbnail}
               alt={latestVideo.title}
               class="w-full h-full object-cover"
               loading="eager"
             />
-            <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 flex items-center justify-center transition-all duration-300">
-              <div class="w-20 h-20 bg-red-600 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transform group-hover:scale-110 transition-all duration-300">
-                <svg class="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+            <div class="absolute inset-0 bg-black/0 group-hover:bg-black/40 flex items-center justify-center transition-all duration-300">
+              <div class="w-20 h-20 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transform group-hover:scale-110 transition-all duration-300"
+                   style="background: linear-gradient(135deg, #00f0ff, #b829f7); box-shadow: 0 0 30px rgba(0, 240, 255, 0.4);">
+                <svg class="w-8 h-8 text-space-900 ml-1" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M8 5v14l11-7z"/>
                 </svg>
               </div>
             </div>
-            <div class="absolute bottom-3 right-3 bg-black bg-opacity-80 text-white px-2 py-0.5 rounded">
+            <div class="absolute bottom-3 right-3 bg-space-900/90 text-neon-cyan px-3 py-1 rounded-lg font-mono text-sm border border-neon-cyan/20">
               {latestVideo.duration}
             </div>
+            <!-- Corner accents -->
+            <div class="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-neon-cyan/40 rounded-tl-xl"></div>
+            <div class="absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-neon-cyan/40 rounded-tr-xl"></div>
+            <div class="absolute bottom-0 left-0 w-8 h-8 border-b-2 border-l-2 border-neon-cyan/40 rounded-bl-xl"></div>
+            <div class="absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 border-neon-cyan/40 rounded-br-xl"></div>
           </div>
 
-          <div class="flex items-center justify-center mt-6 text-gray-600 dark:text-gray-300 space-x-6 flex-nowrap">
+          <div class="flex items-center justify-center mt-6 text-gray-400 space-x-6 flex-nowrap font-mono text-sm">
             <div class="flex items-center whitespace-nowrap">
-              <svg class="w-4 h-4 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg class="w-4 h-4 mr-2 flex-shrink-0 text-neon-cyan" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
               </svg>
               {latestVideo.views}
             </div>
-            <span class="flex-shrink-0">•</span>
+            <span class="flex-shrink-0 text-gray-600">|</span>
             <div class="flex items-center whitespace-nowrap">
-              <svg class="w-4 h-4 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg class="w-4 h-4 mr-2 flex-shrink-0 text-neon-purple" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5"></path>
               </svg>
               {latestVideo.likes}
             </div>
-            <span class="flex-shrink-0">•</span>
-            <span class="whitespace-nowrap">{latestVideo.timeAgo}</span>
+            <span class="flex-shrink-0 text-gray-600">|</span>
+            <span class="whitespace-nowrap text-gray-500">{latestVideo.timeAgo}</span>
           </div>
         </button>
       </div>
     ) : (
       <div class="max-w-4xl mx-auto text-center">
-        <p class="text-gray-600 dark:text-gray-300">Loading most recent video...</p>
+        <p class="text-gray-500 font-mono">LOADING_TRANSMISSION...</p>
       </div>
     )}
   </div>

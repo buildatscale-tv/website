@@ -3,13 +3,13 @@
 // It uses a dialog element with client-side JavaScript for interactivity
 ---
 
-<dialog id="video-modal" class="backdrop:bg-black backdrop:bg-opacity-75 bg-transparent p-0 max-w-6xl w-full rounded-lg">
-  <div class="bg-white dark:bg-slate-700 rounded-lg overflow-hidden shadow-2xl border border-transparent dark:border-slate-600">
-    <div class="flex items-center justify-between p-4 bg-gray-100 dark:bg-slate-600 text-gray-900 dark:text-white border-b border-gray-200 dark:border-slate-500">
-      <h3 id="video-modal-title" class="text-lg font-semibold text-gray-900 dark:text-white"></h3>
+<dialog id="video-modal" class="backdrop:bg-black/80 bg-transparent p-0 max-w-6xl w-full rounded-xl">
+  <div class="glass-panel rounded-xl overflow-hidden neon-glow">
+    <div class="flex items-center justify-between p-4 bg-space-800/80 border-b border-white/5">
+      <h3 id="video-modal-title" class="text-lg font-semibold text-gray-100 font-mono"></h3>
       <button
         id="close-video-modal"
-        class="text-gray-900 dark:text-white hover:text-gray-600 dark:hover:text-gray-300 transition-colors"
+        class="text-gray-400 hover:text-neon-cyan transition-colors p-1 rounded-lg hover:bg-white/5"
         aria-label="Close video"
       >
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -90,6 +90,6 @@
 
 <style>
   dialog::backdrop {
-    background: rgba(0, 0, 0, 0.75);
+    background: rgba(5, 5, 16, 0.9);
   }
 </style>

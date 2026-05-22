@@ -1,5 +1,6 @@
 ---
 import ThemeScript from '../components/ThemeScript.astro';
+import '../styles/global.css';
 
 export interface Props {
   title: string;
@@ -10,7 +11,7 @@ const { title, description = "Learning in Public — AI • Web • Ops" } = Ast
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" class="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="description" content={description} />
@@ -20,7 +21,108 @@ const { title, description = "Learning in Public — AI • Web • Ops" } = Ast
     <title>{title}</title>
     <ThemeScript />
   </head>
-  <body class="min-h-screen bg-white dark:bg-slate-800 text-gray-900 dark:text-gray-100 transition-colors">
-    <slot />
+  <body class="min-h-screen bg-space-900 text-gray-100 transition-colors relative overflow-x-hidden">
+    <!-- Particle canvas background -->
+    <canvas id="particle-canvas" class="fixed inset-0 w-full h-full pointer-events-none z-0" aria-hidden="true"></canvas>
+
+    <!-- Ambient gradient orbs -->
+    <div class="fixed top-0 left-1/4 w-[600px] h-[600px] bg-neon-cyan/5 rounded-full blur-[150px] pointer-events-none z-0" aria-hidden="true"></div>
+    <div class="fixed bottom-0 right-1/4 w-[500px] h-[500px] bg-neon-purple/5 rounded-full blur-[150px] pointer-events-none z-0" aria-hidden="true"></div>
+
+    <!-- Grid overlay -->
+    <div class="fixed inset-0 grid-bg opacity-50 pointer-events-none z-0" aria-hidden="true"></div>
+
+    <div class="relative z-10">
+      <slot />
+    </div>
+
+    <script is:inline>
+      (function() {
+        const canvas = document.getElementById('particle-canvas');
+        if (!canvas) return;
+        const ctx = canvas.getContext('2d');
+        if (!ctx) return;
+
+        let width, height;
+        let particles = [];
+        const particleCount = 60;
+        const connectionDistance = 120;
+        const maxConnections = 3;
+
+        function resize() {
+          width = window.innerWidth;
+          height = window.innerHeight;
+          canvas.width = width;
+          canvas.height = height;
+        }
+
+        function createParticle() {
+          return {
+            x: Math.random() * width,
+            y: Math.random() * height,
+            vx: (Math.random() - 0.5) * 0.3,
+            vy: (Math.random() - 0.5) * 0.3,
+            size: Math.random() * 2 + 0.5,
+            opacity: Math.random() * 0.5 + 0.2,
+          };
+        }
+
+        function init() {
+          resize();
+          particles = [];
+          for (let i = 0; i < particleCount; i++) {
+            particles.push(createParticle());
+          }
+        }
+
+        function draw() {
+          ctx.clearRect(0, 0, width, height);
+
+          // Update and draw particles
+          for (let i = 0; i < particles.length; i++) {
+            const p = particles[i];
+            p.x += p.vx;
+            p.y += p.vy;
+
+            if (p.x < 0) p.x = width;
+            if (p.x > width) p.x = 0;
+            if (p.y < 0) p.y = height;
+            if (p.y > height) p.y = 0;
+
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(0, 240, 255, ${p.opacity})`;
+            ctx.fill();
+
+            // Draw connections
+            let connections = 0;
+            for (let j = i + 1; j < particles.length; j++) {
+              if (connections >= maxConnections) break;
+              const p2 = particles[j];
+              const dx = p.x - p2.x;
+              const dy = p.y - p2.y;
+              const dist = Math.sqrt(dx * dx + dy * dy);
+
+              if (dist < connectionDistance) {
+                const opacity = (1 - dist / connectionDistance) * 0.15;
+                ctx.beginPath();
+                ctx.moveTo(p.x, p.y);
+                ctx.lineTo(p2.x, p2.y);
+                ctx.strokeStyle = `rgba(0, 240, 255, ${opacity})`;
+                ctx.lineWidth = 0.5;
+                ctx.stroke();
+                connections++;
+              }
+            }
+          }
+
+          requestAnimationFrame(draw);
+        }
+
+        window.addEventListener('resize', resize);
+        init();
+        draw();
+      })();
+    </script>
   </body>
 </html>
