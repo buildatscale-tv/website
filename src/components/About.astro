@@ -19,12 +19,12 @@ const topics = [
 ];
 ---
 
-<section id="about" class="py-16 bg-blue-50 dark:bg-slate-800 transition-colors">
+<section id="about" class="py-20 bg-blue-50 dark:bg-slate-800 transition-colors duration-300">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-      <div class="flex flex-col sm:flex-row gap-6 items-center sm:items-start">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+      <div class="flex flex-col sm:flex-row gap-8 items-center sm:items-start">
         <!-- Avatar -->
-        <div class="flex-shrink-0 w-[120px] h-[120px] rounded-full border-4 border-white dark:border-slate-700 shadow-lg overflow-hidden bg-[#1e3049]">
+        <div class="flex-shrink-0 w-[120px] h-[120px] rounded-full border-4 border-white dark:border-slate-700 shadow-lg overflow-hidden bg-[#1e3049] transition-all duration-300 hover:scale-105 hover:shadow-xl">
           <img
             src="/images/avatar-small.png"
             alt="Ronnie - BuildAtScale"
@@ -34,10 +34,10 @@ const topics = [
 
         <!-- Text content -->
         <div>
-          <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 dark:text-gray-100 mb-6 text-center sm:text-left">
+          <h2 class="text-heading-lg text-gray-900 dark:text-gray-100 mb-6 text-center sm:text-left">
             About BuildAtScale
           </h2>
-          <div class="space-y-4 text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
+          <div class="space-y-5 text-body-lg text-gray-600 dark:text-gray-300 leading-relaxed">
             <p>
               Lately I'm exploring how to stop writing every line of code myself and start directing
               AI agents to handle development, research, and deployment.
@@ -57,25 +57,25 @@ const topics = [
       </div>
 
       <div id="topics">
-        <h3 class="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-6">
+        <h3 class="text-heading text-gray-900 dark:text-gray-100 mb-8">
           What You'll Find Here
         </h3>
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          {topics.map((topic) => (
-            <div class="bg-white dark:bg-slate-700/50 backdrop-blur-sm border border-gray-200 dark:border-slate-600 rounded-lg p-4 hover:shadow-md dark:hover:shadow-slate-700/30 transition-shadow">
+          {topics.map((topic, i) => (
+            <div class="bg-white dark:bg-slate-700/50 backdrop-blur-sm border border-gray-200 dark:border-slate-600 rounded-xl p-5 hover:-translate-y-0.5 hover:shadow-lg dark:hover:shadow-slate-700/40 transition-all duration-200 group cursor-default">
               <div class="flex items-center space-x-3">
-                <div class="text-blue-600 dark:text-blue-400" set:html={topic.icon} />
+                <div class="text-blue-600 dark:text-blue-400 transition-transform duration-200 group-hover:scale-110" set:html={topic.icon} />
                 <span class="font-medium text-gray-900 dark:text-gray-100">{topic.label}</span>
               </div>
             </div>
           ))}
         </div>
 
-        <div class="mt-8 p-6 bg-white dark:bg-slate-700/50 backdrop-blur-sm border border-blue-200 dark:border-slate-600 rounded-lg">
+        <div class="mt-8 p-6 bg-white dark:bg-slate-700/50 backdrop-blur-sm border border-blue-200 dark:border-slate-600 rounded-xl hover:shadow-md dark:hover:shadow-slate-700/30 transition-all duration-200">
           <h4 class="font-semibold text-gray-900 dark:text-gray-100 mb-2">
             Learning by Doing
           </h4>
-          <p class="text-gray-600 dark:text-gray-300">
+          <p class="text-body text-gray-600 dark:text-gray-300">
             Not being afraid to show the messy parts. Real experiments, real failures,
             and real discoveries in the world of AI-assisted development.
           </p>
@@ -88,9 +88,9 @@ const topics = [
 <!-- Subtle divider after about -->
 <div class="bg-blue-50 dark:bg-slate-800">
   <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex items-center gap-4 py-8">
+    <div class="flex items-center gap-4 py-10">
       <div class="flex-1 h-px bg-gradient-to-r from-transparent via-blue-200 dark:via-slate-600 to-transparent"></div>
-      <div class="flex gap-1.5">
+      <div class="flex gap-1.5 animate-pulse-soft">
         <div class="w-1.5 h-1.5 rounded-full bg-blue-300 dark:bg-slate-500"></div>
         <div class="w-1.5 h-1.5 rounded-full bg-blue-400 dark:bg-slate-400"></div>
         <div class="w-1.5 h-1.5 rounded-full bg-blue-300 dark:bg-slate-500"></div>

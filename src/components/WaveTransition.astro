@@ -16,3 +16,18 @@ const { topColor, bottomColor } = Astro.props;
   <rect class={topColor} width="1440" height="120"/>
   <path class={bottomColor} d="M0,60 C240,20 480,100 720,60 C960,20 1200,100 1440,60 L1440,120 L0,120 Z"/>
 </svg>
+
+<style>
+  svg path {
+    animation: waveShift 10s ease-in-out infinite alternate;
+  }
+
+  @keyframes waveShift {
+    0% {
+      d: path("M0,60 C240,20 480,100 720,60 C960,20 1200,100 1440,60 L1440,120 L0,120 Z");
+    }
+    100% {
+      d: path("M0,60 C240,100 480,20 720,60 C960,100 1200,20 1440,60 L1440,120 L0,120 Z");
+    }
+  }
+</style>
