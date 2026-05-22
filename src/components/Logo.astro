@@ -1,11 +1,21 @@
 ---
 ---
 
-<svg class="w-8 h-8 text-blue-600 dark:text-blue-400" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-label="BuildAtScale Logo">
-  <circle cx="6" cy="6" r="2"/>
-  <circle cx="18" cy="6" r="2"/>
-  <circle cx="6" cy="18" r="2"/>
-  <circle cx="18" cy="18" r="2"/>
-  <circle cx="12" cy="12" r="3"/>
-  <path d="M8 8l8 8M16 8l-8 8M10 12h4M12 10v4"/>
-</svg>
+<div class="relative w-8 h-8">
+  <svg class="w-8 h-8 text-neon-cyan" fill="none" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-label="BuildAtScale Logo">
+    <defs>
+      <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#00f0ff" />
+        <stop offset="50%" stop-color="#b829dd" />
+        <stop offset="100%" stop-color="#ff2d7b" />
+      </linearGradient>
+    </defs>
+    <circle cx="8" cy="8" r="2.5" fill="url(#logoGrad)" class="animate-pulse" />
+    <circle cx="24" cy="8" r="2.5" fill="url(#logoGrad)" class="animate-pulse" style="animation-delay: 0.2s" />
+    <circle cx="8" cy="24" r="2.5" fill="url(#logoGrad)" class="animate-pulse" style="animation-delay: 0.4s" />
+    <circle cx="24" cy="24" r="2.5" fill="url(#logoGrad)" class="animate-pulse" style="animation-delay: 0.6s" />
+    <circle cx="16" cy="16" r="4" fill="url(#logoGrad)" class="animate-pulse" style="animation-delay: 0.3s" />
+    <path d="M10.5 10.5L21.5 21.5M21.5 10.5L10.5 21.5M12 16h8M16 12v8" stroke="url(#logoGrad)" stroke-width="1.5" opacity="0.6" />
+  </svg>
+  <div class="absolute inset-0 bg-neon-cyan/20 rounded-full blur-md animate-glow-pulse"></div>
+</div>

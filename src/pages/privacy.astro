@@ -9,15 +9,29 @@ import Footer from '../components/Footer.astro';
   description="Privacy policy for BuildAtScale (buildatscale.tv), operated by Build Test Run LLC."
 >
   <Header />
-  <main class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-    <h1 class="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-2">Privacy Policy</h1>
-    <p class="text-sm text-gray-500 dark:text-gray-400 mb-10">BuildAtScale / Build Test Run LLC — Last updated: February 2026</p>
+  <main class="relative max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+    <!-- Header -->
+    <div class="mb-12">
+      <div class="inline-flex items-center gap-2 mb-4">
+        <span class="pill-badge" style="border-color: rgba(255, 255, 255, 0.2); color: #9ca3af; background: rgba(255, 255, 255, 0.05);">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+          </svg>
+          Legal
+        </span>
+      </div>
+      <h1 class="text-4xl sm:text-5xl font-bold text-white mb-3">Privacy Policy</h1>
+      <p class="text-sm text-gray-500 font-mono">BuildAtScale / Build Test Run LLC — Last updated: February 2026</p>
+    </div>
 
-    <div class="prose prose-gray dark:prose-invert max-w-none space-y-8">
-
+    <!-- Content -->
+    <div class="glass-card rounded-2xl p-8 space-y-8">
       <section>
-        <h2 class="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-3">Overview</h2>
-        <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+        <h2 class="text-xl font-semibold text-white mb-3 flex items-center gap-2">
+          <span class="w-8 h-8 rounded-lg bg-neon-cyan/10 flex items-center justify-center text-neon-cyan text-sm">01</span>
+          Overview
+        </h2>
+        <p class="text-gray-400 leading-relaxed">
           This privacy policy describes how BuildAtScale (operated by Build Test Run LLC, "we," "us," or "our") collects,
           uses, and shares information when you visit buildatscale.tv (the "Site"). We keep this simple because we don't
           do anything complicated with your data.
@@ -25,115 +39,179 @@ import Footer from '../components/Footer.astro';
       </section>
 
       <section>
-        <h2 class="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-3">Information We Collect</h2>
+        <h2 class="text-xl font-semibold text-white mb-3 flex items-center gap-2">
+          <span class="w-8 h-8 rounded-lg bg-neon-purple/10 flex items-center justify-center text-neon-purple text-sm">02</span>
+          Information We Collect
+        </h2>
 
-        <h3 class="text-base font-semibold text-gray-800 dark:text-gray-200 mb-2">Information You Provide</h3>
-        <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+        <h3 class="text-base font-semibold text-gray-300 mb-2">Information You Provide</h3>
+        <p class="text-gray-400 leading-relaxed mb-4">
           We only collect information you voluntarily provide, such as your email address if you sign up for a newsletter
           or contact us directly. We don't have account registration, comment systems, or forms that collect personal
           information beyond basic contact.
         </p>
 
-        <h3 class="text-base font-semibold text-gray-800 dark:text-gray-200 mb-2">Information Collected Automatically</h3>
-        <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-3">
+        <h3 class="text-base font-semibold text-gray-300 mb-2">Information Collected Automatically</h3>
+        <p class="text-gray-400 leading-relaxed mb-3">
           When you visit the Site, standard web server logs and analytics tools may collect:
         </p>
-        <ul class="list-disc list-inside text-gray-700 dark:text-gray-300 space-y-1 ml-2">
-          <li>IP address</li>
-          <li>Browser type and version</li>
-          <li>Pages visited and time spent</li>
-          <li>Referring URLs</li>
-          <li>Device type</li>
+        <ul class="space-y-2 text-gray-400">
+          <li class="flex items-start gap-2">
+            <span class="text-neon-cyan mt-1.5">›</span>
+            <span>IP address</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-neon-cyan mt-1.5">›</span>
+            <span>Browser type and version</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-neon-cyan mt-1.5">›</span>
+            <span>Pages visited and time spent</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-neon-cyan mt-1.5">›</span>
+            <span>Referring URLs</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-neon-cyan mt-1.5">›</span>
+            <span>Device type</span>
+          </li>
         </ul>
-        <p class="text-gray-700 dark:text-gray-300 leading-relaxed mt-3">
+        <p class="text-gray-400 leading-relaxed mt-3">
           This information is used in aggregate to understand how people use the Site and is not used to identify individuals.
         </p>
       </section>
 
       <section>
-        <h2 class="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-3">Third-Party Services</h2>
+        <h2 class="text-xl font-semibold text-white mb-3 flex items-center gap-2">
+          <span class="w-8 h-8 rounded-lg bg-neon-pink/10 flex items-center justify-center text-neon-pink text-sm">03</span>
+          Third-Party Services
+        </h2>
 
-        <h3 class="text-base font-semibold text-gray-800 dark:text-gray-200 mb-2">YouTube</h3>
-        <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+        <h3 class="text-base font-semibold text-gray-300 mb-2">YouTube</h3>
+        <p class="text-gray-400 leading-relaxed mb-4">
           This Site embeds video content from YouTube. Content embedded from YouTube is subject to
-          <a href="https://policies.google.com/privacy" target="_blank" rel="noopener" class="text-blue-600 dark:text-blue-400 hover:underline">YouTube's Privacy Policy</a>.
+          <a href="https://policies.google.com/privacy" target="_blank" rel="noopener" class="text-neon-cyan hover:underline">YouTube's Privacy Policy</a>.
           YouTube may collect data when you interact with embedded videos.
         </p>
 
-        <h3 class="text-base font-semibold text-gray-800 dark:text-gray-200 mb-2">Affiliate Links</h3>
-        <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+        <h3 class="text-base font-semibold text-gray-300 mb-2">Affiliate Links</h3>
+        <p class="text-gray-400 leading-relaxed">
           Some links on this Site may be affiliate links. Clicking these links may result in us earning a commission.
           We only link to products and services we genuinely use or recommend.
         </p>
       </section>
 
       <section>
-        <h2 class="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-3">Cookies</h2>
-        <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+        <h2 class="text-xl font-semibold text-white mb-3 flex items-center gap-2">
+          <span class="w-8 h-8 rounded-lg bg-neon-green/10 flex items-center justify-center text-neon-green text-sm">04</span>
+          Cookies
+        </h2>
+        <p class="text-gray-400 leading-relaxed">
           This Site uses cookies for basic functionality. You can control cookies through your browser settings.
           Disabling cookies may affect some site functionality.
         </p>
       </section>
 
       <section>
-        <h2 class="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-3">How We Use Your Information</h2>
-        <ul class="list-disc list-inside text-gray-700 dark:text-gray-300 space-y-1 ml-2">
-          <li>To operate and improve the Site</li>
-          <li>To understand how visitors use the Site</li>
-          <li>To respond to direct inquiries</li>
-          <li>To send newsletters if you have subscribed (you can unsubscribe at any time)</li>
+        <h2 class="text-xl font-semibold text-white mb-3 flex items-center gap-2">
+          <span class="w-8 h-8 rounded-lg bg-neon-orange/10 flex items-center justify-center text-neon-orange text-sm">05</span>
+          How We Use Your Information
+        </h2>
+        <ul class="space-y-2 text-gray-400">
+          <li class="flex items-start gap-2">
+            <span class="text-neon-purple mt-1.5">›</span>
+            <span>To operate and improve the Site</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-neon-purple mt-1.5">›</span>
+            <span>To understand how visitors use the Site</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-neon-purple mt-1.5">›</span>
+            <span>To respond to direct inquiries</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-neon-purple mt-1.5">›</span>
+            <span>To send newsletters if you have subscribed (you can unsubscribe at any time)</span>
+          </li>
         </ul>
-        <p class="text-gray-700 dark:text-gray-300 leading-relaxed mt-4 font-medium">
+        <p class="text-white font-medium mt-4">
           We do not sell your personal information to third parties. Ever.
         </p>
       </section>
 
       <section>
-        <h2 class="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-3">Data Retention</h2>
-        <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+        <h2 class="text-xl font-semibold text-white mb-3 flex items-center gap-2">
+          <span class="w-8 h-8 rounded-lg bg-neon-cyan/10 flex items-center justify-center text-neon-cyan text-sm">06</span>
+          Data Retention
+        </h2>
+        <p class="text-gray-400 leading-relaxed">
           Email addresses collected for newsletters are retained until you unsubscribe. Contact form submissions are
           retained only as long as necessary to respond.
         </p>
       </section>
 
       <section>
-        <h2 class="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-3">Your Rights</h2>
-        <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-3">You have the right to:</p>
-        <ul class="list-disc list-inside text-gray-700 dark:text-gray-300 space-y-1 ml-2">
-          <li>Request access to any personal data we hold about you</li>
-          <li>Request deletion of your personal data</li>
-          <li>Opt out of any communications from us</li>
+        <h2 class="text-xl font-semibold text-white mb-3 flex items-center gap-2">
+          <span class="w-8 h-8 rounded-lg bg-neon-purple/10 flex items-center justify-center text-neon-purple text-sm">07</span>
+          Your Rights
+        </h2>
+        <p class="text-gray-400 leading-relaxed mb-3">You have the right to:</p>
+        <ul class="space-y-2 text-gray-400">
+          <li class="flex items-start gap-2">
+            <span class="text-neon-pink mt-1.5">›</span>
+            <span>Request access to any personal data we hold about you</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-neon-pink mt-1.5">›</span>
+            <span>Request deletion of your personal data</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-neon-pink mt-1.5">›</span>
+            <span>Opt out of any communications from us</span>
+          </li>
         </ul>
-        <p class="text-gray-700 dark:text-gray-300 leading-relaxed mt-3">
+        <p class="text-gray-400 leading-relaxed mt-3">
           To exercise these rights, contact us at the email below.
         </p>
       </section>
 
       <section>
-        <h2 class="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-3">Children's Privacy</h2>
-        <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+        <h2 class="text-xl font-semibold text-white mb-3 flex items-center gap-2">
+          <span class="w-8 h-8 rounded-lg bg-neon-green/10 flex items-center justify-center text-neon-green text-sm">08</span>
+          Children's Privacy
+        </h2>
+        <p class="text-gray-400 leading-relaxed">
           This Site is not directed at children under 13. We do not knowingly collect personal information from children
           under 13. If you believe we have inadvertently collected such information, contact us and we will delete it promptly.
         </p>
       </section>
 
       <section>
-        <h2 class="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-3">Changes to This Policy</h2>
-        <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+        <h2 class="text-xl font-semibold text-white mb-3 flex items-center gap-2">
+          <span class="w-8 h-8 rounded-lg bg-neon-orange/10 flex items-center justify-center text-neon-orange text-sm">09</span>
+          Changes to This Policy
+        </h2>
+        <p class="text-gray-400 leading-relaxed">
           We may update this policy from time to time. The "last updated" date at the top of this page will reflect any
           changes. Continued use of the Site after changes constitutes acceptance of the updated policy.
         </p>
       </section>
 
       <section>
-        <h2 class="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-3">Contact</h2>
-        <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
-          Build Test Run LLC<br />
-          <a href="mailto:hello@buildatscale.tv" class="text-blue-600 dark:text-blue-400 hover:underline">hello@buildatscale.tv</a><br />
-          buildatscale.tv
-        </p>
+        <h2 class="text-xl font-semibold text-white mb-3 flex items-center gap-2">
+          <span class="w-8 h-8 rounded-lg bg-neon-cyan/10 flex items-center justify-center text-neon-cyan text-sm">10</span>
+          Contact
+        </h2>
+        <div class="text-gray-400">
+          <p class="text-white font-medium">Build Test Run LLC</p>
+          <p>
+            <a href="mailto:hello@buildatscale.tv" class="text-neon-cyan hover:underline">hello@buildatscale.tv</a>
+          </p>
+          <p class="font-mono text-sm">buildatscale.tv</p>
+        </div>
       </section>
-
     </div>
   </main>
   <Footer />
