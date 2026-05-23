@@ -1,0 +1,110 @@
+---
+---
+
+<section id="enroll" class="relative py-24 md:py-32 overflow-hidden">
+  <!-- Background glow -->
+  <div class="absolute inset-0">
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-neon-blue/10 rounded-full blur-3xl"></div>
+  </div>
+
+  <div class="relative z-10 max-w-4xl mx-auto px-6">
+    <div class="text-center mb-12 space-y-4">
+      <p class="font-mono text-neon-blue text-sm tracking-widest uppercase">Limited Cohorts</p>
+      <h2 class="text-4xl md:text-5xl font-black uppercase tracking-tight text-white">
+        SECURE YOUR SPOT
+      </h2>
+      <p class="text-slate-400 max-w-xl mx-auto">
+        Next cohort starts June 2. Only 50 seats per batch. Applications reviewed on a rolling basis.
+      </p>
+    </div>
+
+    <div class="bg-cinematic-900/80 backdrop-blur-sm border border-slate-800 rounded-lg p-8 md:p-12">
+      <form class="space-y-6" onsubmit="event.preventDefault(); alert('Thanks for your interest! This is a demo signup form.');">
+        <div class="grid md:grid-cols-2 gap-6">
+          <div class="space-y-2">
+            <label class="font-mono text-xs text-slate-500 uppercase tracking-wider">Full Name</label>
+            <input 
+              type="text" 
+              required
+              class="w-full px-4 py-3 bg-cinematic-950 border border-slate-700 rounded text-white placeholder-slate-600 focus:border-neon-blue focus:outline-none focus:ring-1 focus:ring-neon-blue/50 transition-all font-mono text-sm"
+              placeholder="Ada Lovelace"
+            />
+          </div>
+          <div class="space-y-2">
+            <label class="font-mono text-xs text-slate-500 uppercase tracking-wider">Email</label>
+            <input 
+              type="email" 
+              required
+              class="w-full px-4 py-3 bg-cinematic-950 border border-slate-700 rounded text-white placeholder-slate-600 focus:border-neon-blue focus:outline-none focus:ring-1 focus:ring-neon-blue/50 transition-all font-mono text-sm"
+              placeholder="ada@example.com"
+            />
+          </div>
+        </div>
+
+        <div class="space-y-2">
+          <label class="font-mono text-xs text-slate-500 uppercase tracking-wider">Current Role</label>
+          <select 
+            required
+            class="w-full px-4 py-3 bg-cinematic-950 border border-slate-700 rounded text-white focus:border-neon-blue focus:outline-none focus:ring-1 focus:ring-neon-blue/50 transition-all font-mono text-sm appearance-none cursor-pointer"
+          >
+            <option value="" class="bg-cinematic-950">Select your current role...</option>
+            <option value="frontend" class="bg-cinematic-950">Frontend Developer</option>
+            <option value="backend" class="bg-cinematic-950">Backend Developer</option>
+            <option value="fullstack" class="bg-cinematic-950">Full-Stack Developer</option>
+            <option value="data" class="bg-cinematic-950">Data Scientist / Analyst</option>
+            <option value="product" class="bg-cinematic-950">Product Manager</option>
+            <option value="student" class="bg-cinematic-950">Student</option>
+            <option value="other" class="bg-cinematic-950">Other</option>
+          </select>
+        </div>
+
+        <div class="space-y-2">
+          <label class="font-mono text-xs text-slate-500 uppercase tracking-wider">What do you want to build?</label>
+          <textarea 
+            rows="3"
+            class="w-full px-4 py-3 bg-cinematic-950 border border-slate-700 rounded text-white placeholder-slate-600 focus:border-neon-blue focus:outline-none focus:ring-1 focus:ring-neon-blue/50 transition-all font-mono text-sm resize-none"
+            placeholder="I want to build an AI-powered code review assistant..."
+          ></textarea>
+        </div>
+
+        <div class="pt-4">
+          <button 
+            type="submit"
+            class="w-full md:w-auto px-12 py-4 bg-neon-blue text-cinematic-950 font-bold uppercase tracking-wider text-sm hover:bg-white transition-colors duration-300 flex items-center justify-center gap-2"
+          >
+            <span>Apply for Cohort</span>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+            </svg>
+          </button>
+        </div>
+
+        <p class="font-mono text-xs text-slate-600 text-center md:text-left">
+          No payment required to apply. We'll review your application and schedule a 15-minute fit call.
+        </p>
+      </form>
+    </div>
+
+    <!-- Trust badges -->
+    <div class="mt-12 flex flex-wrap items-center justify-center gap-8 text-slate-600">
+      <div class="flex items-center gap-2">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+        </svg>
+        <span class="font-mono text-xs uppercase">SSL Encrypted</span>
+      </div>
+      <div class="flex items-center gap-2">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+        </svg>
+        <span class="font-mono text-xs uppercase">Privacy Protected</span>
+      </div>
+      <div class="flex items-center gap-2">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/>
+        </svg>
+        <span class="font-mono text-xs uppercase">No Upfront Payment</span>
+      </div>
+    </div>
+  </div>
+</section>

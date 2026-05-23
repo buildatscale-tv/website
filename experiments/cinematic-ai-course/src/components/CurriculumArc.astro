@@ -1,0 +1,121 @@
+---
+const phases = [
+  {
+    number: '01',
+    title: 'FOUNDATIONS',
+    subtitle: 'Weeks 1-4',
+    description: 'Master the primitives. Understand how LLMs think, how prompts steer behavior, and how to build reliable AI interfaces.',
+    skills: ['Transformer Architecture', 'Prompt Engineering', 'Token Economics', 'API Design Patterns'],
+    color: 'blue',
+  },
+  {
+    number: '02',
+    title: 'MODELS',
+    subtitle: 'Weeks 5-8',
+    description: 'Go beyond black-box APIs. Fine-tune models, build RAG pipelines, and integrate vision + audio for multi-modal products.',
+    skills: ['Fine-tuning & LoRA', 'RAG & Vector DBs', 'Multi-modal Models', 'Evaluation Frameworks'],
+    color: 'purple',
+  },
+  {
+    number: '03',
+    title: 'DEPLOY',
+    subtitle: 'Weeks 9-12',
+    description: 'Ship to production. Optimize latency, manage costs, monitor drift, and scale from prototype to millions of users.',
+    skills: ['Production APIs', 'Latency Optimization', 'Cost Management', 'Observability & Drift'],
+    color: 'blue',
+  },
+];
+
+const milestones = [
+  { label: 'Project 1', desc: 'AI chatbot with memory', week: 'W3' },
+  { label: 'Project 2', desc: 'RAG document assistant', week: 'W6' },
+  { label: 'Project 3', desc: 'Fine-tuned classifier', week: 'W8' },
+  { label: 'Capstone', desc: 'Production AI product', week: 'W12' },
+];
+---
+
+<section id="curriculum" class="relative py-24 md:py-32">
+  <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(168,85,247,0.05)_0%,_transparent_60%)]"></div>
+
+  <div class="relative z-10 max-w-6xl mx-auto px-6">
+    <!-- Section header -->
+    <div class="text-center mb-20 space-y-4">
+      <p class="font-mono text-neon-blue text-sm tracking-widest uppercase">The Journey</p>
+      <h2 class="text-4xl md:text-5xl font-black uppercase tracking-tight text-white">
+        YOUR TRANSFORMATION ARC
+      </h2>
+      <p class="text-slate-400 max-w-2xl mx-auto text-lg">
+        Twelve weeks. Four shipped projects. One career-defining skillset.
+      </p>
+    </div>
+
+    <!-- Story arc timeline -->
+    <div class="relative">
+      <!-- Connection line -->
+      <div class="hidden lg:block absolute top-1/2 left-0 right-0 h-px bg-gradient-to-r from-transparent via-slate-700 to-transparent -translate-y-1/2"></div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        {phases.map((phase, i) => (
+          <div class="group relative">
+            <div class="relative p-8 bg-cinematic-900/50 backdrop-blur-sm rounded-lg border border-slate-800 hover:border-neon-blue/50 transition-all duration-500 hover:-translate-y-2">
+              <!-- Phase number -->
+              <div class="flex items-center justify-between mb-6">
+                <span class="font-mono text-5xl font-black text-slate-800 group-hover:text-slate-700 transition-colors">
+                  {phase.number}
+                </span>
+                <span class="font-mono text-xs text-slate-500 uppercase tracking-wider">{phase.subtitle}</span>
+              </div>
+
+              <!-- Title -->
+              <h3 class={`text-2xl font-black uppercase tracking-tight mb-4 ${
+                phase.color === 'purple' ? 'text-purple-400 group-hover:text-purple-300' : 'text-neon-blue group-hover:text-cyan-300'
+              } transition-colors`}>
+                {phase.title}
+              </h3>
+
+              <!-- Description -->
+              <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                {phase.description}
+              </p>
+
+              <!-- Skills -->
+              <div class="space-y-2">
+                {phase.skills.map(skill => (
+                  <div class="flex items-center gap-2">
+                    <span class="w-1.5 h-1.5 rounded-full bg-neon-blue/60"></span>
+                    <span class="font-mono text-xs text-slate-300">{skill}</span>
+                  </div>
+                ))}
+              </div>
+
+              <!-- Hover glow -->
+              <div class={`absolute -inset-px rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none ${
+                phase.color === 'purple' 
+                  ? 'bg-gradient-to-b from-purple-500/10 to-transparent' 
+                  : 'bg-gradient-to-b from-neon-blue/10 to-transparent'
+              }`}></div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Milestones -->
+    <div class="mt-20">
+      <div class="flex items-center gap-4 mb-8">
+        <div class="h-px flex-1 bg-gradient-to-r from-neon-blue/50 to-transparent"></div>
+        <span class="font-mono text-xs text-neon-blue uppercase tracking-widest">Build Milestones</span>
+        <div class="h-px flex-1 bg-gradient-to-l from-neon-blue/50 to-transparent"></div>
+      </div>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        {milestones.map((m) => (
+          <div class="p-6 bg-cinematic-800/30 border border-slate-800 rounded-lg text-center hover:border-neon-blue/30 transition-colors">
+            <span class="font-mono text-xs text-slate-500 uppercase">{m.week}</span>
+            <h4 class="font-bold text-white mt-1 mb-2">{m.label}</h4>
+            <p class="font-mono text-xs text-slate-400">{m.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

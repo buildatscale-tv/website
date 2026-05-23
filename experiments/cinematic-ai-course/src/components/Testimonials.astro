@@ -1,0 +1,72 @@
+---
+const testimonials = [
+  {
+    name: 'Sarah Chen',
+    role: 'ML Engineer @ Stripe',
+    before: 'Frontend Developer',
+    quote: 'I went from writing React components to shipping LLM-powered fraud detection in 12 weeks. The mentorship was the game-changer.',
+    outcome: '3x salary increase',
+  },
+  {
+    name: 'Marcus Johnson',
+    role: 'AI Product Lead @ Notion',
+    before: 'Product Manager',
+    quote: 'Finally understood what "context window" and "temperature" actually mean in production. Built and deployed my first fine-tuned model.',
+    outcome: 'Shipped AI feature to 10M users',
+  },
+  {
+    name: 'Elena Rodriguez',
+    role: 'Founding Engineer @ Cortex AI',
+    before: 'Data Analyst',
+    quote: 'The curriculum is relentless in the best way. Every week you ship something real. My GitHub went from empty to interview-ready.',
+    outcome: 'Joined seed-stage AI startup',
+  },
+];
+---
+
+<section class="relative py-24 md:py-32">
+  <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,_rgba(0,240,255,0.05)_0%,_transparent_60%)]"></div>
+
+  <div class="relative z-10 max-w-6xl mx-auto px-6">
+    <div class="text-center mb-16 space-y-4">
+      <p class="font-mono text-neon-blue text-sm tracking-widest uppercase">Proof</p>
+      <h2 class="text-4xl md:text-5xl font-black uppercase tracking-tight text-white">
+        TRANSFORMATIONS THAT STICK
+      </h2>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-8">
+      {testimonials.map((t) => (
+        <div class="relative p-8 bg-cinematic-900/50 border border-slate-800 rounded-lg hover:border-neon-blue/30 transition-all duration-300">
+          <!-- Quote mark -->
+          <div class="absolute -top-4 -left-2 text-6xl font-serif text-neon-blue/20">"</div>
+          
+          <div class="relative z-10 space-y-6">
+            <p class="text-slate-300 text-sm leading-relaxed italic">
+              {t.quote}
+            </p>
+            
+            <div class="space-y-3">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-full bg-gradient-to-br from-neon-blue/30 to-purple-500/30 flex items-center justify-center text-xs font-bold text-white">
+                  {t.name.split(' ').map(n => n[0]).join('')}
+                </div>
+                <div>
+                  <div class="font-bold text-white text-sm">{t.name}</div>
+                  <div class="font-mono text-xs text-slate-500">{t.role}</div>
+                </div>
+              </div>
+              
+              <div class="pt-3 border-t border-slate-800">
+                <div class="flex items-center justify-between">
+                  <span class="font-mono text-xs text-slate-600">Before: {t.before}</span>
+                  <span class="font-mono text-xs text-neon-blue font-medium">{t.outcome}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
