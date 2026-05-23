@@ -1,0 +1,591 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PullQuote from '../components/PullQuote.astro';
+import JourneyPanel from '../components/JourneyPanel.astro';
+import CurriculumModule from '../components/CurriculumModule.astro';
+import OutcomeStat from '../components/OutcomeStat.astro';
+---
+
+<BaseLayout title="The Fluency Gap &mdash; Why AI-Fluent Developers Will Own the Next Decade">
+  <article class="essay">
+
+    <!-- HERO / MASTHEAD -->
+    <header class="masthead">
+      <div class="container">
+        <div class="masthead__kicker">The Fluency Gap</div>
+        <h1 class="masthead__title">
+          Why AI-Fluent Developers<br/>Will Own the Next Decade
+        </h1>
+        <p class="masthead__deck">
+          The divide isn&rsquo;t between those who use AI and those who don&rsquo;t.<br class="hide-mobile" />
+          It&rsquo;s between those who <em>think</em> in AI and those who merely <em>prompt</em> it.
+        </p>
+        <div class="masthead__meta">
+          <span class="masthead__date">Cohort 7 &mdash; Applications Open</span>
+          <span class="masthead__byline">The AI Fluency Institute</span>
+        </div>
+        <div class="masthead__rule"></div>
+      </div>
+    </header>
+
+    <!-- ESSAY BODY -->
+    <section class="essay-body container">
+
+      <p class="essay__lead">
+        Somewhere in a co-working space in Berlin, a developer named Katya reduced a three-week refactoring sprint to forty minutes. Not by copying code from a chatbot, but by composing a prompt architecture that expressed the entire transformation as a sequence of verified invariant-preserving steps. Her team reviewed the diff, not the prompt. The code passed every test on the first run. They shipped on Tuesday. The sprint board went green before lunch.
+      </p>
+
+      <p>
+        Stories like Katya&rsquo;s were anecdotes two years ago. Today they&rsquo;re the leading edge of a structural shift that will reshape how software is built, who builds it, and which developers command the economics of the profession. The question is no longer whether AI will transform development&mdash;it&rsquo;s whether <em>you</em> will be the one directing the transformation or the one displaced by it.
+      </p>
+
+      <h2>The Myth of the &ldquo;AI-Augmented&rdquo; Developer</h2>
+
+      <p>
+        The industry loves a comforting narrative: AI is a tool, just like TypeScript or Git. Learn the commands, add it to your workflow, and you&rsquo;re &ldquo;AI-augmented.&rdquo; But this framing obscures a deeper reality. The gap between &ldquo;using AI&rdquo; and &ldquo;being fluent in AI&rdquo; is not incremental&mdash;it&rsquo;s categorical.
+      </p>
+
+      <p>
+        Consider the difference between someone who can order a meal in a foreign language and someone who can negotiate a contract in it. Both speak the language. Only one <em>thinks</em> in it. AI fluency is the latter. It means understanding the latent space well enough to compose prompts that are themselves engineering artifacts&mdash;testable, version-controlled, and composable. It means knowing when to chain, when to branch, when to verify, and when to throw away. It means treating the model as a compiler target, not a magic eight ball.
+      </p>
+
+      <PullQuote
+        quote="The developers who will thrive aren't the ones who can type the longest prompts. They're the ones who can decompose a problem into pieces a model can solve reliably—and then verify the result."
+        attribution="Dr. Amara Osei"
+        role="Founding Instructor, The AI Fluency Institute"
+      />
+
+      <h2>The Numbers Aren&rsquo;t Subtle</h2>
+
+      <p>
+        We ran the data across our first six cohorts&mdash;214 developers, 12 countries, experience levels from junior to principal engineer. The results aren&rsquo;t subtle. They&rsquo;re not a gentle slope. They&rsquo;re a step function.
+      </p>
+
+      <div class="outcomes-grid">
+        <OutcomeStat stat="4.2&times;" label="Faster Prototyping" context="median time from spec to working prototype" />
+        <OutcomeStat stat="73%" label="Fewer Bugs in PRs" context="across all experience levels" />
+        <OutcomeStat stat="2.8&times;" label="Promotion Velocity" context="within 12 months of completing the program" />
+        <OutcomeStat stat="94%" label="Would Recommend" context="to a teammate or colleague" />
+      </div>
+
+      <p>
+        These aren&rsquo;t cherry-picked anecdotes. They&rsquo;re the median outcomes across every student who completed our 12-week program. The variance is instructive, too: juniors saw the biggest raw gains in speed, while senior engineers saw the biggest gains in architectural leverage&mdash;using AI to explore design spaces that would have taken weeks of whiteboard sessions.
+      </p>
+
+      <h2>What Fluency Actually Looks Like</h2>
+
+      <p>
+        Fluency isn&rsquo;t a certificate. It&rsquo;s a set of observable behaviors. When we interview graduates six months out, the patterns are stark. Fluent developers describe their work differently. They don&rsquo;t say &ldquo;I asked the AI to&hellip;&rdquo; They say &ldquo;I decomposed the problem into&hellip;&rdquo; and then &ldquo;I verified the output by&hellip;&rdquo; The model is in the loop, but the developer is in the cockpit.
+      </p>
+
+      <p>
+        Here&rsquo;s what that transformation looks like in practice.
+      </p>
+
+      <div class="journey-grid">
+        <JourneyPanel
+          name="Katya Volkov"
+          role="Senior Backend Engineer, Zalando"
+          before="Manually wrote migration scripts for 40+ microservices. 3-week sprint cycles. Frequent rollback."
+          after="Designed a prompt architecture that generates verified, invariant-preserving migrations. Shipped in 40 minutes."
+          quote="I used to dread migration sprints. Now I think of them as a design problem I can express to a model, verify, and move on."
+          highlight="3 weeks → 40 min per migration cycle"
+        />
+
+        <JourneyPanel
+          name="James Okafor"
+          role="Staff Engineer, Stripe"
+          before="Spent days writing and debugging integration tests. Could cover ~60% of edge cases per sprint."
+          after="Built a self-verification pipeline that generates tests from specifications, runs them, and surfaces only failures for human review."
+          quote="I stopped writing tests and started designing test strategies. The model handles the grunt work; I handle the judgment calls."
+          highlight="60% → 94% edge-case coverage"
+        />
+
+        <JourneyPanel
+          name="Priya Ramanathan"
+          role="Engineering Manager, Shopify"
+          before="Code reviews consumed 30% of her week. Often became bottlenecks for her team of 8."
+          after="Trained an AI-assisted review protocol that pre-filters PRs, annotates likely issues, and escalates only architectural decisions."
+          quote="I went from reviewing every PR to reviewing only the ones that needed a human architect's eye. My team ships 2x faster."
+          highlight="30% → 8% of week on reviews"
+        />
+
+        <JourneyPanel
+          name="Marcus Chen"
+          role="Freelance Developer"
+          before="Could take on 2-3 client projects simultaneously. Revenue capped at project throughput."
+          after="Uses prompt scaffolding to parallelize implementation across 6-8 projects. Revenue multiplied without adding hours."
+          quote="I'm not working harder—I'm thinking at a higher level of abstraction. Every project benefits from my prompt libraries."
+          highlight="2-3 → 6-8 concurrent projects"
+        />
+      </div>
+
+      <PullQuote
+        quote="The future belongs to developers who treat AI as a compiler, not a copilot. You don't 'use' a compiler. You write code that compiles. Fluency means writing prompts that produce."
+        attribution="The AI Fluency Institute"
+        role="Program Philosophy"
+      />
+
+      <h2>The Curriculum</h2>
+
+      <p>
+        Twelve weeks. No fluff. Every module is designed around a single question: can you <em>do</em> something after this that you couldn&rsquo;t do before? Each week builds on the last, and by the end you will have a portfolio of verified prompt architectures, a personal prompt library, and the metacognitive framework to keep evolving both long after the program ends.
+      </p>
+
+      <div class="curriculum-list">
+        <CurriculumModule
+          number="01"
+          title="Mental Models for Latent Space"
+          duration="Week 1-2"
+          description="Build an intuitive map of how large language models actually reason. You'll learn to predict failure modes, understand context windows, and develop a metacognitive framework for when to trust model output and when to verify."
+          topics={["Token boundaries", "Context window management", "Failure mode taxonomy", "Confidence calibration"]}
+        />
+
+        <CurriculumModule
+          number="02"
+          title="Prompt Architecture & Composition"
+          duration="Week 3-4"
+          description="Move beyond single-shot prompting. Design multi-step prompt chains that are version-controlled, testable, and idempotent. Learn to decompose complex problems into prompt architectures that produce reliable outputs."
+          topics={["Chain-of-thought design", "Prompt versioning", "Idempotent chains", "Decomposition patterns", "Template systems"]}
+        />
+
+        <CurriculumModule
+          number="03"
+          title="Verification & Testing"
+          duration="Week 5-6"
+          description="Every AI output must be verified. Learn to build verification layers—automated tests, assertion chains, and property-based invariants—that catch model failures before they reach production."
+          topics={["Automated verification", "Property-based testing", "Assertion chains", "Output validation", "Regression guards"]}
+        />
+
+        <CurriculumModule
+          number="04"
+          title="Code Generation at Scale"
+          duration="Week 7-8"
+          description="Apply prompt architectures to real production workflows: refactoring, migration, test generation, and documentation. Each exercise uses your own codebase so the learning is immediately applicable."
+          topics={["Refactoring pipelines", "Migration automation", "Test generation strategies", "Documentation synthesis", "Codebase-aware prompting"]}
+        />
+
+        <CurriculumModule
+          number="05"
+          title="System Design with AI Primitives"
+          duration="Week 9-10"
+          description="Design systems where AI components are first-class architectural primitives. Build retrieval-augmented generation, tool-use pipelines, and multi-agent orchestration patterns that are robust and maintainable."
+          topics={["RAG architecture", "Tool-use patterns", "Multi-agent orchestration", "Fallback strategies", "Cost optimization"]}
+        />
+
+        <CurriculumModule
+          number="06"
+          title="Thesis & Portfolio"
+          duration="Week 11-12"
+          description="Design, build, and defend a prompt architecture that solves a real problem in your domain. This becomes the centerpiece of your AI fluency portfolio—a living artifact you can show to teams, hiring managers, and collaborators."
+          topics={["Portfolio development", "Peer review", "Architecture defense", "Public documentation", "Long-term maintenance"]}
+        />
+      </div>
+
+      <PullQuote
+        quote="I came in thinking I'd learn to write better prompts. I left understanding that prompt engineering is systems engineering. The prompts are just the interface to a much deeper skill."
+        attribution="Lena Richter"
+        role="Cohort 5 Graduate, Principal Engineer at Squarespace"
+      />
+
+      <h2>Who This Is For</h2>
+
+      <p>
+        This program is not for beginners who want to &ldquo;use AI to code.&rdquo; It&rsquo;s for working developers who recognize that AI fluency is a professional discipline&mdash;one that demands the same rigor you bring to architecture, testing, and deployment. You should apply if:
+      </p>
+
+      <div class="criteria-list">
+        <div class="criterion">
+          <span class="criterion__marker">&#8594;</span>
+          <span>You have at least 2 years of professional development experience and can ship to production independently.</span>
+        </div>
+        <div class="criterion">
+          <span class="criterion__marker">&#8594;</span>
+          <span>You&rsquo;ve tried using AI tools but feel like you&rsquo;re &ldquo;just prompting&rdquo; without a systematic approach.</span>
+        </div>
+        <div class="criterion">
+          <span class="criterion__marker">&#8594;</span>
+          <span>You believe that developer leverage, not job displacement, is the future of AI in software.</span>
+        </div>
+        <div class="criterion">
+          <span class="criterion__marker">&#8594;</span>
+          <span>You&rsquo;re ready to treat AI as a compiler, not a crutch&mdash;and to put in the work to become fluent.</span>
+        </div>
+      </div>
+
+      <h2>The Decade Question</h2>
+
+      <p>
+        Every technological inflection point creates two groups: those who adapt to the new landscape and those who wait for it to adapt to them. The compiler didn&rsquo;t replace programmers&mdash;it replaced programmers who refused to learn it. The internet didn&rsquo;t replace businesses&mdash;it replaced businesses that refused to understand it.
+      </p>
+
+      <p>
+        AI is that kind of inflection point. And the window for fluency&mdash;true fluency, not surface-level usage&mdash;is open now. In five years, AI fluency will be table stakes. The advantage accrues to those who develop it <em>before</em> it&rsquo;s expected.
+      </p>
+
+      <p>
+        The next cohort starts in six weeks. We admit 24 developers per cohort, because fluency can&rsquo;t be taught at scale&mdash;it has to be practiced with feedback. If this resonates, we&rsquo;d like to hear from you.
+      </p>
+    </section>
+
+    <!-- CTA SECTION -->
+    <section class="cta">
+      <div class="container">
+        <div class="cta__content">
+          <div class="cta__kicker">Cohort 7 &mdash; Applications Now Open</div>
+          <h2 class="cta__title">Start the next cohort.</h2>
+          <p class="cta__desc">
+            Twelve weeks. Twenty-four developers. One goal: fluency.<br />
+            The application takes 15 minutes. The advantage lasts a career.
+          </p>
+          <form class="cta__form" onsubmit="event.preventDefault(); this.querySelector('button').textContent='Application Submitted'; this.querySelector('button').disabled=true;">
+            <div class="cta__form-row">
+              <input type="text" placeholder="Your name" class="cta__input" required />
+              <input type="email" placeholder="Your email" class="cta__input" required />
+              <button type="submit" class="cta__button">Start the next cohort</button>
+            </div>
+            <p class="cta__note">No spam. No sales funnel. Just the application.</p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="container">
+        <p class="footer__text">&copy; 2026 The AI Fluency Institute. Fluency is a practice, not a product.</p>
+      </div>
+    </footer>
+
+  </article>
+</BaseLayout>
+
+<style>
+  /* HEADER */
+  .masthead {
+    padding: 6rem 0 3rem;
+    background: linear-gradient(180deg, var(--pastel-cream) 0%, #fdfcfb 100%);
+    border-bottom: 1px solid #eee8df;
+  }
+
+  .masthead__kicker {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--accent-plum);
+    margin-bottom: 1.25rem;
+  }
+
+  .masthead__title {
+    font-family: var(--serif);
+    font-size: 3rem;
+    font-weight: 700;
+    line-height: 1.15;
+    color: var(--ink);
+    margin-bottom: 1.5rem;
+    max-width: 14ch;
+  }
+
+  .masthead__deck {
+    font-family: var(--body-serif);
+    font-size: 1.2rem;
+    line-height: 1.65;
+    color: var(--ink-light);
+    max-width: 38ch;
+    margin-bottom: 2rem;
+  }
+
+  .masthead__meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .masthead__date {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--ink-muted);
+  }
+
+  .masthead__byline {
+    font-family: var(--body-serif);
+    font-style: italic;
+    font-size: 0.9rem;
+    color: var(--ink-faint);
+  }
+
+  .masthead__rule {
+    margin-top: 2rem;
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent-plum) 0%, transparent 100%);
+  }
+
+  @media (max-width: 768px) {
+    .masthead {
+      padding: 4rem 0 2rem;
+    }
+    .masthead__title {
+      font-size: 2.1rem;
+    }
+    .masthead__deck {
+      font-size: 1.05rem;
+    }
+  }
+
+  /* ESSAY BODY */
+  .essay-body {
+    padding: 3rem 0;
+  }
+
+  .essay-body h2 {
+    font-family: var(--serif);
+    font-size: 1.65rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin: 3.5rem 0 1.25rem;
+    line-height: 1.25;
+  }
+
+  .essay-body h2::before {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 3px;
+    background: var(--accent-terra);
+    margin-bottom: 1rem;
+  }
+
+  .essay-body p {
+    margin-bottom: 1.25rem;
+    color: var(--ink-light);
+    font-size: 1rem;
+    line-height: 1.75;
+  }
+
+  .essay__lead {
+    font-family: var(--body-serif);
+    font-size: 1.15rem;
+    line-height: 1.72;
+    color: var(--ink);
+    margin-bottom: 1.75rem;
+  }
+
+  /* HIDE MOBILE BR */
+  .hide-mobile {
+    display: inline;
+  }
+  @media (max-width: 768px) {
+    .hide-mobile {
+      display: none;
+    }
+  }
+
+  /* OUTCOMES GRID */
+  .outcomes-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin: 2.5rem 0;
+  }
+
+  @media (max-width: 768px) {
+    .outcomes-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  /* JOURNEY GRID */
+  .journey-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+    margin: 2rem 0;
+  }
+
+  @media (max-width: 768px) {
+    .journey-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* CURRICULUM LIST */
+  .curriculum-list {
+    margin: 2rem 0;
+  }
+
+  /* CRITERIA LIST */
+  .criteria-list {
+    margin: 1.5rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .criterion {
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+    font-size: 0.95rem;
+    color: var(--ink-light);
+    line-height: 1.6;
+  }
+
+  .criterion__marker {
+    font-family: var(--mono);
+    color: var(--accent-plum);
+    flex-shrink: 0;
+    font-weight: 600;
+  }
+
+  /* CTA */
+  .cta {
+    padding: 5rem 0;
+    background: linear-gradient(180deg, #fdfcfb 0%, var(--pastel-lavender) 50%, var(--accent-plum) 100%);
+  }
+
+  .cta__content {
+    text-align: center;
+    max-width: 560px;
+    margin: 0 auto;
+  }
+
+  .cta__kicker {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--accent-plum);
+    margin-bottom: 1rem;
+  }
+
+  .cta__title {
+    font-family: var(--serif);
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 1rem;
+    line-height: 1.2;
+  }
+
+  .cta__desc {
+    font-family: var(--body-serif);
+    font-size: 1.05rem;
+    color: var(--ink-light);
+    line-height: 1.65;
+    margin-bottom: 2.5rem;
+  }
+
+  .cta__form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .cta__form-row {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .cta__input {
+    font-family: var(--body-serif);
+    font-size: 0.9rem;
+    padding: 0.75rem 1rem;
+    border: 1px solid #d0cae0;
+    border-radius: 6px;
+    background: #fff;
+    color: var(--ink);
+    outline: none;
+    transition: border-color 0.2s ease;
+    width: 180px;
+  }
+
+  .cta__input:focus {
+    border-color: var(--accent-plum);
+  }
+
+  .cta__input::placeholder {
+    color: var(--ink-faint);
+    font-style: italic;
+  }
+
+  .cta__button {
+    font-family: var(--mono);
+    font-size: 0.82rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 0.85rem 1.75rem;
+    background: var(--accent-plum);
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.15s ease;
+  }
+
+  .cta__button:hover {
+    background: #5a3690;
+    transform: translateY(-1px);
+  }
+
+  .cta__button:disabled {
+    background: var(--ink-faint);
+    cursor: default;
+    transform: none;
+  }
+
+  .cta__note {
+    font-family: var(--body-serif);
+    font-size: 0.78rem;
+    color: var(--ink-faint);
+    font-style: italic;
+  }
+
+  @media (max-width: 768px) {
+    .cta {
+      padding: 3.5rem 0;
+    }
+    .cta__title {
+      font-size: 1.8rem;
+    }
+    .cta__form-row {
+      flex-direction: column;
+    }
+    .cta__input {
+      width: 100%;
+    }
+    .cta__button {
+      width: 100%;
+    }
+  }
+
+  /* FOOTER */
+  .footer {
+    padding: 2rem 0;
+    background: var(--accent-plum);
+  }
+
+  .footer__text {
+    text-align: center;
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    color: rgba(255, 255, 255, 0.65);
+    letter-spacing: 0.02em;
+  }
+
+  /* RESPONSIVE ESSAY WIDTH */
+  @media (min-width: 769px) {
+    .essay-body {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 3rem 1.5rem;
+    }
+  }
+</style>

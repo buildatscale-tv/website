@@ -1,0 +1,119 @@
+---
+export interface Props {
+  number: string;
+  title: string;
+  duration: string;
+  description: string;
+  topics: string[];
+}
+
+const { number, title, duration, description, topics } = Astro.props;
+---
+
+<div class="curriculum-module">
+  <div class="curriculum-module__number">{number}</div>
+  <div class="curriculum-module__content">
+    <div class="curriculum-module__header">
+      <h3 class="curriculum-module__title">{title}</h3>
+      <span class="curriculum-module__duration">{duration}</span>
+    </div>
+    <p class="curriculum-module__desc">{description}</p>
+    <div class="curriculum-module__topics">
+      {topics.map((topic) => (
+        <span class="curriculum-module__topic">{topic}</span>
+      ))}
+    </div>
+  </div>
+</div>
+
+<style>
+  .curriculum-module {
+    display: flex;
+    gap: 1.5rem;
+    padding: 2rem 0;
+    border-bottom: 1px solid #e8e5ee;
+  }
+
+  .curriculum-module:last-child {
+    border-bottom: none;
+  }
+
+  .curriculum-module__number {
+    font-family: var(--mono);
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--pastel-lavender);
+    flex-shrink: 0;
+    width: 3.5rem;
+    line-height: 1;
+    padding-top: 0.15rem;
+    background: linear-gradient(135deg, var(--accent-plum) 0%, var(--accent-plum-light) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .curriculum-module__content {
+    flex: 1;
+  }
+
+  .curriculum-module__header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .curriculum-module__title {
+    font-family: var(--serif);
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--ink);
+    line-height: 1.3;
+  }
+
+  .curriculum-module__duration {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    color: var(--ink-faint);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    white-space: nowrap;
+  }
+
+  .curriculum-module__desc {
+    font-size: 0.95rem;
+    color: var(--ink-light);
+    line-height: 1.65;
+    margin-bottom: 0.85rem;
+  }
+
+  .curriculum-module__topics {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .curriculum-module__topic {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    padding: 0.25rem 0.6rem;
+    background: var(--pastel-cream);
+    border-radius: 3px;
+    color: var(--ink-light);
+    letter-spacing: 0.01em;
+  }
+
+  @media (max-width: 768px) {
+    .curriculum-module {
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .curriculum-module__number {
+      font-size: 1.5rem;
+      width: auto;
+    }
+  }
+</style>

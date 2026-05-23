@@ -1,0 +1,77 @@
+---
+export interface Props {
+  quote: string;
+  attribution?: string;
+  role?: string;
+}
+
+const { quote, attribution, role } = Astro.props;
+---
+
+<figure class="pull-quote">
+  <blockquote>
+    <p>&ldquo;{quote}&rdquo;</p>
+  </blockquote>
+  {attribution && (
+    <figcaption>
+      {attribution}
+      {role && <span class="role">&mdash; {role}</span>}
+    </figcaption>
+  )}
+</figure>
+
+<style>
+  .pull-quote {
+    margin: 4rem 0;
+    padding: 2.5rem 2rem;
+    border-left: 4px solid var(--accent-plum);
+    background: linear-gradient(135deg, var(--pastel-lavender) 0%, #f8f6fc 100%);
+    position: relative;
+  }
+
+  .pull-quote::before {
+    content: '\201C';
+    position: absolute;
+    top: -0.3rem;
+    left: 1rem;
+    font-family: var(--serif);
+    font-size: 5rem;
+    color: var(--accent-plum-light);
+    opacity: 0.3;
+    line-height: 1;
+  }
+
+  blockquote p {
+    font-family: var(--serif);
+    font-size: 1.35rem;
+    font-style: italic;
+    line-height: 1.55;
+    color: var(--ink);
+    position: relative;
+    z-index: 1;
+  }
+
+  figcaption {
+    margin-top: 1rem;
+    font-family: var(--mono);
+    font-size: 0.8rem;
+    color: var(--ink-muted);
+    letter-spacing: 0.02em;
+  }
+
+  .role {
+    font-family: var(--body-serif);
+    font-style: italic;
+    color: var(--ink-faint);
+  }
+
+  @media (max-width: 768px) {
+    .pull-quote {
+      margin: 3rem 0;
+      padding: 1.5rem 1.25rem;
+    }
+    blockquote p {
+      font-size: 1.15rem;
+    }
+  }
+</style>

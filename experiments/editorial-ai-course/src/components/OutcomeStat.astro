@@ -1,0 +1,50 @@
+---
+export interface Props {
+  stat: string;
+  label: string;
+  context?: string;
+}
+
+const { stat, label, context } = Astro.props;
+---
+
+<div class="outcome-stat">
+  <div class="outcome-stat__number">{stat}</div>
+  <div class="outcome-stat__label">{label}</div>
+  {context && <div class="outcome-stat__context">{context}</div>}
+</div>
+
+<style>
+  .outcome-stat {
+    text-align: center;
+    padding: 2rem 1.5rem;
+    background: linear-gradient(180deg, #fff 0%, var(--pastel-cream) 100%);
+    border-radius: 8px;
+    border: 1px solid #eeeadf;
+  }
+
+  .outcome-stat__number {
+    font-family: var(--serif);
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--accent-plum);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+
+  .outcome-stat__label {
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--ink-muted);
+    margin-bottom: 0.35rem;
+  }
+
+  .outcome-stat__context {
+    font-family: var(--body-serif);
+    font-size: 0.85rem;
+    color: var(--ink-faint);
+    font-style: italic;
+  }
+</style>
