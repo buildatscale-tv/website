@@ -1,0 +1,172 @@
+---
+export interface Props {
+  title: string;
+  description: string;
+  code: string;
+  language?: string;
+  duration?: string;
+  level?: string;
+  delay?: number;
+}
+
+const { title, description, code, language = "Python", duration = "20 min", level = "Intermediate", delay = 0 } = Astro.props;
+---
+
+<div class="card lesson-card fade-in-up" style={`animation-delay: ${delay * 0.1}s`}>
+  <div class="card-content">
+    <div class="card-header">
+      <h3 class="card-title">{title}</h3>
+      <p class="card-desc">{description}</p>
+      <div class="card-tags">
+        <span class="tag duration">{duration}</span>
+        <span class="tag level">{level}</span>
+        <span class="tag lang">{language}</span>
+      </div>
+    </div>
+    <div class="code-block card-code">
+      <div class="code-header">
+        <div class="code-dots">
+          <span class="code-dot red"></span>
+          <span class="code-dot yellow"></span>
+          <span class="code-dot green"></span>
+        </div>
+        <span class="code-filename">lesson.py</span>
+      </div>
+      <div class="code-body">
+        <pre>{code}</pre>
+      </div>
+    </div>
+  </div>
+  <div class="card-action">
+    <button class="btn-try">
+      Try This Lesson
+      <svg width="16" height="16" viewBox="0 0 20 20" fill="none">
+        <path d="M7.5 4L13.5 10L7.5 16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+  </div>
+</div>
+
+<style>
+  .lesson-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  .card-content {
+    padding: 24px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .card-header {
+    margin-bottom: 20px;
+  }
+
+  .card-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--neutral-900);
+    margin-bottom: 8px;
+  }
+
+  .card-desc {
+    font-size: 14px;
+    color: var(--neutral-500);
+    line-height: 1.6;
+    margin-bottom: 16px;
+  }
+
+  .card-tags {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .tag {
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  .duration {
+    background: rgba(99, 102, 241, 0.08);
+    color: var(--accent);
+  }
+
+  .level {
+    background: rgba(245, 158, 11, 0.1);
+    color: #d97706;
+  }
+
+  .lang {
+    background: rgba(16, 185, 129, 0.1);
+    color: #059669;
+  }
+
+  .card-code {
+    border: 1px solid var(--neutral-200);
+    border-radius: 10px;
+    font-size: 12px;
+  }
+
+  .card-code .code-header {
+    padding: 8px 12px;
+    background: #fafafa;
+  }
+
+  .card-code .code-filename {
+    color: var(--neutral-400);
+    font-size: 11px;
+    font-family: 'JetBrains Mono', monospace;
+    flex: 1;
+  }
+
+  .card-code .code-dots span {
+    width: 8px;
+    height: 8px;
+  }
+
+  .card-code .code-body {
+    padding: 14px;
+    font-size: 12px;
+    line-height: 1.7;
+  }
+
+  .card-code .code-body pre {
+    margin: 0;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+  }
+
+  .card-action {
+    padding: 16px 24px;
+    border-top: 1px solid var(--neutral-100);
+  }
+
+  .btn-try {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    border-radius: 8px;
+    background: var(--accent);
+    color: white;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    border: none;
+    transition: all 0.2s ease;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .btn-try:hover {
+    background: var(--accent-dark);
+    gap: 12px;
+  }
+</style>

@@ -1,0 +1,294 @@
+---
+export interface Props {
+  title?: string;
+  subtitle?: string;
+}
+
+const { title = "Write AI That Ships to Production", subtitle = "Hands-on lessons where you code real AI apps—from neural nets to RAG pipelines. No fluff, just working code." } = Astro.props;
+---
+
+<section class="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div class="hero-text fade-in-up">
+        <span class="badge">🚀 New: DeepSeek V4 Flash Edition</span>
+        <h1 class="hero-title">{title}</h1>
+        <p class="hero-subtitle">{subtitle}</p>
+        <div class="hero-actions">
+          <a href="#lessons" class="btn btn-primary">
+            Try a Free Lesson Now
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path d="M7.5 4L13.5 10L7.5 16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+          <a href="#curriculum" class="btn btn-secondary">View Curriculum</a>
+        </div>
+        <div class="hero-metrics">
+          <div class="metric">
+            <span class="metric-value">40+</span>
+            <span class="metric-label">Interactive Lessons</span>
+          </div>
+          <div class="metric">
+            <span class="metric-value">12K</span>
+            <span class="metric-label">Active Developers</span>
+          </div>
+          <div class="metric">
+            <span class="metric-value">4.9★</span>
+            <span class="metric-label">Avg. Rating</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-preview fade-in-up delay-2">
+        <div class="code-block ide-window">
+          <div class="code-header">
+            <div class="code-dots">
+              <span class="code-dot red"></span>
+              <span class="code-dot yellow"></span>
+              <span class="code-dot green"></span>
+            </div>
+            <span class="code-filename">transformer_attention.py</span>
+            <div class="code-actions">
+              <span class="action-icon">&#x25D0;</span>
+              <span class="action-icon">&#x25CF;</span>
+              <span class="action-icon">&#x22EF;</span>
+            </div>
+          </div>
+          <div class="code-body">
+            <pre><span class="code-keyword">import</span> <span class="code-variable">torch</span>
+<span class="code-keyword">import</span> <span class="code-variable">torch</span>.<span class="code-variable">nn</span> <span class="code-keyword">as</span> <span class="code-variable">nn</span>
+<span class="code-keyword">import</span> <span class="code-variable">torch</span>.<span class="code-variable">nn</span>.<span class="code-variable">functional</span> <span class="code-keyword">as</span> <span class="code-variable">F</span>
+
+<span class="code-keyword">class</span> <span class="code-function">MultiHeadAttention</span>(<span class="code-variable">nn</span>.<span class="code-variable">Module</span>):
+    <span class="code-keyword">def</span> <span class="code-function">__init__</span>(<span class="code-variable">self</span>, <span class="code-variable">d_model</span>: <span class="code-type">int</span>, <span class="code-variable">n_heads</span>: <span class="code-type">int</span>):
+        <span class="code-builtin">super</span>().<span class="code-function">__init__</span>()
+        <span class="code-variable">self</span>.<span class="code-variable">n_heads</span> = <span class="code-variable">n_heads</span>
+        <span class="code-variable">self</span>.<span class="code-variable">d_k</span> = <span class="code-variable">d_model</span> // <span class="code-variable">n_heads</span>
+        
+        <span class="code-variable">self</span>.<span class="code-variable">W_q</span> = <span class="code-variable">nn</span>.<span class="code-function">Linear</span>(<span class="code-variable">d_model</span>, <span class="code-variable">d_model</span>)
+        <span class="code-variable">self</span>.<span class="code-variable">W_k</span> = <span class="code-variable">nn</span>.<span class="code-function">Linear</span>(<span class="code-variable">d_model</span>, <span class="code-variable">d_model</span>)
+        <span class="code-variable">self</span>.<span class="code-variable">W_v</span> = <span class="code-variable">nn</span>.<span class="code-function">Linear</span>(<span class="code-variable">d_model</span>, <span class="code-variable">d_model</span>)
+        <span class="code-variable">self</span>.<span class="code-variable">W_o</span> = <span class="code-variable">nn</span>.<span class="code-function">Linear</span>(<span class="code-variable">d_model</span>, <span class="code-variable">d_model</span>)
+
+    <span class="code-keyword">def</span> <span class="code-function">forward</span>(<span class="code-variable">self</span>, <span class="code-variable">x</span>: <span class="code-type">torch.Tensor</span>) <span class="code-operator">-></span> <span class="code-type">torch.Tensor</span>:
+        <span class="code-variable">B</span>, <span class="code-variable">T</span>, <span class="code-variable">C</span> = <span class="code-variable">x</span>.<span class="code-variable">shape</span>
+        
+        <span class="code-comment"># Project and split into heads</span>
+        <span class="code-variable">Q</span> = <span class="code-variable">self</span>.<span class="code-variable">W_q</span>(<span class="code-variable">x</span>).<span class="code-function">view</span>(<span class="code-variable">B</span>, <span class="code-variable">T</span>, <span class="code-variable">self</span>.<span class="code-variable">n_heads</span>, <span class="code-variable">self</span>.<span class="code-variable">d_k</span>).<span class="code-function">transpose</span>(<span class="code-number">1</span>, <span class="code-number">2</span>)
+        <span class="code-variable">K</span> = <span class="code-variable">self</span>.<span class="code-variable">W_k</span>(<span class="code-variable">x</span>).<span class="code-function">view</span>(<span class="code-variable">B</span>, <span class="code-variable">T</span>, <span class="code-variable">self</span>.<span class="code-variable">n_heads</span>, <span class="code-variable">self</span>.<span class="code-variable">d_k</span>).<span class="code-function">transpose</span>(<span class="code-number">1</span>, <span class="code-number">2</span>)
+        <span class="code-variable">V</span> = <span class="code-variable">self</span>.<span class="code-variable">W_v</span>(<span class="code-variable">x</span>).<span class="code-function">view</span>(<span class="code-variable">B</span>, <span class="code-variable">T</span>, <span class="code-variable">self</span>.<span class="code-variable">n_heads</span>, <span class="code-variable">self</span>.<span class="code-variable">d_k</span>).<span class="code-function">transpose</span>(<span class="code-number">1</span>, <span class="code-number">2</span>)
+        
+        <span class="code-comment"># Scaled dot-product attention</span>
+        <span class="code-variable">scores</span> = <span class="code-variable">Q</span> @ <span class="code-variable">K</span>.<span class="code-function">transpose</span>(<span class="code-number">-2</span>, <span class="code-number">-1</span>) / (<span class="code-variable">self</span>.<span class="code-variable">d_k</span> <span class="code-operator">**</span> <span class="code-number">0.5</span>)
+        <span class="code-variable">weights</span> = <span class="code-variable">F</span>.<span class="code-function">softmax</span>(<span class="code-variable">scores</span>, <span class="code-variable">dim</span><span class="code-operator">=</span><span class="code-number">-1</span>)
+        <span class="code-variable">context</span> = (<span class="code-variable">weights</span> @ <span class="code-variable">V</span>).<span class="code-function">transpose</span>(<span class="code-number">1</span>, <span class="code-number">2</span>).<span class="code-function">contiguous</span>().<span class="code-function">view</span>(<span class="code-variable">B</span>, <span class="code-variable">T</span>, <span class="code-variable">C</span>)
+        
+        <span class="code-keyword">return</span> <span class="code-variable">self</span>.<span class="code-variable">W_o</span>(<span class="code-variable">context</span>)</pre>
+          </div>
+          <div class="code-footer">
+            <span class="line-numbers">1-27</span>
+            <div class="editor-status">
+              <span class="status-indicator"></span>
+              <span>Ready</span>
+            </div>
+          </div>
+        </div>
+        <div class="preview-badge">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+          Live Preview — Multi-Head Attention in Action
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    padding: 80px 0 100px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(99, 102, 241, 0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+
+  .badge {
+    display: inline-block;
+    padding: 6px 14px;
+    background: rgba(99, 102, 241, 0.1);
+    color: var(--accent);
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 20px;
+  }
+
+  .hero-title {
+    font-size: 52px;
+    letter-spacing: -0.03em;
+    margin-bottom: 20px;
+    color: var(--neutral-900);
+  }
+
+  .hero-subtitle {
+    font-size: 18px;
+    color: var(--neutral-500);
+    line-height: 1.7;
+    margin-bottom: 32px;
+    max-width: 520px;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 48px;
+  }
+
+  .hero-metrics {
+    display: flex;
+    gap: 40px;
+  }
+
+  .metric {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .metric-value {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--neutral-900);
+  }
+
+  .metric-label {
+    font-size: 13px;
+    color: var(--neutral-400);
+    font-weight: 500;
+  }
+
+  .ide-window {
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+  }
+
+  .code-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    background: #181825;
+  }
+
+  .code-dots {
+    display: flex;
+    gap: 6px;
+  }
+
+  .code-filename {
+    color: #6c7086;
+    font-size: 12px;
+    font-family: 'JetBrains Mono', monospace;
+    flex: 1;
+  }
+
+  .code-actions {
+    display: flex;
+    gap: 12px;
+    color: #45475a;
+    font-size: 12px;
+  }
+
+  .action-icon {
+    cursor: pointer;
+  }
+
+  .code-body pre {
+    margin: 0;
+    font-family: inherit;
+    font-size: 13px;
+    line-height: 1.8;
+  }
+
+  .code-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 16px;
+    background: #11111b;
+    border-top: 1px solid rgba(255, 255, 255, 0.04);
+  }
+
+  .line-numbers {
+    color: #6c7086;
+    font-size: 11px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .editor-status {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: #6c7086;
+    font-size: 11px;
+  }
+
+  .status-indicator {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #27c93f;
+  }
+
+  .preview-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 16px;
+    padding: 8px 16px;
+    background: white;
+    border: 1px solid var(--neutral-200);
+    border-radius: 8px;
+    font-size: 13px;
+    color: var(--neutral-500);
+    font-weight: 500;
+  }
+
+  .preview-badge svg {
+    color: var(--accent);
+  }
+
+  @media (max-width: 900px) {
+    .hero-grid {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+
+    .hero-title {
+      font-size: 36px;
+    }
+
+    .hero {
+      padding: 60px 0;
+    }
+
+    .hero-metrics {
+      gap: 24px;
+    }
+  }
+</style>
