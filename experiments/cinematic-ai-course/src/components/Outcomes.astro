@@ -1,0 +1,75 @@
+---
+const outcomes = [
+  {
+    metric: '93%',
+    label: 'PLACEMENT RATE',
+    detail: 'Of graduates land AI engineering roles within 90 days',
+  },
+  {
+    metric: '$165K',
+    label: 'AVG OFFER',
+    detail: 'Median total compensation for course alumni',
+  },
+  {
+    metric: '12',
+    label: 'PROJECTS SHIPPED',
+    detail: 'Production-grade systems in your portfolio',
+  },
+  {
+    metric: '4.9/5',
+    label: 'COURSE RATING',
+    detail: 'From 2,800+ verified student reviews',
+  },
+];
+
+const features = [
+  {
+    title: 'LIVE MENTORSHIP',
+    desc: 'Weekly 1:1s with engineers from OpenAI, Anthropic, and Google DeepMind.',
+  },
+  {
+    title: 'REAL PROJECTS',
+    desc: 'Build on actual company datasets. Not toy examples. Production constraints from day one.',
+  },
+  {
+    title: 'CAREER ENGINE',
+    desc: 'Resume optimization, negotiation scripts, and warm intros to our hiring partner network.',
+  },
+  {
+    title: 'LIFETIME ACCESS',
+    desc: 'The field moves fast. Get every curriculum update, new module, and community event forever.',
+  },
+];
+---
+
+<section class="relative py-24 md:py-32 bg-cinematic-900/30">
+  <div class="relative z-10 max-w-6xl mx-auto px-6">
+    <!-- Metrics -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-24">
+      {outcomes.map((item) => (
+        <div class="text-center space-y-2">
+          <div class="text-4xl md:text-5xl font-black neon-text">{item.metric}</div>
+          <div class="font-mono text-xs text-slate-400 uppercase tracking-wider">{item.label}</div>
+          <div class="text-sm text-slate-500 max-w-[200px] mx-auto">{item.detail}</div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Section divider -->
+    <div class="flex items-center gap-4 mb-16">
+      <div class="h-px flex-1 bg-gradient-to-r from-transparent via-slate-700 to-transparent"></div>
+      <span class="font-mono text-xs text-slate-500 uppercase tracking-widest">What You Get</span>
+      <div class="h-px flex-1 bg-gradient-to-r from-transparent via-slate-700 to-transparent"></div>
+    </div>
+
+    <!-- Features grid -->
+    <div class="grid md:grid-cols-2 gap-6">
+      {features.map((feature) => (
+        <div class="p-8 border border-slate-800 rounded-lg hover:border-neon-blue/30 bg-cinematic-950/50 transition-all duration-300 hover:-translate-y-1">
+          <h3 class="text-xl font-black uppercase tracking-tight text-white mb-3">{feature.title}</h3>
+          <p class="text-slate-400 text-sm leading-relaxed">{feature.desc}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
