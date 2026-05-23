@@ -1,0 +1,109 @@
+---
+import '../styles/global.css';
+
+export interface Props {
+  title: string;
+  description?: string;
+  pageClass?: string;
+}
+
+const { title, description = 'Master AI development. Build production-grade AI systems. Launch your career.', pageClass = '' } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+    <title>{title} | NeuralForge Academy</title>
+  </head>
+  <body class={`bg-midnight text-white font-body antialiased overflow-x-hidden ${pageClass}`}>
+    <nav class="fixed top-0 left-0 right-0 z-50 backdrop-blur-xl bg-midnight/70 border-b border-white/5">
+      <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+        <a href="/" class="flex items-center gap-2 group">
+          <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-electrichover to-neonmint flex items-center justify-center text-midnight font-display font-bold text-sm group-hover:shadow-lg group-hover:shadow-electrichover/30 transition-all duration-300">
+            NF
+          </div>
+          <span class="font-display font-bold text-lg tracking-tight">Neural<span class="text-electrichover">Forge</span></span>
+        </a>
+        <div class="hidden md:flex items-center gap-8 text-sm font-medium text-white/70">
+          <a href="/curriculum" class="hover:text-white transition-colors duration-200">Curriculum</a>
+          <a href="/outcomes" class="hover:text-white transition-colors duration-200">Outcomes</a>
+          <a href="/pricing" class="hover:text-white transition-colors duration-200">Pricing</a>
+        </div>
+        <div class="flex items-center gap-3">
+          <a href="#enroll" class="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-electrichover to-neonmint text-midnight font-semibold text-sm hover:shadow-lg hover:shadow-electrichover/30 transition-all duration-300 hover:-translate-y-0.5">
+            Enroll Now
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path></svg>
+          </a>
+          <button id="mobile-menu-btn" class="md:hidden p-2 text-white/70 hover:text-white" aria-label="Menu">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+          </button>
+        </div>
+      </div>
+      <div id="mobile-menu" class="hidden md:hidden px-6 pb-4 space-y-3">
+        <a href="/curriculum" class="block py-2 text-white/70 hover:text-white">Curriculum</a>
+        <a href="/outcomes" class="block py-2 text-white/70 hover:text-white">Outcomes</a>
+        <a href="/pricing" class="block py-2 text-white/70 hover:text-white">Pricing</a>
+        <a href="#enroll" class="block py-2 text-neonmint font-semibold">Enroll Now</a>
+      </div>
+    </nav>
+
+    <slot />
+
+    <footer class="relative border-t border-white/5 mt-32">
+      <div class="absolute inset-0 bg-gradient-to-t from-electrichover/5 to-transparent pointer-events-none"></div>
+      <div class="max-w-7xl mx-auto px-6 py-16 relative">
+        <div class="grid md:grid-cols-4 gap-12">
+          <div class="md:col-span-2">
+            <div class="flex items-center gap-2 mb-4">
+              <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-electrichover to-neonmint flex items-center justify-center text-midnight font-display font-bold text-sm">NF</div>
+              <span class="font-display font-bold text-lg">Neural<span class="text-electrichover">Forge</span></span>
+            </div>
+            <p class="text-white/50 text-sm max-w-md leading-relaxed">
+              The most rigorous AI engineering program on the internet. Learn to build production AI systems from first principles.
+            </p>
+          </div>
+          <div>
+            <h4 class="font-display font-semibold text-sm uppercase tracking-wider text-white/40 mb-4">Program</h4>
+            <ul class="space-y-2 text-sm text-white/60">
+              <li><a href="/curriculum" class="hover:text-white transition-colors">Curriculum</a></li>
+              <li><a href="/outcomes" class="hover:text-white transition-colors">Student Outcomes</a></li>
+              <li><a href="/pricing" class="hover:text-white transition-colors">Pricing</a></li>
+              <li><a href="#" class="hover:text-white transition-colors">FAQ</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-display font-semibold text-sm uppercase tracking-wider text-white/40 mb-4">Connect</h4>
+            <ul class="space-y-2 text-sm text-white/60">
+              <li><a href="#" class="hover:text-white transition-colors">Twitter / X</a></li>
+              <li><a href="#" class="hover:text-white transition-colors">Discord</a></li>
+              <li><a href="#" class="hover:text-white transition-colors">GitHub</a></li>
+              <li><a href="#" class="hover:text-white transition-colors">YouTube</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="mt-12 pt-8 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-white/30">
+          <p>&copy; 2026 NeuralForge Academy. All rights reserved.</p>
+          <div class="flex gap-6">
+            <a href="#" class="hover:text-white/60 transition-colors">Privacy</a>
+            <a href="#" class="hover:text-white/60 transition-colors">Terms</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      const btn = document.getElementById('mobile-menu-btn');
+      const menu = document.getElementById('mobile-menu');
+      btn?.addEventListener('click', () => {
+        menu?.classList.toggle('hidden');
+      });
+    </script>
+  </body>
+</html>

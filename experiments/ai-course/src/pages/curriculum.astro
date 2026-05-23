@@ -1,0 +1,202 @@
+---
+import Base from '../layouts/Base.astro';
+
+const modules = [
+  {
+    week: '1-2',
+    title: 'Foundations of AI Engineering',
+    desc: 'Build unshakeable fundamentals. You\'ll implement backprop from scratch, understand tensor operations at the metal level, and develop intuition for optimization landscapes.',
+    icon: '🧠',
+    color: 'from-electrichover to-blue-500',
+    topics: [
+      'Python for ML: idiomatic patterns, type hints, async',
+      'Linear algebra & calculus intuition (no proofs)',
+      'NumPy, PyTorch tensors — implement from scratch',
+      'Gradient descent visualizer project',
+      'Loss landscapes & optimization fundamentals',
+      'JAX vs PyTorch: when to use which',
+    ],
+    project: 'Build a neural network from raw tensors — no frameworks allowed.'
+  },
+  {
+    week: '3-4',
+    title: 'Deep Learning Architecture',
+    desc: 'Master the transformer. You\'ll implement multi-head attention, build a GPT from nothing, and understand exactly how modern LLMs work under the hood.',
+    icon: '⚡',
+    color: 'from-blue-500 to-cyan-400',
+    topics: [
+      'Attention mechanism from mathematical first principles',
+      'Multi-head attention & positional encoding',
+      'Implement a GPT-2-class model from scratch',
+      'Layer normalization, residual connections, dropout',
+      'Training loops, learning rate schedules, mixed precision',
+      'Evaluation: perplexity, BLEU, human eval'
+    ],
+    project: 'Train and deploy your own GPT model on a custom dataset.'
+  },
+  {
+    week: '5-6',
+    title: 'LLM Fine-Tuning & RLHF',
+    desc: 'Go beyond API calls. Learn to customize LLMs for specific tasks with parameter-efficient fine-tuning, RLHF, and constitutional AI methods.',
+    icon: '🔧',
+    color: 'from-cyan-400 to-neonmint',
+    topics: [
+      'LoRA & QLoRA: parameter-efficient fine-tuning',
+      'Dataset curation & quality filtering',
+      'Supervised fine-tuning (SFT) pipelines',
+      'RLHF implementation with PPO',
+      'Constitutional AI & DPO alternatives',
+      'Evaluation harnesses & benchmarking',
+    ],
+    project: 'Fine-tune an open-source LLM to be a domain-specific expert, then deploy it.'
+  },
+  {
+    week: '7-8',
+    title: 'RAG & Production Systems',
+    desc: 'Real AI systems live in production. Learn to build retrieval pipelines, handle failures, monitor performance, and scale to serve real traffic.',
+    icon: '🏗️',
+    color: 'from-neonmint to-emerald-400',
+    topics: [
+      'Vector databases: Pinecone, Weaviate, Qdrant',
+      'Embedding models & chunking strategies',
+      'Retrieval-augmented generation architecture',
+      'Evaluation: RAGAS, faithfulness, relevance metrics',
+      'Observability with LangSmith, Arize, custom tracing',
+      'Cost optimization & latency engineering',
+    ],
+    project: 'Production RAG system with evals, monitoring, and error handling.'
+  },
+  {
+    week: '9-10',
+    title: 'AI Agents & Tool Use',
+    desc: 'The frontier. Build autonomous agents that use tools, plan multi-step reasoning, and collaborate with other agents to solve complex tasks.',
+    icon: '🤖',
+    color: 'from-emerald-400 to-yellow-400',
+    topics: [
+      'Function calling & structured output',
+      'ReAct pattern: reasoning + acting loops',
+      'Tool design: APIs, code execution, search',
+      'Memory systems: short-term, long-term, episodic',
+      'Multi-agent orchestration',
+      'Guardrails, safety, and human-in-the-loop',
+    ],
+    project: 'Ship a multi-agent system that autonomously solves a real business problem.'
+  },
+  {
+    week: '11-12',
+    title: 'Capstone: Ship to Production',
+    desc: 'The ultimate test. Design, build, and deploy a full-stack AI product with real users, real data, and real constraints. This is your portfolio centerpiece.',
+    icon: '🚀',
+    color: 'from-yellow-400 to-hotcoral',
+    topics: [
+      'Product design for AI applications',
+      'Full-stack deployment: auth, billing, monitoring',
+      'CI/CD for ML systems',
+      'User testing & iteration',
+      'Demo day presentation preparation',
+      'Post-launch optimization & maintenance',
+    ],
+    project: 'Your capstone: a deployed AI product with real users — your portfolio centerpiece.'
+  },
+];
+---
+
+<Base title="Curriculum" description="12-week intensive AI engineering curriculum. From fundamentals to production-grade systems.">
+  <!-- Hero -->
+  <section class="relative pt-32 pb-16 overflow-hidden">
+    <div class="absolute inset-0">
+      <div class="absolute top-0 left-1/3 w-[500px] h-[500px] bg-electrichover/15 rounded-full blur-[128px]"></div>
+      <div class="absolute bottom-0 right-1/3 w-[400px] h-[400px] bg-neonmint/10 rounded-full blur-[128px]"></div>
+      <div class="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:60px_60px]"></div>
+    </div>
+    <div class="max-w-4xl mx-auto px-6 relative text-center">
+      <span class="inline-block text-electrichover font-mono text-sm font-medium uppercase tracking-wider mb-4">The Curriculum</span>
+      <h1 class="font-display text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight leading-tight mb-6">
+        Everything you need to<br />
+        <span class="bg-gradient-to-r from-electrichover via-neonmint to-cyan-400 bg-clip-text text-transparent bg-[length:200%_auto] animate-gradient-shift">build AI, for real.</span>
+      </h1>
+      <p class="text-white/50 text-lg max-w-2xl mx-auto mb-8">
+        12 weeks of progressive, project-driven learning. Each module builds on the last. 
+        By graduation, you'll have shipped multiple production AI systems.
+      </p>
+      <div class="flex items-center justify-center gap-6 text-sm text-white/40">
+        <div class="flex items-center gap-2">
+          <svg class="w-4 h-4 text-electrichover" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+          12 Weeks
+        </div>
+        <div class="flex items-center gap-2">
+          <svg class="w-4 h-4 text-neonmint" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+          6 Modules
+        </div>
+        <div class="flex items-center gap-2">
+          <svg class="w-4 h-4 text-sunglow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+          6 Production Projects
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Modules -->
+  <section class="relative py-16">
+    <div class="max-w-4xl mx-auto px-6 space-y-8">
+      {modules.map((mod, i) => (
+        <div class="group relative rounded-2xl border border-white/5 bg-slatecard hover:border-white/10 transition-all duration-300 overflow-hidden">
+          <!-- Header -->
+          <div class="p-8 pb-0">
+            <div class="flex items-start gap-4">
+              <div class={`flex-shrink-0 w-14 h-14 rounded-xl bg-gradient-to-br ${mod.color} flex items-center justify-center text-2xl shadow-lg`}>
+                {mod.icon}
+              </div>
+              <div class="flex-1">
+                <span class="text-xs font-mono text-white/30 uppercase tracking-wider">Week {mod.week}</span>
+                <h3 class="font-display text-xl sm:text-2xl font-bold mt-1">{mod.title}</h3>
+              </div>
+            </div>
+            <p class="text-white/50 mt-4 leading-relaxed">{mod.desc}</p>
+          </div>
+
+          <!-- Topics -->
+          <div class="px-8 py-6">
+            <h4 class="text-xs font-mono text-white/30 uppercase tracking-wider mb-3">Topics Covered</h4>
+            <div class="grid sm:grid-cols-2 gap-2">
+              {mod.topics.map((topic) => (
+                <div class="flex items-start gap-2 text-sm text-white/60">
+                  <svg class="w-3 h-3 text-neonmint/60 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                  {topic}
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <!-- Project -->
+          <div class="mx-8 mb-8 p-4 rounded-xl bg-gradient-to-r from-electrichover/10 to-neonmint/10 border border-electrichover/20">
+            <div class="flex items-start gap-3">
+              <span class="text-lg">🎯</span>
+              <div>
+                <h4 class="font-display font-semibold text-sm text-electrichover mb-1">Module Project</h4>
+                <p class="text-white/70 text-sm">{mod.project}</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Connector line between modules */}
+          {i < modules.length - 1 && (
+            <div class="absolute -bottom-4 left-1/2 -translate-x-1/2 w-0.5 h-8 bg-gradient-to-b from-white/10 to-transparent"></div>
+          )}
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="relative py-24">
+    <div class="max-w-3xl mx-auto px-6 text-center">
+      <h2 class="font-display text-3xl sm:text-4xl font-bold mb-4">Ready to start?</h2>
+      <p class="text-white/50 text-lg mb-8">Applications for Cohort 12 are open. Only 80 seats available.</p>
+      <a href="/#enroll" class="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-gradient-to-r from-electrichover to-neonmint text-midnight font-bold text-lg hover:shadow-2xl hover:shadow-electrichover/30 transition-all duration-300 hover:-translate-y-1">
+        Apply for Cohort 12
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path></svg>
+      </a>
+    </div>
+  </section>
+</Base>

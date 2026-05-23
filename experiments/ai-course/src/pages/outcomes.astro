@@ -1,0 +1,240 @@
+---
+import Base from '../layouts/Base.astro';
+
+const metrics = [
+  { stat: '94%', label: 'Job Placement Rate', desc: 'Of graduates seeking employment, 94% land AI/ML roles within 6 months.', icon: '💼' },
+  { stat: '$187k', label: 'Average Compensation', desc: 'Mean total compensation for graduates in their first post-program role.', icon: '💰' },
+  { stat: '3.2x', label: 'Salary Multiplier', desc: 'Graduates earn on average 3.2x their pre-program salary.', icon: '📈' },
+  { stat: '2,400+', label: 'Alumni Network', desc: 'Active community across 40+ countries and 200+ companies.', icon: '🌍' },
+];
+
+const testimonials = [
+  {
+    name: 'Sarah Chen',
+    role: 'ML Engineer @ Anthropic',
+    text: 'Before NeuralForge, I was stuck in tutorial purgatory. Within the first month, I was already building systems that rivaled what I saw in production at my Big Tech job. The code reviews alone were worth the tuition.',
+    avatar: 'SC',
+    before: 'Frontend Developer @ Startup',
+    after: 'ML Engineer @ Anthropic',
+    salary_change: '+142%',
+  },
+  {
+    name: 'Marcus Rodriguez',
+    role: 'Founding Engineer @ Series A Startup',
+    text: 'The capstone project changed my career trajectory entirely. I built an AI agent that caught the attention of investors, and now I\'m a founding engineer at a funded startup. NeuralForge teaches you to build things people actually want.',
+    avatar: 'MR',
+    before: 'Backend Engineer @ Consulting',
+    after: 'Founding ML Engineer @ Series A',
+    salary_change: '+210%',
+  },
+  {
+    name: 'Aisha Patel',
+    role: 'Senior AI Engineer @ Google DeepMind',
+    text: 'I\'ve taken every AI course available. None of them came close to NeuralForge\'s rigor. The production focus is what sets it apart — you learn to handle real-world edge cases that courses never mention.',
+    avatar: 'AP',
+    before: 'Data Scientist @ Insurance Co.',
+    after: 'Senior AI Engineer @ DeepMind',
+    salary_change: '+165%',
+  },
+  {
+    name: 'James Torres',
+    role: 'AI Platform Lead @ Stripe',
+    text: 'The community alone made this worth it. I\'ve hired three NeuralForge graduates because I know the standard they\'ve been held to. Now I\'m one of them.',
+    avatar: 'JT',
+    before: 'Staff Engineer @ Fintech',
+    after: 'AI Platform Lead @ Stripe',
+    salary_change: '+85%',
+  },
+  {
+    name: 'Kim Lee',
+    role: 'Independent AI Consultant',
+    text: 'I went from feeling like an imposter in AI discussions to running my own consulting business. The mentorship was transformative — Maya pushed me harder than I\'ve ever been pushed.',
+    avatar: 'KL',
+    before: 'Product Manager @ SaaS Co.',
+    after: 'AI Consultant (Solo Business)',
+    salary_change: '+295%',
+  },
+  {
+    name: 'David Okonkwo',
+    role: 'Senior ML Engineer @ Meta',
+    text: 'Week 5\'s fine-tuning module was a revelation. I went from using APIs to understanding exactly what happens under the hood. That depth of understanding got me my dream job.',
+    avatar: 'DO',
+    before: 'Software Engineer @ Bank',
+    after: 'Senior ML Engineer @ Meta',
+    salary_change: '+130%',
+  },
+];
+
+const companies = [
+  'Google', 'Meta', 'Anthropic', 'Stripe', 'OpenAI', 'Vercel', 'Shopify', 'Netflix',
+  'Uber', 'Figma', 'Databricks', 'Hugging Face', 'Scale AI', 'Cohere', 'Mistral', 'Replit',
+];
+
+const timeline = [
+  { week: 'Week 1', title: 'Hit the ground running', desc: 'Set up your dev environment, meet your cohort, and start your first project.' },
+  { week: 'Week 4', title: 'Transformer mastery', desc: 'You\'ve built attention from scratch. You understand LLMs at the implementation level.' },
+  { week: 'Week 8', title: 'Production confidence', desc: 'You\'ve deployed RAG systems with monitoring. You can debug production AI like a pro.' },
+  { week: 'Week 12', title: 'Ship and showcase', desc: 'Your capstone project is live with real users. Demo day is your launch party.' },
+  { week: 'Graduation', title: 'Career launchpad', desc: 'Resume polished. Network activated. Interview-ready. 94% of grads are employed within 6 months.' },
+];
+---
+
+<Base title="Student Outcomes" description="94% job placement rate. $187k average salary. See what NeuralForge graduates achieve.">
+  <!-- Hero -->
+  <section class="relative pt-32 pb-16 overflow-hidden">
+    <div class="absolute inset-0">
+      <div class="absolute top-1/4 right-1/4 w-[500px] h-[500px] bg-neonmint/15 rounded-full blur-[128px]"></div>
+      <div class="absolute bottom-1/4 left-1/4 w-[400px] h-[400px] bg-electrichover/10 rounded-full blur-[128px]"></div>
+      <div class="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:60px_60px]"></div>
+    </div>
+    <div class="max-w-4xl mx-auto px-6 relative text-center">
+      <span class="inline-block text-neonmint font-mono text-sm font-medium uppercase tracking-wider mb-4">Student Outcomes</span>
+      <h1 class="font-display text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight leading-tight mb-6">
+        Invest in yourself.<br />
+        <span class="bg-gradient-to-r from-neonmint to-cyan-400 bg-clip-text text-transparent">It pays off.</span>
+      </h1>
+      <p class="text-white/50 text-lg max-w-2xl mx-auto">
+        NeuralForge graduates don't just learn AI — they launch careers, build companies, and shape the future of the field.
+      </p>
+    </div>
+  </section>
+
+  <!-- Big stats -->
+  <section class="relative py-16">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+        {metrics.map((m) => (
+          <div class="text-center p-8 rounded-2xl border border-white/5 bg-slatecard hover:border-neonmint/20 transition-all duration-300 group">
+            <div class="text-4xl mb-3">{m.icon}</div>
+            <div class="font-display text-3xl sm:text-4xl font-bold bg-gradient-to-r from-neonmint to-cyan-400 bg-clip-text text-transparent mb-2 group-hover:scale-105 transition-transform">{m.stat}</div>
+            <div class="font-display font-semibold text-sm mb-1">{m.label}</div>
+            <div class="text-white/40 text-xs leading-relaxed">{m.desc}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Companies -->
+  <section class="relative py-12">
+    <div class="max-w-7xl mx-auto px-6">
+      <p class="text-center text-xs uppercase tracking-[0.2em] text-white/30 mb-8">Where graduates now build AI</p>
+      <div class="flex flex-wrap items-center justify-center gap-x-10 gap-y-3">
+        {companies.map((c) => (
+          <span class="font-display font-bold text-lg text-white/10 hover:text-white/30 transition-colors duration-300 cursor-default">{c}</span>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="relative py-16">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-12">
+        <h2 class="font-display text-3xl sm:text-4xl font-bold">Hear from graduates</h2>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {testimonials.map((t) => (
+          <div class="relative p-8 rounded-2xl border border-white/5 bg-slatecard hover:border-white/10 transition-all duration-300 flex flex-col">
+            <div class="absolute -top-3 left-6 text-4xl text-electrichover/20 font-serif">"</div>
+            <p class="text-white/70 text-sm leading-relaxed mb-6 mt-2 flex-1">{t.text}</p>
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-10 h-10 rounded-full bg-gradient-to-br from-electrichover to-neonmint flex items-center justify-center text-xs font-bold text-midnight">{t.avatar}</div>
+              <div>
+                <div class="font-semibold text-sm">{t.name}</div>
+                <div class="text-white/40 text-xs">{t.role}</div>
+              </div>
+            </div>
+            <div class="flex items-center gap-3 pt-4 border-t border-white/5">
+              <div class="text-xs text-white/40">
+                <span class="line-through">{t.before}</span>
+              </div>
+              <svg class="w-3 h-3 text-neonmint flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path></svg>
+              <div class="text-xs text-white/70">
+                <span class="text-neonmint font-semibold">{t.after}</span>
+              </div>
+            </div>
+            <div class="absolute top-4 right-4 px-2 py-1 rounded-full bg-neonmint/10 border border-neonmint/20 text-neonmint text-xs font-bold">
+              {t.salary_change}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Journey timeline -->
+  <section class="relative py-24">
+    <div class="max-w-3xl mx-auto px-6">
+      <div class="text-center mb-12">
+        <span class="text-electrichover font-mono text-sm font-medium uppercase tracking-wider">Your Journey</span>
+        <h2 class="font-display text-3xl sm:text-4xl font-bold mt-4">From day one to demo day</h2>
+      </div>
+
+      <div class="space-y-6">
+        {timeline.map((step, i) => (
+          <div class="flex gap-6 group">
+            <div class="flex flex-col items-center">
+              <div class={`w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold ${i === timeline.length - 1 ? 'bg-gradient-to-r from-neonmint to-cyan-400 text-midnight' : 'bg-electrichover/20 border border-electrichover/40 text-electrichover'}`}>
+                {i + 1}
+              </div>
+              {i < timeline.length - 1 && (
+                <div class="w-0.5 flex-1 bg-gradient-to-b from-white/10 to-transparent mt-2"></div>
+              )}
+            </div>
+            <div class="pb-8">
+              <div class="text-xs font-mono text-white/30 mb-1">{step.week}</div>
+              <h3 class="font-display font-semibold text-lg mb-1 group-hover:text-neonmint transition-colors">{step.title}</h3>
+              <p class="text-white/50 text-sm leading-relaxed">{step.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Salary comparison -->
+  <section class="relative py-24">
+    <div class="max-w-4xl mx-auto px-6">
+      <div class="p-12 rounded-3xl border border-white/5 bg-slatecard relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-64 h-64 bg-electrichover/10 rounded-full blur-[100px]"></div>
+        <div class="relative">
+          <div class="text-center mb-10">
+            <h2 class="font-display text-3xl font-bold mb-2">The ROI speaks for itself</h2>
+            <p class="text-white/40">Average salary change for NeuralForge graduates</p>
+          </div>
+          <div class="grid md:grid-cols-2 gap-8">
+            <div class="text-center p-6 rounded-2xl bg-white/[0.02] border border-white/5">
+              <div class="text-white/30 text-sm mb-2">Before NeuralForge</div>
+              <div class="font-display text-4xl font-bold text-white/40">$72k</div>
+              <div class="text-white/20 text-sm mt-1">Median pre-program salary</div>
+            </div>
+            <div class="text-center p-6 rounded-2xl bg-gradient-to-br from-electrichover/10 to-neonmint/10 border border-electrichover/20">
+              <div class="text-electrichover text-sm mb-2">After NeuralForge</div>
+              <div class="font-display text-4xl font-bold bg-gradient-to-r from-electrichover to-neonmint bg-clip-text text-transparent">$187k</div>
+              <div class="text-white/40 text-sm mt-1">Median post-program salary</div>
+            </div>
+          </div>
+          <div class="mt-8 text-center">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-neonmint/10 border border-neonmint/20">
+              <span class="text-neonmint font-bold text-2xl">3.2x</span>
+              <span class="text-white/60 text-sm">average salary multiplier</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="relative py-24">
+    <div class="max-w-3xl mx-auto px-6 text-center">
+      <h2 class="font-display text-3xl sm:text-4xl font-bold mb-4">Your outcome story starts here</h2>
+      <p class="text-white/50 text-lg mb-8">Join 2,400+ engineers who transformed their careers.</p>
+      <a href="/#enroll" class="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-gradient-to-r from-electrichover to-neonmint text-midnight font-bold text-lg hover:shadow-2xl hover:shadow-electrichover/30 transition-all duration-300 hover:-translate-y-1">
+        Apply for Cohort 12
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path></svg>
+      </a>
+    </div>
+  </section>
+</Base>

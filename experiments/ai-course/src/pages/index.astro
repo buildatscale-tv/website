@@ -1,0 +1,504 @@
+---
+import Base from '../layouts/Base.astro';
+
+const modules = [
+  { week: '1-2', title: 'Foundations of AI Engineering', desc: 'Python mastery, ML math intuition, tensor operations, gradient descent from scratch', icon: '🧠', color: 'from-electrichover to-blue-500' },
+  { week: '3-4', title: 'Deep Learning Architecture', desc: 'Transformers, attention mechanisms, GPT architecture — build one from first principles', icon: '⚡', color: 'from-blue-500 to-cyan-400' },
+  { week: '5-6', title: 'LLM Fine-Tuning & RLHF', desc: 'LoRA, QLoRA, RLHF pipelines, constitutional AI — ship a custom-tuned model', icon: '🔧', color: 'from-cyan-400 to-neonmint' },
+  { week: '7-8', title: 'RAG & Production Systems', desc: 'Vector databases, retrieval pipelines, eval frameworks, observability, cost optimization', icon: '🏗️', color: 'from-neonmint to-emerald-400' },
+  { week: '9-10', title: 'AI Agents & Tool Use', desc: 'Function calling, agentic loops, multi-agent orchestration, autonomous systems', icon: '🤖', color: 'from-emerald-400 to-yellow-400' },
+  { week: '11-12', title: 'Capstone: Ship to Production', desc: 'Deploy a full-stack AI product with auth, billing, monitoring, and real users', icon: '🚀', color: 'from-yellow-400 to-hotcoral' },
+];
+
+const outcomes = [
+  { stat: '94%', label: 'Job Placement', desc: 'Within 6 months of graduation' },
+  { stat: '$187k', label: 'Avg. Salary', desc: 'Mean compensation for graduates' },
+  { stat: '2,400+', label: 'Alumni Network', desc: 'Across 40+ countries' },
+  { stat: '4.9/5', label: 'Course Rating', desc: 'From 800+ verified reviews' },
+];
+
+const testimonials = [
+  { name: 'Sarah Chen', role: 'ML Engineer @ Anthropic', text: 'NeuralForge didn\'t just teach me AI — it changed how I think about building software. I went from tutorial follower to system architect.', avatar: 'SC' },
+  { name: 'Marcus Rodriguez', role: 'Founding Engineer @ Series A Startup', text: 'The capstone project alone was worth the entire tuition. I shipped a real product that now serves 10K+ users.', avatar: 'MR' },
+  { name: 'Aisha Patel', role: 'Senior AI Engineer @ Google DeepMind', text: 'I\'ve taken every AI course out there. NeuralForge is the only one that treats you like a professional, not a beginner.', avatar: 'AP' },
+];
+
+const logos = [
+  'Google', 'Meta', 'Stripe', 'Vercel', 'OpenAI', 'Anthropic', 'Figma', 'Shopify'
+];
+---
+
+<Base title="The AI Engineering Fellowship" description="Master AI development. Build production-grade AI systems. Launch your career.">
+  <!-- Hero -->
+  <section class="relative min-h-screen flex items-center overflow-hidden pt-24 pb-16">
+    <!-- Animated background -->
+    <div class="absolute inset-0 overflow-hidden">
+      <div class="absolute top-1/4 -left-1/4 w-[600px] h-[600px] bg-electrichover/20 rounded-full blur-[128px] animate-float"></div>
+      <div class="absolute bottom-1/4 -right-1/4 w-[500px] h-[500px] bg-neonmint/15 rounded-full blur-[128px] animate-float" style="animation-delay: -3s;"></div>
+      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-hotcoral/10 rounded-full blur-[200px]"></div>
+      <!-- Grid overlay -->
+      <div class="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:60px_60px]"></div>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-6 relative z-10">
+      <div class="max-w-4xl mx-auto text-center">
+        <!-- Badge -->
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-electrichover/30 bg-electrichover/10 backdrop-blur-sm mb-8 animate-fade-in">
+          <span class="relative flex h-2 w-2">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-neonmint opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-2 w-2 bg-neonmint"></span>
+          </span>
+          <span class="text-sm font-medium text-white/90">Cohort 12 — Opens March 2026</span>
+          <span class="text-xs text-white/50 ml-1">Only 80 seats</span>
+        </div>
+
+        <!-- Headline -->
+        <h1 class="font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight leading-[0.95] mb-6 animate-slide-up">
+          Stop Tutorial
+          <br />
+          <span class="bg-gradient-to-r from-electrichover via-neonmint to-cyan-400 bg-clip-text text-transparent bg-[length:200%_auto] animate-gradient-shift">Hell.</span>
+          <br />
+          <span class="text-white/90">Ship Real AI.</span>
+        </h1>
+
+        <!-- Subheadline -->
+        <p class="text-lg sm:text-xl text-white/60 max-w-2xl mx-auto mb-10 leading-relaxed animate-fade-in" style="animation-delay: 0.2s;">
+          A 12-week intensive fellowship that transforms developers into
+          <span class="text-white font-semibold">production-grade AI engineers</span>.
+          No hand-holding. No toy projects. Just the real thing.
+        </p>
+
+        <!-- CTAs -->
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12 animate-fade-in" style="animation-delay: 0.4s;">
+          <a href="#enroll" class="group relative px-8 py-4 rounded-full bg-gradient-to-r from-electrichover to-neonmint text-midnight font-bold text-lg hover:shadow-2xl hover:shadow-electrichover/30 transition-all duration-300 hover:-translate-y-1">
+            <span class="relative z-10 flex items-center gap-2">
+              Start Your Application
+              <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path></svg>
+            </span>
+          </a>
+          <a href="/curriculum" class="px-8 py-4 rounded-full border border-white/20 text-white/80 font-medium text-lg hover:bg-white/5 hover:border-white/30 transition-all duration-300">
+            Explore Curriculum
+          </a>
+        </div>
+
+        <!-- Social proof micro -->
+        <div class="flex items-center justify-center gap-3 text-sm text-white/40 animate-fade-in" style="animation-delay: 0.6s;">
+          <div class="flex -space-x-2">
+            {['SC', 'MR', 'AP', 'JT', 'KL'].map((initials) => (
+              <div class="w-8 h-8 rounded-full bg-gradient-to-br from-electrichover/60 to-neonmint/60 border-2 border-midnight flex items-center justify-center text-[10px] font-bold">
+                {initials}
+              </div>
+            ))}
+          </div>
+          <span>Join 2,400+ engineers who leveled up</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scroll indicator -->
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/30 animate-bounce">
+      <span class="text-xs uppercase tracking-widest">Scroll</span>
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
+    </div>
+  </section>
+
+  <!-- Company logos bar -->
+  <section class="relative py-12 border-y border-white/5">
+    <div class="max-w-7xl mx-auto px-6">
+      <p class="text-center text-xs uppercase tracking-[0.2em] text-white/30 mb-8">Graduates now building AI at</p>
+      <div class="flex flex-wrap items-center justify-center gap-x-12 gap-y-4">
+        {logos.map((logo) => (
+          <span class="font-display font-bold text-xl text-white/15 hover:text-white/40 transition-colors duration-300 cursor-default">{logo}</span>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Pain points / Why this exists -->
+  <section class="relative py-24">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="max-w-3xl mx-auto text-center mb-16">
+        <span class="text-hotcoral font-mono text-sm font-medium uppercase tracking-wider">The Problem</span>
+        <h2 class="font-display text-3xl sm:text-4xl md:text-5xl font-bold mt-4 mb-6">
+          97% of AI courses are<br />
+          <span class="bg-gradient-to-r from-hotcoral to-orange-400 bg-clip-text text-transparent">spectator sports.</span>
+        </h2>
+        <p class="text-white/50 text-lg leading-relaxed">
+          You watch. You follow along. You build a chatbot todo app.
+          Then you're back to square one when real work appears.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="group relative p-8 rounded-2xl border border-white/5 bg-slatecard hover:border-hotcoral/30 transition-all duration-300">
+          <div class="w-12 h-12 rounded-xl bg-hotcoral/10 border border-hotcoral/20 flex items-center justify-center mb-6 text-2xl">😵</div>
+          <h3 class="font-display font-semibold text-lg mb-3">Tutorial Dependency</h3>
+          <p class="text-white/50 text-sm leading-relaxed">You can only build when someone holds your hand. Without a guide, you're lost.</p>
+        </div>
+        <div class="group relative p-8 rounded-2xl border border-white/5 bg-slatecard hover:border-hotcoral/30 transition-all duration-300">
+          <div class="w-12 h-12 rounded-xl bg-hotcoral/10 border border-hotcoral/20 flex items-center justify-center mb-6 text-2xl">🧩</div>
+          <h3 class="font-display font-semibold text-lg mb-3">Toy Projects</h3>
+          <p class="text-white/50 text-sm leading-relaxed">Another sentiment analyzer. Another MNIST classifier. Nothing that touches production.</p>
+        </div>
+        <div class="group relative p-8 rounded-2xl border border-white/5 bg-slatecard hover:border-hotcoral/30 transition-all duration-300">
+          <div class="w-12 h-12 rounded-xl bg-hotcoral/10 border border-hotcoral/20 flex items-center justify-center mb-6 text-2xl">📉</div>
+          <h3 class="font-display font-semibold text-lg mb-3">No Outcomes</h3>
+          <p class="text-white/50 text-sm leading-relaxed">Months of "learning" with nothing to show. No portfolio. No ship. No career advancement.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Curriculum overview -->
+  <section class="relative py-24" id="curriculum">
+    <div class="absolute inset-0 bg-gradient-to-b from-transparent via-electrichover/5 to-transparent pointer-events-none"></div>
+    <div class="max-w-7xl mx-auto px-6 relative">
+      <div class="max-w-3xl mx-auto text-center mb-16">
+        <span class="text-neonmint font-mono text-sm font-medium uppercase tracking-wider">The Curriculum</span>
+        <h2 class="font-display text-3xl sm:text-4xl md:text-5xl font-bold mt-4 mb-6">
+          12 weeks. 6 modules.<br />
+          <span class="bg-gradient-to-r from-electrichover to-neonmint bg-clip-text text-transparent">Zero fluff.</span>
+        </h2>
+        <p class="text-white/50 text-lg">Each module builds on the last. You'll ship a real product by week 12.</p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {modules.map((mod, i) => (
+          <div class={`group relative p-6 rounded-2xl border border-white/5 bg-slatecard hover:border-white/15 transition-all duration-300 ${i === modules.length - 1 ? 'md:col-span-2 lg:col-span-1' : ''}`}>
+            <div class={`w-10 h-10 rounded-lg bg-gradient-to-br ${mod.color} flex items-center justify-center mb-4 text-lg`}>
+              {mod.icon}
+            </div>
+            <div class="flex items-center gap-2 mb-2">
+              <span class="text-xs font-mono text-white/30">WEEK {mod.week}</span>
+            </div>
+            <h3 class="font-display font-semibold text-lg mb-2 group-hover:text-white transition-colors">{mod.title}</h3>
+            <p class="text-white/40 text-sm leading-relaxed">{mod.desc}</p>
+          </div>
+        ))}
+      </div>
+
+      <div class="text-center mt-12">
+        <a href="/curriculum" class="inline-flex items-center gap-2 text-electrichover font-medium hover:underline underline-offset-4">
+          View full curriculum & syllabus
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Instructor -->
+  <section class="relative py-24">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid md:grid-cols-2 gap-16 items-center">
+        <div>
+          <span class="text-sunglow font-mono text-sm font-medium uppercase tracking-wider">Your Instructor</span>
+          <h2 class="font-display text-3xl sm:text-4xl md:text-5xl font-bold mt-4 mb-6">
+            Taught by someone who<br />
+            <span class="bg-gradient-to-r from-sunglow to-orange-400 bg-clip-text text-transparent">actually ships.</span>
+          </h2>
+          <div class="space-y-4 text-white/60 leading-relaxed mb-8">
+            <p>
+              <span class="text-white font-semibold">Dr. Maya Vasquez</span> has spent 15 years building AI systems that serve millions. She led the LLM infrastructure team at Google DeepMind, shipped production RAG systems at Stripe, and holds 7 patents in transformer optimization.
+            </p>
+            <p>
+              She created NeuralForge because she was tired of seeing brilliant developers waste months on courses that teach nothing about building real AI systems.
+            </p>
+          </div>
+          <div class="flex flex-wrap gap-3">
+            {['Ex-Google DeepMind', '15 Years in AI', '7 Patents', 'MIT PhD', '2.4K Students'].map((tag) => (
+              <span class="px-3 py-1.5 rounded-full text-xs font-medium bg-sunglow/10 border border-sunglow/20 text-sunglow">{tag}</span>
+            ))}
+          </div>
+        </div>
+        <div class="relative">
+          <div class="relative w-full aspect-square max-w-md mx-auto">
+            <div class="absolute inset-0 rounded-3xl bg-gradient-to-br from-sunglow/20 to-electrichover/20 blur-2xl"></div>
+            <div class="relative h-full w-full rounded-3xl bg-gradient-to-br from-slatecard to-midnight border border-white/10 flex flex-col items-center justify-center p-8">
+              <div class="w-32 h-32 rounded-full bg-gradient-to-br from-sunglow/30 to-electrichover/30 border-2 border-sunglow/40 flex items-center justify-center text-5xl font-display font-bold text-white mb-6">
+                MV
+              </div>
+              <h3 class="font-display font-bold text-2xl">Dr. Maya Vasquez</h3>
+              <p class="text-white/50 text-sm mt-1">Lead Instructor & Founder</p>
+              <div class="mt-6 flex items-center gap-4 text-sm text-white/40">
+                <div class="text-center">
+                  <div class="text-xl font-bold text-white">15</div>
+                  <div>Years</div>
+                </div>
+                <div class="w-px h-8 bg-white/10"></div>
+                <div class="text-center">
+                  <div class="text-xl font-bold text-white">7</div>
+                  <div>Patents</div>
+                </div>
+                <div class="w-px h-8 bg-white/10"></div>
+                <div class="text-center">
+                  <div class="text-xl font-bold text-white">2.4K</div>
+                  <div>Students</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Outcomes -->
+  <section class="relative py-24" id="outcomes">
+    <div class="absolute inset-0 bg-gradient-to-b from-transparent via-neonmint/5 to-transparent pointer-events-none"></div>
+    <div class="max-w-7xl mx-auto px-6 relative">
+      <div class="max-w-3xl mx-auto text-center mb-16">
+        <span class="text-neonmint font-mono text-sm font-medium uppercase tracking-wider">Results</span>
+        <h2 class="font-display text-3xl sm:text-4xl md:text-5xl font-bold mt-4 mb-6">
+          Numbers don't lie.<br />
+          <span class="bg-gradient-to-r from-neonmint to-cyan-400 bg-clip-text text-transparent">Neither do outcomes.</span>
+        </h2>
+      </div>
+
+      <!-- Stats grid -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
+        {outcomes.map((outcome) => (
+          <div class="group text-center p-6 rounded-2xl border border-white/5 bg-slatecard hover:border-neonmint/20 transition-all duration-300">
+            <div class="font-display text-3xl sm:text-4xl font-bold bg-gradient-to-r from-neonmint to-cyan-400 bg-clip-text text-transparent mb-2">{outcome.stat}</div>
+            <div class="font-semibold text-sm mb-1">{outcome.label}</div>
+            <div class="text-white/40 text-xs">{outcome.desc}</div>
+          </div>
+        ))}
+      </div>
+
+      <!-- Testimonials -->
+      <div class="grid md:grid-cols-3 gap-6">
+        {testimonials.map((t) => (
+          <div class="relative p-8 rounded-2xl border border-white/5 bg-slatecard hover:border-white/10 transition-all duration-300">
+            <div class="absolute -top-3 left-6 text-4xl text-electrichover/20 font-serif">"</div>
+            <p class="text-white/70 text-sm leading-relaxed mb-6 mt-2">{t.text}</p>
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-full bg-gradient-to-br from-electrichover to-neonmint flex items-center justify-center text-xs font-bold text-midnight">{t.avatar}</div>
+              <div>
+                <div class="font-semibold text-sm">{t.name}</div>
+                <div class="text-white/40 text-xs">{t.role}</div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- What makes us different -->
+  <section class="relative py-24">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid md:grid-cols-2 gap-16">
+        <div>
+          <span class="text-electrichover font-mono text-sm font-medium uppercase tracking-wider">Why NeuralForge</span>
+          <h2 class="font-display text-3xl sm:text-4xl font-bold mt-4 mb-8">
+            This isn't a course.<br />
+            <span class="text-white/60">It's an apprenticeship.</span>
+          </h2>
+          <div class="space-y-6">
+            {[
+              { title: '1-on-1 Code Reviews', desc: 'Every assignment is personally reviewed. You get specific, actionable feedback — not auto-graded rubrics.' },
+              { title: 'Production-Grade Projects', desc: 'Every project uses real data, real users, real constraints. Deploy to cloud. Handle errors. Optimize cost.' },
+              { title: 'Private Community of Peers', desc: '2,400+ alumni. Daily discussions. Pair programming sessions. Job referrals. Your new network.' },
+              { title: 'Career Support', desc: 'Resume reviews, mock interviews, warm intros. Our hiring network includes 200+ companies building AI.' },
+            ].map((item) => (
+              <div class="flex gap-4">
+                <div class="flex-shrink-0 w-6 h-6 rounded-full bg-electrichover/20 border border-electrichover/40 flex items-center justify-center mt-0.5">
+                  <svg class="w-3 h-3 text-electrichover" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                </div>
+                <div>
+                  <h4 class="font-display font-semibold mb-1">{item.title}</h4>
+                  <p class="text-white/50 text-sm leading-relaxed">{item.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div class="relative">
+          <div class="rounded-2xl bg-slatecard border border-white/10 p-6 font-mono text-sm leading-relaxed overflow-hidden">
+            <div class="flex items-center gap-2 mb-4 pb-4 border-b border-white/5">
+              <div class="w-3 h-3 rounded-full bg-hotcoral/80"></div>
+              <div class="w-3 h-3 rounded-full bg-sunglow/80"></div>
+              <div class="w-3 h-3 rounded-full bg-neonmint/80"></div>
+              <span class="ml-2 text-white/30 text-xs">agent.py</span>
+            </div>
+            <pre class="text-white/70 overflow-x-auto"><code><span class="text-electrichover">class</span> <span class="text-neonmint">ProductionAgent</span>:
+  <span class="text-electrichover">def</span> <span class="text-sunglow">__init__</span>(self, config):
+    self.model = <span class="text-neonmint">load_model</span>(config.model_path)
+    self.retriever = <span class="text-neonmint">VectorStore</span>(
+      index=<span class="text-sunglow">"pinecone-prod"</span>,
+      dimension=<span class="text-hotcoral">1536</span>
+    )
+    self.logger = <span class="text-neonmint">ObservabilityClient</span>()
+
+  <span class="text-electrichover">async def</span> <span class="text-sunglow">run</span>(self, query):
+    <span class="text-white/30">"""Production-grade agent with
+    retrival, logging & error handling."""</span>
+    <span class="text-electrichover">try</span>:
+      context = <span class="text-electrichover">await</span> self.retriever.query(query)
+      self.logger.trace(<span class="text-sunglow">"retrieval_complete"</span>)
+      response = <span class="text-electrichover">await</span> self.model.generate(
+        prompt=self.build_prompt(query, context),
+        temperature=<span class="text-hotcoral">0.2</span>,
+        max_tokens=<span class="text-hotcoral">2048</span>
+      )
+      <span class="text-electrichover">return</span> self.validate(response)
+    <span class="text-electrichover">except</span> ModelError <span class="text-electrichover">as</span> e:
+      self.logger.error(e, fallback=<span class="text-hotcoral">True</span>)
+      <span class="text-electrichover">return</span> self.graceful_degrade(query)</code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing / CTA -->
+  <section class="relative py-24" id="enroll">
+    <div class="absolute inset-0 overflow-hidden">
+      <div class="absolute top-0 left-1/4 w-[500px] h-[500px] bg-electrichover/10 rounded-full blur-[128px]"></div>
+      <div class="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-neonmint/10 rounded-full blur-[128px]"></div>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-6 relative">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-12">
+          <span class="text-electrichover font-mono text-sm font-medium uppercase tracking-wider">Limited Seats</span>
+          <h2 class="font-display text-3xl sm:text-4xl md:text-5xl font-bold mt-4 mb-6">
+            Ready to forge your<br />
+            <span class="bg-gradient-to-r from-electrichover via-neonmint to-cyan-400 bg-clip-text text-transparent bg-[length:200%_auto] animate-gradient-shift">AI career?</span>
+          </h2>
+          <p class="text-white/50 text-lg max-w-xl mx-auto">Cohort 12 starts March 2026. Only 80 seats. Priority applications close soon.</p>
+        </div>
+
+        <!-- Pricing cards -->
+        <div class="grid md:grid-cols-2 gap-6 mb-8">
+          <!-- Standard -->
+          <div class="relative p-8 rounded-2xl border border-white/10 bg-slatecard">
+            <h3 class="font-display font-semibold text-lg mb-1">Standard Track</h3>
+            <p class="text-white/40 text-sm mb-6">Full curriculum + community</p>
+            <div class="flex items-baseline gap-1 mb-6">
+              <span class="font-display text-4xl font-bold">$3,499</span>
+              <span class="text-white/40 text-sm">one-time</span>
+            </div>
+            <ul class="space-y-3 mb-8">
+              {['12-week intensive curriculum', 'All video lectures & materials', 'Private Discord community', 'Weekly group Q&A sessions', 'Certificate of completion', 'Lifetime access to updates'].map((feat) => (
+                <li class="flex items-start gap-2 text-sm text-white/70">
+                  <svg class="w-4 h-4 text-white/30 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                  {feat}
+                </li>
+              ))}
+            </ul>
+            <a href="#" class="block w-full py-3.5 rounded-full border border-white/20 text-center font-semibold text-white/80 hover:bg-white/5 hover:border-white/30 transition-all duration-300">
+              Apply Now
+            </a>
+          </div>
+
+          <!-- Pro -->
+          <div class="relative p-8 rounded-2xl border-2 border-electrichover/40 bg-slatecard shadow-lg shadow-electrichover/10">
+            <div class="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-gradient-to-r from-electrichover to-neonmint text-midnight text-xs font-bold">
+              MOST POPULAR
+            </div>
+            <h3 class="font-display font-semibold text-lg mb-1">Pro Track</h3>
+            <p class="text-white/40 text-sm mb-6">Curriculum + 1-on-1 mentorship</p>
+            <div class="flex items-baseline gap-1 mb-6">
+              <span class="font-display text-4xl font-bold">$5,999</span>
+              <span class="text-white/40 text-sm">one-time</span>
+            </div>
+            <ul class="space-y-3 mb-8">
+              {['Everything in Standard', '1-on-1 weekly mentor sessions', 'Personalized code reviews', 'Career coaching & mock interviews', 'Priority project feedback', 'Warm intros to hiring partners', 'Lifetime alumni network access'].map((feat) => (
+                <li class="flex items-start gap-2 text-sm text-white/70">
+                  <svg class="w-4 h-4 text-electrichover mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                  {feat}
+                </li>
+              ))}
+            </ul>
+            <a href="#" class="block w-full py-3.5 rounded-full bg-gradient-to-r from-electrichover to-neonmint text-midnight text-center font-bold hover:shadow-lg hover:shadow-electrichover/30 transition-all duration-300 hover:-translate-y-0.5">
+              Apply Now — Pro
+            </a>
+          </div>
+        </div>
+
+        <p class="text-center text-white/30 text-sm">
+          Payment plans available. Need-based scholarships for underrepresented groups. <a href="#" class="text-electrichover/70 hover:text-electrichover underline underline-offset-4">Learn more →</a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="relative py-24">
+    <div class="max-w-3xl mx-auto px-6">
+      <div class="text-center mb-12">
+        <span class="text-white/40 font-mono text-sm font-medium uppercase tracking-wider">FAQ</span>
+        <h2 class="font-display text-3xl sm:text-4xl font-bold mt-4">Common questions</h2>
+      </div>
+
+      <div class="space-y-4" id="faq-list">
+        {[
+          { q: 'What skill level do I need?', a: 'You should be comfortable with Python and have basic web development experience. You don\'t need ML background — we teach from fundamentals, but we move fast.' },
+          { q: 'How much time commitment is required?', a: 'Expect 15-20 hours per week. This includes lectures, assignments, and project work. It\'s intense by design — you\'re building real systems.' },
+          { q: 'Is there a refund policy?', a: 'Yes. Full refund within the first 2 weeks, no questions asked. After that, we offer pro-rated refunds for documented circumstances.' },
+          { q: 'Can I keep my job while enrolled?', a: 'Most students do. The program is designed for working professionals with evening/weekend sessions and asynchronous materials.' },
+          { q: 'What makes this different from other AI courses?', a: 'We don\'t teach theory in isolation. Every module produces a deployable artifact. Your capstone project goes live to real users. Our graduates prove their skills by shipping, not by certificate.' },
+        ].map((faq, i) => (
+          <div class="faq-item border border-white/5 rounded-xl overflow-hidden">
+            <button class="faq-trigger w-full flex items-center justify-between p-6 text-left hover:bg-white/[0.02] transition-colors" data-index={i}>
+              <span class="font-display font-semibold pr-4">{faq.q}</span>
+              <svg class="w-5 h-5 text-white/40 flex-shrink-0 faq-icon transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+            <div class="faq-content hidden px-6 pb-6 text-white/50 text-sm leading-relaxed -mt-2" data-index={i}>
+              {faq.a}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="relative py-24">
+    <div class="max-w-4xl mx-auto px-6">
+      <div class="relative rounded-3xl overflow-hidden p-12 md:p-16 text-center">
+        <div class="absolute inset-0 bg-gradient-to-br from-electrichover via-purple-600 to-neonmint"></div>
+        <div class="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:40px_40px]"></div>
+        <div class="relative">
+          <h2 class="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">
+            Stop learning. Start building.
+          </h2>
+          <p class="text-white/80 text-lg mb-8 max-w-lg mx-auto">
+            Applications for Cohort 12 are open. 80 seats. March 2026. Will you be one of them?
+          </p>
+          <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <a href="#enroll" class="px-8 py-4 rounded-full bg-white text-midnight font-bold text-lg hover:bg-white/90 transition-all duration-300 hover:-translate-y-1 shadow-2xl">
+              Apply for Cohort 12
+            </a>
+          </div>
+          <p class="text-white/50 text-sm mt-4">Free application. No commitment until you're accepted.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .faq-trigger[data-index="0"] + .faq-content,
+  .faq-trigger[data-index="1"] + .faq-content,
+  .faq-trigger[data-index="2"] + .faq-content,
+  .faq-trigger[data-index="3"] + .faq-content,
+  .faq-trigger[data-index="4"] + .faq-content {
+    /* controlled by JS */
+  }
+</style>
+
+<script>
+  document.querySelectorAll('.faq-trigger').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const idx = btn.getAttribute('data-index');
+      const content = document.querySelector(`.faq-content[data-index="${idx}"]`);
+      const icon = btn.querySelector('.faq-icon');
+      if (content) {
+        content.classList.toggle('hidden');
+        icon?.classList.toggle('rotate-180');
+      }
+    });
+  });
+</script>

@@ -1,0 +1,276 @@
+---
+import Base from '../layouts/Base.astro';
+
+const tiers = [
+  {
+    name: 'Standard Track',
+    price: '$3,499',
+    period: 'one-time',
+    desc: 'Full curriculum access + community',
+    color: 'border-white/10',
+    features: [
+      '12-week intensive curriculum',
+      'All video lectures & materials',
+      'Private Discord community access',
+      'Weekly group Q&A sessions',
+      'All assignments & solutions',
+      'Certificate of completion',
+      'Lifetime access to course updates',
+    ],
+    cta: 'Apply — Standard',
+    highlight: false,
+  },
+  {
+    name: 'Pro Track',
+    price: '$5,999',
+    period: 'one-time',
+    desc: 'Curriculum + 1-on-1 mentorship + career support',
+    color: 'border-electrichover/40 shadow-lg shadow-electrichover/10',
+    features: [
+      'Everything in Standard',
+      '1-on-1 weekly mentor sessions',
+      'Personalized code reviews',
+      'Career coaching & resume review',
+      'Mock interview preparation',
+      'Warm intros to hiring partners',
+      'Lifetime alumni network access',
+      'Priority project feedback',
+    ],
+    cta: 'Apply — Pro Track',
+    highlight: true,
+    badge: 'MOST POPULAR',
+  },
+  {
+    name: 'Enterprise',
+    price: 'Custom',
+    period: 'per team',
+    desc: 'Upskill your entire engineering team',
+    color: 'border-white/10',
+    features: [
+      'Pro Track for 5+ team members',
+      'Custom curriculum alignment',
+      'Dedicated account manager',
+      'Team progress dashboard',
+      'Custom project scoping',
+      'Onboarding & integration support',
+      'Volume pricing',
+      'Invoice billing available',
+    ],
+    cta: 'Contact Sales',
+    highlight: false,
+  },
+];
+
+const guarantees = [
+  { icon: '🛡️', title: '2-Week Money Back', desc: 'Full refund if you\'re not satisfied in the first 14 days. No questions asked.' },
+  { icon: '🔄', title: 'Repeat for Free', desc: 'Didn\'t pass? Life got in the way? Repeat the entire cohort at no extra cost.' },
+  { icon: '💼', title: 'Job Guarantee', desc: 'If you don\'t land an AI role within 6 months of graduation, we\'ll refund your tuition.' },
+];
+
+const paymentPlans = [
+  { name: 'Pay in Full', discount: 'Save $400', amount: '$3,099', amountPro: '$5,499', note: 'Best value' },
+  { name: '3 Installments', discount: '', amount: '$1,250/mo', amountPro: '$2,100/mo', note: 'Most popular' },
+  { name: '6 Installments', discount: '', amount: '$650/mo', amountPro: '$1,100/mo', note: 'Most flexible' },
+];
+---
+
+<Base title="Pricing" description="Invest in your AI career. 94% job placement rate. Flexible payment plans available.">
+  <!-- Hero -->
+  <section class="relative pt-32 pb-16 overflow-hidden">
+    <div class="absolute inset-0">
+      <div class="absolute top-1/4 left-1/3 w-[500px] h-[500px] bg-electrichover/15 rounded-full blur-[128px]"></div>
+      <div class="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-neonmint/10 rounded-full blur-[128px]"></div>
+      <div class="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:60px_60px]"></div>
+    </div>
+    <div class="max-w-4xl mx-auto px-6 relative text-center">
+      <span class="inline-block text-electrichover font-mono text-sm font-medium uppercase tracking-wider mb-4">Pricing</span>
+      <h1 class="font-display text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight leading-tight mb-6">
+        The best investment<br />
+        <span class="bg-gradient-to-r from-electrichover via-neonmint to-cyan-400 bg-clip-text text-transparent bg-[length:200%_auto] animate-gradient-shift">you'll ever make.</span>
+      </h1>
+      <p class="text-white/50 text-lg max-w-2xl mx-auto">
+        Average graduates see a 3.2x salary increase. That's an ROI measured in weeks, not years.
+      </p>
+    </div>
+  </section>
+
+  <!-- Pricing cards -->
+  <section class="relative py-16">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid md:grid-cols-3 gap-6">
+        {tiers.map((tier) => (
+          <div class={`relative p-8 rounded-2xl border bg-slatecard ${tier.color} flex flex-col ${tier.highlight ? 'scale-105 z-10' : ''}`}>
+            {tier.badge && (
+              <div class="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-gradient-to-r from-electrichover to-neonmint text-midnight text-xs font-bold">
+                {tier.badge}
+              </div>
+            )}
+            <h3 class="font-display font-semibold text-lg mb-1">{tier.name}</h3>
+            <p class="text-white/40 text-sm mb-6">{tier.desc}</p>
+            <div class="flex items-baseline gap-1 mb-8">
+              <span class="font-display text-4xl font-bold">{tier.price}</span>
+              <span class="text-white/40 text-sm">{tier.period}</span>
+            </div>
+            <ul class="space-y-3 mb-8 flex-1">
+              {tier.features.map((feat) => (
+                <li class="flex items-start gap-2 text-sm text-white/70">
+                  <svg class={`w-4 h-4 mt-0.5 flex-shrink-0 ${tier.highlight ? 'text-electrichover' : 'text-white/30'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                  {feat}
+                </li>
+              ))}
+            </ul>
+            <a href="#enroll" class={`block w-full py-3.5 rounded-full text-center font-bold transition-all duration-300 hover:-translate-y-0.5 ${tier.highlight ? 'bg-gradient-to-r from-electrichover to-neonmint text-midnight hover:shadow-lg hover:shadow-electrichover/30' : 'border border-white/20 text-white/80 hover:bg-white/5 hover:border-white/30'}`}>
+              {tier.cta}
+            </a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Payment plans -->
+  <section class="relative py-16">
+    <div class="max-w-4xl mx-auto px-6">
+      <div class="text-center mb-8">
+        <h2 class="font-display text-2xl font-bold mb-2">Flexible payment plans</h2>
+        <p class="text-white/50 text-sm">Can't pay upfront? We've got you covered.</p>
+      </div>
+      <div class="grid sm:grid-cols-3 gap-4">
+        {paymentPlans.map((plan, i) => (
+          <div class="p-6 rounded-2xl border border-white/5 bg-slatecard text-center hover:border-white/10 transition-all">
+            <div class="font-display font-semibold mb-2">{plan.name}</div>
+            {plan.discount && (
+              <span class="inline-block px-2 py-0.5 rounded-full bg-neonmint/10 text-neonmint text-xs font-medium mb-2">{plan.discount}</span>
+            )}
+            <div class="text-xl font-bold mb-1">
+              <span class="text-white/50 text-sm block sm:hidden">Std:</span>
+              {plan.amount}
+            </div>
+            <div class="text-white/30 text-xs">
+              Pro: {plan.amountPro}
+            </div>
+            <div class="text-xs text-white/20 mt-2">{plan.note}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Guarantees -->
+  <section class="relative py-16">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-12">
+        <h2 class="font-display text-2xl font-bold mb-2">We put our money where our mouth is</h2>
+        <p class="text-white/50 text-sm">Your investment is protected at every step.</p>
+      </div>
+      <div class="grid md:grid-cols-3 gap-6">
+        {guarantees.map((g) => (
+          <div class="p-8 rounded-2xl border border-white/5 bg-slatecard text-center hover:border-white/10 transition-all">
+            <div class="text-4xl mb-4">{g.icon}</div>
+            <h3 class="font-display font-semibold mb-2">{g.title}</h3>
+            <p class="text-white/50 text-sm leading-relaxed">{g.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ROI Calculator -->
+  <section class="relative py-16">
+    <div class="max-w-3xl mx-auto px-6">
+      <div class="p-10 rounded-3xl border border-white/5 bg-slatecard relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-electrichover via-sunglow to-neonmint"></div>
+        <div class="text-center mb-8">
+          <h2 class="font-display text-2xl font-bold mb-2">Quick ROI calculation</h2>
+          <p class="text-white/40 text-sm">See how fast the investment pays for itself</p>
+        </div>
+        <div class="grid grid-cols-3 gap-6 text-center">
+          <div>
+            <div class="text-white/40 text-xs uppercase tracking-wider mb-1">Investment</div>
+            <div class="font-display text-2xl font-bold text-hotcoral">$5,999</div>
+            <div class="text-white/30 text-xs">Pro Track tuition</div>
+          </div>
+          <div>
+            <div class="text-white/40 text-xs uppercase tracking-wider mb-1">Avg. Salary Gain</div>
+            <div class="font-display text-2xl font-bold bg-gradient-to-r from-neonmint to-cyan-400 bg-clip-text text-transparent">+$115k</div>
+            <div class="text-white/30 text-xs">Per year</div>
+          </div>
+          <div>
+            <div class="text-white/40 text-xs uppercase tracking-wider mb-1">Payback Period</div>
+            <div class="font-display text-2xl font-bold text-sunglow">4 weeks</div>
+            <div class="text-white/30 text-xs">Time to break even</div>
+          </div>
+        </div>
+        <div class="mt-8 text-center">
+          <p class="text-white/50 text-sm">
+            Based on average graduate salary increase of $115k/year.<br />
+            <span class="text-white/30">That's a 1,900% annual return on investment.</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Compare -->
+  <section class="relative py-16">
+    <div class="max-w-4xl mx-auto px-6">
+      <div class="text-center mb-12">
+        <h2 class="font-display text-2xl font-bold mb-2">How we compare</h2>
+      </div>
+      <div class="rounded-2xl border border-white/5 overflow-hidden">
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="border-b border-white/5 bg-white/[0.02]">
+              <th class="text-left p-4 font-display font-semibold text-white/60"></th>
+              <th class="p-4 font-display font-semibold text-white/60 text-center">Typical Course</th>
+              <th class="p-4 font-display font-semibold text-center">
+                <span class="bg-gradient-to-r from-electrichover to-neonmint bg-clip-text text-transparent font-bold">NeuralForge</span>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {[
+              ['Production projects', '❌', '✅'],
+              ['1-on-1 mentorship', '❌', '✅'],
+              ['Code reviews', '❌', '✅'],
+              ['Career support', '🟡 Maybe', '✅'],
+              ['Job guarantee', '❌', '✅'],
+              ['Alumni network', '🟡 Forum', '✅ 2,400+'],
+              ['Live instruction', '🟡 Recorded', '✅'],
+            ].map(([label, typical, neural]) => (
+              <tr class="border-b border-white/5 hover:bg-white/[0.02] transition-colors">
+                <td class="p-4 text-white/70">{label}</td>
+                <td class="p-4 text-center text-white/30">{typical}</td>
+                <td class="p-4 text-center text-neonmint">{neural}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="relative py-24" id="enroll">
+    <div class="max-w-4xl mx-auto px-6">
+      <div class="relative rounded-3xl overflow-hidden p-12 md:p-16 text-center">
+        <div class="absolute inset-0 bg-gradient-to-br from-electrichover via-purple-600 to-neonmint"></div>
+        <div class="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:40px_40px]"></div>
+        <div class="relative">
+          <h2 class="font-display text-3xl sm:text-4xl font-bold text-white mb-4">
+            Only 80 seats. Your future self is counting on you.
+          </h2>
+          <p class="text-white/80 text-lg mb-8 max-w-lg mx-auto">
+            Apply now. Free application. No commitment until you're accepted. Cohort 12 starts March 2026.
+          </p>
+          <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <a href="#" class="px-8 py-4 rounded-full bg-white text-midnight font-bold text-lg hover:bg-white/90 transition-all duration-300 hover:-translate-y-1 shadow-2xl">
+              Apply for Cohort 12
+            </a>
+          </div>
+          <p class="text-white/50 text-sm mt-4">2-week money-back guarantee. Job guarantee included.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>
