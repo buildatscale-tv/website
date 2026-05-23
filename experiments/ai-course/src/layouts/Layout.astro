@@ -1,0 +1,435 @@
+---
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { title = 'AI Mastery — Build the Future', description = 'The definitive AI engineering course for modern developers.' } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/experiments/ai-course/favicon.svg" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <style is:global>
+      :root {
+        --bg-primary: #0a0a1a;
+        --bg-secondary: #12122a;
+        --bg-card: rgba(255, 255, 255, 0.04);
+        --bg-card-hover: rgba(255, 255, 255, 0.08);
+        --text-primary: #f0f0ff;
+        --text-secondary: #a0a0c0;
+        --text-muted: #6b6b8d;
+        --accent-purple: #8b5cf6;
+        --accent-cyan: #06b6d4;
+        --accent-pink: #ec4899;
+        --gradient-1: linear-gradient(135deg, #8b5cf6, #06b6d4);
+        --gradient-2: linear-gradient(135deg, #ec4899, #8b5cf6);
+        --gradient-3: linear-gradient(135deg, #06b6d4, #10b981);
+        --border-color: rgba(139, 92, 246, 0.15);
+        --border-glow: rgba(139, 92, 246, 0.3);
+        --radius: 12px;
+        --radius-lg: 20px;
+        --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+        --font-mono: 'JetBrains Mono', monospace;
+        --max-width: 1200px;
+      }
+
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+
+      html { scroll-behavior: smooth; }
+
+      body {
+        font-family: var(--font-sans);
+        background: var(--bg-primary);
+        color: var(--text-primary);
+        line-height: 1.6;
+        overflow-x: hidden;
+      }
+
+      ::selection {
+        background: var(--accent-purple);
+        color: white;
+      }
+
+      /* Animated background grid */
+      body::before {
+        content: '';
+        position: fixed;
+        inset: 0;
+        background-image:
+          linear-gradient(rgba(139, 92, 246, 0.03) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(139, 92, 246, 0.03) 1px, transparent 1px);
+        background-size: 60px 60px;
+        pointer-events: none;
+        z-index: 0;
+      }
+
+      /* Floating orbs */
+      .orb {
+        position: fixed;
+        border-radius: 50%;
+        filter: blur(80px);
+        pointer-events: none;
+        z-index: 0;
+      }
+
+      .orb-1 {
+        width: 600px;
+        height: 600px;
+        background: radial-gradient(circle, rgba(139, 92, 246, 0.08), transparent);
+        top: -200px;
+        right: -200px;
+        animation: float1 20s ease-in-out infinite;
+      }
+
+      .orb-2 {
+        width: 500px;
+        height: 500px;
+        background: radial-gradient(circle, rgba(6, 182, 212, 0.06), transparent);
+        bottom: -150px;
+        left: -150px;
+        animation: float2 25s ease-in-out infinite;
+      }
+
+      .orb-3 {
+        width: 400px;
+        height: 400px;
+        background: radial-gradient(circle, rgba(236, 72, 153, 0.05), transparent);
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        animation: float3 30s ease-in-out infinite;
+      }
+
+      @keyframes float1 {
+        0%, 100% { transform: translate(0, 0) scale(1); }
+        33% { transform: translate(-80px, 60px) scale(1.1); }
+        66% { transform: translate(-40px, -40px) scale(0.9); }
+      }
+
+      @keyframes float2 {
+        0%, 100% { transform: translate(0, 0) scale(1); }
+        33% { transform: translate(60px, -80px) scale(1.15); }
+        66% { transform: translate(-30px, 50px) scale(0.85); }
+      }
+
+      @keyframes float3 {
+        0%, 100% { transform: translate(-50%, -50%) scale(1); }
+        50% { transform: translate(-50%, -50%) scale(1.2); }
+      }
+
+      /* Scroll-triggered animation support */
+      .reveal {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.6s ease, transform 0.6s ease;
+      }
+
+      .reveal.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .container {
+        max-width: var(--max-width);
+        margin: 0 auto;
+        padding: 0 24px;
+        position: relative;
+        z-index: 1;
+      }
+
+      .gradient-text {
+        background: var(--gradient-1);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .section {
+        padding: 100px 0;
+      }
+
+      .section-label {
+        display: inline-block;
+        font-size: 0.75rem;
+        font-weight: 600;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: var(--accent-purple);
+        margin-bottom: 12px;
+      }
+
+      .section-title {
+        font-size: clamp(2rem, 4vw, 3rem);
+        font-weight: 800;
+        line-height: 1.15;
+        margin-bottom: 16px;
+      }
+
+      .section-subtitle {
+        font-size: 1.1rem;
+        color: var(--text-secondary);
+        max-width: 640px;
+        line-height: 1.7;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 14px 32px;
+        border-radius: 50px;
+        font-weight: 600;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        border: none;
+        font-family: var(--font-sans);
+      }
+
+      .btn-primary {
+        background: var(--gradient-1);
+        color: white;
+        box-shadow: 0 4px 30px rgba(139, 92, 246, 0.3);
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 40px rgba(139, 92, 246, 0.5);
+      }
+
+      .btn-secondary {
+        background: transparent;
+        color: var(--text-primary);
+        border: 1px solid var(--border-color);
+      }
+
+      .btn-secondary:hover {
+        border-color: var(--accent-purple);
+        background: rgba(139, 92, 246, 0.1);
+      }
+
+      .btn-large {
+        padding: 18px 44px;
+        font-size: 1.1rem;
+      }
+
+      /* Nav */
+      nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 100;
+        padding: 16px 0;
+        transition: background 0.3s ease;
+      }
+
+      nav.scrolled {
+        background: rgba(10, 10, 26, 0.85);
+        backdrop-filter: blur(20px);
+        border-bottom: 1px solid var(--border-color);
+      }
+
+      .nav-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .nav-logo {
+        font-size: 1.3rem;
+        font-weight: 800;
+        text-decoration: none;
+        color: var(--text-primary);
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .nav-logo-icon {
+        width: 32px;
+        height: 32px;
+        background: var(--gradient-1);
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.1rem;
+      }
+
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 32px;
+      }
+
+      .nav-links a {
+        color: var(--text-secondary);
+        text-decoration: none;
+        font-size: 0.9rem;
+        font-weight: 500;
+        transition: color 0.3s ease;
+      }
+
+      .nav-links a:hover {
+        color: var(--text-primary);
+      }
+
+      .nav-cta {
+        padding: 10px 24px;
+        font-size: 0.85rem;
+      }
+
+      /* Footer */
+      footer {
+        border-top: 1px solid var(--border-color);
+        padding: 60px 0 40px;
+      }
+
+      .footer-grid {
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr 1fr;
+        gap: 40px;
+      }
+
+      .footer-brand p {
+        color: var(--text-muted);
+        font-size: 0.9rem;
+        margin-top: 12px;
+        max-width: 300px;
+      }
+
+      .footer-col h4 {
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: var(--text-muted);
+        margin-bottom: 16px;
+      }
+
+      .footer-col a {
+        display: block;
+        color: var(--text-secondary);
+        text-decoration: none;
+        font-size: 0.9rem;
+        margin-bottom: 10px;
+        transition: color 0.3s ease;
+      }
+
+      .footer-col a:hover {
+        color: var(--text-primary);
+      }
+
+      .footer-bottom {
+        margin-top: 60px;
+        padding-top: 24px;
+        border-top: 1px solid var(--border-color);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: var(--text-muted);
+        font-size: 0.85rem;
+      }
+
+      @media (max-width: 768px) {
+        .nav-links { display: none; }
+        .footer-grid { grid-template-columns: 1fr 1fr; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+
+    <nav id="navbar">
+      <div class="container nav-inner">
+        <a href="/experiments/ai-course/" class="nav-logo">
+          <span class="nav-logo-icon">✦</span>
+          AI Mastery
+        </a>
+        <div class="nav-links">
+          <a href="/experiments/ai-course/curriculum">Curriculum</a>
+          <a href="/experiments/ai-course/instructor">Instructor</a>
+          <a href="/experiments/ai-course/#outcomes">Outcomes</a>
+          <a href="/experiments/ai-course/#pricing" class="btn btn-primary nav-cta">Enroll Now</a>
+        </div>
+      </div>
+    </nav>
+
+    <slot />
+
+    <footer>
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <a href="/experiments/ai-course/" class="nav-logo">
+              <span class="nav-logo-icon">✦</span>
+              AI Mastery
+            </a>
+            <p>The definitive AI engineering course for modern developers. Build production-grade AI systems from the ground up.</p>
+          </div>
+          <div class="footer-col">
+            <h4>Course</h4>
+            <a href="/experiments/ai-course/curriculum">Curriculum</a>
+            <a href="/experiments/ai-course/instructor">Instructor</a>
+            <a href="/experiments/ai-course/#outcomes">Outcomes</a>
+            <a href="/experiments/ai-course/#pricing">Pricing</a>
+          </div>
+          <div class="footer-col">
+            <h4>Company</h4>
+            <a href="#">About</a>
+            <a href="#">Blog</a>
+            <a href="#">Careers</a>
+            <a href="#">Contact</a>
+          </div>
+          <div class="footer-col">
+            <h4>Legal</h4>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <span>&copy; 2026 AI Mastery. All rights reserved.</span>
+          <span>Built for the next generation of AI engineers</span>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Navbar background on scroll
+      const navbar = document.getElementById('navbar');
+      let lastScroll = 0;
+      window.addEventListener('scroll', () => {
+        const currentScroll = window.scrollY;
+        if (currentScroll > 50) {
+          navbar.classList.add('scrolled');
+        } else {
+          navbar.classList.remove('scrolled');
+        }
+        lastScroll = currentScroll;
+      });
+
+      // Scroll reveal observer
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, { threshold: 0.1 });
+
+      document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
+  </body>
+</html>

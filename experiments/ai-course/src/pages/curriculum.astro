@@ -1,0 +1,362 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const modules = [
+  {
+    num: '01',
+    title: 'AI Foundations & Prompt Engineering',
+    desc: 'Understand how LLMs work under the hood — tokenization, embeddings, attention, and transformer architecture. Learn prompt engineering systematically: chain-of-thought, few-shot, structured outputs, and prompt versioning.',
+    topics: ['Transformer Architecture Deep Dive', 'Tokenization & Embeddings', 'Prompt Patterns & Strategies', 'Structured Output Generation', 'Prompt Version Control & Testing'],
+    project: 'Build a prompt playground with streaming, versioning, and A/B testing',
+    duration: 'Week 1-2',
+  },
+  {
+    num: '02',
+    title: 'Retrieval-Augmented Generation (RAG)',
+    desc: 'Build production RAG pipelines from scratch. Cover chunking strategies, vector databases, hybrid search, re-ranking, and contextual retrieval for accurate, grounded AI responses.',
+    topics: ['Chunking & Document Parsing', 'Vector Databases (Pinecone, Qdrant)', 'Hybrid Search (Dense + Sparse)', 'Re-ranking & Contextual Compression', 'Evaluation & Metrics'],
+    project: 'Build a document Q&A system with hybrid search and citation tracking',
+    duration: 'Week 3-4',
+  },
+  {
+    num: '03',
+    title: 'LLM Orchestration & Tool Use',
+    desc: 'Master function calling, tool chaining, parallel execution, and structured orchestration with frameworks like LangChain, LlamaIndex, and custom pipelines.',
+    topics: ['Function Calling Patterns', 'Tool Chaining & Routing', 'Parallel & Streaming Execution', 'State Management & Memory', 'Custom Framework Design'],
+    project: 'Build an autonomous research agent that searches, summarizes, and generates reports',
+    duration: 'Week 5-6',
+  },
+  {
+    num: '04',
+    title: 'Evaluation & Observability',
+    desc: 'Implement rigorous evaluation pipelines. Learn LLM-as-judge, dataset curation, tracing, token tracking, and regression testing.',
+    topics: ['LLM-as-Judge Evaluation', 'Dataset Curation & Golden Sets', 'OpenTelemetry Tracing', 'Cost & Latency Optimization', 'A/B Testing for LLM Outputs'],
+    project: 'Build a comprehensive evaluation dashboard with CI integration',
+    duration: 'Week 7',
+  },
+  {
+    num: '05',
+    title: 'Multi-Agent Architectures',
+    desc: 'Design and deploy systems of multiple specialized agents working together. Learn delegation, consensus, hierarchical planning, and agent communication protocols.',
+    topics: ['Agent Communication Patterns', 'Task Decomposition & Planning', 'Consensus & Voting Mechanisms', 'Supervisor & Sub-Agent Patterns', 'Agent Memory & Reflection'],
+    project: 'Build a multi-agent coding assistant with planning, review, and testing agents',
+    duration: 'Week 8-9',
+  },
+  {
+    num: '06',
+    title: 'Fine-Tuning & Custom Models',
+    desc: 'Fine-tune open-source models for domain-specific tasks. Cover LoRA, QLoRA, RLHF, and dataset engineering. Deploy custom adapters at scale.',
+    topics: ['LoRA & QLoRA Fine-Tuning', 'Data Preparation & Augmentation', 'RLHF & Preference Optimization', 'Adapter Deployment & Serving', 'Model Evaluation & Benchmarks'],
+    project: 'Fine-tune a model for code generation and deploy it as a serverless API',
+    duration: 'Week 10',
+  },
+  {
+    num: '07',
+    title: 'AI Safety & Guardrails',
+    desc: 'Implement robust safety systems. Content filtering, rate limiting, prompt injection defense, PII redaction, and systematic red-teaming.',
+    topics: ['Prompt Injection Detection', 'Content Safety Filters', 'Rate Limiting & Budgeting', 'PII Detection & Redaction', 'Red-Teaming Playbooks'],
+    project: 'Build a guardrails layer with real-time monitoring and alerting',
+    duration: 'Week 11',
+  },
+  {
+    num: '08',
+    title: 'Deployment & Infrastructure',
+    desc: 'Take AI systems to production. Containerization, GPU serving, serverless inference, edge deployment, and CI/CD pipelines for AI applications.',
+    topics: ['Containerization (Docker + GPU)', 'Model Serving (vLLM, TGI)', 'Serverless Inference', 'Edge AI Deployment', 'CI/CD for ML Pipelines'],
+    project: 'Deploy a full-stack AI application with monitoring, scaling, and zero-downtime updates',
+    duration: 'Week 12',
+  },
+];
+---
+
+<Layout title="AI Mastery — Full Curriculum" description="Explore the complete 12-week AI engineering curriculum covering LLMs, RAG, agents, fine-tuning, safety, and deployment.">
+  <section class="page-hero">
+    <div class="container">
+      <div class="page-hero-content">
+        <a href="/experiments/ai-course/" class="breadcrumb">← Back to Home</a>
+        <div class="section-label reveal">Curriculum</div>
+        <h1 class="page-title reveal">Complete <span class="gradient-text">Curriculum</span></h1>
+        <p class="page-desc reveal">12 weeks. 8 modules. 40+ projects. One transformative skillset.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="curriculum-overview">
+    <div class="container">
+      <div class="overview-cards">
+        <div class="overview-card reveal">
+          <span class="overview-num">12</span>
+          <span class="overview-label">Weeks</span>
+        </div>
+        <div class="overview-card reveal">
+          <span class="overview-num">8</span>
+          <span class="overview-label">Modules</span>
+        </div>
+        <div class="overview-card reveal">
+          <span class="overview-num">40+</span>
+          <span class="overview-label">Projects</span>
+        </div>
+        <div class="overview-card reveal">
+          <span class="overview-num">1</span>
+          <span class="overview-label">Capstone</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-label reveal">Module Breakdown</div>
+      <h2 class="section-title reveal">Every Module,<br /><span class="gradient-text">Every Detail</span></h2>
+
+      <div class="curriculum-list">
+        {modules.map((mod) => (
+          <details class="curriculum-module reveal">
+            <summary>
+              <div class="module-meta">
+                <span class="cm-number">{mod.num}</span>
+                <span class="cm-duration">{mod.duration}</span>
+              </div>
+              <div class="cm-title-wrap">
+                <h3 class="cm-title">{mod.title}</h3>
+                <p class="cm-desc">{mod.desc}</p>
+              </div>
+              <span class="cm-expand-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+              </span>
+            </summary>
+            <div class="cm-content">
+              <div class="cm-section">
+                <h4>Topics Covered</h4>
+                <ul>
+                  {mod.topics.map((topic) => <li>{topic}</li>)}
+                </ul>
+              </div>
+              <div class="cm-project">
+                <h4>🏗️ Capstone Project</h4>
+                <p>{mod.project}</p>
+              </div>
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section final-cta">
+    <div class="container">
+      <div class="cta-box reveal">
+        <div class="cta-glow"></div>
+        <h2 class="cta-title">Ready to Build the<br /><span class="gradient-text">Future of AI?</span></h2>
+        <p class="cta-desc">Enroll today and get lifetime access to all modules, projects, and future updates.</p>
+        <div class="cta-actions">
+          <a href="/experiments/ai-course/#pricing" class="btn btn-primary btn-large">
+            Enroll Now — $499
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style is:global>
+  .page-hero {
+    padding: 140px 0 60px;
+  }
+
+  .page-hero-content {
+    text-align: center;
+  }
+
+  .breadcrumb {
+    display: inline-block;
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.85rem;
+    margin-bottom: 16px;
+    transition: color 0.3s ease;
+  }
+
+  .breadcrumb:hover {
+    color: var(--accent-purple);
+  }
+
+  .page-title {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 900;
+    letter-spacing: -0.02em;
+    margin-bottom: 12px;
+  }
+
+  .page-desc {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+  }
+
+  .curriculum-overview {
+    padding: 0 0 60px;
+  }
+
+  .overview-cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+
+  .overview-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+    padding: 32px;
+    text-align: center;
+    transition: all 0.3s ease;
+  }
+
+  .overview-card:hover {
+    border-color: var(--border-glow);
+    background: var(--bg-card-hover);
+  }
+
+  .overview-num {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: 900;
+    background: var(--gradient-1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .overview-label {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .curriculum-list {
+    margin-top: 48px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .curriculum-module {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+    overflow: hidden;
+    transition: all 0.3s ease;
+  }
+
+  .curriculum-module:hover {
+    border-color: var(--border-glow);
+  }
+
+  .curriculum-module summary {
+    padding: 24px 28px;
+    cursor: pointer;
+    list-style: none;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 20px;
+    align-items: start;
+  }
+
+  .module-meta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    min-width: 60px;
+  }
+
+  .cm-number {
+    font-family: var(--font-mono);
+    font-size: 1.5rem;
+    font-weight: 800;
+    background: var(--gradient-1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .cm-duration {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .cm-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+
+  .cm-desc {
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    line-height: 1.6;
+  }
+
+  .cm-expand-icon {
+    color: var(--text-muted);
+    transition: transform 0.3s ease;
+  }
+
+  .curriculum-module[open] .cm-expand-icon {
+    transform: rotate(180deg);
+  }
+
+  .cm-content {
+    padding: 0 28px 24px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    border-top: 1px solid var(--border-color);
+    padding-top: 20px;
+    margin: 0 28px;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .cm-content h4 {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+    margin-bottom: 12px;
+  }
+
+  .cm-content ul {
+    list-style: none;
+  }
+
+  .cm-content li {
+    padding: 6px 0;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+  }
+
+  .cm-content li::before {
+    content: '▹';
+    color: var(--accent-purple);
+    margin-right: 8px;
+  }
+
+  .cm-project p {
+    color: var(--text-primary);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    font-weight: 500;
+  }
+
+  @media (max-width: 768px) {
+    .overview-cards { grid-template-columns: repeat(2, 1fr); }
+    .curriculum-module summary { grid-template-columns: 1fr; }
+    .module-meta { flex-direction: row; gap: 8px; }
+    .cm-content { grid-template-columns: 1fr; }
+  }
+</style>
