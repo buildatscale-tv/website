@@ -1,0 +1,122 @@
+---
+const plans = [
+  {
+    name: 'Starter',
+    price: '$0',
+    period: '7-day trial',
+    description: 'Get full access to Week 1-2 curriculum, live orientation, and community Discord.',
+    features: [
+      'Week 1-2 curriculum access',
+      'Live orientation session',
+      'Community Discord access',
+      'Basic project templates',
+      'Self-paced learning',
+    ],
+    cta: 'Start Free Trial',
+    highlighted: false,
+  },
+  {
+    name: 'Professional',
+    price: '$1,497',
+    period: 'one-time payment',
+    description: 'Full 12-week curriculum with mentorship, code reviews, and job placement support.',
+    features: [
+      'Full 12-week curriculum',
+      'Weekly live office hours',
+      '1-on-1 code reviews (6 sessions)',
+      'Production project portfolio',
+      'Job placement support',
+      'Lifetime community access',
+      'Certificate of completion',
+    ],
+    cta: 'Enroll Now — Save $500',
+    highlighted: true,
+    badge: 'Most Popular',
+  },
+  {
+    name: 'Enterprise',
+    price: '$4,997',
+    period: 'one-time payment',
+    description: 'Everything in Professional, plus dedicated mentorship and team training options.',
+    features: [
+      'Everything in Professional',
+      '12x 1-on-1 mentorship calls',
+      'Custom project coaching',
+      'Team workshop (up to 10)',
+      'Private Slack channel',
+      'Resume & interview prep',
+      'Hiring partner introductions',
+    ],
+    cta: 'Apply for Enterprise',
+    highlighted: false,
+  },
+];
+---
+
+<section id="pricing" class="relative py-24">
+  <div class="absolute inset-0 bg-gradient-to-b from-dark-950 via-dark-900/50 to-dark-950"/>
+  <div class="max-w-7xl mx-auto px-6 relative z-10">
+    <div class="text-center mb-16">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-neon-500/10 border border-neon-500/20 text-neon-400 text-sm font-medium mb-4">
+        <span class="w-1.5 h-1.5 rounded-full bg-neon-400 animate-pulse"/>
+        Pricing
+      </div>
+      <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">
+        Invest in your AI career
+      </h2>
+      <p class="text-lg text-dark-300 max-w-2xl mx-auto">
+        Start free. Upgrade when you are ready. Every plan is backed by our 
+        30-day "ship something" guarantee.
+      </p>
+    </div>
+    
+    <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+      {plans.map(plan => (
+        <div class={`relative rounded-2xl p-8 ${plan.highlighted ? 'bg-gradient-to-b from-cyber-900/40 to-dark-900/80 border-2 border-cyber-500/40 shadow-2xl shadow-cyber-500/10' : 'glass border border-white/5'}`}>
+          {plan.badge && (
+            <div class="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-gradient-to-r from-cyber-600 to-cyber-500 text-xs font-bold text-white">
+              {plan.badge}
+            </div>
+          )}
+          
+          <div class="mb-6">
+            <h3 class="text-lg font-semibold text-white mb-2">{plan.name}</h3>
+            <div class="flex items-baseline gap-1">
+              <span class="text-4xl font-bold text-white">{plan.price}</span>
+            </div>
+            <div class="text-sm text-dark-400">{plan.period}</div>
+          </div>
+          
+          <p class="text-sm text-dark-300 mb-6 leading-relaxed">{plan.description}</p>
+          
+          <ul class="space-y-3 mb-8">
+            {plan.features.map(feature => (
+              <li class="flex items-start gap-3 text-sm text-dark-200">
+                <svg class="w-5 h-5 text-cyber-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                </svg>
+                {feature}
+              </li>
+            ))}
+          </ul>
+          
+          <a 
+            href="#enroll" 
+            class={`block text-center py-3 rounded-xl font-semibold transition-all ${plan.highlighted ? 'bg-gradient-to-r from-cyber-600 to-cyber-500 text-white hover:from-cyber-500 hover:to-cyber-400 shadow-lg shadow-cyber-500/20' : 'glass text-white hover:bg-white/10'}`}
+          >
+            {plan.cta}
+          </a>
+        </div>
+      ))}
+    </div>
+    
+    <div class="text-center mt-12">
+      <p class="text-sm text-dark-400 flex items-center justify-center gap-2">
+        <svg class="w-4 h-4 text-neon-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+        </svg>
+        30-day money-back guarantee. No questions asked.
+      </p>
+    </div>
+  </div>
+</section>

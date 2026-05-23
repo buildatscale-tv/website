@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Master AI Engineering. Build production-grade AI systems from scratch." />
+  <title>{title}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body class="bg-dark-950 text-dark-50 font-display antialiased overflow-x-hidden">
+  <slot />
+</body>
+</html>
+
+<style is:global>
+  ::selection {
+    background: rgba(139, 92, 246, 0.3);
+    color: #fff;
+  }
+  
+  .glass {
+    background: rgba(15, 23, 42, 0.6);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+  
+  .glow {
+    box-shadow: 0 0 40px rgba(139, 92, 246, 0.15);
+  }
+  
+  .text-glow {
+    text-shadow: 0 0 30px rgba(139, 92, 246, 0.5);
+  }
+  
+  .grid-bg {
+    background-image: 
+      linear-gradient(rgba(139, 92, 246, 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(139, 92, 246, 0.05) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+  
+  @keyframes gradient-shift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  
+  .animate-gradient {
+    background-size: 200% 200%;
+    animation: gradient-shift 8s ease infinite;
+  }
+</style>

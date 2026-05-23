@@ -1,0 +1,104 @@
+---
+const testimonials = [
+  {
+    name: 'Marcus Chen',
+    role: 'Senior Engineer → Staff AI Engineer',
+    company: 'Stripe',
+    quote: 'This course fundamentally changed how I approach AI. I went from writing basic prompts to architecting a production RAG system that handles 2M queries/day. The mentorship was the differentiator.',
+    metric: '2M',
+    metricLabel: 'queries/day shipped',
+    initials: 'MC',
+  },
+  {
+    name: 'Sarah Okafor',
+    role: 'Data Scientist → AI Product Lead',
+    company: 'Notion',
+    quote: 'I had tried three other AI courses before this. NeuralForge is the only one that teaches you to think like a systems engineer. I shipped an agentic feature in week 8 that got promoted to full product.',
+    metric: 'Week 8',
+    metricLabel: 'shipped production feature',
+    initials: 'SO',
+  },
+  {
+    name: 'James Park',
+    role: 'Full-Stack Dev → AI Founding Engineer',
+    company: 'YC W26',
+    quote: 'The fine-tuning module alone was worth 10x the price. I used the exact LoRA techniques from week 7 to cut our inference costs by 60% while improving accuracy. Now I am a founding engineer at an AI startup.',
+    metric: '60%',
+    metricLabel: 'cost reduction',
+    initials: 'JP',
+  },
+  {
+    name: 'Aisha Patel',
+    role: 'ML Engineer → Principal Engineer',
+    company: 'Shopify',
+    quote: 'Elena does not just teach theory — she teaches battle scars. Every pattern has a "why" rooted in real production failures. I reference my course notes weekly, six months after graduating.',
+    metric: '6mo',
+    metricLabel: 'still referencing notes',
+    initials: 'AP',
+  },
+];
+---
+
+<section id="outcomes" class="relative py-24">
+  <div class="absolute inset-0 bg-dark-950"/>
+  <div class="max-w-7xl mx-auto px-6 relative z-10">
+    <div class="text-center mb-16">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyber-500/10 border border-cyber-500/20 text-cyber-400 text-sm font-medium mb-4">
+        <span class="w-1.5 h-1.5 rounded-full bg-cyber-400 animate-pulse"/>
+        Student Outcomes
+      </div>
+      <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">
+        Real engineers, real results
+      </h2>
+      <p class="text-lg text-dark-300 max-w-2xl mx-auto">
+        These are not hypothetical case studies. Every testimonial is from a student who 
+        shipped production AI during or immediately after the course.
+      </p>
+    </div>
+    
+    <div class="grid md:grid-cols-2 gap-6">
+      {testimonials.map(t => (
+        <div class="glass rounded-2xl p-8 border border-white/5 hover:border-cyber-500/20 transition-all duration-300">
+          <div class="flex items-start justify-between mb-6">
+            <div class="flex items-center gap-4">
+              <div class="w-12 h-12 rounded-full bg-gradient-to-br from-cyber-600 to-cyber-800 flex items-center justify-center text-white font-bold text-sm">
+                {t.initials}
+              </div>
+              <div>
+                <div class="font-semibold text-white">{t.name}</div>
+                <div class="text-sm text-dark-400">{t.role}</div>
+                <div class="text-xs text-cyber-400">{t.company}</div>
+              </div>
+            </div>
+            <div class="text-right">
+              <div class="text-2xl font-bold text-neon-400">{t.metric}</div>
+              <div class="text-xs text-dark-400">{t.metricLabel}</div>
+            </div>
+          </div>
+          
+          <blockquote class="text-dark-200 leading-relaxed italic">
+            "{t.quote}"
+          </blockquote>
+          
+          <div class="flex mt-4">
+            {[1,2,3,4,5].map(() => (
+              <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+              </svg>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+    
+    <!-- Company logos bar -->
+    <div class="mt-16 pt-12 border-t border-white/5">
+      <p class="text-center text-sm text-dark-400 mb-8">Our graduates work at</p>
+      <div class="flex flex-wrap items-center justify-center gap-8 md:gap-12 opacity-50">
+        {['Google', 'OpenAI', 'Anthropic', 'Stripe', 'Shopify', 'Notion', 'Vercel', 'Figma'].map(company => (
+          <span class="text-lg font-bold text-dark-300 tracking-tight">{company}</span>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,118 @@
+---
+---
+
+<section class="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
+  <!-- Background effects -->
+  <div class="absolute inset-0 bg-dark-950">
+    <div class="absolute inset-0 grid-bg opacity-50"/>
+    <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-cyber-600/20 rounded-full blur-[128px] animate-pulse-slow"/>
+    <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-neon-600/10 rounded-full blur-[128px] animate-pulse-slow" style="animation-delay: 2s;"/>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-cyber-500/5 rounded-full blur-[100px]"/>
+  </div>
+  
+  <!-- Floating particles -->
+  <div class="absolute inset-0 pointer-events-none">
+    <div class="absolute top-[20%] left-[15%] w-2 h-2 bg-cyber-400/40 rounded-full animate-float" style="animation-delay: 0s;"/>
+    <div class="absolute top-[40%] right-[20%] w-3 h-3 bg-neon-400/30 rounded-full animate-float" style="animation-delay: 1s;"/>
+    <div class="absolute bottom-[30%] left-[25%] w-2 h-2 bg-cyber-300/50 rounded-full animate-float" style="animation-delay: 2s;"/>
+    <div class="absolute top-[60%] right-[30%] w-1.5 h-1.5 bg-neon-300/40 rounded-full animate-float" style="animation-delay: 3s;"/>
+  </div>
+  
+  <div class="relative z-10 max-w-6xl mx-auto px-6 text-center">
+    <!-- Badge -->
+    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass mb-8 animate-fade-in">
+      <span class="w-2 h-2 rounded-full bg-neon-400 animate-pulse"/>
+      <span class="text-sm text-dark-200">Next cohort starts June 15, 2026</span>
+    </div>
+    
+    <!-- Headline -->
+    <h1 class="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold tracking-tight mb-6">
+      <span class="block text-white">Build AI that</span>
+      <span class="block bg-gradient-to-r from-cyber-400 via-neon-400 to-cyber-400 bg-clip-text text-transparent animate-gradient">
+        actually ships
+      </span>
+    </h1>
+    
+    <!-- Subheadline -->
+    <p class="max-w-2xl mx-auto text-lg md:text-xl text-dark-300 mb-10 leading-relaxed">
+      The only course that takes you from prompt engineering to production-grade AI systems. 
+      Build RAG pipelines, fine-tune models, and deploy at scale — with mentorship from engineers 
+      who built AI at Google, OpenAI, and Anthropic.
+    </p>
+    
+    <!-- CTAs -->
+    <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
+      <a 
+        href="#enroll" 
+        class="group px-8 py-4 rounded-full bg-gradient-to-r from-cyber-600 to-cyber-500 text-white font-bold text-lg hover:from-cyber-500 hover:to-cyber-400 transition-all shadow-2xl shadow-cyber-500/30 hover:shadow-cyber-500/50 flex items-center gap-2"
+      >
+        Start Building for $0
+        <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+        </svg>
+      </a>
+      <a 
+        href="#curriculum" 
+        class="px-8 py-4 rounded-full glass text-white font-semibold text-lg hover:bg-white/10 transition-all flex items-center gap-2"
+      >
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/>
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+        </svg>
+        Watch the Curriculum
+      </a>
+    </div>
+    
+    <!-- Social proof bar -->
+    <div class="flex flex-wrap items-center justify-center gap-8 text-sm text-dark-400">
+      <div class="flex items-center gap-2">
+        <div class="flex -space-x-2">
+          {[1,2,3,4].map(i => (
+            <div class={`w-8 h-8 rounded-full border-2 border-dark-950 bg-gradient-to-br from-dark-700 to-dark-600 flex items-center justify-center text-xs font-medium text-white`}>
+              {['JD','MK','SL','AR'][i-1]}
+            </div>
+          ))}
+        </div>
+        <span>2,400+ engineers enrolled</span>
+      </div>
+      <div class="flex items-center gap-1.5">
+        <div class="flex">
+          {[1,2,3,4,5].map(i => (
+            <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+            </svg>
+          ))}
+        </div>
+        <span class="font-semibold text-white">4.9/5</span>
+        <span>from 847 reviews</span>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Code preview card floating -->
+  <div class="hidden lg:block absolute right-[5%] top-1/2 -translate-y-1/2 w-[400px]">
+    <div class="glass rounded-2xl p-6 glow transform rotate-3 hover:rotate-0 transition-transform duration-500">
+      <div class="flex items-center gap-2 mb-4">
+        <div class="w-3 h-3 rounded-full bg-red-500"/>
+        <div class="w-3 h-3 rounded-full bg-yellow-500"/>
+        <div class="w-3 h-3 rounded-full bg-green-500"/>
+        <span class="ml-2 text-xs text-dark-400 font-mono">agent.py</span>
+      </div>
+      <pre class="font-mono text-sm text-dark-200 overflow-hidden"><code><span class="text-cyber-400">from</span> neural_forge <span class="text-cyber-400">import</span> Agent, RAGPipeline
+
+<span class="text-cyber-400">class</span> <span class="text-neon-400">CustomerSupportAgent</span>(Agent):
+    <span class="text-cyber-400">def</span> <span class="text-yellow-400">__init__</span>(self):
+        self.rag = RAGPipeline(
+            model=<span class="text-green-400">"gpt-4-turbo"</span>,
+            embedding=<span class="text-green-400">"text-embedding-3"</span>
+        )
+    
+    <span class="text-cyber-400">async def</span> <span class="text-yellow-400">handle</span>(self, query):
+        context = <span class="text-cyber-400">await</span> self.rag.retrieve(query)
+        <span class="text-cyber-400">return await</span> self.generate(
+            context=context,
+            temperature=<span class="text-orange-400">0.3</span>
+        )</code></pre>
+    </div>
+  </div>
+</section>

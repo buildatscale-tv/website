@@ -1,0 +1,81 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<MainLayout title="Enroll — NeuralForge">
+  <Navbar />
+  
+  <section class="relative min-h-screen flex items-center justify-center pt-16">
+    <div class="absolute inset-0 bg-dark-950">
+      <div class="absolute top-1/4 left-1/3 w-96 h-96 bg-cyber-600/10 rounded-full blur-[128px]"/>
+      <div class="absolute bottom-1/4 right-1/3 w-96 h-96 bg-neon-600/10 rounded-full blur-[128px]"/>
+    </div>
+    
+    <div class="relative z-10 max-w-lg w-full mx-auto px-6 py-16">
+      <div class="glass rounded-3xl p-8 md:p-10 border border-white/10">
+        <div class="text-center mb-8">
+          <h1 class="text-3xl font-bold text-white mb-2">Start your free trial</h1>
+          <p class="text-dark-400">7 days full access. No credit card required.</p>
+        </div>
+        
+        <form class="space-y-5" onsubmit="event.preventDefault(); alert('Thanks for signing up! This is a demo.');">
+          <div>
+            <label class="block text-sm font-medium text-dark-300 mb-2">Full Name</label>
+            <input 
+              type="text" 
+              placeholder="Jane Doe"
+              class="w-full px-4 py-3 rounded-xl bg-dark-900/50 border border-white/10 text-white placeholder-dark-500 focus:outline-none focus:border-cyber-500/50 focus:ring-1 focus:ring-cyber-500/30 transition-all"
+            />
+          </div>
+          
+          <div>
+            <label class="block text-sm font-medium text-dark-300 mb-2">Email</label>
+            <input 
+              type="email" 
+              placeholder="jane@company.com"
+              class="w-full px-4 py-3 rounded-xl bg-dark-900/50 border border-white/10 text-white placeholder-dark-500 focus:outline-none focus:border-cyber-500/50 focus:ring-1 focus:ring-cyber-500/30 transition-all"
+            />
+          </div>
+          
+          <div>
+            <label class="block text-sm font-medium text-dark-300 mb-2">Current Role</label>
+            <select class="w-full px-4 py-3 rounded-xl bg-dark-900/50 border border-white/10 text-white focus:outline-none focus:border-cyber-500/50 focus:ring-1 focus:ring-cyber-500/30 transition-all">
+              <option>Software Engineer</option>
+              <option>Data Scientist</option>
+              <option>ML Engineer</option>
+              <option>Product Manager</option>
+              <option>Founder</option>
+              <option>Other</option>
+            </select>
+          </div>
+          
+          <div>
+            <label class="block text-sm font-medium text-dark-300 mb-2">Experience Level</label>
+            <select class="w-full px-4 py-3 rounded-xl bg-dark-900/50 border border-white/10 text-white focus:outline-none focus:border-cyber-500/50 focus:ring-1 focus:ring-cyber-500/30 transition-all">
+              <option>Beginner (0-1 years)</option>
+              <option>Intermediate (2-4 years)</option>
+              <option>Advanced (5+ years)</option>
+            </select>
+          </div>
+          
+          <button 
+            type="submit"
+            class="w-full py-4 rounded-xl bg-gradient-to-r from-cyber-600 to-cyber-500 text-white font-bold text-lg hover:from-cyber-500 hover:to-cyber-400 transition-all shadow-lg shadow-cyber-500/20"
+          >
+            Start Free Trial
+          </button>
+        </form>
+        
+        <div class="mt-6 text-center">
+          <p class="text-xs text-dark-500">
+            By signing up, you agree to our <a href="#" class="text-cyber-400 hover:underline">Terms</a> and <a href="#" class="text-cyber-400 hover:underline">Privacy Policy</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <Footer />
+</MainLayout>
