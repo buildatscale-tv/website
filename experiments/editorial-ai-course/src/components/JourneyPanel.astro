@@ -1,0 +1,160 @@
+---
+export interface Props {
+  name: string;
+  role: string;
+  before: string;
+  after: string;
+  quote: string;
+  highlight?: string;
+}
+
+const { name, role, before, after, quote, highlight } = Astro.props;
+---
+
+<article class="journey-panel">
+  <div class="journey-panel__header">
+    <div class="journey-panel__name">{name}</div>
+    <div class="journey-panel__role">{role}</div>
+  </div>
+
+  <div class="journey-panel__transform">
+    <div class="journey-panel__before">
+      <span class="label">Before</span>
+      <code>{before}</code>
+    </div>
+    <div class="journey-panel__arrow">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M5 12h14M12 5l7 7-7 7"/>
+      </svg>
+    </div>
+    <div class="journey-panel__after">
+      <span class="label">After</span>
+      <code>{after}</code>
+    </div>
+  </div>
+
+  {highlight && (
+    <div class="journey-panel__highlight">
+      <span class="journey-panel__highlight-icon">&#9650;</span>
+      {highlight}
+    </div>
+  )}
+
+  <p class="journey-panel__quote">&ldquo;{quote}&rdquo;</p>
+</article>
+
+<style>
+  .journey-panel {
+    background: #fff;
+    border: 1px solid #e8e5ee;
+    border-radius: 8px;
+    padding: 2rem;
+    box-shadow: 0 2px 12px rgba(107, 63, 160, 0.04);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+  }
+
+  .journey-panel:hover {
+    box-shadow: 0 6px 24px rgba(107, 63, 160, 0.08);
+    transform: translateY(-2px);
+  }
+
+  .journey-panel__header {
+    margin-bottom: 1.5rem;
+  }
+
+  .journey-panel__name {
+    font-family: var(--serif);
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--ink);
+  }
+
+  .journey-panel__role {
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    color: var(--ink-muted);
+    margin-top: 0.15rem;
+  }
+
+  .journey-panel__transform {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .journey-panel__before,
+  .journey-panel__after {
+    flex: 1;
+  }
+
+  .journey-panel__before {
+    background: var(--pastel-cream);
+    padding: 0.75rem 1rem;
+    border-radius: 6px;
+  }
+
+  .journey-panel__after {
+    background: var(--pastel-mint);
+    padding: 0.75rem 1rem;
+    border-radius: 6px;
+  }
+
+  .label {
+    display: block;
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--ink-faint);
+    margin-bottom: 0.35rem;
+  }
+
+  .journey-panel__before code,
+  .journey-panel__after code {
+    font-family: var(--mono);
+    font-size: 0.82rem;
+    color: var(--ink);
+    line-height: 1.4;
+    display: block;
+  }
+
+  .journey-panel__arrow {
+    color: var(--accent-plum);
+    flex-shrink: 0;
+  }
+
+  .journey-panel__highlight {
+    font-family: var(--mono);
+    font-size: 0.82rem;
+    background: var(--pastel-lavender);
+    color: var(--accent-plum);
+    padding: 0.5rem 0.75rem;
+    border-radius: 4px;
+    margin-bottom: 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .journey-panel__highlight-icon {
+    font-size: 0.65rem;
+  }
+
+  .journey-panel__quote {
+    font-family: var(--body-serif);
+    font-style: italic;
+    color: var(--ink-light);
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  @media (max-width: 768px) {
+    .journey-panel__transform {
+      flex-direction: column;
+    }
+    .journey-panel__arrow {
+      transform: rotate(90deg);
+    }
+  }
+</style>
