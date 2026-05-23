@@ -1,0 +1,51 @@
+---
+---
+
+<section id="enroll" class="relative py-24 overflow-hidden">
+  <div class="absolute inset-0 bg-gradient-to-r from-cyber-900/30 via-dark-950 to-neon-900/30"/>
+  <div class="absolute inset-0 grid-bg opacity-30"/>
+  
+  <div class="max-w-4xl mx-auto px-6 relative z-10 text-center">
+    <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
+      Ready to build AI that <span class="text-cyber-400">ships?</span>
+    </h2>
+    <p class="text-lg text-dark-300 mb-10 max-w-2xl mx-auto">
+      Join 2,400+ engineers who have transformed their careers. 
+      Start your free 7-day trial today — no credit card required.
+    </p>
+    
+    <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
+      <a 
+        href="#" 
+        class="group px-8 py-4 rounded-full bg-gradient-to-r from-cyber-600 to-cyber-500 text-white font-bold text-lg hover:from-cyber-500 hover:to-cyber-400 transition-all shadow-2xl shadow-cyber-500/30 hover:shadow-cyber-500/50 flex items-center gap-2"
+      >
+        Start Free Trial
+        <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+        </svg>
+      </a>
+      <a 
+        href="#curriculum" 
+        class="px-8 py-4 rounded-full glass text-white font-semibold text-lg hover:bg-white/10 transition-all"
+      >
+        Explore Curriculum
+      </a>
+    </div>
+    
+    <div class="glass rounded-2xl p-8 max-w-2xl mx-auto border border-white/10">
+      <div class="flex items-center justify-center gap-2 mb-4">
+        <div class="flex -space-x-3">
+          {[1,2,3,4,5].map(i => (
+            <div class={`w-10 h-10 rounded-full border-2 border-dark-950 bg-gradient-to-br from-dark-700 to-dark-600 flex items-center justify-center text-xs font-bold text-white`}>
+              {['JD','MK','SL','AR','TP'][i-1]}
+            </div>
+          ))}
+        </div>
+        <span class="text-sm text-dark-300 ml-2">+2,395 others enrolled</span>
+      </div>
+      <p class="text-sm text-dark-400">
+        "I shipped my first production AI feature in week 3. This course pays for itself." — Marcus Chen, Stripe
+      </p>
+    </div>
+  </div>
+</section>

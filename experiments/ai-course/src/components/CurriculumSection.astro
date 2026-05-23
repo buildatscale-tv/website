@@ -1,0 +1,99 @@
+---
+const modules = [
+  {
+    week: '01-02',
+    title: 'Foundations of Modern AI',
+    desc: 'Transformers, attention mechanisms, tokenization, and the transformer architecture that powers GPT-4, Claude, and Gemini.',
+    skills: ['Self-Attention', 'Tokenization', 'Embeddings', 'Positional Encoding'],
+    icon: 'M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z',
+  },
+  {
+    week: '03-04',
+    title: 'Prompt Engineering & Chain-of-Thought',
+    desc: 'Advanced prompting strategies, ReAct patterns, tool use, and building reliable reasoning chains for complex tasks.',
+    skills: ['Few-shot Prompting', 'ReAct', 'Tool Use', 'Structured Outputs'],
+    icon: 'M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z',
+  },
+  {
+    week: '05-06',
+    title: 'Retrieval-Augmented Generation (RAG)',
+    desc: 'Build production RAG pipelines with vector databases, hybrid search, re-ranking, and chunking strategies.',
+    skills: ['Vector DBs', 'Hybrid Search', 'Re-ranking', 'Chunking'],
+    icon: 'M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4',
+  },
+  {
+    week: '07-08',
+    title: 'Fine-Tuning & Model Adaptation',
+    desc: 'LoRA, QLoRA, full fine-tuning, dataset curation, and evaluating model performance for domain-specific tasks.',
+    skills: ['LoRA/QLoRA', 'PEFT', 'Dataset Curation', 'Eval Metrics'],
+    icon: 'M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z',
+  },
+  {
+    week: '09-10',
+    title: 'AI Agents & Multi-Agent Systems',
+    desc: 'Design autonomous agents, multi-agent orchestration, state machines, and long-term memory architectures.',
+    skills: ['AutoGen', 'CrewAI', 'State Machines', 'Memory Systems'],
+    icon: 'M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z',
+  },
+  {
+    week: '11-12',
+    title: 'Production Deployment & MLOps',
+    desc: 'Deploy at scale with Kubernetes, monitoring, guardrails, caching strategies, and cost optimization.',
+    skills: ['Kubernetes', 'Monitoring', 'Guardrails', 'Cost Opt'],
+    icon: 'M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 01-2 2v4a2 2 0 012 2h14a2 2 0 012-2v-4a2 2 0 01-2-2m-2-4h.01M17 16h.01',
+  },
+];
+---
+
+<section id="curriculum" class="relative py-24">
+  <div class="absolute inset-0 bg-dark-950"/>
+  <div class="max-w-7xl mx-auto px-6 relative z-10">
+    <div class="text-center mb-16">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyber-500/10 border border-cyber-500/20 text-cyber-400 text-sm font-medium mb-4">
+        <span class="w-1.5 h-1.5 rounded-full bg-cyber-400 animate-pulse"/>
+        Curriculum
+      </div>
+      <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">
+        A battle-tested learning path
+      </h2>
+      <p class="text-lg text-dark-300 max-w-2xl mx-auto">
+        Twelve weeks of intensive, hands-on training. Every module includes real-world projects 
+        you can ship to production.
+      </p>
+    </div>
+    
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {modules.map((module, i) => (
+        <div class="group relative glass rounded-2xl p-6 hover:border-cyber-500/30 transition-all duration-300 hover:-translate-y-1">
+          <div class="absolute inset-0 rounded-2xl bg-gradient-to-br from-cyber-500/0 to-cyber-500/5 opacity-0 group-hover:opacity-100 transition-opacity"/>
+          
+          <div class="relative z-10">
+            <div class="flex items-start justify-between mb-4">
+              <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-cyber-600/20 to-cyber-500/10 flex items-center justify-center border border-cyber-500/20 group-hover:border-cyber-500/40 transition-colors">
+                <svg class="w-6 h-6 text-cyber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d={module.icon}/>
+                </svg>
+              </div>
+              <span class="text-xs font-mono text-dark-400 bg-dark-900/50 px-2 py-1 rounded border border-white/5">
+                Week {module.week}
+              </span>
+            </div>
+            
+            <h3 class="text-xl font-bold text-white mb-2 group-hover:text-cyber-300 transition-colors">
+              {module.title}
+            </h3>
+            <p class="text-dark-400 text-sm mb-4 leading-relaxed">{module.desc}</p>
+            
+            <div class="flex flex-wrap gap-2">
+              {module.skills.map(skill => (
+                <span class="text-xs px-2.5 py-1 rounded-full bg-dark-900/80 text-dark-300 border border-white/5">
+                  {skill}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
