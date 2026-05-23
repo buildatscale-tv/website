@@ -1,0 +1,285 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="AI Mastery — Meet Your Instructor" description="Meet Dr. Sarah Chen, AI architect and educator with 15+ years of experience building production ML systems.">
+  <section class="page-hero">
+    <div class="container">
+      <div class="page-hero-content">
+        <a href="/experiments/ai-course/" class="breadcrumb">← Back to Home</a>
+        <div class="section-label reveal">Instructor</div>
+        <h1 class="page-title reveal">Meet <span class="gradient-text">Dr. Sarah Chen</span></h1>
+        <p class="page-desc reveal">AI Architect, Educator, and author of "LLMs in Production"</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="instructor-full">
+        <div class="instructor-left reveal">
+          <div class="photo-frame">
+            <div class="photo-placeholder">
+              <span class="photo-initials">SC</span>
+            </div>
+            <div class="photo-glow"></div>
+          </div>
+          <div class="social-links">
+            <a href="#" class="social-link">Twitter / X</a>
+            <a href="#" class="social-link">LinkedIn</a>
+            <a href="#" class="social-link">GitHub</a>
+            <a href="#" class="social-link">Google Scholar</a>
+          </div>
+        </div>
+        <div class="instructor-right reveal">
+          <h2 class="instructor-name">Dr. Sarah Chen</h2>
+          <p class="instructor-role">Former Staff Engineer @ Google AI | Founding Eng @ YC AI Startup | Author</p>
+
+          <div class="bio-section">
+            <h3>Biography</h3>
+            <p>Sarah Chen has spent 15+ years at the intersection of machine learning and software engineering. She was a Staff Engineer at Google AI, where she led the development of large-scale ML infrastructure serving billions of daily requests. She later became a founding engineer at a Y Combinator-backed AI startup that was acquired by a major tech company.</p>
+            <p>Sarah is the author of "LLMs in Production" (O'Reilly Media), a practical guide to deploying large language models at scale. She's a frequent keynote speaker at NeurIPS, PyCon, and the AI Engineer Summit, and has taught AI engineering at Stanford Continuing Studies.</p>
+            <p>Her teaching philosophy is simple: <strong>build real things.</strong> Every module in AI Mastery ends with a production-grade project. By the end of the course, you'll have a portfolio that demonstrates genuine AI engineering capability — not just theoretical knowledge.</p>
+          </div>
+
+          <div class="bio-section">
+            <h3>Publications & Talks</h3>
+            <ul class="pub-list">
+              <li>
+                <span class="pub-title">LLMs in Production</span>
+                <span class="pub-meta">O'Reilly Media, 2025 — A comprehensive guide to deploying LLM applications at scale</span>
+              </li>
+              <li>
+                <span class="pub-title">Efficient Multi-Agent Orchestration for Enterprise Workflows</span>
+                <span class="pub-meta">NeurIPS 2024 — Paper on hierarchical agent delegation patterns</span>
+              </li>
+              <li>
+                <span class="pub-title">RAG at Scale: Lessons from 10M+ Daily Queries</span>
+                <span class="pub-meta">AI Engineer Summit 2024 — Keynote on production RAG architecture</span>
+              </li>
+              <li>
+                <span class="pub-title">Prompt Injection: A Systematic Taxonomy and Defense Framework</span>
+                <span class="pub-meta">IEEE S&P 2024 — Co-authored paper on LLM security</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="bio-section">
+            <h3>Industry Experience</h3>
+            <div class="exp-grid">
+              <div class="exp-item">
+                <span class="exp-company">Google AI</span>
+                <span class="exp-role">Staff Engineer (2018-2023)</span>
+                <span class="exp-desc">Led ML infrastructure team. Designed systems serving 1B+ daily predictions.</span>
+              </div>
+              <div class="exp-item">
+                <span class="exp-company">Nova AI (YC W22)</span>
+                <span class="exp-role">Founding Engineer (2023-2024)</span>
+                <span class="exp-desc">Built the core agent orchestration platform from scratch. Acquired 2024.</span>
+              </div>
+              <div class="exp-item">
+                <span class="exp-company">Stanford University</span>
+                <span class="exp-role">Instructor (2024-Present)</span>
+                <span class="exp-desc">Teaching "AI Engineering in Practice" at Stanford Continuing Studies.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section final-cta">
+    <div class="container">
+      <div class="cta-box reveal">
+        <div class="cta-glow"></div>
+        <h2 class="cta-title">Learn From a <span class="gradient-text">World-Class Engineer</span></h2>
+        <p class="cta-desc">Join 10,000+ students who've transformed their careers through Sarah's teaching.</p>
+        <div class="cta-actions">
+          <a href="/experiments/ai-course/#pricing" class="btn btn-primary btn-large">
+            Enroll Now — $499
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style is:global>
+  .instructor-full {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 60px;
+  }
+
+  .instructor-left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+  }
+
+  .photo-frame {
+    position: relative;
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    overflow: hidden;
+  }
+
+  .photo-placeholder {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #1a1a4a, #2a1a4a);
+    border: 2px solid var(--border-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .photo-initials {
+    font-size: 4rem;
+    font-weight: 800;
+    background: var(--gradient-1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .photo-glow {
+    position: absolute;
+    inset: -10px;
+    border-radius: 50%;
+    background: var(--gradient-1);
+    opacity: 0.15;
+    filter: blur(20px);
+    animation: glow-pulse 4s ease-in-out infinite;
+  }
+
+  .social-links {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+  }
+
+  .social-link {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 0.85rem;
+    padding: 8px 16px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+    text-align: center;
+    transition: all 0.3s ease;
+  }
+
+  .social-link:hover {
+    border-color: var(--accent-purple);
+    color: var(--text-primary);
+    background: rgba(139, 92, 246, 0.05);
+  }
+
+  .instructor-name {
+    font-size: 2.2rem;
+    font-weight: 800;
+    margin-bottom: 4px;
+  }
+
+  .instructor-role {
+    color: var(--accent-purple);
+    font-size: 1rem;
+    margin-bottom: 32px;
+  }
+
+  .bio-section {
+    margin-bottom: 36px;
+  }
+
+  .bio-section h3 {
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+    margin-bottom: 16px;
+  }
+
+  .bio-section p {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.7;
+    margin-bottom: 12px;
+  }
+
+  .pub-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .pub-list li {
+    padding: 16px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+  }
+
+  .pub-title {
+    display: block;
+    font-weight: 600;
+    font-size: 0.95rem;
+    margin-bottom: 4px;
+  }
+
+  .pub-meta {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+  }
+
+  .exp-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .exp-item {
+    padding: 16px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+  }
+
+  .exp-company {
+    display: block;
+    font-weight: 700;
+    font-size: 1rem;
+    margin-bottom: 2px;
+  }
+
+  .exp-role {
+    display: block;
+    color: var(--accent-purple);
+    font-size: 0.85rem;
+    margin-bottom: 6px;
+  }
+
+  .exp-desc {
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    line-height: 1.5;
+  }
+
+  @media (max-width: 768px) {
+    .instructor-full {
+      grid-template-columns: 1fr;
+    }
+    .instructor-left {
+      order: -1;
+    }
+  }
+</style>
