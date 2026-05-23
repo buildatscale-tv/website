@@ -1,0 +1,482 @@
+---
+import Hero from '../components/Hero.astro';
+import LessonCard from '../components/LessonCard.astro';
+import CTA from '../components/CTA.astro';
+import '../styles/global.css';
+
+const lessons = [
+  {
+    title: "Build Your First Neural Network",
+    description: "Implement a multi-layer perceptron from scratch using PyTorch. Understand backpropagation by writing it yourself.",
+    code: `<span class="code-keyword">class</span> <span class="code-function">NeuralNetwork</span>(<span class="code-variable">nn</span>.<span class="code-variable">Module</span>):\n    <span class="code-keyword">def</span> <span class="code-function">__init__</span>(<span class="code-variable">self</span>):\n        <span class="code-builtin">super</span>().<span class="code-function">__init__</span>()\n        <span class="code-variable">self</span>.<span class="code-variable">layers</span> = <span class="code-variable">nn</span>.<span class="code-function">Sequential</span>(\n            <span class="code-variable">nn</span>.<span class="code-function">Linear</span>(<span class="code-number">784</span>, <span class="code-number">256</span>),\n            <span class="code-variable">nn</span>.<span class="code-function">ReLU</span>(),\n            <span class="code-variable">nn</span>.<span class="code-function">Linear</span>(<span class="code-number">256</span>, <span class="code-number">128</span>),\n            <span class="code-variable">nn</span>.<span class="code-function">ReLU</span>(),\n            <span class="code-variable">nn</span>.<span class="code-function">Linear</span>(<span class="code-number">128</span>, <span class="code-number">10</span>),\n        )\n\n    <span class="code-keyword">def</span> <span class="code-function">forward</span>(<span class="code-variable">self</span>, <span class="code-variable">x</span>):\n        <span class="code-keyword">return</span> <span class="code-variable">self</span>.<span class="code-variable">layers</span>(<span class="code-variable">x</span>)`,
+    duration: "25 min",
+    level: "Beginner",
+  },
+  {
+    title: "Prompt Engineering Mastery",
+    description: "Master chain-of-thought, few-shot, and structured prompting techniques for production AI applications.",
+    code: `<span class="code-keyword">from</span> <span class="code-variable">openai</span> <span class="code-keyword">import</span> <span class="code-variable">OpenAI</span>\n\n<span class="code-variable">client</span> = <span class="code-function">OpenAI</span>()\n\n<span class="code-variable">response</span> = <span class="code-variable">client</span>.<span class="code-variable">chat</span>.<span class="code-variable">completions</span>.<span class="code-function">create</span>(\n    <span class="code-variable">model</span><span class="code-operator">=</span><span class="code-string">"gpt-4o"</span>,\n    <span class="code-variable">messages</span><span class="code-operator">=</span>[\n        {<span class="code-string">"role"</span>: <span class="code-string">"system"</span>, <span class="code-string">"content"</span>: <span class="code-string">"You are a code review assistant."</span>},\n        {<span class="code-string">"role"</span>: <span class="code-string">"user"</span>, <span class="code-string">"content"</span>: <span class="code-string">f"Review this Python function:\\n{code}"</span>}\n    ],\n    <span class="code-variable">temperature</span><span class="code-operator">=</span><span class="code-number">0.2</span>,\n    <span class="code-variable">max_tokens</span><span class="code-operator">=</span><span class="code-number">1024</span>\n)`,
+    duration: "15 min",
+    level: "All Levels",
+    language: "Python",
+  },
+  {
+    title: "Transformers from Scratch",
+    description: "Build a complete transformer encoder-decoder. Implement self-attention, positional encoding, and cross-attention.",
+    code: `<span class="code-keyword">class</span> <span class="code-function">TransformerBlock</span>(<span class="code-variable">nn</span>.<span class="code-variable">Module</span>):\n    <span class="code-keyword">def</span> <span class="code-function">__init__</span>(<span class="code-variable">self</span>, <span class="code-variable">d_model</span>, <span class="code-variable">n_heads</span>, <span class="code-variable">d_ff</span>):\n        <span class="code-variable">self</span>.<span class="code-variable">attention</span> = <span class="code-function">MultiHeadAttention</span>(<span class="code-variable">d_model</span>, <span class="code-variable">n_heads</span>)\n        <span class="code-variable">self</span>.<span class="code-variable">ff</span> = <span class="code-variable">nn</span>.<span class="code-function">Sequential</span>(\n            <span class="code-variable">nn</span>.<span class="code-function">Linear</span>(<span class="code-variable">d_model</span>, <span class="code-variable">d_ff</span>),\n            <span class="code-variable">nn</span>.<span class="code-function">ReLU</span>(),\n            <span class="code-variable">nn</span>.<span class="code-function">Linear</span>(<span class="code-variable">d_ff</span>, <span class="code-variable">d_model</span>)\n        )\n        <span class="code-variable">self</span>.<span class="code-variable">norm1</span> = <span class="code-variable">nn</span>.<span class="code-function">LayerNorm</span>(<span class="code-variable">d_model</span>)\n        <span class="code-variable">self</span>.<span class="code-variable">norm2</span> = <span class="code-variable">nn</span>.<span class="code-function">LayerNorm</span>(<span class="code-variable">d_model</span>)\n\n    <span class="code-keyword">def</span> <span class="code-function">forward</span>(<span class="code-variable">self</span>, <span class="code-variable">x</span>):\n        <span class="code-variable">x</span> = <span class="code-variable">x</span> <span class="code-operator">+</span> <span class="code-variable">self</span>.<span class="code-variable">attention</span>(<span class="code-variable">self</span>.<span class="code-variable">norm1</span>(<span class="code-variable">x</span>))\n        <span class="code-keyword">return</span> <span class="code-variable">x</span> <span class="code-operator">+</span> <span class="code-variable">self</span>.<span class="code-variable">ff</span>(<span class="code-variable">self</span>.<span class="code-variable">norm2</span>(<span class="code-variable">x</span>))`,
+    duration: "40 min",
+    level: "Advanced",
+  },
+  {
+    title: "Vector Embeddings & Search",
+    description: "Build a semantic search engine using embeddings, cosine similarity, and vector databases like Pinecone.",
+    code: `<span class="code-keyword">from</span> <span class="code-variable">sentence_transformers</span> <span class="code-keyword">import</span> <span class="code-variable">SentenceTransformer</span>\n<span class="code-keyword">import</span> <span class="code-variable">numpy</span> <span class="code-keyword">as</span> <span class="code-variable">np</span>\n\n<span class="code-variable">model</span> = <span class="code-function">SentenceTransformer</span>(<span class="code-string">"all-MiniLM-L6-v2"</span>)\n\n<span class="code-keyword">def</span> <span class="code-function">search</span>(<span class="code-variable">query</span>, <span class="code-variable">documents</span>, <span class="code-variable">top_k</span><span class="code-operator">=</span><span class="code-number">5</span>):\n    <span class="code-variable">query_vec</span> = <span class="code-variable">model</span>.<span class="code-function">encode</span>([<span class="code-variable">query</span>])\n    <span class="code-variable">doc_vecs</span> = <span class="code-variable">model</span>.<span class="code-function">encode</span>(<span class="code-variable">documents</span>)\n    <span class="code-variable">scores</span> = <span class="code-variable">np</span>.<span class="code-function">dot</span>(<span class="code-variable">query_vec</span>, <span class="code-variable">doc_vecs</span>.<span class="code-variable">T</span>)\n    <span class="code-keyword">return</span> <span class="code-variable">np</span>.<span class="code-function">argsort</span>(<span class="code-variable">scores</span>[<span class="code-number">0</span>])[<span class="code-operator">-</span><span class="code-variable">top_k</span>:][<span class="code-operator">::</span><span class="code-number">-1</span>]`,
+    duration: "30 min",
+    level: "Intermediate",
+  },
+  {
+    title: "RAG Pipeline in Production",
+    description: "Build a retrieval-augmented generation system with LangChain, ChromaDB, and streaming responses.",
+    code: `<span class="code-keyword">from</span> <span class="code-variable">langchain</span> <span class="code-keyword">import</span> <span class="code-variable">Chroma</span>, <span class="code-variable">OpenAIEmbeddings</span>\n\n<span class="code-variable">db</span> = <span class="code-function">Chroma</span>(\n    <span class="code-variable">embedding_function</span><span class="code-operator">=</span><span class="code-function">OpenAIEmbeddings</span>(),\n    <span class="code-variable">persist_directory</span><span class="code-operator">=</span><span class="code-string">"./vectors"</span>\n)\n\n<span class="code-variable">retriever</span> = <span class="code-variable">db</span>.<span class="code-function">as_retriever</span>(\n    <span class="code-variable">search_kwargs</span><span class="code-operator">=</span>{<span class="code-string">"k"</span>: <span class="code-number">4</span>}\n)\n\n<span class="code-comment"># Augment prompt with retrieved context</span>\n<span class="code-variable">context</span> = <span class="code-string">"\\n"</span>.<span class="code-function">join</span>(\n    [<span class="code-variable">d</span>.<span class="code-variable">page_content</span> <span class="code-keyword">for</span> <span class="code-variable">d</span> <span class="code-keyword">in</span> <span class="code-variable">retriever</span>.<span class="code-function">get_relevant_documents</span>(<span class="code-variable">query</span>)]\n)`,
+    duration: "35 min",
+    level: "Advanced",
+  },
+  {
+    title: "Fine-Tuning LLMs with LoRA",
+    description: "Parameter-efficient fine-tuning of Llama 3 using LoRA adapters. Train on custom datasets with Hugging Face.",
+    code: `<span class="code-keyword">from</span> <span class="code-variable">peft</span> <span class="code-keyword">import</span> <span class="code-variable">LoraConfig</span>, <span class="code-variable">get_peft_model</span>\n\n<span class="code-variable">lora_config</span> = <span class="code-function">LoraConfig</span>(\n    <span class="code-variable">r</span><span class="code-operator">=</span><span class="code-number">8</span>,\n    <span class="code-variable">lora_alpha</span><span class="code-operator">=</span><span class="code-number">32</span>,\n    <span class="code-variable">target_modules</span><span class="code-operator">=</span>[<span class="code-string">"q_proj"</span>, <span class="code-string">"v_proj"</span>],\n    <span class="code-variable">lora_dropout</span><span class="code-operator">=</span><span class="code-number">0.05</span>,\n    <span class="code-variable">bias</span><span class="code-operator">=</span><span class="code-string">"none"</span>,\n    <span class="code-variable">task_type</span><span class="code-operator">=</span><span class="code-string">"CAUSAL_LM"</span>\n)\n\n<span class="code-variable">model</span> = <span class="code-function">AutoModelForCausalLM</span>.<span class="code-function">from_pretrained</span>(<span class="code-string">"meta-llama/Llama-3.2-3B"</span>)\n<span class="code-variable">model</span> = <span class="code-function">get_peft_model</span>(<span class="code-variable">model</span>, <span class="code-variable">lora_config</span>)\n<span class="code-variable">model</span>.<span class="code-function">print_trainable_parameters</span>()\n<span class="code-comment"># Trainable params: 4,194,304 / 3,009,572,864 (0.14%)</span>`,
+    duration: "45 min",
+    level: "Advanced",
+  },
+];
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Developer Course — Learn by Building</title>
+    <meta name="description" content="Hands-on AI developer course. Write production-ready AI code from day one. Neural nets, LLMs, RAG, and more." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <!-- Nav -->
+    <nav class="nav">
+      <div class="container nav-inner">
+        <a href="/" class="nav-logo">
+          <span class="logo-icon">△</span>
+          <span class="logo-text">AI<span class="logo-accent">Course</span></span>
+        </a>
+        <div class="nav-links">
+          <a href="#curriculum" class="nav-link">Curriculum</a>
+          <a href="#lessons" class="nav-link">Free Lessons</a>
+          <a href="#pricing" class="nav-link">Pricing</a>
+          <a href="#cta" class="btn btn-primary nav-cta">Start Free</a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero -->
+    <Hero />
+
+    <!-- Features strip -->
+    <section class="features-strip">
+      <div class="container">
+        <div class="features-grid">
+          <div class="feature-item fade-in-up delay-1">
+            <div class="feature-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+            </div>
+            <h3>Real Code, Real Projects</h3>
+            <p>Every lesson ships with a working codebase. No toy examples.</p>
+          </div>
+          <div class="feature-item fade-in-up delay-2">
+            <div class="feature-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+            </div>
+            <h3>Interactive Playground</h3>
+            <p>Edit code inline and see results in real time — like the demo above.</p>
+          </div>
+          <div class="feature-item fade-in-up delay-3">
+            <div class="feature-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+            </div>
+            <h3>Lifetime Access</h3>
+            <p>Learn at your own pace. New lessons added every month.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Curriculum section -->
+    <section class="curriculum" id="curriculum">
+      <div class="container">
+        <div class="section-header fade-in-up">
+          <span class="section-badge">Curriculum</span>
+          <h2 class="section-title">Try a <span class="gradient-text">Free Lesson</span></h2>
+          <p class="section-subtitle">Pick a topic and start coding in seconds. Each lesson is a self-contained module with real AI code you can edit and run.</p>
+        </div>
+        <div class="lessons-grid" id="lessons">
+          {lessons.map((lesson, i) => (
+            <LessonCard
+              title={lesson.title}
+              description={lesson.description}
+              code={lesson.code}
+              duration={lesson.duration}
+              level={lesson.level}
+              language={lesson.language || "Python"}
+              delay={i + 1}
+            />
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Stats section -->
+    <section class="stats-section">
+      <div class="container">
+        <div class="stats-grid">
+          <div class="stat-item fade-in-up delay-1">
+            <span class="stat-number">40+</span>
+            <span class="stat-label">Hands-on Lessons</span>
+          </div>
+          <div class="stat-item fade-in-up delay-2">
+            <span class="stat-number">12,000+</span>
+            <span class="stat-label">Active Developers</span>
+          </div>
+          <div class="stat-item fade-in-up delay-3">
+            <span class="stat-number">98%</span>
+            <span class="stat-label">Completion Rate</span>
+          </div>
+          <div class="stat-item fade-in-up delay-4">
+            <span class="stat-number">4.9★</span>
+            <span class="stat-label">Average Rating</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <CTA />
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container footer-inner">
+        <div class="footer-left">
+          <a href="/" class="nav-logo">
+            <span class="logo-icon">△</span>
+            <span class="logo-text">AI<span class="logo-accent">Course</span></span>
+          </a>
+          <p class="footer-tagline">Learn AI by building it. No fluff, just code.</p>
+        </div>
+        <div class="footer-links">
+          <div class="footer-col">
+            <h4>Product</h4>
+            <a href="#curriculum">Curriculum</a>
+            <a href="#pricing">Pricing</a>
+            <a href="#lessons">Free Lessons</a>
+          </div>
+          <div class="footer-col">
+            <h4>Company</h4>
+            <a href="#">About</a>
+            <a href="#">Blog</a>
+            <a href="#">Careers</a>
+          </div>
+          <div class="footer-col">
+            <h4>Legal</h4>
+            <a href="#">Privacy</a>
+            <a href="#">Terms</a>
+          </div>
+        </div>
+      </div>
+      <div class="container footer-bottom">
+        <p>&copy; 2026 AI Course. All rights reserved.</p>
+      </div>
+    </footer>
+  </body>
+</html>
+
+<style>
+  /* Nav */
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(250, 250, 250, 0.9);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--neutral-200);
+  }
+
+  .nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+  }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 700;
+    font-size: 18px;
+  }
+
+  .logo-icon {
+    color: var(--accent);
+    font-size: 22px;
+  }
+
+  .logo-text {
+    color: var(--neutral-800);
+  }
+
+  .logo-accent {
+    color: var(--accent);
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+
+  .nav-link {
+    color: var(--neutral-500);
+    font-weight: 500;
+    font-size: 14px;
+    transition: color 0.2s;
+  }
+
+  .nav-link:hover {
+    color: var(--neutral-800);
+  }
+
+  .nav-cta {
+    padding: 8px 20px;
+    font-size: 14px;
+  }
+
+  /* Features strip */
+  .features-strip {
+    padding: 60px 0;
+    background: white;
+    border-top: 1px solid var(--neutral-100);
+    border-bottom: 1px solid var(--neutral-100);
+  }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+  }
+
+  .feature-item {
+    text-align: center;
+  }
+
+  .feature-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: rgba(99, 102, 241, 0.08);
+    color: var(--accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 16px;
+  }
+
+  .feature-item h3 {
+    font-size: 16px;
+    margin-bottom: 8px;
+    color: var(--neutral-900);
+  }
+
+  .feature-item p {
+    font-size: 14px;
+    color: var(--neutral-500);
+    line-height: 1.6;
+  }
+
+  /* Curriculum */
+  .curriculum {
+    padding: 80px 0;
+    background: var(--neutral-50);
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+
+  .section-badge {
+    display: inline-block;
+    padding: 6px 14px;
+    background: rgba(99, 102, 241, 0.1);
+    color: var(--accent);
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+
+  .section-title {
+    font-size: 40px;
+    margin-bottom: 16px;
+    color: var(--neutral-900);
+    letter-spacing: -0.02em;
+  }
+
+  .section-subtitle {
+    font-size: 17px;
+    color: var(--neutral-500);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.7;
+  }
+
+  .lessons-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  /* Stats */
+  .stats-section {
+    padding: 80px 0;
+    background: white;
+    border-top: 1px solid var(--neutral-100);
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+
+  .stat-item {
+    text-align: center;
+  }
+
+  .stat-number {
+    display: block;
+    font-size: 36px;
+    font-weight: 800;
+    color: var(--accent);
+    margin-bottom: 4px;
+  }
+
+  .stat-label {
+    font-size: 14px;
+    color: var(--neutral-500);
+    font-weight: 500;
+  }
+
+  /* Footer */
+  .footer {
+    background: var(--neutral-900);
+    color: white;
+    padding: 60px 0 0;
+  }
+
+  .footer-inner {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 40px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .footer-left {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .footer-left .logo-text {
+    color: white;
+  }
+
+  .footer-tagline {
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 14px;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 60px;
+  }
+
+  .footer-col {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .footer-col h4 {
+    font-size: 14px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 4px;
+  }
+
+  .footer-col a {
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 14px;
+    transition: color 0.2s;
+  }
+
+  .footer-col a:hover {
+    color: white;
+  }
+
+  .footer-bottom {
+    padding: 24px 0;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.3);
+    font-size: 13px;
+  }
+
+  /* Responsive */
+  @media (max-width: 900px) {
+    .lessons-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .features-grid,
+    .stats-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .footer-inner {
+      flex-direction: column;
+      gap: 40px;
+    }
+
+    .footer-links {
+      gap: 40px;
+    }
+
+    .nav-links .nav-link {
+      display: none;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .lessons-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .features-grid,
+    .stats-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .section-title {
+      font-size: 30px;
+    }
+  }
+</style>

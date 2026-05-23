@@ -1,0 +1,177 @@
+---
+export interface Props {
+  title?: string;
+  subtitle?: string;
+  cta?: string;
+}
+
+const { 
+  title = "Start Writing AI That Matters.",
+  subtitle = "Join 12,000+ developers who've leveled up with our hands-on curriculum. Your first lesson is free—no credit card required.",
+  cta = "Try a Free Lesson Now"
+} = Astro.props;
+---
+
+<section class="cta-section">
+  <div class="container">
+    <div class="cta-card fade-in-up">
+      <div class="cta-content">
+        <div class="cta-badge">✨ 100% Free — No Credit Card Needed</div>
+        <h2 class="cta-title">{title}</h2>
+        <p class="cta-subtitle">{subtitle}</p>
+        <div class="cta-actions">
+          <a href="#lessons" class="btn btn-primary btn-large">
+            {cta}
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path d="M7.5 4L13.5 10L7.5 16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+          <button class="btn btn-secondary btn-large">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download Syllabus
+          </button>
+        </div>
+        <div class="cta-trust">
+          <div class="trust-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            Lifetime access
+          </div>
+          <div class="trust-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            Enterprise-grade
+          </div>
+          <div class="trust-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            Certificate included
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .cta-section {
+    padding: 100px 0 80px;
+  }
+
+  .cta-card {
+    background: linear-gradient(135deg, var(--neutral-900) 0%, #1a1a2e 100%);
+    border-radius: 24px;
+    padding: 64px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--accent), #a78bfa, var(--accent));
+  }
+
+  .cta-card::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(99, 102, 241, 0.1) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .cta-badge {
+    display: inline-block;
+    padding: 6px 14px;
+    background: rgba(99, 102, 241, 0.15);
+    color: #a78bfa;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 24px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .cta-content {
+    position: relative;
+    z-index: 1;
+    max-width: 640px;
+    margin: 0 auto;
+  }
+
+  .cta-title {
+    font-size: 42px;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 16px;
+    letter-spacing: -0.02em;
+  }
+
+  .cta-subtitle {
+    font-size: 17px;
+    color: rgba(255, 255, 255, 0.6);
+    line-height: 1.7;
+    margin-bottom: 32px;
+  }
+
+  .cta-actions {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+  }
+
+  .btn-large {
+    padding: 16px 32px;
+    font-size: 17px;
+  }
+
+  .cta-actions .btn-secondary {
+    background: rgba(255, 255, 255, 0.08);
+    color: white;
+    border-color: rgba(255, 255, 255, 0.15);
+  }
+
+  .cta-actions .btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.3);
+  }
+
+  .cta-trust {
+    display: flex;
+    gap: 32px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .trust-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  .trust-item svg {
+    color: var(--accent-light);
+  }
+
+  @media (max-width: 768px) {
+    .cta-card {
+      padding: 40px 24px;
+    }
+
+    .cta-title {
+      font-size: 30px;
+    }
+  }
+</style>
