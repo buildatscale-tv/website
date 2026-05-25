@@ -1,0 +1,191 @@
+---
+---
+
+<footer class="site-footer">
+  <div class="footer-ornament">&mdash; &diams; &mdash;</div>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <span class="logo-icon">&diams;</span>
+          <div class="logo-text">
+            <span class="logo-name">Hartwood</span>
+            <span class="logo-tagline">Custom Cabinets</span>
+          </div>
+        </div>
+        <p class="footer-desc">
+          Handcrafted cabinetry built with passion, precision, and timeless artistry.
+          Every piece tells a story of exceptional craftsmanship.
+        </p>
+      </div>
+      <div class="footer-links">
+        <h4>Navigation</h4>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#services">Services</a>
+        <a href="#about">About</a>
+        <a href="#testimonials">Testimonials</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div class="footer-links">
+        <h4>Services</h4>
+        <a href="#services">Kitchen Cabinets</a>
+        <a href="#services">Bathroom Vanities</a>
+        <a href="#services">Built-Ins & Closets</a>
+        <a href="#services">Custom Furniture</a>
+        <a href="#services">Restoration</a>
+      </div>
+      <div class="footer-contact-info">
+        <h4>Get in Touch</h4>
+        <p>123 Artisan Lane</p>
+        <p>Hartwood, VA 22039</p>
+        <p class="footer-phone">(540) 555-WOOD</p>
+        <p class="footer-email">hello@hartwoodcabinets.com</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Hartwood Custom Cabinets. All rights reserved.</p>
+      <p class="footer-tagline">Handcrafted with &hearts; in Virginia</p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    background: var(--color-espresso);
+    color: var(--color-cream);
+    padding: 5rem 0 2rem;
+    position: relative;
+  }
+
+  .footer-ornament {
+    text-align: center;
+    font-size: 1.5rem;
+    color: var(--color-gold);
+    margin-bottom: 3rem;
+    letter-spacing: 0.5em;
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1.5fr;
+    gap: 3rem;
+    margin-bottom: 3rem;
+  }
+
+  .footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .logo-icon {
+    font-size: 1.5rem;
+    color: var(--color-gold);
+  }
+
+  .logo-text {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .logo-name {
+    font-family: var(--font-display);
+    font-size: 1.35rem;
+    font-weight: 600;
+    color: var(--color-cream);
+    line-height: 1.1;
+  }
+
+  .logo-tagline {
+    font-family: var(--font-accent);
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--color-gold);
+  }
+
+  .footer-desc {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: var(--color-sand);
+    max-width: 300px;
+  }
+
+  .footer-links h4,
+  .footer-contact-info h4 {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 1.25rem;
+    color: var(--color-cream);
+    letter-spacing: 0.02em;
+  }
+
+  .footer-links a {
+    display: block;
+    font-size: 0.9rem;
+    color: var(--color-sand);
+    margin-bottom: 0.6rem;
+    transition: color 0.3s ease;
+  }
+
+  .footer-links a:hover {
+    color: var(--color-gold);
+  }
+
+  .footer-contact-info p {
+    font-size: 0.9rem;
+    color: var(--color-sand);
+    line-height: 1.7;
+  }
+
+  .footer-phone {
+    margin-top: 0.5rem;
+    color: var(--color-gold) !important;
+    font-weight: 500;
+  }
+
+  .footer-email {
+    color: var(--color-gold) !important;
+  }
+
+  .footer-bottom {
+    border-top: 1px solid rgba(196, 184, 154, 0.2);
+    padding-top: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-bottom p {
+    font-size: 0.85rem;
+    color: var(--color-mist);
+  }
+
+  .footer-tagline {
+    font-family: var(--font-accent);
+    font-style: italic;
+  }
+
+  @media (max-width: 900px) {
+    .footer-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .footer-grid {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .footer-bottom {
+      flex-direction: column;
+      gap: 0.5rem;
+      text-align: center;
+    }
+  }
+</style>

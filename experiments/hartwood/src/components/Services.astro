@@ -1,0 +1,181 @@
+---
+const services = [
+  {
+    icon: '&#9881;',
+    title: 'Kitchen Cabinetry',
+    description: 'From shaker to modern flat-panel, we design and build kitchen cabinets that become the soul of your home. Every detail, from grain selection to hardware, is considered.',
+  },
+  {
+    icon: '&#9832;',
+    title: 'Bathroom Vanities',
+    description: 'Transform your bathroom into a personal retreat with custom vanities that blend moisture-resistant craftsmanship with luxurious design and smart storage.',
+  },
+  {
+    icon: '&#9733;',
+    title: 'Built-Ins & Closets',
+    description: 'Maximize every inch with bespoke built-in shelving, entertainment centers, and closet systems designed specifically for your space and lifestyle.',
+  },
+  {
+    icon: '&#10022;',
+    title: 'Custom Furniture',
+    description: 'One-of-a-kind furniture pieces—from dining tables to bedroom sets—handcrafted to your exact specifications using time-honored joinery techniques.',
+  },
+  {
+    icon: '&#9830;',
+    title: 'Restoration & Refinishing',
+    description: 'Breathe new life into heirloom pieces or update existing cabinetry. Our restoration work honors the past while preparing for generations of future use.',
+  },
+  {
+    icon: '&#9998;',
+    title: 'Design Consultation',
+    description: 'Not sure where to start? Our in-house design team will guide you through wood selection, finish options, and layout planning—all complimentary with your project.',
+  },
+];
+---
+
+<section class="services" id="services">
+  <div class="container">
+    <div class="services-header">
+      <span class="section-eyebrow">What We Create</span>
+      <h2 class="section-title">Our <em>Craft</em></h2>
+      <p class="section-desc">
+        From concept to installation, every Hartwood project is a collaboration
+        between your vision and our expertise.
+      </p>
+    </div>
+    <div class="services-grid">
+      {services.map((service) => (
+        <div class="service-card">
+          <div class="service-icon" set:html={service.icon} />
+          <h3 class="service-title">{service.title}</h3>
+          <p class="service-desc">{service.description}</p>
+          <div class="service-line"></div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .services {
+    padding: 7rem 0;
+    background: var(--color-cream);
+    position: relative;
+  }
+
+  .services::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--color-sand), transparent);
+  }
+
+  .services-header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+
+  .section-eyebrow {
+    font-family: var(--font-accent);
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--color-gold);
+    display: block;
+    margin-bottom: 1rem;
+  }
+
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 600;
+    color: var(--color-espresso);
+    margin-bottom: 1rem;
+    line-height: 1.15;
+  }
+
+  .section-title em {
+    font-style: italic;
+    color: var(--color-walnut-light);
+  }
+
+  .section-desc {
+    font-size: 1.05rem;
+    font-weight: 300;
+    color: var(--color-smoke);
+    max-width: 550px;
+    margin: 0 auto;
+    line-height: 1.7;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem;
+  }
+
+  .service-card {
+    padding: 2.5rem 2rem;
+    background: var(--color-ivory);
+    border-radius: 0.75rem;
+    text-align: center;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+  }
+
+  .service-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 15px 40px rgba(44, 24, 16, 0.08);
+  }
+
+  .service-icon {
+    font-size: 2rem;
+    color: var(--color-gold);
+    margin-bottom: 1.25rem;
+    line-height: 1;
+  }
+
+  .service-title {
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--color-espresso);
+    margin-bottom: 0.75rem;
+  }
+
+  .service-desc {
+    font-size: 0.9rem;
+    font-weight: 300;
+    color: var(--color-smoke);
+    line-height: 1.65;
+  }
+
+  .service-line {
+    width: 30px;
+    height: 2px;
+    background: var(--color-gold);
+    margin: 1.25rem auto 0;
+    transition: width 0.4s ease;
+  }
+
+  .service-card:hover .service-line {
+    width: 60px;
+  }
+
+  @media (max-width: 900px) {
+    .services-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 600px) {
+    .services-grid {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+  }
+</style>
