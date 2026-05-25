@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "skills": {
+    "generate": {
+      "source": "buildatscale-tv/claude-code-plugins",
+      "sourceType": "github",
+      "skillPath": "plugins/nano-banana/skills/generate/SKILL.md",
+      "computedHash": "cc8dbe7955ad0269ce62b2e17bb40670dbd86882c8d5259c3dbcc0e367501b6a"
+    },
+    "promo-video": {
+      "source": "buildatscale-tv/claude-code-plugins",
+      "sourceType": "github",
+      "skillPath": "plugins/promo-video/skills/promo-video/SKILL.md",
+      "computedHash": "efe35b7ab8955d0ceb7fbd11510af86390f246a9da44ae213d16cd252c21683c"
+    }
+  }
+}
