@@ -1,0 +1,59 @@
+---
+const testimonials = [
+  {
+    quote: "Hartwood transformed our outdated kitchen into the heart of our home. The attention to detail is extraordinary — every drawer, every joint, every finish is flawless. It\'s not just cabinetry; it\'s art.",
+    author: "Sarah & Michael Chen",
+    role: "Kitchen Renovation, 2024",
+    rating: 5
+  },
+  {
+    quote: "Working with Thomas and his team was an absolute pleasure. They listened to our vision, offered expert guidance, and delivered built-in bookshelves that have become the centerpiece of our library.",
+    author: "James Wellington",
+    role: "Home Library Project, 2023",
+    rating: 5
+  },
+  {
+    quote: "The floating vanity they crafted for our master bath is stunning. The reclaimed wood has so much character, and the soft-close mechanisms are whisper-quiet. True craftsmanship at its finest.",
+    author: "Emily Rodriguez",
+    role: "Bathroom Renovation, 2024",
+    rating: 5
+  }
+];
+---
+
+<section id="testimonials" class="py-24 md:py-32 bg-hartwood-espresso text-hartwood-cream relative overflow-hidden">
+  <!-- Decorative Elements -->
+  <div class="absolute top-0 left-0 w-64 h-64 bg-hartwood-walnut/20 rounded-full -translate-x-1/2 -translate-y-1/2"></div>
+  <div class="absolute bottom-0 right-0 w-96 h-96 bg-hartwood-walnut/10 rounded-full translate-x-1/3 translate-y-1/3"></div>
+  
+  <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+    <div class="text-center max-w-3xl mx-auto mb-16">
+      <p class="text-hartwood-gold text-sm font-medium tracking-[0.2em] uppercase mb-4">Testimonials</p>
+      <h2 class="font-display text-4xl md:text-5xl font-semibold mb-6 leading-tight">
+        Words From Our <span class="italic font-medium">Clients</span>
+      </h2>
+    </div>
+    
+    <div class="grid md:grid-cols-3 gap-8">
+      {testimonials.map((testimonial, index) => (
+        <div class="bg-hartwood-walnut/20 backdrop-blur-sm rounded-2xl p-8 border border-hartwood-gold/10 hover:border-hartwood-gold/30 transition-colors">
+          <!-- Stars -->
+          <div class="flex gap-1 mb-6">
+            {Array.from({ length: testimonial.rating }).map(() => (
+              <svg class="w-5 h-5 text-hartwood-gold" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+              </svg>
+            ))}
+          </div>
+          <blockquote class="font-display text-lg italic leading-relaxed mb-6 text-hartwood-sand">
+            "{testimonial.quote}"
+          </blockquote>
+          <div>
+            <p class="font-medium text-hartwood-cream">{testimonial.author}</p>
+            <p class="text-sm text-hartwood-gold">{testimonial.role}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

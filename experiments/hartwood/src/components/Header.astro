@@ -1,0 +1,61 @@
+---
+---
+
+<header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" id="main-header">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="flex items-center justify-between h-20">
+      <a href="#" class="font-display text-2xl font-semibold text-hartwood-espresso tracking-tight">
+        Hartwood
+      </a>
+      <nav class="hidden md:flex items-center gap-8">
+        <a href="#about" class="text-sm font-medium text-hartwood-walnut hover:text-hartwood-espresso transition-colors">About</a>
+        <a href="#services" class="text-sm font-medium text-hartwood-walnut hover:text-hartwood-espresso transition-colors">Services</a>
+        <a href="#portfolio" class="text-sm font-medium text-hartwood-walnut hover:text-hartwood-espresso transition-colors">Portfolio</a>
+        <a href="#testimonials" class="text-sm font-medium text-hartwood-walnut hover:text-hartwood-espresso transition-colors">Testimonials</a>
+        <a href="#contact" class="inline-flex items-center px-5 py-2.5 bg-hartwood-espresso text-hartwood-cream text-sm font-medium rounded-full hover:bg-hartwood-walnut transition-colors">
+          Get a Quote
+        </a>
+      </nav>
+      <button class="md:hidden p-2" id="mobile-menu-btn" aria-label="Open menu">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+  
+  <!-- Mobile Menu -->
+  <div class="hidden md:hidden bg-hartwood-cream border-t border-hartwood-sand" id="mobile-menu">
+    <div class="px-6 py-4 space-y-3">
+      <a href="#about" class="block text-sm font-medium text-hartwood-walnut">About</a>
+      <a href="#services" class="block text-sm font-medium text-hartwood-walnut">Services</a>
+      <a href="#portfolio" class="block text-sm font-medium text-hartwood-walnut">Portfolio</a>
+      <a href="#testimonials" class="block text-sm font-medium text-hartwood-walnut">Testimonials</a>
+      <a href="#contact" class="block text-sm font-medium text-hartwood-espresso">Get a Quote</a>
+    </div>
+  </div>
+</header>
+
+<script>
+  const header = document.getElementById('main-header');
+  const mobileBtn = document.getElementById('mobile-menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) {
+      header.classList.add('bg-hartwood-cream/95', 'backdrop-blur-md', 'shadow-sm');
+    } else {
+      header.classList.remove('bg-hartwood-cream/95', 'backdrop-blur-md', 'shadow-sm');
+    }
+  });
+  
+  mobileBtn.addEventListener('click', () => {
+    mobileMenu.classList.toggle('hidden');
+  });
+  
+  mobileMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.add('hidden');
+    });
+  });
+</script>
