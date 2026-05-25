@@ -1,0 +1,76 @@
+---
+const projects = [
+  {
+    title: 'Walnut Kitchen Renovation',
+    category: 'Custom Kitchen',
+    image: '/experiments/hartwood/images/portfolio-1.jpg',
+    description: 'Full kitchen renovation featuring hand-crafted walnut cabinetry with soft-close drawers and integrated LED lighting.'
+  },
+  {
+    title: 'Artisan Joinery Detail',
+    category: 'Fine Woodworking',
+    image: '/experiments/hartwood/images/portfolio-2.jpg',
+    description: 'Precision dovetail joints and hand-rubbed oil finish showcase the beauty of solid mahogany construction.'
+  },
+  {
+    title: 'Floating Vanity Suite',
+    category: 'Bathroom',
+    image: '/experiments/hartwood/images/portfolio-3.jpg',
+    description: 'Reclaimed wood floating vanity with vessel sink and brass fixtures for a spa-like master bathroom retreat.'
+  },
+  {
+    title: 'Home Library Built-Ins',
+    category: 'Built-In Storage',
+    image: '/experiments/hartwood/images/portfolio-4.jpg',
+    description: 'Floor-to-ceiling cherry wood bookcases with glass-front display cabinets and integrated reading nook lighting.'
+  },
+  {
+    title: 'Farmhouse Island',
+    category: 'Custom Kitchen',
+    image: '/experiments/hartwood/images/portfolio-5.jpg',
+    description: 'Butcher block waterfall island with bar seating, open shelving, and custom copper pot rack integration.'
+  },
+  {
+    title: 'The Workshop',
+    category: 'Behind the Scenes',
+    image: '/experiments/hartwood/images/portfolio-6.jpg',
+    description: 'A glimpse into our studio where traditional hand tools meet modern precision for truly bespoke results.'
+  }
+];
+---
+
+<section id="portfolio" class="py-24 md:py-32 bg-hartwood-cream">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="flex flex-col md:flex-row md:items-end md:justify-between mb-16">
+      <div class="max-w-2xl">
+        <p class="text-hartwood-brown text-sm font-medium tracking-[0.2em] uppercase mb-4">Our Portfolio</p>
+        <h2 class="font-display text-4xl md:text-5xl font-semibold text-hartwood-espresso leading-tight">
+          Where <span class="italic font-medium">Vision</span> Meets<br />Craftsmanship
+        </h2>
+      </div>
+      <p class="text-hartwood-walnut max-w-md mt-6 md:mt-0 leading-relaxed">
+        Each project is a unique collaboration between our artisans and discerning clients who value 
+        quality over compromise.
+      </p>
+    </div>
+    
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {projects.map((project, index) => (
+        <div class="group relative rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500">
+          <div class="aspect-[4/3] overflow-hidden">
+            <img 
+              src={project.image} 
+              alt={project.title}
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+            />
+          </div>
+          <div class="absolute inset-0 bg-gradient-to-t from-hartwood-espresso/90 via-hartwood-espresso/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+            <p class="text-hartwood-gold text-xs font-medium tracking-wider uppercase mb-2">{project.category}</p>
+            <h3 class="font-display text-xl font-semibold text-hartwood-cream mb-2">{project.title}</h3>
+            <p class="text-hartwood-sand text-sm leading-relaxed">{project.description}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

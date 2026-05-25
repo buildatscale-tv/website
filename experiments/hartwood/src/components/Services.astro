@@ -1,0 +1,61 @@
+---
+const services = [
+  {
+    title: 'Custom Kitchens',
+    description: 'From timeless shaker styles to contemporary minimalist designs, we create kitchen cabinetry that becomes the heart of your home.',
+    icon: `<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>`
+  },
+  {
+    title: 'Built-In Storage',
+    description: 'Maximize every inch of space with custom built-ins, from floor-to-ceiling bookcases to hidden media centers and mudroom systems.',
+    icon: `<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 10h16M4 14h16M4 18h16"/></svg>`
+  },
+  {
+    title: 'Bathroom Vanities',
+    description: 'Elevate your bathroom with floating vanities, medicine cabinets, and linen closets crafted from moisture-resistant hardwoods.',
+    icon: `<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg>`
+  },
+  {
+    title: 'Commercial Millwork',
+    description: 'Premium reception desks, display cases, and office cabinetry that reflect your brand\'s sophistication and attention to detail.',
+    icon: `<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>`
+  },
+  {
+    title: 'Furniture & Tables',
+    description: 'Handcrafted dining tables, sideboards, and accent pieces that become heirloom-quality centerpieces for generations to enjoy.',
+    icon: `<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>`
+  },
+  {
+    title: 'Restoration & Repair',
+    description: 'Breathe new life into treasured pieces with our meticulous restoration services, preserving history while ensuring lasting durability.',
+    icon: `<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>`
+  }
+];
+---
+
+<section id="services" class="py-24 md:py-32 bg-hartwood-sand/30">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="text-center max-w-3xl mx-auto mb-16">
+      <p class="text-hartwood-brown text-sm font-medium tracking-[0.2em] uppercase mb-4">What We Do</p>
+      <h2 class="font-display text-4xl md:text-5xl font-semibold text-hartwood-espresso mb-6 leading-tight">
+        Services <span class="italic font-medium">Tailored</span> to You
+      </h2>
+      <p class="text-hartwood-walnut leading-relaxed">
+        From initial concept to final installation, we guide you through every step of the process, 
+        ensuring your vision becomes reality.
+      </p>
+    </div>
+    
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {services.map((service, index) => (
+        <div class="group bg-hartwood-cream rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+          <div class="w-14 h-14 bg-hartwood-espresso text-hartwood-cream rounded-xl flex items-center justify-center mb-6 group-hover:bg-hartwood-brown transition-colors">
+            <Fragment set:html={service.icon} />
+          </div>
+          <h3 class="font-display text-xl font-semibold text-hartwood-espresso mb-3">{service.title}</h3>
+          <p class="text-hartwood-walnut text-sm leading-relaxed">{service.description}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
