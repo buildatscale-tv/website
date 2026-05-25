@@ -1,0 +1,243 @@
+---
+---
+
+<section class="hero" id="hero">
+  <div class="hero-overlay"></div>
+  <div class="hero-content container">
+    <p class="hero-eyebrow">Est. 1997 &bull; Hartwood, Virginia</p>
+    <h1 class="hero-title">
+      Where Wood Meets <em>Artistry</em>
+    </h1>
+    <p class="hero-subtitle">
+      Handcrafted cabinetry built with passion, precision, and an unwavering
+      commitment to timeless beauty. Each piece is a testament to three
+      generations of woodworking excellence.
+    </p>
+    <div class="hero-cta-group">
+      <a href="#contact" class="btn btn-primary">Begin Your Project</a>
+      <a href="#portfolio" class="btn btn-secondary">View Our Work</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat">
+        <span class="stat-number">27+</span>
+        <span class="stat-label">Years of Craft</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <span class="stat-number">800+</span>
+        <span class="stat-label">Projects Completed</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <span class="stat-number">100%</span>
+        <span class="stat-label">Custom Built</span>
+      </div>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <span>Scroll to explore</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    background-image: url('/images/hero.jpg');
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+  }
+
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      135deg,
+      rgba(44, 24, 16, 0.85) 0%,
+      rgba(44, 24, 16, 0.6) 40%,
+      rgba(44, 24, 16, 0.3) 100%
+    );
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    padding-top: 120px;
+    padding-bottom: 4rem;
+    animation: fadeIn 1.2s ease-out;
+  }
+
+  .hero-eyebrow {
+    font-family: var(--font-accent);
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--color-gold);
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-title {
+    font-family: var(--font-display);
+    font-size: clamp(2.8rem, 6vw, 5.5rem);
+    font-weight: 600;
+    line-height: 1.05;
+    color: var(--color-cream);
+    margin-bottom: 1.75rem;
+    max-width: 800px;
+  }
+
+  .hero-title em {
+    font-style: italic;
+    color: var(--color-gold);
+  }
+
+  .hero-subtitle {
+    font-family: var(--font-body);
+    font-size: 1.1rem;
+    font-weight: 300;
+    line-height: 1.8;
+    color: var(--color-sand);
+    max-width: 540px;
+    margin-bottom: 2.5rem;
+  }
+
+  .hero-cta-group {
+    display: flex;
+    gap: 1.25rem;
+    margin-bottom: 3.5rem;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 1rem 2.25rem;
+    border: 1.5px solid;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    cursor: pointer;
+  }
+
+  .btn-primary {
+    background: var(--color-gold);
+    border-color: var(--color-gold);
+    color: var(--color-espresso);
+  }
+
+  .btn-primary:hover {
+    background: var(--color-gold-light);
+    border-color: var(--color-gold-light);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(184, 146, 63, 0.3);
+  }
+
+  .btn-secondary {
+    background: transparent;
+    border-color: var(--color-sand);
+    color: var(--color-cream);
+  }
+
+  .btn-secondary:hover {
+    border-color: var(--color-gold);
+    color: var(--color-gold);
+    transform: translateY(-2px);
+  }
+
+  .hero-stats {
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;
+  }
+
+  .stat {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .stat-number {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--color-gold);
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-sand);
+    margin-top: 0.4rem;
+  }
+
+  .stat-divider {
+    width: 1px;
+    height: 40px;
+    background: rgba(196, 184, 154, 0.3);
+  }
+
+  .hero-scroll {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    z-index: 2;
+  }
+
+  .hero-scroll span {
+    font-family: var(--font-accent);
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--color-sand);
+  }
+
+  .scroll-line {
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, var(--color-gold), transparent);
+    animation: scrollPulse 2s ease-in-out infinite;
+  }
+
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 0.4; transform: scaleY(0.6); }
+    50% { opacity: 1; transform: scaleY(1); }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @media (max-width: 768px) {
+    .hero-stats {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1.25rem;
+    }
+
+    .stat-divider {
+      width: 40px;
+      height: 1px;
+    }
+
+    .hero-scroll {
+      display: none;
+    }
+  }
+</style>

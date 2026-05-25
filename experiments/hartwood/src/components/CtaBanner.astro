@@ -1,0 +1,128 @@
+---
+---
+
+<section class="cta-banner">
+  <div class="container">
+    <div class="cta-inner">
+      <div class="cta-content">
+        <span class="section-eyebrow">Start Your Project</span>
+        <h2 class="cta-title">Ready to Create Something <em>Extraordinary</em>?</h2>
+        <p class="cta-desc">
+          Whether you have a full design in mind or just a spark of inspiration,
+          we are here to bring your vision to life. Every great project begins
+          with a simple conversation.
+        </p>
+        <div class="cta-buttons">
+          <a href="#contact" class="btn btn-gold">Schedule a Consultation</a>
+          <a href="tel:5405559663" class="btn btn-outline">Call (540) 555-WOOD</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .cta-banner {
+    padding: 6rem 0;
+    background: var(--color-walnut);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-banner::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: 
+      radial-gradient(ellipse at top left, rgba(184, 146, 63, 0.1) 0%, transparent 50%),
+      radial-gradient(ellipse at bottom right, rgba(184, 146, 63, 0.08) 0%, transparent 50%);
+    pointer-events: none;
+  }
+
+  .cta-inner {
+    text-align: center;
+    position: relative;
+    z-index: 2;
+  }
+
+  .section-eyebrow {
+    font-family: var(--font-accent);
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--color-gold);
+    display: block;
+    margin-bottom: 1rem;
+  }
+
+  .cta-title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 600;
+    color: var(--color-cream);
+    margin-bottom: 1.25rem;
+    line-height: 1.15;
+  }
+
+  .cta-title em {
+    font-style: italic;
+    color: var(--color-gold);
+  }
+
+  .cta-desc {
+    font-size: 1.05rem;
+    font-weight: 300;
+    color: var(--color-sand);
+    max-width: 600px;
+    margin: 0 auto 2.5rem;
+    line-height: 1.7;
+  }
+
+  .cta-buttons {
+    display: flex;
+    gap: 1.25rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 1rem 2.25rem;
+    border: 1.5px solid;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    cursor: pointer;
+  }
+
+  .btn-gold {
+    background: var(--color-gold);
+    border-color: var(--color-gold);
+    color: var(--color-espresso);
+  }
+
+  .btn-gold:hover {
+    background: var(--color-gold-light);
+    border-color: var(--color-gold-light);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(184, 146, 63, 0.3);
+  }
+
+  .btn-outline {
+    background: transparent;
+    border-color: var(--color-sand);
+    color: var(--color-cream);
+  }
+
+  .btn-outline:hover {
+    border-color: var(--color-gold);
+    color: var(--color-gold);
+    transform: translateY(-2px);
+  }
+</style>

@@ -1,0 +1,229 @@
+---
+const projects = [
+  {
+    image: '/images/portfolio-kitchen.jpg',
+    title: 'Modern Farmhouse Kitchen',
+    category: 'Kitchen',
+    description: 'Shaker-style cabinetry with brass hardware and a center island featuring hand-turned legs.'
+  },
+  {
+    image: '/images/portfolio-bathroom.jpg',
+    title: 'Walnut Spa Retreat',
+    category: 'Bathroom',
+    description: 'A floating walnut vanity with live-edge detail and oil-rubbed bronze fixtures.'
+  },
+  {
+    image: '/images/portfolio-library.jpg',
+    title: 'Heritage Library Wall',
+    category: 'Built-In',
+    description: 'Floor-to-ceiling dark oak bookshelves with rolling ladder and integrated lighting.'
+  },
+  {
+    image: '/images/portfolio-closet.jpg',
+    title: 'Luxury Walk-In Closet',
+    category: 'Closet',
+    description: 'Custom maple organization system with glass doors and integrated LED accents.'
+  }
+];
+---
+
+<section class="portfolio" id="portfolio">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-eyebrow">Our Work</span>
+      <h2 class="section-title">Crafted with <em>Purpose</em></h2>
+      <p class="section-desc">
+        Every project begins with a conversation and ends with a masterpiece. 
+        Browse our recent work and envision what Hartwood can create for you.
+      </p>
+    </div>
+    <div class="portfolio-grid">
+      {projects.map((project, i) => (
+        <article class={`portfolio-card portfolio-card-${i + 1}`}>
+          <div class="card-image-wrap">
+            <img src={project.image} alt={project.title} loading="lazy" />
+            <div class="card-overlay">
+              <span class="card-icon">&plus;</span>
+            </div>
+          </div>
+          <div class="card-content">
+            <span class="card-category">{project.category}</span>
+            <h3 class="card-title">{project.title}</h3>
+            <p class="card-desc">{project.description}</p>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .portfolio {
+    padding: 7rem 0;
+    background: var(--color-ivory);
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+
+  .section-eyebrow {
+    font-family: var(--font-accent);
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--color-gold);
+    display: block;
+    margin-bottom: 1rem;
+  }
+
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 600;
+    color: var(--color-espresso);
+    margin-bottom: 1rem;
+    line-height: 1.15;
+  }
+
+  .section-title em {
+    font-style: italic;
+    color: var(--color-walnut-light);
+  }
+
+  .section-desc {
+    font-size: 1.05rem;
+    font-weight: 300;
+    color: var(--color-smoke);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.7;
+  }
+
+  .portfolio-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 2rem;
+  }
+
+  .portfolio-card {
+    background: #fff;
+    border-radius: 0.75rem;
+    overflow: hidden;
+    box-shadow: 0 4px 25px rgba(44, 24, 16, 0.06);
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .portfolio-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 50px rgba(44, 24, 16, 0.12);
+  }
+
+  .portfolio-card-1 {
+    grid-column: 1;
+    grid-row: 1 / span 2;
+  }
+
+  .card-image-wrap {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 3/4;
+  }
+
+  .portfolio-card-2 .card-image-wrap,
+  .portfolio-card-4 .card-image-wrap {
+    aspect-ratio: 4/3;
+  }
+
+  .card-image-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .portfolio-card:hover .card-image-wrap img {
+    transform: scale(1.06);
+  }
+
+  .card-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(44, 24, 16, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+
+  .portfolio-card:hover .card-overlay {
+    opacity: 1;
+  }
+
+  .card-icon {
+    font-size: 2.5rem;
+    color: var(--color-cream);
+    border: 2px solid var(--color-cream);
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: transform 0.4s ease;
+  }
+
+  .portfolio-card:hover .card-icon {
+    transform: rotate(90deg);
+  }
+
+  .card-content {
+    padding: 1.5rem 1.5rem 1.75rem;
+  }
+
+  .card-category {
+    font-family: var(--font-accent);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--color-gold);
+  }
+
+  .card-title {
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--color-espresso);
+    margin: 0.4rem 0 0.5rem;
+    line-height: 1.3;
+  }
+
+  .card-desc {
+    font-size: 0.9rem;
+    font-weight: 300;
+    color: var(--color-smoke);
+    line-height: 1.6;
+  }
+
+  @media (max-width: 768px) {
+    .portfolio-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .portfolio-card-1 {
+      grid-column: 1;
+      grid-row: auto;
+    }
+
+    .portfolio-card-1 .card-image-wrap,
+    .portfolio-card-2 .card-image-wrap,
+    .portfolio-card-4 .card-image-wrap {
+      aspect-ratio: 4/3;
+    }
+  }
+</style>

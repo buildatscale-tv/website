@@ -1,0 +1,189 @@
+---
+const testimonials = [
+  {
+    quote: "Hartwood transformed our outdated kitchen into a space that takes our breath away every single morning. The craftsmanship is evident in every drawer pull and hinge.",
+    author: "Catherine & Mark Reynolds",
+    role: "Kitchen Renovation",
+    rating: 5
+  },
+  {
+    quote: "We interviewed five cabinet makers. James was the only one who asked about how we actually live in our home before sketching a single line. The result shows.",
+    author: "David Thornton",
+    role: "Whole-Home Built-Ins",
+    rating: 5
+  },
+  {
+    quote: "The library wall Hartwood built is the centerpiece of our home. Guests always gravitate to it, and I still catch myself running my hand along the grain.",
+    author: "Sarah Kimball-Nguyen",
+    role: "Custom Library Wall",
+    rating: 5
+  }
+];
+---
+
+<section class="testimonials" id="testimonials">
+  <div class="container">
+    <div class="testimonials-header">
+      <span class="section-eyebrow">Client Stories</span>
+      <h2 class="section-title">Words from <em>Our Clients</em></h2>
+    </div>
+    <div class="testimonials-grid">
+      {testimonials.map((testimonial) => (
+        <article class="testimonial-card">
+          <div class="testimonial-stars">
+            {Array.from({ length: testimonial.rating }).map(() => (
+              <span class="star">&#9733;</span>
+            ))}
+          </div>
+          <blockquote class="testimonial-quote">
+            &ldquo;{testimonial.quote}&rdquo;
+          </blockquote>
+          <div class="testimonial-author">
+            <div class="author-avatar">
+              {testimonial.author.charAt(0)}
+            </div>
+            <div>
+              <cite class="author-name">{testimonial.author}</cite>
+              <span class="author-role">{testimonial.role}</span>
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .testimonials {
+    padding: 7rem 0;
+    background: var(--color-espresso);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .testimonials::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 40%;
+    height: 100%;
+    background: radial-gradient(ellipse at center right, rgba(184, 146, 63, 0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .testimonials-header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+
+  .section-eyebrow {
+    font-family: var(--font-accent);
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--color-gold);
+    display: block;
+    margin-bottom: 1rem;
+  }
+
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 600;
+    color: var(--color-cream);
+    line-height: 1.15;
+  }
+
+  .section-title em {
+    font-style: italic;
+    color: var(--color-gold);
+  }
+
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+
+  .testimonial-card {
+    background: rgba(250, 248, 244, 0.04);
+    border: 1px solid rgba(196, 184, 154, 0.12);
+    border-radius: 0.75rem;
+    padding: 2.5rem 2rem;
+    transition: all 0.4s ease;
+  }
+
+  .testimonial-card:hover {
+    background: rgba(250, 248, 244, 0.08);
+    border-color: rgba(184, 146, 63, 0.25);
+    transform: translateY(-4px);
+  }
+
+  .testimonial-stars {
+    margin-bottom: 1.25rem;
+    display: flex;
+    gap: 0.25rem;
+  }
+
+  .star {
+    color: var(--color-gold);
+    font-size: 0.95rem;
+  }
+
+  .testimonial-quote {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: 400;
+    font-style: italic;
+    color: var(--color-sand);
+    line-height: 1.7;
+    margin-bottom: 1.75rem;
+  }
+
+  .testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    margin-top: auto;
+  }
+
+  .author-avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--color-gold);
+    color: var(--color-espresso);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+  }
+
+  .author-name {
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    font-weight: 600;
+    font-style: normal;
+    color: var(--color-cream);
+    display: block;
+  }
+
+  .author-role {
+    font-size: 0.75rem;
+    color: var(--color-gold);
+    letter-spacing: 0.05em;
+  }
+
+  @media (max-width: 900px) {
+    .testimonials-grid {
+      grid-template-columns: 1fr;
+      max-width: 550px;
+      margin: 0 auto;
+    }
+  }
+</style>

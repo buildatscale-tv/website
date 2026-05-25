@@ -1,0 +1,212 @@
+---
+const scrolled = false;
+---
+
+<header class="site-header" id="site-header">
+  <div class="header-inner container">
+    <a href="#" class="logo">
+      <span class="logo-icon">&diams;</span>
+      <div class="logo-text">
+        <span class="logo-name">Hartwood</span>
+        <span class="logo-tagline">Custom Cabinets</span>
+      </div>
+    </a>
+    <nav class="main-nav" id="main-nav">
+      <a href="#portfolio">Portfolio</a>
+      <a href="#services">Services</a>
+      <a href="#about">About</a>
+      <a href="#testimonials">Testimonials</a>
+      <a href="#contact" class="nav-cta">Get a Quote</a>
+    </nav>
+    <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle navigation">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: rgba(250, 248, 244, 0.92);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(92, 58, 33, 0.08);
+    transition: all 0.4s ease;
+  }
+
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 80px;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .logo-icon {
+    font-size: 1.5rem;
+    color: var(--color-gold);
+    line-height: 1;
+  }
+
+  .logo-text {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .logo-name {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: var(--color-espresso);
+    line-height: 1.1;
+  }
+
+  .logo-tagline {
+    font-family: var(--font-accent);
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--color-gold);
+  }
+
+  .main-nav {
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;
+  }
+
+  .main-nav a {
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-walnut);
+    transition: color 0.3s ease;
+    position: relative;
+  }
+
+  .main-nav a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 1.5px;
+    background: var(--color-gold);
+    transition: width 0.3s ease;
+  }
+
+  .main-nav a:hover {
+    color: var(--color-gold);
+  }
+
+  .main-nav a:hover::after {
+    width: 100%;
+  }
+
+  .nav-cta {
+    background: var(--color-espresso);
+    color: var(--color-cream) !important;
+    padding: 0.65rem 1.5rem;
+    font-size: 0.8rem;
+    letter-spacing: 0.12em;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .nav-cta::after {
+    display: none !important;
+  }
+
+  .nav-cta:hover {
+    background: var(--color-gold);
+    color: var(--color-ivory) !important;
+  }
+
+  .mobile-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+  }
+
+  .mobile-toggle span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--color-espresso);
+    transition: all 0.3s ease;
+  }
+
+  @media (max-width: 900px) {
+    .mobile-toggle {
+      display: flex;
+    }
+
+    .main-nav {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 80%;
+      max-width: 320px;
+      height: 100vh;
+      background: var(--color-ivory);
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 6rem 2rem 2rem;
+      gap: 1.5rem;
+      box-shadow: -4px 0 30px rgba(0,0,0,0.1);
+      transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .main-nav.open {
+      right: 0;
+    }
+
+    .main-nav a {
+      font-size: 1rem;
+    }
+  }
+</style>
+
+<script>
+  const toggle = document.getElementById('mobile-toggle');
+  const nav = document.getElementById('main-nav');
+
+  toggle?.addEventListener('click', () => {
+    nav?.classList.toggle('open');
+  });
+
+  nav?.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      nav?.classList.remove('open');
+    });
+  });
+
+  window.addEventListener('scroll', () => {
+    const header = document.getElementById('site-header');
+    if (window.scrollY > 50) {
+      header?.classList.add('scrolled');
+    } else {
+      header?.classList.remove('scrolled');
+    }
+  });
+</script>
